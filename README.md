@@ -1,51 +1,48 @@
-# ППО «Территория» и АРМ «Дискриптор»
+# PPO Territory and related technical systems
 
-Единый публичный архив технической документации, архитектурных обзоров и ограниченных исходных фрагментов по связанным предметным областям и программным компонентам.
-
-
+Evidence-based technical documentation for several separately documented systems and source collections. The repository is a documentation hub, not a claim that all contents form one deployed product.
 
 ## Architecture diagrams
 
 - [Architecture catalogue](materials/architecture/README.md) — system boundaries, modules, data model, deployment and integrations.
 - [Detailed component maps](materials/architecture/component-maps.md) — ARM Descriptor, PPO Territory projects, Deshifrator libraries and UMMS workflows.
 
-## Разделы
+## Documentation sections
 
-| Раздел | Содержание |
+| Section | Contents |
 |---|---|
-| [ППО «Территория»](materials/territory/README.md) | Назначение системы, функциональные модули, развёртывание, интеграции, требования и жизненный цикл |
-| [База данных и API](materials/territory-database/README.md) | Oracle, логическая и физическая структура, API и модели исходного кода |
-| [АРМ «Дискриптор»](materials/descriptor/README.md) | Архитектура мобильной и стационарной станций, обмен данными, оборудование и границы доверия |
-| [Программные компоненты](materials/deshifrator/README.md) | ModuleMobile, ModuleStationary, PassportPaint, зависимости, локальное хранение, обмен и доступные фрагменты C# |
-| [UMMS / SOAP](materials/umms/README.md) | Публичные материалы по SOAP API, клиенту, локальному хранению досье и интеграции |
+| [PPO Territory](materials/territory/README.md) | System purpose, functional modules, deployment, integrations, requirements and lifecycle |
+| [Database and API](materials/territory-database/README.md) | Oracle, logical/physical structure, API and source-code models |
+| [ARM Descriptor](materials/descriptor/README.md) | Mobile and stationary stations, data exchange, equipment and trust boundaries |
+| [Software components](materials/deshifrator/README.md) | ModuleMobile, ModuleStationary, PassportPaint, dependencies, local storage, exchange and C# excerpts |
+| [UMMS / SOAP](materials/umms/README.md) | SOAP API, client, local dossier storage and integration |
+| [Supplementary source systems](materials/reference-systems/README.md) | Separately classified ARM PPZ/PVK, AS Passport RF and MSKTs materials; no integration is inferred |
 
-## Важное замечание о границах системы
+## System-boundary policy
 
-Материалы собраны в одном репозитории для удобства навигации и целостного представления документации. Сам факт объединения файлов **не означает**, что все описанные компоненты являются одним исполняемым продуктом или что все архитектурные связи окончательно подтверждены.
+The materials are grouped for navigation only. This does not mean that every component is part of one executable product or that every architectural relationship has been established.
 
-В частности, соответствие обозначений ПОМС / ПОСС обозначениям ModuleMobile / ModuleStationary требует дальнейшей сверки с первичными материалами и исходным кодом. В документах отмечаются подтверждённые факты, предположения и вопросы для проверки отдельно.
+PPO Territory, ARM Descriptor, Deshifrator, UMMS, ARM PPZ/PVK, AS Passport RF and MSKTs are documented as separate boundaries or source tracks. Similar domain terms, shared historical organizations or adjacent source files do not prove a common runtime architecture.
 
-## Структура
+In particular, the correspondence between ПОМС / ПОСС and ModuleMobile / ModuleStationary requires further verification against primary materials and source code.
 
-- `materials/territory/` — ППО «Территория»
-- `materials/territory-database/` — база данных, API и модели
-- `materials/descriptor/` — АРМ «Дискриптор»
-- `materials/deshifrator/` — программные компоненты и доступные фрагменты кода
-- `materials/umms/` — UMMS SOAP и клиентская документация
+## Evidence and publication policy
 
-## Источники и ограничения
+- Distinguish documented requirements, inspected source-code findings, logical reconstruction and unverified hypotheses.
+- Do not invent modules, interfaces, database relations, protocols or deployment topology.
+- Do not publish production credentials, personal data, private keys, protected network details or live exchange files.
+- Historical product addresses and support contacts are source references, not verified current services.
+- Keep original source projects available until links, published pages and material completeness have been checked.
 
-Содержимое перенесено из ранее опубликованных репозиториев владельца:
+## Structure
 
-- `ppo-territory-archive`
-- `territory-docs`
-- `descriptor-arm-spec`
-- `deshifrator-docs`
-- `umms-docs`
+- `materials/territory/` — PPO Territory.
+- `materials/territory-database/` — database, API and models.
+- `materials/descriptor/` — ARM Descriptor.
+- `materials/deshifrator/` — software components and available source excerpts.
+- `materials/umms/` — UMMS SOAP and client documentation.
+- `materials/reference-systems/` — other separately classified source materials.
 
-Тексты и исходные фрагменты сохранены в отдельных каталогах. Перенос файлов не переносит историю Git исходных репозиториев. Исходные проекты следует оставить доступными до завершения проверки ссылок, страниц и полноты материалов.
+## Publication
 
-## Публикация
-
-Сайт проекта: https://ekatmoz88-alt.github.io/territory-descriptor-unified/
-
+Project site: https://ekatmoz88-alt.github.io/territory-descriptor-unified/
