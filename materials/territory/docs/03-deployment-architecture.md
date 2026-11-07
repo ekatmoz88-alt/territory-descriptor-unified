@@ -117,3 +117,36 @@ The actual installation topology, backup product, backup schedule, retention, re
 - Network latency and throughput acceptance criteria.
 - Backup/restore procedures, RPO/RTO and restore-test evidence.
 - Exact purpose of the low-capacity dedicated-server profile.
+
+
+## Additional source evidence — server placement and operating modes
+
+The supplied operational document explicitly describes two independent architecture dimensions:
+
+- **Server placement:** separate application and database servers, or a combined application/database server.
+- **Operating mode:** centralized or distributed.
+
+### Centralized mode
+
+Territorial offices in a region connect to one regional PPO Territory application instance through permanent, high-performance communication links and use it through thin clients.
+
+### Distributed mode
+
+Offices with stable high-speed links use the regional instance through thin clients. Offices with unstable, low-performance or unavailable connectivity have a local application server and local database; users work through thin clients on the local network. Data replication between territorial and regional installations is described as batch transfer or removable-media exchange.
+
+The source does not specify the replication protocol, schedule, directionality, conflict-resolution policy, retry semantics or consistency guarantees.
+
+### Server profiles
+
+| Role | CPU | RAM | Storage | OS |
+|---|---|---:|---|---|
+| Separate DB server | 2.4 GHz, `4 core-x1` | 12 GB | 2 TB, RAID 10 and RAID 1 | Oracle Enterprise Linux 5.6 64-bit |
+| Separate application server | 2.4 GHz, `4 core-x2` | 24 GB | 1 TB, RAID 1 | Debian 6 64-bit |
+| Combined DB/application server | 2.4 GHz, `6 core-x2` | 24 GB | 2 TB, RAID 1 and RAID 10 arrays | Oracle Enterprise Linux 5.6 64-bit |
+| Separately described dedicated combined server | Intel Core 2 Duo E7200 or higher | 4 GB | At least 10 GB free | Oracle Enterprise Linux 5.6 64-bit |
+
+CPU notation is retained verbatim because its meaning is ambiguous. The dedicated-server profile is kept separate from the higher-capacity combined-server profile.
+
+### Historical client and network requirements
+
+The source lists Pentium 4+, 512 MB RAM, 1 GB free disk, Windows XP/Vista/7/8, Chrome 19+, Office software, special-printer DLLs, Java 6 and CryptoPro CSP 3.6 R2. Historical bandwidth thresholds are 256 Kbit/s for up to 50 daily cases, 512 Kbit/s for 50–100, and 1 Mbit/s for more than 100. These are not modern sizing recommendations.
