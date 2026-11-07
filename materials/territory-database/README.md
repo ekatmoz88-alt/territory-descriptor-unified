@@ -21,3 +21,9 @@
 ## Примечание
 
 Материалы описывают структуру и взаимодействия системы на основе доступной проектной документации. Перед публичным распространением необходимо убедиться, что опубликованные сведения не содержат конфиденциальных данных или внутренних деталей, не предназначенных для открытого доступа.
+
+
+## Architecture maps
+
+- [PPO Territory component architecture](../architecture/component-maps.md#2-ppo-territory--software-component-architecture)
+- [PPO Territory data and module architecture](../architecture/README.md#2-ppo-territory--functional-module-map)
