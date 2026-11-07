@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Зависимости, конфигурация и границы запуска компонентов АРМ «Дешифратор».">
+<title>Зависимости и конфигурация — АРМ «Дешифратор»</title><link rel="stylesheet" href="./styles.css"></head>
+<body><a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="wrap top"><a class="brand" href="./">АРМ «Дешифратор» · Техническая документация</a>
+<p class="eyebrow">Technical documentation · Portfolio case study</p><div class="language-switch"><span aria-current="true">RU</span><a href="./en/dependencies-and-runtime.html" lang="en" hreflang="en">EN</a></div>
+<nav aria-label="Основная навигация"><a href="./">Обзор</a><a href="./architecture.html">Архитектура</a><a href="./data-exchange-and-mrz.html">Файловый обмен и MRZ</a><a href="./risks-and-decisions.html">Риски и решения</a><a href="./dependencies-and-runtime.html" aria-current="page">Зависимости</a></nav></header>
+<main class="wrap" id="main"><section class="hero"><h1>Зависимости, конфигурация и границы запуска</h1>
+<p class="lead">Сводка по архивам поставки и конфигурационным файлам. Это описание исторической комплектации, а не инструкция по развёртыванию.</p>
+<div class="note"><strong>Статус проверки.</strong> Установщики и приложения не запускались. Внешняя доступность сервисов не проверялась. Конфигурационные значения рассматриваются как свидетельства из комплекта поставки, а не как актуальные production-настройки.</div></section>
+<section class="content">
+<h2>Состав приложения</h2>
+<div class="table-wrap"><table><thead><tr><th>Компонент</th><th>Подтверждённые сведения</th><th>Ограничение вывода</th></tr></thead><tbody>
+<tr><td><code>Descriptor.exe</code></td><td>Windows desktop application, .NET Framework 4.5; пакет содержит WPF-компоненты, TWAIN helper, Tesseract OCR и нативные библиотеки x86/x64.</td><td>Конфигурация приложения не подтверждает прямое подключение к SOAP или Elasticsearch.</td></tr>
+<tr><td><code>ModuleStationary.exe</code></td><td>Отдельный WPF-модуль .NET Framework 4.5, SQLite, словари, печатный компонент и локальная конфигурация FIAS.</td><td>Локальная БД сама по себе не доказывает синхронизацию с мобильным модулем.</td></tr>
+<tr><td><code>ModuleMobile.exe</code></td><td>Отдельный WPF-модуль .NET Framework 4.5, SQLite, словари, конфигурация SOAP UMMS и локальная конфигурация FIAS.</td><td>URL в конфигурации не подтверждает доступность сервиса или успешную интеграцию.</td></tr>
+<tr><td>Elasticsearch / FIAS</td><td>Elasticsearch 1.2.1, Lucene 4.8.1, плагины XML и river-csv, предварительно заполненный индекс.</td><td>Индекс нельзя заменять пустым или удалять lock-файлы без проверки.</td></tr>
+</tbody></table></div>
+<h2>Конфигурационные источники</h2>
+<ul>
+<li><code>Descriptor.exe.config</code>: целевая платформа .NET Framework 4.5; подтверждённой SOAP-строки подключения нет.</li>
+<li><code>Descriptor_config.zip → Config.cfg</code>: исторические Windows-пути к растровым шрифтам, архиву, базе данных и Paint.NET.</li>
+<li><code>ModuleStationary.exe.config</code>: .NET Framework 4.5 и локальный адрес FIAS/Elasticsearch.</li>
+<li><code>ModuleMobile.exe.config</code>: .NET Framework 4.5, конфигурация SOAP UMMS и локальный адрес FIAS/Elasticsearch. Реальные значения адресов не публикуются.</li>
+</ul>
+<h2>Локальные базы SQLite</h2>
+<p><strong>Мобильный модуль:</strong> <code>User</code>, <code>UserRole</code>, <code>UserAction</code>.</p>
+<p><strong>Стационарный модуль:</strong> <code>Cases</code>, <code>Dossier</code>, <code>Person</code>, <code>Document</code>, XML-таблицы, таблицы пользователей и аудита.</p>
+<p>Это структура приложенных локальных баз, а не доказательство состава промышленной БД или механизма синхронизации.</p>
+<h2>Зависимости</h2>
+<div class="table-wrap"><table><thead><tr><th>Компонент</th><th>Версия в архиве</th><th>Назначение</th></tr></thead><tbody>
+<tr><td>.NET Framework</td><td>4.5</td><td>Среда настольных приложений</td></tr>
+<tr><td>SQLite</td><td>System.Data.SQLite + SQLite.Interop</td><td>Локальное хранение</td></tr>
+<tr><td>Tesseract OCR</td><td>3.02, x86/x64</td><td>Распознавание текста</td></tr>
+<tr><td>Elasticsearch / Lucene</td><td>1.2.1 / 4.8.1</td><td>Поиск по данным ФИАС</td></tr>
+<tr><td>XML plugin / river-csv</td><td>1.2.1.0 / 2.0.1</td><td>Плагины Elasticsearch</td></tr>
+<tr><td>Java в комплекте ES</td><td>Windows JRE 7.0, amd64</td><td>Историческая среда Windows-комплекта</td></tr>
+</tbody></table></div>
+<p>Linux-скрипт Elasticsearch присутствует, но его настройки используют CMS GC-параметры, отсутствующие в современных версиях Java. Совместимость с современной Java не подтверждена.</p>
+<h2>Ограничения анализа</h2>
+<ul><li>Приложения и установщики не запускались.</li><li>Доступность внешнего SOAP-сервиса не проверялась.</li><li>Предварительно заполненный индекс ФИАС необходимо сохранять целиком.</li><li>ZIP-предупреждение для пустого каталога <code>Dics/</code> само по себе не доказывает повреждение исполняемых файлов.</li><li>Экспериментальный запуск требует изолированной среды и копии исходных данных.</li></ul>
+<h2>Вывод</h2>
+<p>Систему следует описывать как набор отдельных Windows-компонентов с различающимися локальными данными и внешними зависимостями. SOAP-интеграция подтверждается конфигурацией мобильного модуля; FIAS/Elasticsearch указан в конфигурациях мобильного и стационарного модулей. OCR и сканирование относятся к комплекту настольного приложения.</p>
+</section></main><footer class="wrap footer">Публичная документация портфолио. Исторический контекст: Scientific Instruments, Inc. (2014–2016).</footer></body></html>

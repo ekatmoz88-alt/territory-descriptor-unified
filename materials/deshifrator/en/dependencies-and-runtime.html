@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Dependencies, configuration evidence and runtime boundaries for the Deshifrator workstation modules.">
+<title>Dependencies &amp; Runtime — Deshifrator Workstation</title><link rel="stylesheet" href="../styles.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<header class="wrap top"><a class="brand" href="./">Deshifrator Workstation · Technical Documentation</a>
+<p class="eyebrow">Technical documentation · Portfolio case study</p><div class="language-switch"><a href="../dependencies-and-runtime.html" lang="ru" hreflang="ru">RU</a><span aria-current="true">EN</span></div>
+<nav aria-label="Main navigation"><a href="./">Overview</a><a href="./architecture.html">Architecture</a><a href="./data-exchange-and-mrz.html">File Exchange &amp; MRZ</a><a href="./risks-and-decisions.html">Risks &amp; Decisions</a><a href="./dependencies-and-runtime.html" aria-current="page">Dependencies</a></nav></header>
+<main class="wrap" id="main"><section class="hero"><h1>Dependencies, Configuration &amp; Runtime Boundaries</h1>
+<p class="lead">A review of the supplied archives and configuration files. This page describes the historical package contents; it is not a deployment guide.</p>
+<div class="note"><strong>Verification status.</strong> Installers and applications have not been executed. External service availability has not been tested. Configuration values are treated as package evidence, not as current production settings.</div></section>
+<section class="content">
+<h2>Application components</h2>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Confirmed evidence</th><th>Inference boundary</th></tr></thead><tbody>
+<tr><td><code>Descriptor.exe</code></td><td>Windows desktop application targeting .NET Framework 4.5; package includes WPF components, a TWAIN helper, Tesseract OCR and native x86/x64 libraries.</td><td>Its application config does not establish a direct SOAP or Elasticsearch connection.</td></tr>
+<tr><td><code>ModuleStationary.exe</code></td><td>Separate .NET Framework 4.5 WPF module with SQLite, dictionaries, a printing component and local FIAS configuration.</td><td>A local database does not by itself prove synchronization with the mobile module.</td></tr>
+<tr><td><code>ModuleMobile.exe</code></td><td>Separate .NET Framework 4.5 WPF module with SQLite, dictionaries, UMMS SOAP configuration and local FIAS configuration.</td><td>A configured URL does not prove service availability or a successful integration.</td></tr>
+<tr><td>Elasticsearch / FIAS</td><td>Elasticsearch 1.2.1, Lucene 4.8.1, XML and river-csv plugins, and a pre-populated FIAS index directory.</td><td>The index must not be replaced with an empty one or have lock files removed without investigation.</td></tr>
+</tbody></table></div>
+<h2>Configuration evidence</h2>
+<ul>
+<li><code>Descriptor.exe.config</code>: targets .NET Framework 4.5; no confirmed SOAP connection string is present.</li>
+<li><code>Descriptor_config.zip → Config.cfg</code>: historical Windows paths for raster fonts, archive, database and Paint.NET.</li>
+<li><code>ModuleStationary.exe.config</code>: .NET Framework 4.5 and a local FIAS/Elasticsearch URL.</li>
+<li><code>ModuleMobile.exe.config</code>: .NET Framework 4.5, UMMS SOAP configuration and a local FIAS/Elasticsearch URL. Actual endpoint values are omitted from this public page.</li>
+</ul>
+<h2>Local SQLite databases</h2>
+<p><strong>Mobile module:</strong> <code>User</code>, <code>UserRole</code>, <code>UserAction</code>.</p>
+<p><strong>Stationary module:</strong> <code>Cases</code>, <code>Dossier</code>, <code>Person</code>, <code>Document</code>, XML tables, user and audit tables.</p>
+<p>This describes the supplied local database files. It does not establish the production database contents or a synchronization mechanism.</p>
+<h2>Dependencies</h2>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Version in package</th><th>Role</th></tr></thead><tbody>
+<tr><td>.NET Framework</td><td>4.5</td><td>Desktop application runtime</td></tr>
+<tr><td>SQLite</td><td>System.Data.SQLite + SQLite.Interop</td><td>Local persistence</td></tr>
+<tr><td>Tesseract OCR</td><td>3.02, x86/x64</td><td>Text recognition</td></tr>
+<tr><td>Elasticsearch / Lucene</td><td>1.2.1 / 4.8.1</td><td>FIAS search</td></tr>
+<tr><td>XML plugin / river-csv</td><td>1.2.1.0 / 2.0.1</td><td>Elasticsearch plugins</td></tr>
+<tr><td>Bundled Java</td><td>Windows JRE 7.0, amd64</td><td>Historical runtime for the Windows package</td></tr>
+</tbody></table></div>
+<p>A Linux Elasticsearch launcher is included, but its configuration uses CMS garbage-collector options that are absent from modern Java releases. Compatibility with a modern Java runtime has not been established.</p>
+<h2>Analysis limitations</h2>
+<ul><li>Installers and applications have not been executed.</li><li>External SOAP service availability has not been tested.</li><li>The pre-populated FIAS index must be preserved as a whole.</li><li>The ZIP warning for the empty <code>Dics/</code> directory does not by itself prove executable-file corruption.</li><li>Any experimental execution requires an isolated environment and a copy of the original data.</li></ul>
+<h2>Conclusion</h2>
+<p>The system should be documented as a set of separate Windows components with distinct local data and external dependencies. SOAP integration is evidenced by the mobile module configuration; FIAS/Elasticsearch is configured in both the mobile and stationary modules. OCR and scanning belong to the desktop application package.</p>
+</section></main><footer class="wrap footer">Public portfolio documentation. Historical context: Scientific Instruments, Inc. (2014–2016).</footer></body></html>

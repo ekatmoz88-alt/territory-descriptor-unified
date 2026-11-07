@@ -1,0 +1,68 @@
+:root{
+  color-scheme:light;
+  --ink:#172b4d;
+  --muted:#5c6b80;
+  --line:#dce3ec;
+  --bg:#f7f8fa;
+  --blue:#244f7c;
+  --blue-soft:#edf3f8;
+  --sidebar:#f1f3f6;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#245b91;text-underline-offset:.18em}
+a:hover{color:#153e67}
+a:focus-visible{outline:3px solid #b7791f;outline-offset:3px}
+.skip-link{position:absolute;top:8px;left:8px;z-index:20;padding:8px 12px;transform:translateY(-160%);background:#fff;border:2px solid var(--blue);border-radius:5px}
+.skip-link:focus{transform:translateY(0)}
+.wrap{width:min(980px,calc(100% - 340px));margin-left:310px;margin-right:30px}
+.top{position:fixed;inset:0 auto 0 0;width:270px;margin:0;padding:30px 22px 24px;background:var(--sidebar);border-right:1px solid #d7dde5;overflow-y:auto;z-index:10}
+.brand{display:block;color:#1e344d;text-decoration:none;font-size:1rem;font-weight:750;line-height:1.4}
+.eyebrow{margin:10px 0 20px;color:#66758a;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.language-switch{display:flex;align-items:center;gap:6px;margin:0 0 22px;font-size:.82rem;font-weight:700}
+.language-switch a,.language-switch span{display:inline-block;min-width:38px;padding:4px 9px;border:1px solid #d3dbe5;border-radius:4px;background:#fff;text-align:center;text-decoration:none}
+.language-switch [aria-current=true]{background:#e1eaf3;border-color:#9fb4c9;color:var(--ink)}
+nav{display:flex;flex-direction:column;gap:3px;margin:0;padding:0;border:0}
+nav a{display:block;padding:8px 11px;border:0;border-left:3px solid transparent;border-radius:0 4px 4px 0;background:transparent;color:#344b63;text-decoration:none;font-size:.92rem;font-weight:550}
+nav a:hover{background:#e7ebf0;color:#172b4d}
+nav a[aria-current=page]{background:#e3eaf1;border-left-color:#315f89;color:#173b5e;font-weight:700}
+main{padding:42px 0 56px}
+.hero,.content,.card{background:var(--white);border:1px solid var(--line);border-radius:6px;box-shadow:0 1px 2px rgba(20,40,60,.035)}
+.hero{padding:30px 34px}
+.content{margin-top:20px;padding:30px 34px}
+h1{font-size:clamp(1.85rem,4vw,2.45rem);line-height:1.2;letter-spacing:-.025em;margin:4px 0 12px;color:#1b3550}
+h2{font-size:1.35rem;line-height:1.35;margin:32px 0 10px;padding-bottom:7px;border-bottom:1px solid #e7ebf0}
+h2:first-child{margin-top:0}
+h3{font-size:1.08rem;line-height:1.4;margin:25px 0 8px;color:#274b6c}
+h4{font-size:1rem;margin:20px 0 7px}
+p{margin:10px 0}
+.lead{color:var(--muted);max-width:78ch;font-size:1.06rem}
+.note{margin-top:18px;padding:13px 16px;background:#f3f6f9;border-left:3px solid #7893ad;border-radius:3px;color:#40546a}
+ul,ol{padding-left:1.4rem}
+li{margin:4px 0}
+code{background:#f0f3f6;border:1px solid #e0e5eb;border-radius:3px;padding:1px 4px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em;overflow-wrap:anywhere}
+.table-wrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#f1f4f7;color:#29435d;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:20px}
+.card{padding:21px}
+.card h2{margin:0 0 8px;padding:0;border:0;font-size:1.08rem}
+.card p{color:var(--muted)}
+.card-link{display:inline-block;margin-top:8px;font-weight:700;text-decoration:none}
+.footer{padding:18px 0 30px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(max-width:760px){
+  .wrap{width:calc(100% - 28px);margin:0 14px}
+  .top{position:relative;width:auto;inset:auto;padding:18px 14px 12px;border-right:0;border-bottom:1px solid #d7dde5;overflow:visible}
+  .eyebrow{margin:7px 0 12px}
+  .language-switch{margin:0 0 12px}
+  nav{flex-direction:row;flex-wrap:wrap;gap:5px}
+  nav a{padding:6px 9px;border:1px solid #d6dee7;border-radius:4px;font-size:.84rem}
+  nav a[aria-current=page]{border-color:#9fb4c9}
+  main{padding:22px 0 38px}
+  .hero,.content{padding:22px 20px}
+  .footer{padding-bottom:22px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

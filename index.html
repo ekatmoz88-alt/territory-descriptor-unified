@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ППО «Территория» и АРМ «Дискриптор» — документация</title>
+<meta name="description" content="Единый архив технической документации: ППО Территория, АРМ Дискриптор, программные компоненты, базы данных и интеграции UMMS SOAP.">
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121d30;--line:#26364e;--text:#edf3fb;--muted:#a9b8ca;--accent:#79b8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#1b3453 0,transparent 36%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto;padding:64px 24px 80px}.eyebrow{color:var(--accent);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.08;max-width:850px;margin:14px 0 20px}
+.lead{max-width:780px;color:var(--muted);font-size:1.12rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:42px 0}
+article{background:linear-gradient(145deg,#17253a,var(--panel));border:1px solid var(--line);border-radius:16px;padding:22px;min-height:190px}
+h2{font-size:1.16rem;margin:0 0 8px}p{color:var(--muted);margin:0 0 18px}a{color:var(--accent);text-decoration:none;font-weight:650}a:hover{text-decoration:underline}
+.note{border-left:3px solid var(--accent);padding:14px 18px;background:#111d2e;border-radius:0 10px 10px 0;color:var(--muted);max-width:900px}
+footer{margin-top:38px;color:#8394aa;font-size:.9rem}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">Technical documentation hub</div>
+<h1>ППО «Территория» и АРМ «Дискриптор»</h1>
+<p class="lead">Единая точка входа в технические материалы по архитектуре, программным компонентам, базам данных, API и обмену данными. Разделы сохраняют собственную структуру и происхождение.</p>
+<section class="grid">
+<article><h2>ППО «Территория»</h2><p>Обзор системы, функциональные модули, развёртывание, внешние интеграции и жизненный цикл.</p><a href="materials/territory/README.md">Открыть раздел →</a></article>
+<article><h2>База данных и API</h2><p>Oracle, логическая и физическая структура, API и модели данных.</p><a href="materials/territory-database/README.md">Открыть раздел →</a></article>
+<article><h2>АРМ «Дискриптор»</h2><p>Мобильная и стационарная станции, архитектура обмена, оборудование и границы доверия.</p><a href="materials/descriptor/README.md">Открыть раздел →</a></article>
+<article><h2>Программные компоненты</h2><p>ModuleMobile, ModuleStationary, PassportPaint, зависимости, SQLite и доступные фрагменты C#.</p><a href="materials/deshifrator/README.md">Открыть раздел →</a></article>
+<article><h2>UMMS / SOAP</h2><p>Публичные описания SOAP API, клиента, локального хранения досье и интеграции.</p><a href="materials/umms/README.md">Открыть раздел →</a></article>
+</section>
+<div class="note"><strong>Статус архитектурной увязки.</strong> Материалы собраны в одном хабе, но это не объявляет все компоненты единым исполняемым продуктом. Соответствие ПОМС / ПОСС и ModuleMobile / ModuleStationary остаётся предметом отдельной проверки.</div>
+<footer>Документационный архив · <a href="README.md">README и структура репозитория</a> · <a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">GitHub repository</a></footer>
+</main></body></html>
