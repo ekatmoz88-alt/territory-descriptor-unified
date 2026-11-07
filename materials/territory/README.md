@@ -19,3 +19,9 @@ https://ekatmoz88-alt.github.io/ppo-territory-archive/
 ## Documentation approach
 
 Requirements, interface observations, file evidence, source-code findings and test results are distinguished. Items requiring primary-source confirmation are marked accordingly.
+
+
+## Architecture
+
+- [Architecture catalogue](../architecture/README.md)
+- [Detailed module and component maps](../architecture/component-maps.md)
