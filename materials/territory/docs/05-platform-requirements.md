@@ -48,3 +48,12 @@ Oracle Enterprise Linux 5.6, Debian 6, Windows XP/Vista/7/8, Java 6, Chrome 19 a
 
 - [Deployment architecture](03-deployment-architecture.md)
 - [Lifecycle, updates and operational support](06-lifecycle-testing.md)
+
+
+## Additional historical hardware profile details
+
+The supplied source gives separate profiles for the database server, application server, combined application/database server and a separately described low-capacity dedicated server. Their values are summarized in [Deployment Architecture](03-deployment-architecture.md). The CPU strings `4 core-x1`, `4 core-x2` and `6 core-x2` are preserved as source notation; their hardware meaning is not established.
+
+The client profile additionally names the special-printer DLLs, Google Chrome 19 or later, MS Word/Excel or an equivalent, Java Runtime Environment 6 and CryptoPro CSP 3.6 R2.
+
+The stated network thresholds are historical: 256 Kbit/s for up to 50 cases/day, 512 Kbit/s for 50–100 cases/day and 1 Mbit/s for more than 100 cases/day. Concurrent users, payload sizes and latency requirements are absent, so these figures are not a complete capacity model.
