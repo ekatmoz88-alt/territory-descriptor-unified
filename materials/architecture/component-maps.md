@@ -116,28 +116,24 @@ flowchart TB
 
 The project names and model areas come from the published source-code overview. This is a logical view: it does not assert that every project directly connects to Oracle or that these `Umms.*` projects are the same as the separate UMMS SOAP service/client repository. Verify project references and runtime hosting against solution files and deployment configuration.
 
-### PPO Territory — subject-area and database inventory
+### PPO Territory — Oracle database inventory (not a deployment diagram)
 
 ```mermaid
 flowchart TB
-  ROOT["PPO Territory information database<br/>401 tables in the database overview"]
-  CORE["CORE_* — 44<br/>persons / identity data / documents / cases / payments"]
-  DICT["DICT_* — 104<br/>reference data"]
-  RP["RP_* — 11<br/>Russian passport"]
-  FP["FP_* — 10<br/>foreign passport"]
-  REG["REG_* — 17<br/>registration accounting"]
-  MIG["MIG_* — 8<br/>migration accounting"]
-  OTHER["Other subject-area tables — 207<br/>citizenship / invitations / visas / asylum / labour migration and others"]
-  ROOT --> CORE
-  ROOT --> DICT
-  ROOT --> RP
-  ROOT --> FP
-  ROOT --> REG
-  ROOT --> MIG
-  ROOT --> OTHER
+  DBMS["Oracle DBMS<br/>identified database technology"]
+  DBMS --> INV["Reported inventory: 401 tables"]
+  INV --> CORE["CORE_* — 44"]
+  INV --> DICT["DICT_* — 104"]
+  INV --> RP["RP_* — 11"]
+  INV --> FP["FP_* — 10"]
+  INV --> REG["REG_* — 17"]
+  INV --> MIG["MIG_* — 8"]
+  INV --> OTHER["Other subject areas — 207"]
+  NOTE["Prefix/count inventory only<br/>Schema owners, tablespaces, constraints,<br/>physical storage and instance topology are unknown"]
+  INV -.-> NOTE
 ```
 
-The inventory groups table prefixes and counts from the database overview. It must not be confused with the separate statement that the application has 17 functional modules; the authoritative module-by-module list is still incomplete.
+The counts come from the available database overview. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
 ## 3. Deshifrator — application suite and shared libraries
 
