@@ -58,7 +58,32 @@ flowchart TB
 
 **Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
-## 3. PPO Territory — logical data architecture
+## 3. PPO Territory — Oracle database and logical data architecture
+
+### 3.1 What is established
+
+The available database overview identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. This is evidence of the database technology and table inventory; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
+
+```mermaid
+flowchart TB
+  DBMS["Oracle DBMS<br/>database technology identified in source materials"]
+  subgraph INVENTORY["Reported table inventory — 401 tables"]
+    CORE["CORE_* — 44 tables"]
+    DICT["DICT_* — 104 tables"]
+    RP["RP_* — 11 tables"]
+    FP["FP_* — 10 tables"]
+    REG["REG_* — 17 tables"]
+    MIG["MIG_* — 8 tables"]
+    OTHER["Other subject areas — 207 tables"]
+  end
+  DBMS --- INVENTORY
+  NOTE["Inventory grouping only<br/>Not an owner/schema map or physical ERD"]
+  INVENTORY -.-> NOTE
+```
+
+The prefix groups are an inventory classification from the available overview. They must not be treated as Oracle schema owners, tablespaces, application modules, or one-to-one functional module mappings unless Oracle metadata confirms that interpretation.
+
+### 3.2 Conceptual entity relationships — provisional
 
 ```mermaid
 erDiagram
@@ -78,35 +103,39 @@ erDiagram
   DICT_REFERENCE ||--o{ CORE_DOCUMENT : classifies
 ```
 
-**Model interpretation.** The ER view is a conceptual summary of documented table roles, not a fully validated physical ERD. The exact foreign-key cardinalities, optionality, and module-specific extension tables must be checked against the physical Oracle schema. `DICT_REFERENCE` is a logical placeholder for multiple dictionary tables, not a literal table name.
+**Model interpretation.** This ER view is a conceptual summary of table roles mentioned in the available materials, not a validated physical Oracle ERD. Exact table names, constraints, foreign keys, cardinalities, optionality, owners, and dictionary relationships must be checked against Oracle metadata or a DDL-only export. `DICT_REFERENCE` is a logical placeholder for dictionary data, not a confirmed literal table name.
 
-## 4. PPO Territory — deployment architecture
+### 3.3 What is needed to produce the physical Oracle schema map
+
+A reliable physical schema and dependency model requires metadata or a DDL-only export (no production data and no credentials), subject to the database account's permissions:
+
+- schema owners and object inventory: `ALL_USERS`, `ALL_OBJECTS`;
+- tables and columns: `ALL_TABLES`, `ALL_TAB_COLUMNS`;
+- primary/foreign/unique/check constraints: `ALL_CONSTRAINTS`, `ALL_CONS_COLUMNS`;
+- views, packages, procedures, functions and triggers: `ALL_VIEWS`, `ALL_SOURCE`, `ALL_TRIGGERS`;
+- object dependencies: `ALL_DEPENDENCIES`;
+- grants and roles, where permitted: `ALL_TAB_PRIVS`, `ALL_ROLE_PRIVS`.
+
+These views are a collection checklist, not a claim that their contents have already been extracted. A least-privilege metadata export is sufficient; do not provide table rows, personal data, passwords, connection strings, keys, or production secrets.
+
+## 4. PPO Territory — deployment architecture: evidence status
+
+Oracle identifies the database technology, but the available materials do not establish the actual deployment topology. In particular, they do not yet confirm the number and location of Oracle instances, application servers, workstation tiers, network zones, failover nodes, replication, or disaster-recovery arrangements.
 
 ```mermaid
 flowchart TB
-  subgraph CENTRAL["Centralized deployment model"]
-    CWS["User workstations"]
-    CAPP["Central application services"]
-    CDB[("Central database")]
-    CWS -->|"thin-client access"| CAPP
-    CAPP -->|"data access"| CDB
-  end
-
-  subgraph DISTRIBUTED["Distributed office model"]
-    LWS["Local workstations"]
-    LAPP["Local application services"]
-    LDB[("Local database")]
-    LWS -->|"local access"| LAPP
-    LAPP -->|"data access"| LDB
-  end
-
-  LDB -.-> BATCH["Batch synchronization / replication"]
-  BATCH <--> MEDIA[("Removable media")]
-  MEDIA -.-> CDB
-
-  NOTE["Historical deployment patterns<br/>Exact topology, sync protocol,<br/>conflict handling and security controls<br/>require primary-source verification"]
-  BATCH -.-> NOTE
+  USERS["Users / workstations<br/>deployment details not verified"]
+  APP["PPO Territory application components<br/>hosting nodes not verified"]
+  ORACLE[("Oracle DBMS<br/>database technology identified")]
+  USERS -. "access path to be verified" .-> APP
+  APP -. "database connectivity to be verified" .-> ORACLE
+  UNKNOWN["Evidence required:<br/>server inventory, installation guides,<br/>network / security diagrams,<br/>Oracle topology and operational runbooks"]
+  USERS --- UNKNOWN
+  APP --- UNKNOWN
+  ORACLE --- UNKNOWN
 ```
+
+This is an **evidence-status diagram**, not a proposed or reconstructed physical deployment. It deliberately avoids inventing central/local servers, database replication, removable-media synchronization, RAC, Data Guard, or network protocols. A deployment diagram should be produced only from installation documentation, host/network inventories, infrastructure diagrams, or verified configuration.
 
 ## 5. PPO Territory — external integration landscape
 
