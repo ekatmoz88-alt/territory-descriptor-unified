@@ -52,3 +52,9 @@
 1. **`getCountryDictionary`** в коде не вызывается — клиент использует локальный файл `dict_country.csv`. Таблица `DICT_COUNTRY` в БД существует, но данные берутся из CSV.
 2. **`RollbackScenario1`** отправляет пустой объект — при откате `issueNewDocument` фактические данные не передаются, что может быть связано с особенностями реализации транзакций.
 3. **`MIG_LABOURMIGDATA`** и **`MIG_UNREG_DATA`** не имеют прямых моделей в `Common.Data.Models.Umms` — эти таблицы используются для отчетности (форма ИР) и снятия с учета, вероятно через SQL-запросы напрямую.
+
+
+## Architecture maps
+
+- [PPO Territory component architecture](../architecture/component-maps.md#2-ppo-territory--software-component-architecture)
+- [PPO Territory data and module architecture](../architecture/README.md#2-ppo-territory--functional-module-map)
