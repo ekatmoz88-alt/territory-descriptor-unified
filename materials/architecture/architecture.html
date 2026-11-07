@@ -11,7 +11,7 @@
 <script type="module">
 import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
 window.mermaid = mermaid;
-mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'neutral',fontFamily:'DM Sans, sans-serif',flowchart:{htmlLabels:true,curve:'basis'},er:{layoutDirection:'TB'}});
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',themeVariables:{fontFamily:'DM Sans, sans-serif',primaryColor:'#eaf3fb',primaryTextColor:'#202b3c',primaryBorderColor:'#8db7d7',lineColor:'#397da9',secondaryColor:'#f2f6fa',tertiaryColor:'#edf6f1',background:'#ffffff',clusterBkg:'#f5f8fb',clusterBorder:'#cbd8e5',edgeLabelBackground:'#ffffff'},flowchart:{htmlLabels:true,curve:'basis'},er:{layoutDirection:'TB'}});
 window.renderDiagrams = async () => {
   document.querySelectorAll('.mermaid').forEach(el => { el.removeAttribute('data-processed'); });
   await mermaid.run({querySelector:'.mermaid'});
@@ -64,12 +64,12 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
 <header class="hero">
   <div><p class="eyebrow" data-en="ENTERPRISE SYSTEMS · ARCHITECTURE DOCUMENTATION" data-ru="КОРПОРАТИВНЫЕ СИСТЕМЫ · АРХИТЕКТУРНАЯ ДОКУМЕНТАЦИЯ">ENTERPRISE SYSTEMS · ARCHITECTURE DOCUMENTATION</p>
   <h1 data-en="Architecture catalogue" data-ru="Каталог архитектуры">Architecture catalogue</h1>
-  <p data-en="Evidence-based architecture views for four separately documented systems: PPO Territory, ARM Descriptor, Deshifrator and UMMS. The 10 Mermaid diagrams distinguish documented facts, logical reconstructions and items requiring verification." data-ru="Архитектурные представления четырёх отдельно документированных систем: ППО «Территория», АРМ «Дискриптор», «Дешифратор» и UMMS. Схемы разделяют подтверждённые сведения, логические реконструкции и данные, требующие проверки.">Evidence-based architecture views for four separately documented systems.</p></div>
+  <p data-en="Evidence-based architecture views for four separately documented systems: PPO Territory, ARM Descriptor, Deshifrator and UMMS. The 10 primary Mermaid diagrams distinguish documented facts, logical reconstructions and items requiring verification. The linked component maps contain seven additional detailed diagrams." data-ru="Архитектурные представления четырёх отдельно документированных систем: ППО «Территория», АРМ «Дискриптор», «Дешифратор» и UMMS. Схемы разделяют подтверждённые сведения, логические реконструкции и данные, требующие проверки.">Evidence-based architecture views for four separately documented systems.</p></div>
   <a class="repo-button" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">Open repository ↗</a>
 </header>
 <div class="toolbar">
   <div class="language"><strong data-en="Language" data-ru="Язык">Language</strong><button id="en" aria-pressed="true" type="button">EN</button><button id="ru" aria-pressed="false" type="button">RU</button></div>
-  <div class="toolbar-links"><a href="./README.md">Canonical Markdown</a><a href="./component-maps.md">Detailed component maps</a><a href="https://github.com/ekatmoz88-alt/ppo-territory-archive">PPO Territory source archive</a></div>
+  <div class="toolbar-links"><a href="./README.md">Canonical Markdown</a><a href="./component-maps.md">Detailed component maps · 7 diagrams</a><a href="https://github.com/ekatmoz88-alt/ppo-territory-archive">PPO Territory source archive</a></div>
 </div>
 <section><h2 data-en="How to read these diagrams" data-ru="Как читать эти схемы">How to read these diagrams</h2>
 <ul>
