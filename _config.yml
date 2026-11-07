@@ -1,0 +1,6 @@
+title: "ППО «Территория» и АРМ «Дискриптор»"
+description: "Unified technical documentation hub"
+markdown: kramdown
+exclude:
+  - .github
+  - .gitignore
