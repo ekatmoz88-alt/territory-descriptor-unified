@@ -4,7 +4,8 @@ Evidence-based technical documentation for several separately documented systems
 
 ## Architecture diagrams
 
-- [Architecture catalogue](materials/architecture/README.md) — system boundaries, modules, data model, deployment and integrations.
+- [Interactive architecture catalogue](materials/architecture/architecture.html) — bilingual HTML page with 10 Mermaid diagrams and an evidence-coverage matrix.
+- [Architecture source (Markdown)](materials/architecture/README.md) — canonical diagram and evidence text; keep the HTML diagrams synchronized with this file.
 - [Detailed component maps](materials/architecture/component-maps.md) — ARM Descriptor, PPO Territory projects, Deshifrator libraries and UMMS workflows.
 
 ## Documentation sections
