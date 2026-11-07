@@ -96,3 +96,12 @@ The supplied material also contains descriptions of ARM PPZ/PVK browser troubles
 - Hardware inventory does not identify actual installed devices.
 - No exact protocol or physical topology is inferred beyond the documented removable-media workflow.
 - The relationship between ПОМС/ПОСС and similarly named software projects must be verified against source and deployment artifacts.
+
+
+## Additional component and equipment inventory
+
+The supplied technical description enumerates ПОСС functions for information-resource interaction, dossier editing, document preview and printing, font processing, comparison of generated and scanned documents, dossier import/export, data transformation and preparation of ПОМС authorization data.
+
+The mobile subsystem (ПОМС) performs structured search, dossier selection, export and interaction with ПОШ ВБД. The gateway mediates mobile access to the departmental database.
+
+The workstation equipment list includes a stationary workstation, form printer, scanner, UPS, laminator, duplex monochrome laser printer, inkjet printer, MRZ-recognition module, contactless-card/document module, contact-card module, mobile station and mobile floor-standing air conditioner. Exact models, interfaces, driver versions and per-station ownership are not specified. See [Software Components and Workstation Equipment](09-components-and-workstation-equipment.md).
