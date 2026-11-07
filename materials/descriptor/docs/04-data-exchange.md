@@ -125,3 +125,14 @@ PPO Territory documentation separately describes encoded and compressed internal
 - [Security Architecture](07-trust-levels-security-architecture.md)
 - [Dossier Processing Workflow and Metadata](08-data-processing-workflow.md)
 - [Software Components and Workstation Equipment](09-components-and-workstation-equipment.md)
+
+
+## Additional dossier transfer workflow and metadata
+
+The supplied specification describes the following sequence: ПОМС connects to ПОШ ВБД; searches using filters; selects dossiers; exports and transforms them for ПОСС; moves the file through registered removable media; ПОСС imports and converts the dossier for viewing/editing; the stationary user edits it and produces a change log; ПОСС returns the original dossier and change log through the registered medium; ПОМС checks whether the VBD source data has changed since export; if it has changed, import is aborted, otherwise the changes are submitted.
+
+The mobile filter includes birth-date range, optional death-date range, sex, optional place of birth and name, multiple document filters (type, issuing authority, series/number, issue-date range, indicator and optional reason), and multiple address filters (type, optional effective date, locality, street and optional premises).
+
+Each dossier is stated to carry four separate date/time events: export from ПОМС; export from ПОСС to ПОМС; loading from ПОМС to ПОСС; and loading from ПОМС. It also carries the dossier change log and information about users who performed actions.
+
+The pre-import comparison is logically an optimistic concurrency check. The source does not identify whether it compares versions, timestamps, hashes or field values, and does not define conflict resolution or retry behavior. See [Dossier Processing Workflow and Metadata](08-data-processing-workflow.md) for the full sequence and verification questions.
