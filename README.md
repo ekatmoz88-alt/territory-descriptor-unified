@@ -6,6 +6,7 @@ Evidence-based technical documentation for several separately documented systems
 
 - [Interactive architecture catalogue](materials/architecture/architecture.html) — bilingual HTML page with 10 Mermaid diagrams and an evidence-coverage matrix.
 - [Architecture source (Markdown)](materials/architecture/README.md) — canonical diagram and evidence text; keep the HTML diagrams synchronized with this file.
+- [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO Territory architecture and deployment modes.
 - [Detailed component maps](materials/architecture/component-maps.md) — 7 additional Mermaid diagrams for ARM Descriptor, PPO Territory projects, Deshifrator libraries and UMMS workflows.
 
 ## Documentation sections
