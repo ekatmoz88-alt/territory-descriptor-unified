@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Evidence-based architecture catalogue for PPO Territory, ARM Descriptor, Deshifrator and UMMS.">
+<title>Architecture Catalogue | Territory · Descriptor · Deshifrator · UMMS</title>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+window.mermaid = mermaid;
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'neutral',flowchart:{htmlLabels:true,curve:'basis'},er:{layoutDirection:'TB'}});
+window.renderDiagrams = async () => {
+  document.querySelectorAll('.mermaid').forEach(el => { el.removeAttribute('data-processed'); });
+  await mermaid.run({querySelector:'.mermaid'});
+};
+window.addEventListener('DOMContentLoaded', window.renderDiagrams);
+</script>
+<style>
+:root{color-scheme:light;--bg:#f5f7fa;--panel:#fff;--ink:#172235;--muted:#5b687a;--line:#dce3ec;--accent:#2459a6;--soft:#eaf1fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:#14243b;color:#fff;padding:34px max(22px,calc((100% - 1120px)/2)) 28px}
+header h1{font-size:clamp(1.65rem,4vw,2.5rem);line-height:1.15;margin:0 0 12px}header p{max-width:850px;color:#d9e4f2;margin:0}
+main{max-width:1120px;margin:24px auto;padding:0 20px 56px}
+.toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;position:sticky;top:8px;z-index:5;box-shadow:0 5px 18px #1c2b4010}
+button,.toolbar a{font:inherit;border:1px solid var(--line);border-radius:9px;padding:8px 13px;background:#fff;color:var(--ink);text-decoration:none;cursor:pointer}
+button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}.links{display:flex;gap:8px;flex-wrap:wrap}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0;scroll-margin-top:90px}
+h2{font-size:1.35rem;line-height:1.3;margin:0 0 14px}h3{font-size:1.05rem;margin:22px 0 8px}
+p{margin:10px 0}ul,ol{padding-left:24px}.muted{color:var(--muted)}.notice{background:var(--soft);border-left:4px solid var(--accent);padding:12px 15px;border-radius:7px;margin:14px 0}
+.diagram{overflow-x:auto;border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0;background:#fff}.mermaid{min-width:620px;text-align:center}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94rem}th,td{padding:10px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f0f4f9}
+a{color:var(--accent)}footer{color:var(--muted);font-size:.9rem;text-align:center;padding:22px}
+[hidden]{display:none!important}
+@media(max-width:650px){section{padding:17px}.toolbar{position:static}.mermaid{min-width:560px}table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+<header>
+<h1 data-en="Architecture catalogue" data-ru="Каталог архитектуры">Architecture catalogue</h1>
+<p data-en="Evidence-based architecture views for four separately documented systems. Diagrams distinguish documented facts, logical reconstructions and items requiring verification." data-ru="Архитектурные представления четырёх отдельно документированных систем, основанные на источниках. Схемы отделяют подтверждённые сведения, логические реконструкции и данные, требующие проверки.">Evidence-based architecture views for four separately documented systems.</p>
+</header>
+<main>
+<div class="toolbar">
+<div><strong data-en="Language" data-ru="Язык">Language</strong>:
+<button id="en" aria-pressed="true" type="button">EN</button>
+<button id="ru" aria-pressed="false" type="button">RU</button></div>
+<div class="links"><a href="./README.md" data-en="Source README" data-ru="Исходный README">Source README</a><a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/tree/main/materials/architecture" data-en="GitHub folder" data-ru="Папка GitHub">GitHub folder</a></div>
+</div>
+
+<section><h2 data-en="How to read these diagrams" data-ru="Как читать схемы">How to read these diagrams</h2>
+<ul>
+<li data-en="<b>Documented</b> — directly stated in available project documentation or inspected source excerpts." data-ru="<b>Подтверждено документацией</b> — прямо указано в доступных проектных документах или просмотренных фрагментах исходного кода."><b>Documented</b> — directly stated in available project documentation or inspected source excerpts.</li>
+<li data-en="<b>Derived view</b> — a logical grouping for readability; it is not a recovered deployment configuration." data-ru="<b>Логическая реконструкция</b> — группировка известных элементов для наглядности; это не восстановленная конфигурация развёртывания."><b>Derived view</b> — a logical grouping for readability; it is not a recovered deployment configuration.</li>
+<li data-en="<b>Unverified</b> — protocols, endpoints, ownership, runtime topology or module responsibilities are not established by available evidence." data-ru="<b>Не подтверждено</b> — протоколы, конечные точки, владение компонентами, топология исполнения или ответственность модулей не установлены имеющимися материалами."><b>Unverified</b> — protocols, endpoints, ownership, runtime topology or module responsibilities are not established by available evidence.</li>
+<li data-en="The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list has not been reconstructed. Unknown modules are not invented." data-ru="В исходных материалах упоминаются 17 модулей ППО «Территория», однако полный авторитетный перечень не восстановлен. Отсутствующие модули не выдумываются.">The 17-module count for PPO Territory is mentioned in source materials.</li>
+<li data-en="ARM Descriptor, Deshifrator, PPO Territory and UMMS remain separate system boundaries. Similar terminology does not prove that they are one product." data-ru="АРМ «Дискриптор», «Дешифратор», ППО «Территория» и UMMS рассматриваются как отдельные системы. Сходство терминологии не доказывает, что это один продукт.">Separate system boundaries.</li>
+</ul></section>
+
+<section><h2 data-en="1. System landscape and boundaries" data-ru="1. Ландшафт систем и границы">1. System landscape and boundaries</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart TB
+ subgraph LANDSCAPE["Separate documented system boundaries"]
+  TERR["PPO Territory<br/>FMS enterprise information system"]
+  DESC["ARM Descriptor<br/>document-processing workstation"]
+  DESH["Deshifrator<br/>historical desktop application suite"]
+  UMMS["UMMS<br/>SOAP API and client workflows"]
+ end
+ TERR -. "No shared runtime boundary established" .- DESC
+ DESC -. "Not the same product" .- DESH
+ DESH -. "Separate documentation track" .- UMMS
+ TERR -. "Separate system" .- UMMS
+ OTHER["Supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
+ OTHER -. "No integration inferred" .- LANDSCAPE
+</pre></div>
+<p data-en="Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately; they are not merged into the diagrams." data-ru="Дополнительные материалы по АРМ ППЗ/ПВК, АС «Паспорт РФ» и МСКЦ каталогизированы отдельно и не объединяются с системами на схеме.">Supplementary source tracks are separate.</p></section>
+
+<section><h2 data-en="2. PPO Territory — functional module map" data-ru="2. ППО «Территория» — карта функциональных областей">2. PPO Territory — functional module map</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart TB
+ subgraph TERR["PPO Territory"]
+  CORE["CORE domain<br/>persons, identity data, documents,<br/>cases, addresses, payments"]
+  DICT["DICT domain<br/>reference data"]
+  RP["RP<br/>Russian passport"]
+  FP["FP<br/>foreign passport"]
+  REG["REG<br/>registration accounting"]
+  MIG["MIG<br/>migration accounting"]
+  OTHER["Other subject-area tables<br/>207 tables in described DB inventory"]
+  OTHERDOM["Named areas in available materials:<br/>citizenship, invitations, visas,<br/>asylum, labour migration"]
+  MODCOUNT["17 functional modules mentioned;<br/>full verified module inventory<br/>not available yet"]
+  CORE --> RP
+  CORE --> FP
+  CORE --> REG
+  CORE --> MIG
+  DICT --> RP
+  DICT --> FP
+  DICT --> REG
+  DICT --> MIG
+  OTHER --> OTHERDOM
+  MODCOUNT -. "inventory gap" .- OTHER
+ end
+</pre></div>
+<p data-en="The database overview reports 401 tables: 44 CORE_*, 104 DICT_*, 11 RP_*, 10 FP_*, 17 REG_*, 8 MIG_* and 207 in other subject areas. These groups are not a verified one-to-one list of 17 functional modules." data-ru="Обзор БД указывает 401 таблицу: 44 CORE_*, 104 DICT_*, 11 RP_*, 10 FP_*, 17 REG_*, 8 MIG_* и 207 таблиц других предметных областей. Эти группы не являются подтверждённым перечнем 17 функциональных модулей один к одному.">The database inventory reports 401 tables.</p></section>
+
+<section><h2 data-en="3. PPO Territory — Oracle database and logical data architecture" data-ru="3. ППО «Территория» — Oracle и логическая архитектура данных">3. PPO Territory — Oracle database and logical data architecture</h2>
+<h3 data-en="3.1 Established facts" data-ru="3.1. Установленные сведения">3.1 Established facts</h3>
+<p data-en="Available database documentation identifies Oracle as the DBMS and reports 401 tables grouped by naming prefixes. This does not establish Oracle instance topology, physical storage, schema ownership or application deployment." data-ru="Доступная документация по БД указывает Oracle как СУБД и приводит инвентаризацию 401 таблицы по префиксам имён. Это не подтверждает топологию экземпляров Oracle, физическую организацию хранения, владельцев схем или конфигурацию приложения.">Oracle is identified as DBMS.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart TB
+ DBMS["Oracle DBMS<br/>technology identified in source materials"]
+ subgraph INVENTORY["Reported table inventory — 401 tables"]
+  CORE["CORE_* — 44 tables"]
+  DICT["DICT_* — 104 tables"]
+  RP["RP_* — 11 tables"]
+  FP["FP_* — 10 tables"]
+  REG["REG_* — 17 tables"]
+  MIG["MIG_* — 8 tables"]
+  OTHER["Other subject areas — 207 tables"]
+ end
+ DBMS --- INVENTORY
+ NOTE["Inventory grouping only<br/>Not an owner/schema map or physical ERD"]
+ INVENTORY -.-> NOTE
+</pre></div>
+<h3 data-en="3.2 Conceptual entity relationships — provisional" data-ru="3.2. Концептуальные связи сущностей — предварительная модель">3.2 Conceptual entity relationships — provisional</h3>
+<div class="diagram"><pre class="mermaid">
+erDiagram
+ CORE_PERSON ||--o{ CORE_PERSONDATA : has_identity_versions
+ CORE_PERSONDATA ||--o{ CORE_PERSONDATADOCUMENT : links
+ CORE_DOCUMENT ||--o{ CORE_PERSONDATADOCUMENT : referenced_by
+ CORE_PERSON ||--o{ CORE_PERSON_ADDRESS : has
+ CORE_PERSON ||--o{ CORE_CITIZENSHIP : has
+ CORE_PERSON ||--o{ CORE_PERSON_STATE : has
+ CORE_CASE ||--o{ CORE_PERSON_CASE : specializes
+ CORE_CASE ||--o{ CORE_OPERATION : records
+ CORE_CASE ||--o{ CORE_CASE_PERSON_ENTITY : contains
+ CORE_CASE ||--o{ CORE_CASE_PERSON_ADDRESS : records
+ CORE_PERSON ||--o{ CORE_PERSON_CASE : subject_of
+ CORE_DOCUMENT ||--o{ CORE_DOCUMENT_SCAN : has_scans
+ CORE_CASE ||--o{ CORE_PAYDOC : may_reference
+ DICT_REFERENCE ||--o{ CORE_DOCUMENT : classifies
+</pre></div>
+<div class="notice" data-en="This ER view is conceptual, not a validated physical Oracle ERD. Exact names, constraints, foreign keys, cardinalities, owners and dictionary relationships require Oracle metadata or a DDL-only export. DICT_REFERENCE is a logical placeholder, not a confirmed table name." data-ru="Эта ER-схема концептуальная, а не проверенная физическая ERD Oracle. Точные имена, ограничения, внешние ключи, кратности, владельцы и связи со справочниками требуют метаданных Oracle или экспорта только DDL. DICT_REFERENCE — логическое обозначение, а не подтверждённое имя таблицы.">Conceptual model only.</div>
+<h3 data-en="3.3 Evidence required for a physical Oracle schema map" data-ru="3.3. Данные для построения физической схемы Oracle">3.3 Evidence required</h3>
+<p data-en="A reliable schema and dependency model requires metadata or a DDL-only export (no production rows or credentials), subject to permissions: ALL_USERS / ALL_OBJECTS; ALL_TABLES / ALL_TAB_COLUMNS; ALL_CONSTRAINTS / ALL_CONS_COLUMNS; ALL_VIEWS / ALL_SOURCE / ALL_TRIGGERS; ALL_DEPENDENCIES; ALL_TAB_PRIVS / ALL_ROLE_PRIVS." data-ru="Для достоверной схемы и модели зависимостей нужны метаданные или экспорт только DDL (без рабочих данных и учётных данных), в пределах разрешений: ALL_USERS / ALL_OBJECTS; ALL_TABLES / ALL_TAB_COLUMNS; ALL_CONSTRAINTS / ALL_CONS_COLUMNS; ALL_VIEWS / ALL_SOURCE / ALL_TRIGGERS; ALL_DEPENDENCIES; ALL_TAB_PRIVS / ALL_ROLE_PRIVS.">Metadata checklist.</p>
+<p data-en="This is a collection checklist, not evidence that the metadata has already been extracted. Do not share table rows, personal data, passwords, connection strings, keys or production secrets." data-ru="Это перечень того, что следует собрать, а не подтверждение, что метаданные уже выгружены. Не передавайте строки таблиц, персональные данные, пароли, строки подключения, ключи или секреты рабочей среды.">Security note.</p></section>
+
+<section><h2 data-en="4. PPO Territory — deployment architecture and evidence status" data-ru="4. ППО «Территория» — архитектура развёртывания и статус подтверждения">4. PPO Territory — deployment architecture</h2>
+<p data-en="Operational documentation confirms centralized and distributed operating modes, and separate or combined application/database server placement. These are documented variants; the actual configuration of a particular region remains unknown." data-ru="Эксплуатационная документация подтверждает централизованный и распределённый режимы, а также раздельное или совмещённое размещение серверов приложения и БД. Это документированные варианты; фактическая конфигурация конкретного региона неизвестна.">Documented operating modes.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart TB
+ subgraph CENTRAL["Centralized operating mode"]
+  C_OFFICES["Territorial offices"]
+  C_THIN["Thin clients"]
+  C_APP["Single regional PPO Territory application instance"]
+  C_DB[("Regional database")]
+  C_OFFICES --> C_THIN --> C_APP --> C_DB
+ end
+ subgraph DISTRIBUTED["Distributed operating mode"]
+  R_OFFICES["Offices with high-speed connectivity"]
+  R_THIN["Thin clients"]
+  R_APP["Regional application"]
+  R_DB[("Regional database")]
+  L_OFFICE["Office with unstable / unavailable link"]
+  L_THIN["Local thin clients"]
+  L_APP["Local application server"]
+  L_DB[("Local database")]
+  R_OFFICES --> R_THIN --> R_APP --> R_DB
+  L_OFFICE --> L_THIN --> L_APP --> L_DB
+  L_DB <-->|"Batch transfer or removable media<br/>replication details to verify"| R_DB
+ end
+</pre></div>
+<p data-en="Two server placement alternatives are specified: separate application and database servers, or a combined server. A distinct lower-capacity dedicated-server profile is described separately. See the deployment and historical platform requirements documents in the source repository." data-ru="Указаны два варианта размещения: отдельные серверы приложения и базы данных либо совмещённый сервер. Отдельно описан профиль выделенного сервера меньшей мощности. См. документы о развёртывании и исторических требованиях к платформе в исходном репозитории.">Server placement alternatives.</p>
+<div class="notice" data-en="The sources do not establish actual regional topology, installed instance count, replication protocol, conflict-resolution policy, failover nodes or disaster-recovery arrangements. This is not a site-specific as-built diagram." data-ru="Источники не устанавливают фактическую топологию регионов, количество экземпляров, протокол репликации, правила разрешения конфликтов, резервные узлы или схему аварийного восстановления. Это не схема фактической конфигурации конкретной площадки.">Evidence limitation.</div></section>
+
+<section><h2 data-en="5. PPO Territory — external integration landscape" data-ru="5. ППО «Территория» — ландшафт внешних интеграций">5. PPO Territory — external integration landscape</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+ APP["PPO Territory<br/>application boundary"]
+ IF["External exchange interfaces<br/>technical contracts not verified"]
+ APP <--> IF
+ IF <--> UIG["ЦБД УИГ<br/>visa / expulsion / deportation data"]
+ IF <--> VYB["ПРИУР ГАС «Выборы»<br/>export / form 1.1 РИУР"]
+ IF <--> GIAC["ГИАЦ ГУ МВД<br/>responses / Криминал-И / offences"]
+ IF <--> ROS["Rosstat<br/>forms 12-П and 12-В"]
+ IF <--> ZAGS["Civil registry<br/>birth / death records"]
+ IF <--> RP["AS «Russian Passport»<br/>export path normalization"]
+ IF <--> SK["SPO «Service Concentrator»<br/>SMEV / EPГУ / FNS / DKS MFA"]
+</pre></div>
+<p data-en="The diagram shows seven documented exchange directions, not verified live integrations. Protocols, endpoints, authentication, message schemas, adapter ownership and current operational status are not established." data-ru="Схема показывает семь документированных направлений обмена, а не подтверждённые действующие интеграции. Протоколы, конечные точки, аутентификация, схемы сообщений, принадлежность адаптеров и текущий эксплуатационный статус не установлены.">Seven documented exchange directions.</p></section>
+
+<section><h2 data-en="6. ARM Descriptor — workstation and hardware/software boundary" data-ru="6. АРМ «Дискриптор» — границы аппаратной и программной частей">6. ARM Descriptor</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart TB
+ OP["Operator"]
+ subgraph ARM["ARM Descriptor — documented workstation scope"]
+  subgraph ST["Stationary station"]
+   STUI["Stationary workstation software"]
+   STDATA["Stationary-side data / processing"]
+  end
+  subgraph MOB["Mobile station"]
+   MOBUI["Mobile workstation software"]
+   MOBDATA["Mobile-side data / processing"]
+  end
+  EXCHANGE["Data exchange between stations<br/>details follow source specification"]
+  HW["Peripheral equipment<br/>keyboard, pointing device, scanner,<br/>printer, laminator and other listed devices"]
+  OP --> STUI
+  OP --> MOBUI
+  STUI --> STDATA
+  MOBUI --> MOBDATA
+  STDATA <--> EXCHANGE
+  EXCHANGE <--> MOBDATA
+  HW --- STUI
+  HW --- MOBUI
+ end
+ UNK["Exact component ownership, interfaces,<br/>message formats and deployment constraints<br/>must be verified against full specification"]
+ EXCHANGE -.-> UNK
+</pre></div>
+<p data-en="This decomposition comes from the ARM description: stationary and mobile stations, user interaction, peripherals and an exchange boundary. It does not assert a specific network protocol or physical connection for every peripheral." data-ru="Декомпозиция основана на описании АРМ: стационарная и мобильная станции, взаимодействие с оператором, периферия и граница обмена. Она не утверждает наличие конкретного сетевого протокола или физического подключения для каждого устройства.">Source-based decomposition.</p></section>
+
+<section><h2 data-en="7. Deshifrator — application suite and component architecture" data-ru="7. «Дешифратор» — архитектура комплекса приложений и компонентов">7. Deshifrator</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart TB
+ subgraph SUITE["Deshifrator application suite"]
+  MOBILE["ModuleMobile"]
+  STATIONARY["ModuleStationary"]
+  PRINT["Printer / PassportPaint"]
+ end
+ subgraph MOBILEPARTS["Mobile-side responsibilities evidenced in materials"]
+  MUI["WPF user interface"]
+  SOAP["UMMS SOAP client configuration"]
+  FILEOUT["File exchange / removable media"]
+  OCR["OCR / MRZ-related processing"]
+ end
+ subgraph STPARTS["Stationary-side responsibilities evidenced in materials"]
+  SUI["WPF user interface"]
+  SQLITE["SQLite data access"]
+  FIAS["FIAS address search"]
+  ELASTIC["Elasticsearch search service"]
+ end
+ subgraph PRINTPARTS["Printing and document output"]
+  LAYOUT["Passport / document layouts"]
+  OUTPUT["Print-view / output generation"]
+ end
+ MOBILE --> MUI
+ MOBILE --> SOAP
+ MOBILE --> FILEOUT
+ MOBILE --> OCR
+ STATIONARY --> SUI
+ STATIONARY --> SQLITE
+ STATIONARY --> FIAS
+ FIAS --> ELASTIC
+ PRINT --> LAYOUT
+ LAYOUT --> OUTPUT
+ MOBILE <--> FILEOUT
+ FILEOUT <--> STATIONARY
+ STATIONARY --> PRINT
+</pre></div>
+<div class="notice" data-en="These relationships summarize documented suite roles and inspected package/source observations. They do not prove that every feature is implemented in one executable, and do not imply that ARM Descriptor is this application." data-ru="Связи обобщают документированные роли компонентов и результаты просмотра пакетов/исходного кода. Они не доказывают, что все функции реализованы в одном исполняемом файле, и не означают, что АРМ «Дискриптор» является этим приложением.">System boundary warning.</div></section>
+
+<section><h2 data-en="8. Deshifrator — SQLite data-access component view" data-ru="8. «Дешифратор» — компоненты доступа к данным SQLite">8. SQLite data access</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+ APP["Application code"]
+ CMD["SQLiteCommandEx&lt;T&gt;<br/>command execution / result mapping"]
+ PARAM["SQLiteCommandEx_Params<br/>typed parameter helpers"]
+ FACTORY["ConnectionFactory<br/>shared SQLiteConnection"]
+ READER["SQLiteDataReaderEx<br/>column access / ordinal cache"]
+ MAP["SQLiteMaps<br/>row-to-model mapping"]
+ MODEL["Application models"]
+ DB[("MainDB.db3")]
+ APP --> CMD
+ APP --> PARAM
+ CMD --> FACTORY
+ FACTORY --> DB
+ CMD --> READER
+ READER --> MAP
+ MAP --> MODEL
+</pre></div>
+<p data-en="Component names and responsibilities are based on reviewed C# excerpts. Connection lifetime, concurrency, disposal, null handling and reader behavior are review findings; this diagram does not imply that identified risks have been resolved." data-ru="Названия и ответственность компонентов основаны на просмотренных фрагментах C#. Время жизни соединения, параллельный доступ, освобождение ресурсов, обработка null и поведение reader относятся к замечаниям ревью; схема не означает, что выявленные риски устранены.">C# source review basis.</p></section>
+
+<section><h2 data-en="9. UMMS — client and SOAP service boundary" data-ru="9. UMMS — граница клиента и SOAP-сервиса">9. UMMS</h2>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+ subgraph CLIENT["UMMS client"]
+  UI["Client UI / workflow"]
+  SEARCH["Person and dossier search"]
+  CASE["Case and dossier handling"]
+  DOC["Document issue / rollback workflow"]
+  LOCAL["Local case and dossier storage"]
+  SOAPCLIENT["SOAP client"]
+  UI --> SEARCH
+  UI --> CASE
+  UI --> DOC
+  CASE <--> LOCAL
+  SEARCH --> SOAPCLIENT
+  DOC --> SOAPCLIENT
+ end
+ SERVICE["UMMS SOAP service"]
+ SOAPCLIENT <-->|"SOAP / XML contract"| SERVICE
+ SERVICE --> OPS["Operations:<br/>searchPersonFile<br/>getPersonDocuments<br/>getPersonAddresses<br/>getPersonCasesInfo<br/>getDocumentDetail<br/>getAddressDetail<br/>getCountryDictionary<br/>issueNewDocument<br/>rollbackIssueNewDocument"]
+</pre></div>
+<p data-en="Operation names come from the public API description and source-review notes. Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, error contracts and endpoints must be verified against the WSDL and approved integration documentation." data-ru="Названия операций взяты из открытого описания API и заметок по анализу исходного кода. Точные SOAP-конверты, пространства имён, значения SOAPAction, схемы, аутентификация, контракты ошибок и конечные точки должны быть проверены по WSDL и утверждённой документации интеграции.">SOAP contract verification.</p></section>
+
+<section><h2 data-en="10. Coverage and remaining verification" data-ru="10. Покрытие и оставшиеся проверки">10. Coverage and remaining verification</h2>
+<table><thead><tr><th data-en="System / area" data-ru="Система / область">System / area</th><th data-en="Architecture views included" data-ru="Представленные архитектурные виды">Architecture views included</th><th data-en="Evidence still needed" data-ru="Что ещё требуется подтвердить">Evidence still needed</th></tr></thead><tbody>
+<tr><td>PPO Territory</td><td data-en="Functional domains, conceptual data model, centralized/distributed deployment variants, server placement, seven exchange directions" data-ru="Функциональные области, концептуальная модель данных, централизованные/распределённые варианты развёртывания, размещение серверов, семь направлений обмена">Functional domains, conceptual data model</td><td data-en="Authoritative list of 17 modules; physical ERD; adapter contracts; actual regional topology; synchronization rules" data-ru="Полный подтверждённый перечень 17 модулей; физическая ERD; контракты адаптеров; фактическая топология регионов; правила синхронизации">Authoritative list of modules</td></tr>
+<tr><td>ARM Descriptor</td><td data-en="Stationary/mobile workstation decomposition, peripherals, exchange boundary" data-ru="Декомпозиция стационарной/мобильной станции, периферия, граница обмена">Stationary/mobile workstation</td><td data-en="Full component inventory, hardware mapping, interface/control descriptions, verified data flows" data-ru="Полный перечень компонентов, привязка оборудования, описания интерфейсов и управления, проверенные потоки данных">Full component inventory</td></tr>
+<tr><td>Deshifrator</td><td data-en="ModuleMobile, ModuleStationary, Printer/PassportPaint, SQLite DAL" data-ru="ModuleMobile, ModuleStationary, Printer/PassportPaint, слой доступа к SQLite">Application suite and SQLite DAL</td><td data-en="Complete source tree, project references, executable ownership per feature, full schema and runtime configuration" data-ru="Полное дерево исходников, ссылки проектов, принадлежность функций исполняемым файлам, полная схема и конфигурация исполнения">Complete source tree</td></tr>
+<tr><td>UMMS</td><td data-en="Client/service boundary, SOAP operations, search sequence" data-ru="Граница клиента и сервиса, SOAP-операции, последовательность поиска">SOAP client/service</td><td data-en="WSDL/XSD, exact service contract, full client source, deployment and security configuration" data-ru="WSDL/XSD, точный контракт сервиса, полный исходный код клиента, конфигурация развёртывания и безопасности">WSDL/XSD</td></tr>
+<tr><td>Supplementary systems</td><td data-en="Separate source notes for ARM PPZ/PVK, AS Passport RF and MSKTs" data-ru="Отдельные заметки по АРМ ППЗ/ПВК, АС «Паспорт РФ» и МСКЦ">Separate source notes</td><td data-en="Original covers, version/revision, ownership and evidence of any actual integration" data-ru="Исходные титульные листы, версия/редакция, владелец и доказательства фактических интеграций">Original documents and integration evidence</td></tr>
+</tbody></table></section>
+
+<section><h2 data-en="11. Evidence and change policy" data-ru="11. Правила подтверждения и внесения изменений">11. Evidence and change policy</h2>
+<ol>
+<li data-en="Do not merge separate system boundaries into one runtime architecture without explicit evidence." data-ru="Не объединять отдельные системы в одну архитектуру исполнения без прямых подтверждений.">Do not merge systems without evidence.</li>
+<li data-en="Do not invent names or responsibilities for unverified Territory modules." data-ru="Не придумывать названия и ответственность неподтверждённых модулей «Территории».">Do not invent module details.</li>
+<li data-en="Do not publish production endpoints, credentials, personal data, keys or real exchange files." data-ru="Не публиковать рабочие конечные точки, учётные данные, персональные данные, ключи или реальные файлы обмена.">Protect sensitive information.</li>
+<li data-en="Treat modernization ideas as proposals unless completed implementation is evidenced." data-ru="Считать идеи модернизации предложениями, пока реализация не подтверждена.">Separate proposals from implementation.</li>
+<li data-en="Update a diagram only when a source document, code excerpt, schema, test or deployment artifact supports the change." data-ru="Обновлять схему только при наличии подтверждения в документе, фрагменте кода, схеме БД, тесте или артефакте развёртывания.">Require evidence for changes.</li>
+</ol></section>
+<footer data-en="Architecture catalogue · Source README remains unchanged · Mermaid diagrams are rendered in the browser" data-ru="Каталог архитектуры · Исходный README не изменён · Схемы Mermaid отображаются в браузере">Architecture catalogue · Source README remains unchanged.</footer>
+</main>
+<script>
+const en=document.getElementById('en'),ru=document.getElementById('ru');
+async function setLanguage(lang){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-en][data-ru]').forEach(el=>{el.innerHTML=el.dataset[lang];});
+ en.setAttribute('aria-pressed',String(lang==='en'));
+ ru.setAttribute('aria-pressed',String(lang==='ru'));
+ if(window.renderDiagrams) await window.renderDiagrams();
+}
+en.addEventListener('click',()=>setLanguage('en'));
+ru.addEventListener('click',()=>setLanguage('ru'));
+</script>
+</body></html>
