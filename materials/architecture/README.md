@@ -1,6 +1,6 @@
 # Architecture catalogue — Territory, Descriptor, Deshifrator and UMMS
 
-> **Evidence-based portfolio documentation.** This catalogue separates four independently documented systems and their component boundaries. It consolidates the architecture views that can be supported by the currently published source materials. It is not a claim that the systems form one deployed product.
+> **Evidence-based portfolio documentation.** This catalogue separates four independently documented systems and their component boundaries. Supplementary source collections are catalogued separately. This is not a claim that the systems form one deployed product.
 
 ## How to read these diagrams
 
@@ -9,6 +9,7 @@
 - **Unverified** — exact protocols, endpoints, ownership, runtime topology, or internal module responsibilities are not established by the available evidence.
 - The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
 - ARM «Дискриптор», Deshifrator, PPO Territory, and UMMS are kept as separate system boundaries. Similar terms do not prove that they are one product.
+- Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
 
@@ -27,6 +28,9 @@ flowchart TB
   DESC -. "Not the same product" .- DESH
   DESH -. "Separate documentation track" .- UMMS
   TERR -. "Separate system" .- UMMS
+
+  OTHER["Supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
+  OTHER -. "No integration inferred" .- LANDSCAPE
 ```
 
 ## 2. PPO Territory — functional module map
@@ -120,22 +124,36 @@ These views are a collection checklist, not a claim that their contents have alr
 
 ## 4. PPO Territory — deployment architecture: evidence status
 
-Oracle identifies the database technology, but the available materials do not establish the actual deployment topology. In particular, they do not yet confirm the number and location of Oracle instances, application servers, workstation tiers, network zones, failover nodes, replication, or disaster-recovery arrangements.
+The available operational documentation now confirms that PPO Territory supports two operating modes: centralized and distributed. It also describes separate or combined application/database server placement. These are documented supported variants; the actual configuration of a particular region is still unknown.
 
 ```mermaid
 flowchart TB
-  USERS["Users / workstations<br/>deployment details not verified"]
-  APP["PPO Territory application components<br/>hosting nodes not verified"]
-  ORACLE[("Oracle DBMS<br/>database technology identified")]
-  USERS -. "access path to be verified" .-> APP
-  APP -. "database connectivity to be verified" .-> ORACLE
-  UNKNOWN["Evidence required:<br/>server inventory, installation guides,<br/>network / security diagrams,<br/>Oracle topology and operational runbooks"]
-  USERS --- UNKNOWN
-  APP --- UNKNOWN
-  ORACLE --- UNKNOWN
+  subgraph CENTRAL["Centralized operating mode"]
+    C_OFFICES["Territorial offices"]
+    C_THIN["Thin clients"]
+    C_APP["Single regional PPO Territory application instance"]
+    C_DB[("Regional database")]
+    C_OFFICES --> C_THIN --> C_APP --> C_DB
+  end
+
+  subgraph DISTRIBUTED["Distributed operating mode"]
+    R_OFFICES["Offices with high-speed connectivity"]
+    R_THIN["Thin clients"]
+    R_APP["Regional application"]
+    R_DB[("Regional database")]
+    L_OFFICE["Office with unstable / unavailable link"]
+    L_THIN["Local thin clients"]
+    L_APP["Local application server"]
+    L_DB[("Local database")]
+    R_OFFICES --> R_THIN --> R_APP --> R_DB
+    L_OFFICE --> L_THIN --> L_APP --> L_DB
+    L_DB <-->|"Batch transfer or removable media<br/>replication details to verify"| R_DB
+  end
 ```
 
-This is an **evidence-status diagram**, not a proposed or reconstructed physical deployment. It deliberately avoids inventing central/local servers, database replication, removable-media synchronization, RAC, Data Guard, or network protocols. A deployment diagram should be produced only from installation documentation, host/network inventories, infrastructure diagrams, or verified configuration.
+The documentation also specifies two server-placement alternatives: separate application and database servers, or a combined server. A distinct lower-capacity dedicated-server profile is described separately. See [Deployment Architecture](../territory/docs/03-deployment-architecture.md) and [Historical Platform Requirements](../territory/docs/05-platform-requirements.md).
+
+The source does not establish actual regional topology, number of installed instances, replication protocol, conflict-resolution policy, failover nodes, or disaster-recovery arrangements. This is a documented-variants diagram, not a site-specific as-built deployment.
 
 ## 5. PPO Territory — external integration landscape
 
@@ -195,26 +213,22 @@ flowchart TB
     STATIONARY["ModuleStationary"]
     PRINT["Printer / PassportPaint"]
   end
-
   subgraph MOBILEPARTS["Mobile-side responsibilities evidenced in materials"]
     MUI["WPF user interface"]
     SOAP["UMMS SOAP client configuration"]
     FILEOUT["File exchange / removable media"]
     OCR["OCR / MRZ-related processing"]
   end
-
   subgraph STPARTS["Stationary-side responsibilities evidenced in materials"]
     SUI["WPF user interface"]
     SQLITE["SQLite data access"]
     FIAS["FIAS address search"]
     ELASTIC["Elasticsearch search service"]
   end
-
   subgraph PRINTPARTS["Printing and document output"]
     LAYOUT["Passport / document layouts"]
     OUTPUT["Print-view / output generation"]
   end
-
   MOBILE --> MUI
   MOBILE --> SOAP
   MOBILE --> FILEOUT
@@ -278,28 +292,6 @@ flowchart LR
   SERVICE --> OPS["Operations:<br/>searchPersonFile<br/>getPersonDocuments<br/>getPersonAddresses<br/>getPersonCasesInfo<br/>getDocumentDetail<br/>getAddressDetail<br/>getCountryDictionary<br/>issueNewDocument<br/>rollbackIssueNewDocument"]
 ```
 
-### 9.1 SOAP search request sequence
-
-```mermaid
-sequenceDiagram
-  actor User
-  participant UI as Client UI
-  participant VM as Search ViewModel
-  participant Client as UMMS SOAP client
-  participant Service as UMMS service
-  User->>UI: Enter search criteria
-  UI->>VM: Start search
-  VM->>Client: SearchPerson(criteria, startPosition, maxItems)
-  Client->>Client: ConvertRequest(criteria)
-  Client->>Service: searchPersonFile SOAP request
-  Service-->>Client: Person search results
-  Client-->>VM: Parsed result models
-  VM-->>UI: Update result collection
-  User->>UI: Request next page
-  UI->>VM: Change page
-  VM->>Client: SearchPerson(criteria, next position, maxItems)
-```
-
 The operation names are taken from the public API description and source-review notes. Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, error contracts, and endpoint details must be verified against the WSDL and approved integration documentation.
 
 ---
@@ -308,14 +300,15 @@ The operation names are taken from the public API description and source-review 
 
 | System / area | Architecture views included | Remaining evidence needed |
 |---|---|---|
-| PPO Territory | Functional domains, conceptual data model, deployment, seven exchange directions | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; deployment diagrams and synchronization rules |
+| PPO Territory | Functional domains, conceptual data model, centralized/distributed deployment variants, separate/combined server placement, seven exchange directions | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
 | ARM «Дискриптор» | Stationary/mobile workstation decomposition, peripherals, exchange boundary | Full component inventory, hardware mapping, interface/control descriptions, verified data-flow details |
 | Deshifrator | ModuleMobile, ModuleStationary, Printer/PassportPaint, SQLite DAL | Complete source tree, project references, executable ownership per feature, full schema and runtime configuration |
 | UMMS | Client/service boundary, SOAP operations, search sequence | WSDL/XSD, exact service contract, full client source, deployment and security configuration |
+| Supplementary systems | Separate source notes for ARM PPZ/PVK, AS Passport RF and MSKTs | Original covers, version/revision, ownership and any actual integration evidence |
 
 ## 11. Evidence and change policy
 
-1. Do not merge these four system boundaries into one runtime architecture without explicit evidence.
+1. Do not merge separate system boundaries into one runtime architecture without explicit evidence.
 2. Do not invent names or responsibilities for the unverified Territory modules.
 3. Do not publish production endpoints, credentials, personal data, keys, or real exchange files.
 4. Treat modernization ideas as proposals unless a completed implementation is evidenced.
