@@ -1,6 +1,8 @@
 # Architecture catalogue — Territory, Descriptor, Deshifrator and UMMS
 
 > **Interactive bilingual version:** [Open the EN/RU HTML architecture catalogue](./architecture.html). It renders the same 10 Mermaid diagrams as this Markdown source. Seven additional component-level diagrams are maintained in [component-maps.md](./component-maps.md).
+>
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / ARM Descriptor boundary, three-tier architecture, deployment modes and evidence limitations.
 
 > **Evidence-based portfolio documentation.** This catalogue separates four independently documented systems and their component boundaries. Supplementary source collections are catalogued separately. This is not a claim that the systems form one deployed product.
 
