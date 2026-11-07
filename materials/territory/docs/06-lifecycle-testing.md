@@ -71,3 +71,18 @@ These are activities in an implementation/support process, not evidence that eac
 - Source document and page reference.
 
 Do not infer exact dates, acceptance acts, update versions or successful backup restoration from a partial table or ambiguous scan.
+
+
+## Additional operational and update procedure evidence
+
+The supplied operational regulation states that update packages and installation instructions were published on `sd.reksoft.ru`; each update was accompanied by a change/defect summary; responsible regional employees were notified by email; and contractor representatives were to install updates within one working day of publication.
+
+The regulation also assigns regular operational support to designated regional employees, with escalation to contractor support when necessary. Historical channels listed in the source are `https://sd.reksoft.ru`, `http://ufms.reksoft.ru/forum`, telephone `8 (800) 333 0340` and `sd@reksoft.ru`. These are source references, not verified current contact details.
+
+### Backup monitoring
+
+The source requires responsible regional employees to regularly monitor correct operation of PPO Territory backup facilities. It does not identify backup software, storage, schedule, retention, off-site copies, RPO/RTO or successful restore tests. A backup-monitoring requirement is not proof of recoverability.
+
+### Rollout activities
+
+The implementation tables list infrastructure survey, server-software installation/configuration, PPO Territory installation, creation of user and organizational-unit accounts, client-workstation setup, application-level access, full startup, administrator/user consultation and on-site work. These are documented activities, not evidence that every site completed them.
