@@ -2063,3 +2063,9 @@ erDiagram
 | `MIDDLE_NAME` | VARCHAR2(100) |  |  |  | Отчество ИГ кирилицей. |
 | `NOTICENUMBER` | VARCHAR2(250) |  |  |  | Номер уведомления. |
 | `FILENAME` | VARCHAR2(250) |  |  |  | FIRST_NAME файла с алертом. |
+
+
+## Architecture maps
+
+- [PPO Territory component architecture](../architecture/component-maps.md#2-ppo-territory--software-component-architecture)
+- [PPO Territory data and module architecture](../architecture/README.md#2-ppo-territory--functional-module-map)
