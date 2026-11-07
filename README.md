@@ -47,3 +47,8 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 ## Publication
 
 Project site: https://ekatmoz88-alt.github.io/territory-descriptor-unified/
+
+
+## Tags
+
+`architecture-catalogue` · `mermaid` · `enterprise-systems` · `ppo-territory` · `arm-descriptor` · `deshifrator` · `umms` · `en-ru`
