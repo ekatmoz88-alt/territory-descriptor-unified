@@ -2,6 +2,13 @@
 
 Единый публичный архив технической документации, архитектурных обзоров и ограниченных исходных фрагментов по связанным предметным областям и программным компонентам.
 
+
+
+## Architecture diagrams
+
+- [Architecture catalogue](materials/architecture/README.md) — system boundaries, modules, data model, deployment and integrations.
+- [Detailed component maps](materials/architecture/component-maps.md) — ARM Descriptor, PPO Territory projects, Deshifrator libraries and UMMS workflows.
+
 ## Разделы
 
 | Раздел | Содержание |
