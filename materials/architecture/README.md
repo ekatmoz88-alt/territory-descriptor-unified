@@ -3,6 +3,8 @@
 > **Interactive bilingual version:** [Open the EN/RU HTML architecture catalogue](./architecture.html). It renders the same 10 Mermaid diagrams as this Markdown source. Seven additional component-level diagrams are maintained in [component-maps.md](./component-maps.md).
 >
 > **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / ARM Descriptor boundary, three-tier architecture, deployment modes and evidence limitations.
+>
+> **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links; attribution to a specific product release remains unverified.
 
 > **Evidence-based portfolio documentation.** This catalogue separates four independently documented systems and their component boundaries. Supplementary source collections are catalogued separately. This is not a claim that the systems form one deployed product.
 
