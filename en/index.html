@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Territory & Descriptor — Technical Documentation</title>
+<meta name="description" content="Technical documentation hub for the Territory software and Descriptor workstation: system context, architecture, software components, databases and integrations.">
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121d30;--line:#26364e;--text:#edf3fb;--muted:#a9b8ca;--accent:#79b8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#1b3453 0,transparent 36%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto;padding:64px 24px 80px}.eyebrow{color:var(--accent);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.08;max-width:850px;margin:14px 0 20px}
+.lead{max-width:780px;color:var(--muted);font-size:1.12rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:42px 0}
+article{background:linear-gradient(145deg,#17253a,var(--panel));border:1px solid var(--line);border-radius:16px;padding:22px;min-height:190px}
+h2{font-size:1.16rem;margin:0 0 8px}p{color:var(--muted);margin:0 0 18px}a{color:var(--accent);text-decoration:none;font-weight:650}a:hover{text-decoration:underline}
+.note{border-left:3px solid var(--accent);padding:14px 18px;background:#111d2e;border-radius:0 10px 10px 0;color:var(--muted);max-width:900px}
+footer{margin-top:38px;color:#8394aa;font-size:.9rem}
+.language-switch{display:flex;gap:10px;margin:22px 0 8px}
+.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-width:92px;padding:9px 18px;border:1px solid var(--accent);border-radius:9px;background:#172a42;color:var(--text);font-weight:700;text-decoration:none}
+.language-switch a[aria-current="page"]{background:var(--accent);color:#0b1220}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">Technical documentation hub</div>
+<div class="language-switch" aria-label="Language"><a href="../" lang="ru" hreflang="ru">Русский</a><a href="./" lang="en" hreflang="en" aria-current="page">English</a></div>
+<h1>Territory Software &amp; Descriptor Workstation</h1>
+<p class="lead">A documentation hub for system context, software components, databases, APIs and data exchange. Each section retains its own scope and documented evidence.</p>
+<section class="grid">
+<article><h2>Territory Software</h2><p>System overview, functional modules, deployment context, external integrations and lifecycle.</p><a href="../materials/territory/index.html">Open documentation</a></article>
+<article><h2>Descriptor Workstation</h2><p>Stationary and mobile workstations, system architecture, hardware, software and data exchange.</p><a href="../materials/descriptor/index.html">Open documentation</a></article>
+<article><h2>Deshifrator Workstation</h2><p>Architecture, file exchange, MRZ processing, dependencies and engineering decisions.</p><a href="../materials/deshifrator/en/index.html">Open English documentation</a></article>
+<article><h2>Database and Data Model</h2><p>Database structure and data-model materials. The available section is currently presented in the source archive.</p><a href="../materials/territory-database/">Browse repository section</a></article>
+<article><h2>UMMS / SOAP</h2><p>SOAP API and client-system documentation. The detailed section is currently available in Russian.</p><a href="../materials/umms/index.html">Open source documentation</a></article>
+</section>
+<div class="note"><strong>Documentation scope.</strong> This portal brings related technical materials together for portfolio presentation. It does not imply that all listed components form one executable product or that every architectural relationship has been verified.</div>
+<footer>Technical documentation portfolio · <a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">GitHub repository</a></footer>
+</main></body></html>
