@@ -1,4 +1,4 @@
-name: Deploy documentation hub to GitHub Pages
+name: Publish documentation hub to GitHub Pages
 
 on:
   push:
@@ -16,26 +16,38 @@ concurrency:
 
 jobs:
   build:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Configure Pages
+
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Build Markdown documentation
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      - name: Upload site
+
+      - name: Prepare static documentation
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_site/' \
+            --exclude='node_modules/' \
+            ./ _site/
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
-      - name: Deploy
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
