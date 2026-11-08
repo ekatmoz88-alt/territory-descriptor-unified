@@ -1,4 +1,4 @@
-# Documentation hub
+# ППО ID — Documentation
 
 - [Overview](/README.md)
 
@@ -15,7 +15,7 @@
 ## Systems
 - [PPO Territory](/materials/territory/README.md)
 - [Territory database and API](/materials/territory-database/README.md)
-- [ARM Descriptor](/materials/descriptor/README.md)
+- [ППО ID](/materials/descriptor/README.md)
 - [Deshifrator](/materials/deshifrator/README.md)
 - [UMMS / SOAP](/materials/umms/README.md)
 - [Supplementary source systems](/materials/reference-systems/README.md)
