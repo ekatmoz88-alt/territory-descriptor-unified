@@ -1,6 +1,6 @@
-# PPO Territory and related technical systems
+# ППО ID — Technical Documentation
 
-Evidence-based technical documentation for several separately documented systems and source collections. The repository is a documentation hub, not a claim that all contents form one deployed product.
+Evidence-based technical documentation for ППО ID and related technical systems. The repository is a documentation hub, not a claim that all contents form one deployed product.
 
 ## Architecture diagrams
 
@@ -9,7 +9,7 @@ Evidence-based technical documentation for several separately documented systems
 - [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO Territory architecture and deployment modes.
 - [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md) — export/import workflow, file-based logs and identity-link records.
 - [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md) — permission catalogue, including the documented “Allow data export” right.
-- [Detailed component maps](materials/architecture/component-maps.md) — 7 additional Mermaid diagrams for ARM Descriptor, PPO Territory projects, Deshifrator libraries and UMMS workflows.
+- [Detailed component maps](materials/architecture/component-maps.md) — 7 additional Mermaid diagrams for ППО ID, PPO Territory projects, Deshifrator libraries and UMMS workflows.
 
 ## Documentation sections
 
@@ -17,7 +17,7 @@ Evidence-based technical documentation for several separately documented systems
 |---|---|
 | [PPO Territory](materials/territory/README.md) | System purpose, functional modules, deployment, integrations, requirements and lifecycle |
 | [Database and API](materials/territory-database/README.md) | Oracle, logical/physical structure, API and source-code models |
-| [ARM Descriptor](materials/descriptor/README.md) | Mobile and stationary stations, data exchange, equipment and trust boundaries |
+| [ППО ID](materials/descriptor/README.md) | Mobile and stationary stations, data exchange, equipment and trust boundaries |
 | [Software components](materials/deshifrator/README.md) | ModuleMobile, ModuleStationary, PassportPaint, dependencies, local storage, exchange and C# excerpts |
 | [UMMS / SOAP](materials/umms/README.md) | SOAP API, client, local dossier storage and integration |
 | [Supplementary source systems](materials/reference-systems/README.md) | Separately classified ARM PPZ/PVK, AS Passport RF and MSKTs materials; no integration is inferred |
@@ -26,7 +26,7 @@ Evidence-based technical documentation for several separately documented systems
 
 The materials are grouped for navigation only. This does not mean that every component is part of one executable product or that every architectural relationship has been established.
 
-PPO Territory, ARM Descriptor, Deshifrator, UMMS, ARM PPZ/PVK, AS Passport RF and MSKTs are documented as separate boundaries or source tracks. Similar domain terms, shared historical organizations or adjacent source files do not prove a common runtime architecture.
+PPO Territory, ППО ID (referred to as ARM «Дискриптор» in historical materials), Deshifrator, UMMS, ARM PPZ/PVK, AS Passport RF and MSKTs are documented as separate boundaries or source tracks. Similar domain terms, shared historical organizations or adjacent source files do not prove a common runtime architecture.
 
 In particular, the correspondence between ПОМС / ПОСС and ModuleMobile / ModuleStationary requires further verification against primary materials and source code.
 
@@ -42,7 +42,7 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 
 - `materials/territory/` — PPO Territory.
 - `materials/territory-database/` — database, API and models.
-- `materials/descriptor/` — ARM Descriptor.
+- `materials/descriptor/` — ППО ID documentation (historical name: ARM «Дискриптор»).
 - `materials/deshifrator/` — software components and available source excerpts.
 - `materials/umms/` — UMMS SOAP and client documentation.
 - `materials/reference-systems/` — other separately classified source materials.
@@ -51,7 +51,6 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 
 Project site: https://ekatmoz88-alt.github.io/territory-descriptor-unified/
 
-
 ## Tags
 
-`architecture-catalogue` · `mermaid` · `enterprise-systems` · `ppo-territory` · `arm-descriptor` · `deshifrator` · `umms` · `en-ru`
+`architecture-catalogue` · `mermaid` · `enterprise-systems` · `ppo-id` · `ppo-territory` · `deshifrator` · `umms` · `en-ru`
