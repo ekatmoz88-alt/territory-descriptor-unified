@@ -114,7 +114,7 @@ flowchart TB
   COREDB --> SUBJECT
 ```
 
-The project names and model areas come from the published source-code overview. This is a logical view: it does not assert that every project directly connects to Oracle or that these `Umms.*` projects are the same as the separate UMMS SOAP service/client repository. Verify project references and runtime hosting against solution files and deployment configuration.
+The project names and model areas come from the published source-code overview. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the UMMS SOAP service/client. These materials belong to the same broader project context, but the exact code-level relationship requires solution-file and deployment evidence.
 
 ### PPO Territory — Oracle database inventory (not a deployment diagram)
 
@@ -133,7 +133,7 @@ flowchart TB
   INV -.-> NOTE
 ```
 
-The counts come from the available database overview. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
+The 401-table count comes from the available database overview. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
 ## 3. Deshifrator — application suite and shared libraries
 
@@ -211,4 +211,4 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - The ARM Descriptor diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Deshifrator diagrams are limited to the application suite and source excerpts that have been reviewed.
 - UMMS API operation names are documented; complete wire-level contracts and deployment details are not included.
-- Keep all system boundaries separate unless primary evidence establishes an actual integration.
+- Preserve the shared project context while keeping application, component and runtime boundaries distinct. Draw a runtime integration only when primary evidence establishes it.
