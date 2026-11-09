@@ -265,8 +265,7 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
   STATIONARY -. "FIAS endpoint configured" .-&gt; FIAS
   FIAS --&gt; ELASTIC
   PRINT --&gt; LAYOUT
-  LAYOUT --&gt; MRZ --&gt; OUTPUT
-  MOBILE --- FILEOUT</pre></div>
+  LAYOUT --&gt; MRZ --&gt; OUTPUT</pre></div>
 <p data-en="The diagram assigns Tesseract OCR to Descriptor.exe and MRZ/print formatting to Printer / PassportPaint. It shows separate ModuleMobile.db3 and ModuleStationary.db3 databases and places the UMMS SOAP client configuration under ModuleMobile. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from ModuleStationary to Printer / PassportPaint is not established by the reviewed excerpts and is not drawn." data-ru="Названия компонентов и связи обобщают рассмотренные материалы о комплексе приложений и отдельные фрагменты исходного кода. Группировка на уровне проектов не является подтверждённым графом вызовов и не доказывает, что все функции выполняются в одном исполняемом файле.">Component evidence note.</p></section>
 <section><h2 data-en="8. Deshifrator — SQLite data-access component view" data-ru="8. «Дешифратор» — компоненты доступа к данным SQLite">8. Deshifrator — SQLite data-access component view</h2>
 <div class="diagram"><pre class="mermaid">flowchart LR
