@@ -261,8 +261,8 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
   STATIONARY --&gt; SUI
   STATIONARY --&gt; STDB
   STATIONARY --&gt; SQLITE
-  MOBILE -.-&gt;|"FIAS endpoint configured"| FIAS
-  STATIONARY --&gt; FIAS
+  MOBILE -. "FIAS endpoint configured" .-&gt; FIAS
+  STATIONARY -. "FIAS endpoint configured" .-&gt; FIAS
   FIAS --&gt; ELASTIC
   PRINT --&gt; LAYOUT
   LAYOUT --&gt; MRZ --&gt; OUTPUT
