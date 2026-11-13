@@ -1,6 +1,6 @@
 # ППО ID — Technical Documentation
 
-Evidence-based technical documentation for ППО ID and related technical systems. The repository is a documentation hub, not a claim that all contents form one deployed product.
+Evidence-based documentation for real systems and project workstreams, each deployed in its own server or office environment. This repository consolidates their documentation while preserving the separate product, application and runtime boundaries; it does not present them as one executable product.
 
 ## Architecture diagrams
 
