@@ -1,6 +1,6 @@
 # Component maps — detailed architecture views
 
-> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The Deshifrator SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views using the currently published documentation. They are logical reconstructions, not proof of current deployment.
+> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The Deshifrator SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of real systems using the published project documentation. The systems were deployed in server environments; the diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation.
 
 ## 1. Deshifrator — workstation architecture and trust boundaries (historical source label: ARM «Дискриптор»)
 
