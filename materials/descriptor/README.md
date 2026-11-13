@@ -1,6 +1,6 @@
-# ARM Descriptor
+# Deshifrator — Workstation Specification
 
-Technical documentation for the ARM Descriptor document-processing workstation.
+Technical documentation for the real Deshifrator document-processing workstation. Some historical source materials use the earlier label ARM Descriptor / «Дискриптор»; this is the same project, not a separate product.
 
 ## Published site
 
