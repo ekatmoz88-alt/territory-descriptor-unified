@@ -2,7 +2,7 @@
 
 > Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The Deshifrator SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views using the currently published documentation. They are logical reconstructions, not proof of current deployment.
 
-## 1. ARM «Дискриптор» — logical architecture and trust boundaries
+## 1. Deshifrator — workstation architecture and trust boundaries (historical source label: ARM «Дискриптор»)
 
 ```mermaid
 flowchart LR
@@ -46,7 +46,7 @@ flowchart LR
 
 The source specification describes three logical zones: external VBD/gateway, mobile module, and stationary module. It also describes removable-media transfer, `.ummstr` files, gateway authentication, dossier search, editing, preview, printing, font tools, comparison, and consistency checks. Exact trust-zone enforcement and cryptographic allocation must be verified against the original technical-project revision and implementation evidence.
 
-### ARM Descriptor — functional areas
+### Deshifrator — workstation functional areas
 
 ```mermaid
 flowchart TB
@@ -208,7 +208,7 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 ## 5. Evidence limitations
 
 - The complete authoritative list of the 17 PPO Territory functional modules is not available in the current source set.
-- The ARM Descriptor diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
+- The Deshifrator workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Deshifrator diagrams are limited to the application suite and source excerpts that have been reviewed.
 - UMMS API operation names are documented; complete wire-level contracts and deployment details are not included.
 - Preserve the shared project context while keeping application, component and runtime boundaries distinct. Draw a runtime integration only when primary evidence establishes it.
