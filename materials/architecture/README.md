@@ -35,7 +35,7 @@ flowchart TB
   PROJECT --> TERR
   PROJECT --> DESH
   PROJECT --> UMMS
-  SUP -. "catalogued separately" .-> PROJECT
+  SUP -.->|catalogued separately| PROJECT
   TERR ---|"distinct system boundary"| DESH
   DESH ---|"distinct system boundary"| UMMS
 ```
@@ -66,7 +66,7 @@ flowchart TB
     DICT --> REG
     DICT --> MIG
     OTHER --> OTHERDOM
-    MODCOUNT -. "inventory gap" .-> OTHER
+    MODCOUNT -.->|inventory gap| OTHER
   end
 ```
 
@@ -157,7 +157,8 @@ flowchart TB
     L_DB[("Local database")]
     R_OFFICES --> R_THIN --> R_APP --> R_DB
     L_OFFICE --> L_THIN --> L_APP --> L_DB
-    L_DB <-->|"Batch transfer or removable media<br/>replication details to verify"| R_DB
+    L_DB -->|Batch transfer or removable media; replication details to verify| R_DB
+    R_DB -->|Batch transfer or removable media; replication details to verify| L_DB
   end
 ```
 
@@ -199,8 +200,10 @@ flowchart TB
   OP --> MOBUI
   STUI --> STDATA
   MOBUI --> MOBDATA
-  STDATA <--> EXCHANGE
-  EXCHANGE <--> MOBDATA
+  STDATA --> EXCHANGE
+  EXCHANGE --> STDATA
+  EXCHANGE --> MOBDATA
+  MOBDATA --> EXCHANGE
   HW --- STUI
   HW --- MOBUI
   EXCHANGE -.-> UNK
@@ -247,8 +250,8 @@ flowchart TB
   STATIONARY --> SUI
   STATIONARY --> STDB
   STATIONARY --> SQLITE
-  MOBILE -. "FIAS endpoint configured" .-> FIAS
-  STATIONARY -. "FIAS endpoint configured" .-> FIAS
+  MOBILE -.->|FIAS endpoint configured| FIAS
+  STATIONARY -.->|FIAS endpoint configured| FIAS
   FIAS --> ELASTIC
   PRINT --> LAYOUT
   LAYOUT --> MRZ --> OUTPUT
@@ -261,7 +264,7 @@ flowchart TB
 ```mermaid
 flowchart LR
   APP["Application code"]
-  CMD["SQLiteCommandEx<T><br/>command execution / result mapping"]
+  CMD["SQLiteCommandEx&lt;T&gt;<br/>command execution / result mapping"]
   PARAM["SQLiteCommandEx_Params<br/>typed parameter helpers"]
   FACTORY["ConnectionFactory<br/>shared SQLiteConnection"]
   READER["SQLiteDataReaderEx<br/>column access / ordinal cache"]
@@ -294,10 +297,12 @@ flowchart LR
   CLIENT_UI --> PERSON_SEARCH
   CLIENT_UI --> CASE_HANDLING
   CLIENT_UI --> DOC_WORKFLOW
-  CASE_HANDLING <--> LOCAL_STORAGE
+  CASE_HANDLING --> LOCAL_STORAGE
+  LOCAL_STORAGE --> CASE_HANDLING
   PERSON_SEARCH --> SOAP_CLIENT
   DOC_WORKFLOW --> SOAP_CLIENT
-  SOAP_CLIENT <-->|SOAP XML contract| UMMS_SERVICE
+  SOAP_CLIENT -->|SOAP XML contract| UMMS_SERVICE
+  UMMS_SERVICE -->|SOAP XML response| SOAP_CLIENT
   UMMS_SERVICE --> SERVICE_OPERATIONS
 ```
 
