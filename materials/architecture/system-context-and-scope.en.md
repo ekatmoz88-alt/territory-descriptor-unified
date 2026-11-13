@@ -1,4 +1,4 @@
-# System Context and Architecture Boundaries: PPO Territory and ARM Descriptor
+# System Context and Architecture Boundaries: PPO Territory and Deshifrator
 
 > **Status:** historical documentation and analytical synthesis of real deployed systems. The systems were deployed and operated in server environments, including office infrastructure. This document is a logical architecture view, not a reconstruction of the physical topology of a specific installation.
 >
@@ -9,7 +9,7 @@
 This document establishes the context of two distinct subjects described in the same set of historical materials:
 
 - **PPO Territory** — a modular departmental information system described as a web application with a client web interface, an application server and a database server.
-- **ARM Descriptor** — a specialised document-processing workstation system whose annotation identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
+- **Deshifrator** — a specialised document-processing workstation system whose historical annotation uses the earlier label Deshifrator and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
 
 Their shared business domain and appearance in the same documentation set do **not** prove that they are one executable product, share a runtime, or that all ARM components are part of PPO Territory.
 
@@ -19,11 +19,11 @@ Their shared business domain and appearance in the same documentation set do **n
 
 The documentation describes PPO Territory as a modular solution for automating the work of territorial units of the Russian Federal Migration Service (FMS). Its functional scope includes document processing and accounting, person and organisation records, address data, case management, migration and registration accounting, citizenship workflows, administrative proceedings, reporting and external information exchange.
 
-PPO Territory is described as a web application. That statement belongs to the PPO Territory section of the source document; it must not automatically be applied to ARM Descriptor's stationary and mobile software stations.
+PPO Territory is described as a web application. That statement belongs to the PPO Territory section of the source document; it must not automatically be applied to Deshifrator's stationary and mobile software stations.
 
-### 2.2. ARM Descriptor
+### 2.2. Deshifrator
 
-The annotation describes ARM Descriptor as a C# program and identifies two stations:
+The annotation describes Deshifrator as a C# program and identifies two stations:
 
 | Component | Abbreviation | Description in the annotation |
 |---|---|---|
@@ -43,7 +43,7 @@ These are capabilities stated in the historical annotation. They do not prove th
 
 ### 2.3. Ambiguity in the web-application statement
 
-The ARM annotation also says that the system operates “as a web application through a browser”. The same context describes ARM as a C# program consisting of two stations. Without the complete software-implementation section and the original projects, it is not possible to determine whether the browser statement refers to ARM itself, PPO Territory, or the wider operating environment.
+The Deshifrator annotation also says that the system operates “as a web application through a browser”. The same context describes ARM as a C# program consisting of two stations. Without the complete software-implementation section and the original projects, it is not possible to determine whether the browser statement refers to ARM itself, PPO Territory, or the wider operating environment.
 
 **Documentation rule:** do not label ПО СС and ПО МС as browser clients or place them inside PPO Territory's three-tier web diagram until primary documentation or source code confirms that interpretation.
 
@@ -207,9 +207,9 @@ The reference to Visual Studio 2013 does not establish the exact .NET Framework 
 | PPO Territory is a modular system | Software documentation | Documented |
 | PPO Territory has three tiers | Architecture description | Documented |
 | Centralised and distributed modes are supported | Operational description | Documented; distributed-mode details are incomplete |
-| ARM Descriptor includes ПО СС and ПО МС | ARM annotation | Documented |
-| ARM Descriptor was developed in C# | ARM annotation | Documented |
-| ARM Descriptor is entirely a web application | Ambiguous annotation wording | Requires verification |
+| Deshifrator includes ПО СС and ПО МС | Deshifrator annotation | Documented |
+| Deshifrator was developed in C# | Deshifrator annotation | Documented |
+| Deshifrator is entirely a web application | Ambiguous annotation wording | Requires verification |
 | All listed functions are implemented in the available source code | Full traceability has not been completed | Not established |
 | A specific client component uses UMMS SOAP | Inspected source code | Confirmed for that component |
 | SOAP is the common API of PPO Territory | No direct evidence | Not established |
@@ -231,6 +231,6 @@ Moving from a logical model to a technical architecture requires:
 
 The historical documentation presents PPO Territory as a modular web system with a three-tier architecture and two operating modes: centralised and distributed.
 
-ARM Descriptor is described separately as a specialised document-processing workstation system with mobile and stationary stations. The browser-based statement in its annotation is ambiguous and must not replace verification of the actual project architecture.
+Deshifrator is described separately as a specialised document-processing workstation system with mobile and stationary stations. The browser-based statement in its annotation is ambiguous and must not replace verification of the actual project architecture.
 
 Reliable technical documentation must preserve system boundaries and distinguish documented requirements, source-code findings, analytical reconstructions and unknown implementation details.
