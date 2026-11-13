@@ -260,7 +260,7 @@ flowchart TB
 
 **Boundary warning.** The diagram distinguishes `Descriptor.exe`, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR is assigned to `Descriptor.exe`; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
 
-## 8. Deshifrator — SQLite data-access component view
+## 8. ARM “Deshifrator” — SQLite data-access components
 
 ```mermaid
 flowchart LR
