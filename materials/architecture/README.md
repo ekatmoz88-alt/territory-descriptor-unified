@@ -27,27 +27,22 @@
 
 ```mermaid
 flowchart TB
-  subgraph TERR["PPO Territory"]
-    CORE["CORE domain<br/>persons, identity data, documents,<br/>cases, addresses, payments"]
-    DICT["DICT domain<br/>reference data"]
-    RP["RP<br/>Russian passport"]
-    FP["FP<br/>foreign passport"]
-    REG["REG<br/>registration accounting"]
-    MIG["MIG<br/>migration accounting"]
-    OTHER["Other subject-area tables<br/>207 tables in the described DB inventory"]
-    OTHERDOM["Named areas in available materials:<br/>citizenship, invitations, visas,<br/>asylum, labour migration"]
-    MODCOUNT["17 functional modules are mentioned;<br/>full verified module-by-module inventory<br/>is not available yet"]
-    CORE --> RP
-    CORE --> FP
-    CORE --> REG
-    CORE --> MIG
-    DICT --> RP
-    DICT --> FP
-    DICT --> REG
-    DICT --> MIG
-    OTHER --> OTHERDOM
-    MODCOUNT -. "inventory gap" .- OTHER
-  end
+  PROJECT["Related project areas"]
+  TERR["PPO Territory<br/>three-tier information system"]
+  DESH["Deshifrator<br/>historically ARM «Дискриптор»"]
+  UMMS["UMMS<br/>client and SOAP service"]
+  SUP["Supplementary source collections<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
+  PROJECT --> TERR
+  PROJECT --> DESH
+  PROJECT --> UMMS
+  SUP -. "catalogued separately" .-> PROJECT
+  TERR ---|"distinct system boundary"| DESH
+  DESH ---|"distinct system boundary"| UMMS
+```
+
+**Boundary note.** The diagram is a portfolio-level derived view. It groups the three documented project areas without implying direct runtime integration between them. Supplementary source collections are indexed separately and are not treated as additional applications in this architecture.
+
+**Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. A separate physical specification contains 381 numbered entries. These figures come from different source documents and have not been reconciled; neither should be silently substituted for the other. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
 ## 2. PPO Territory — functional module map
 
@@ -75,8 +70,6 @@ flowchart TB
     MODCOUNT -. "inventory gap" .- OTHER
   end
 ```
-
-**Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. A separate physical specification contains 381 numbered entries. These figures come from different source documents and have not been reconciled; neither should be silently substituted for the other. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
 ## 3. PPO Territory — Oracle database and logical data architecture
 
@@ -330,8 +323,8 @@ The operation names are taken from the public API description and source-review 
 
 ## 11. Evidence and change policy
 
-1. Do not merge separate system boundaries into one runtime architecture without explicit evidence.
-2. Do not invent names or responsibilities for the unverified Territory modules.
-3. Do not publish production endpoints, credentials, personal data, keys, or real exchange files.
-4. Treat modernization ideas as proposals unless a completed implementation is evidenced.
-5. Update a diagram only when a source document, code excerpt, schema, test, or deployment artifact supports the change.
+- Keep documented facts separate from derived views and explicitly label provisional models.
+- Preserve conflicting source inventories with their provenance; do not reconcile counts without authoritative evidence.
+- Do not infer deployment topology, integration direction, protocol, ownership or runtime behaviour from a neutral relationship or an omitted detail.
+- Update a diagram only when a source document, inspected source excerpt or verified metadata supports the change.
+- Record unresolved questions in the relevant section and in the coverage table instead of filling gaps with assumptions.
