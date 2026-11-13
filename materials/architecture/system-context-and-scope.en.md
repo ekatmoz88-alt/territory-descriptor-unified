@@ -168,7 +168,7 @@ Until the rest of the source section is available, distributed mode should be de
 
 The functional description lists external exchanges, including retrieval of signal lists, information about lost or stolen documents, organisation data and control lists, as well as exchanges with regional and federal information systems. Interaction with GISMU and regulatory/reference-data exchange are also mentioned.
 
-This evidence establishes integration requirements and named exchange directions, but it does not define the current status, endpoint, protocol, message format, authentication method, interface owner or delivery guarantees for each specific implementation.
+These integrations and API routes belonged to the real deployed system. The public documentation does not reproduce restricted endpoint paths, credentials or environment-specific configuration. The historical source excerpt describes the named exchanges but does not provide a complete route catalogue or every transport detail.
 
 ### 6.1. UMMS SOAP integration boundary
 
