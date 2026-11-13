@@ -1,6 +1,6 @@
 # System Context and Architecture Boundaries: PPO Territory and ARM Descriptor
 
-> **Status:** historical documentation and analytical synthesis. This is not an as-built diagram of a specific installation.
+> **Status:** historical documentation and analytical synthesis of real deployed systems. The systems were deployed and operated in server environments, including office infrastructure. This document is a logical architecture view, not a reconstruction of the physical topology of a specific installation.
 >
 > **Source:** software documentation ID 53281996.425530.9-4757-3.ПЗ.01.0.01, including the annotation and architecture description, pages 5–26. Source-code implementation requires separate verification.
 
