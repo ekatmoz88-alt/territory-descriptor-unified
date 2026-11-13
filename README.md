@@ -25,7 +25,7 @@ Evidence-based documentation for real systems and project workstreams, each depl
 
 The materials are grouped for navigation only. This does not mean that every component is part of one executable product or that every architectural relationship has been established.
 
-PPO Territory, Deshifrator (historically labelled ARM «Дискриптор» / ППО ID in some source materials), and UMMS are documented as related but distinct system boundaries. ARM PPZ/PVK, AS Passport RF and MSKTs are separate supplementary source tracks. Similar domain terms, shared historical organizations or adjacent source files do not prove a common runtime architecture.
+PPO Territory, Deshifrator (historically labelled ARM «Дискриптор» in some source materials), and UMMS are documented as related but distinct system boundaries. ARM PPZ/PVK, AS Passport RF and MSKTs are separate supplementary source tracks. Similar domain terms, shared historical organizations or adjacent source files do not prove a common runtime architecture.
 
 In particular, the correspondence between ПОМС / ПОСС and ModuleMobile / ModuleStationary requires further verification against primary materials and source code.
 
@@ -41,7 +41,7 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 
 - `materials/territory/` — PPO Territory.
 - `materials/territory-database/` — database, API and models.
-- `materials/descriptor/` — Deshifrator workstation specification (legacy source label: ARM «Дискриптор» / ППО ID).
+- `materials/descriptor/` — Deshifrator workstation specification (legacy source label: ARM «Дискриптор»).
 - `materials/deshifrator/` — complementary software-component documentation and available source excerpts for the same Deshifrator project.
 - `materials/umms/` — UMMS SOAP and client documentation.
 - `materials/reference-systems/` — other separately classified source materials.
