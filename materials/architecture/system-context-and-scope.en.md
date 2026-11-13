@@ -9,7 +9,7 @@
 This document establishes the context of two distinct subjects described in the same set of historical materials:
 
 - **PPO Territory** — a modular departmental information system described as a web application with a client web interface, an application server and a database server.
-- **Deshifrator** — a specialised document-processing workstation system whose historical annotation uses the earlier label Deshifrator and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
+- **Deshifrator** — a specialised document-processing workstation system whose historical annotation uses the earlier label ARM Descriptor / «Дискриптор» and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
 
 Their shared business domain and appearance in the same documentation set do **not** prove that they are one executable product, share a runtime, or that all ARM components are part of PPO Territory.
 
@@ -43,7 +43,7 @@ These are capabilities stated in the historical annotation. They do not prove th
 
 ### 2.3. Ambiguity in the web-application statement
 
-The Deshifrator annotation also says that the system operates “as a web application through a browser”. The same context describes ARM as a C# program consisting of two stations. Without the complete software-implementation section and the original projects, it is not possible to determine whether the browser statement refers to ARM itself, PPO Territory, or the wider operating environment.
+The Deshifrator annotation also says that the system operates “as a web application through a browser”. The same context describes the workstation as a C# program consisting of two stations. Without the complete software-implementation section and the original projects, it is not possible to determine whether the browser statement refers to Deshifrator itself, PPO Territory, or the wider operating environment.
 
 **Documentation rule:** do not label ПО СС and ПО МС as browser clients or place them inside PPO Territory's three-tier web diagram until primary documentation or source code confirms that interpretation.
 
