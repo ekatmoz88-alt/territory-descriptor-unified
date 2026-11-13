@@ -4,13 +4,13 @@
 >
 > **Reusable Mermaid fragments:** [Open the Mermaid Patterns Library](./mermaid-patterns.md). It provides copy-and-adapt starting points for system context, deployment, component, data-flow, sequence, ER and state diagrams. These are reusable source snippets, not native Mermaid macros.
 >
-> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / ARM Descriptor boundary, three-tier architecture, deployment modes and evidence limitations.
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / Deshifrator boundary, three-tier architecture, deployment modes and evidence limitations.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
 
-> **Evidence-based portfolio documentation.** This catalogue documents one project comprising four related system and application areas: PPO Territory, ARM «Дискриптор», Deshifrator and UMMS. Their project relationship does not mean they share one executable, deployment unit or runtime boundary. Supplementary source collections are catalogued separately.
+> **Evidence-based portfolio documentation.** This catalogue documents real project work across three related system and application areas: PPO Territory, Deshifrator (historically labelled ARM «Дискриптор» in source materials) and UMMS. Deshifrator and ARM Descriptor are the same project. The related areas retain their distinct executable, deployment and runtime boundaries. Supplementary source collections are catalogued separately.
 
 ## How to read these diagrams
 
@@ -18,7 +18,7 @@
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Unverified** — exact protocols, endpoints, ownership, runtime topology, or internal module responsibilities are not established by the available evidence.
 - The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- PPO Territory, ARM «Дискриптор», Deshifrator and UMMS are documented as related areas of one project. Their application, component and runtime boundaries remain distinct wherever the available evidence supports that distinction.
+- PPO Territory, Deshifrator and UMMS are documented as related areas of one project. ARM «Дискриптор» is an earlier name for Deshifrator, not a separate application. Their system and runtime boundaries remain distinct wherever the available evidence supports that distinction.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
@@ -29,13 +29,11 @@
 flowchart TB
   subgraph PROJECT["One documented project — related system and application areas"]
     TERR["PPO Territory<br/>FMS enterprise information system"]
-    DESC["ARM Descriptor<br/>document-processing workstation"]
-    DESH["Deshifrator<br/>desktop application suite"]
+    DESH["Deshifrator<br/>document-processing workstation and desktop application suite"]
     UMMS["UMMS<br/>SOAP API and client workflows"]
   end
 
-  TERR -. "Project-level relationship; runtime integration not inferred" .- DESC
-  DESC -. "Related project area; runtime calls not inferred" .- DESH
+  TERR -. "Related system area; runtime integration not inferred" .- DESH
   DESH -. "Related project area; service boundary retained" .- UMMS
   TERR -. "Shared project context; deployment link not inferred" .- UMMS
 
