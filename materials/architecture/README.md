@@ -27,19 +27,27 @@
 
 ```mermaid
 flowchart TB
-  subgraph PROJECT["One documented project — related system and application areas"]
-    TERR["PPO Territory<br/>FMS enterprise information system"]
-    DESH["Deshifrator<br/>document-processing workstation and desktop application suite"]
-    UMMS["UMMS<br/>SOAP API and client workflows"]
+  subgraph TERR["PPO Territory"]
+    CORE["CORE domain<br/>persons, identity data, documents,<br/>cases, addresses, payments"]
+    DICT["DICT domain<br/>reference data"]
+    RP["RP<br/>Russian passport"]
+    FP["FP<br/>foreign passport"]
+    REG["REG<br/>registration accounting"]
+    MIG["MIG<br/>migration accounting"]
+    OTHER["Other subject-area tables<br/>207 tables in the described DB inventory"]
+    OTHERDOM["Named areas in available materials:<br/>citizenship, invitations, visas,<br/>asylum, labour migration"]
+    MODCOUNT["17 functional modules are mentioned;<br/>full verified module-by-module inventory<br/>is not available yet"]
+    CORE --> RP
+    CORE --> FP
+    CORE --> REG
+    CORE --> MIG
+    DICT --> RP
+    DICT --> FP
+    DICT --> REG
+    DICT --> MIG
+    OTHER --> OTHERDOM
+    MODCOUNT -. "inventory gap" .- OTHER
   end
-
-  TERR -. "Related system area; runtime integration not inferred" .- DESH
-  DESH -. "Related project area; service boundary retained" .- UMMS
-  TERR -. "Shared project context; deployment link not inferred" .- UMMS
-
-  OTHER["Supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
-  OTHER -. "No integration inferred" .- LANDSCAPE
-```
 
 ## 2. PPO Territory — functional module map
 
