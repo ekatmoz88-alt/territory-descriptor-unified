@@ -4,13 +4,13 @@
 >
 > **Reusable Mermaid fragments:** [Open the Mermaid Patterns Library](./mermaid-patterns.md). It provides copy-and-adapt starting points for system context, deployment, component, data-flow, sequence, ER and state diagrams. These are reusable source snippets, not native Mermaid macros.
 >
-> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / Deshifrator boundary, three-tier architecture, deployment modes and evidence limitations.
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / ПО boundary, three-tier architecture, deployment modes and evidence limitations.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
 
-> **Evidence-based portfolio documentation.** This catalogue documents real project work across three related system and application areas: PPO Territory, Deshifrator (historically labelled ARM «Дискриптор» in source materials) and UMMS. Deshifrator and ARM Descriptor are the same project. The related areas retain their distinct executable, deployment and runtime boundaries. Supplementary source collections are catalogued separately.
+> **Evidence-based portfolio documentation.** This catalogue documents real project work across three related system and application areas: PPO Territory, ПО and UMMS. The related areas retain their distinct executable, deployment and runtime boundaries. Supplementary source collections are catalogued separately.
 
 ## How to read these diagrams
 
@@ -18,7 +18,7 @@
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
 - The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- PPO Territory, Deshifrator and UMMS are documented as related areas of one project. ARM «Дискриптор» is an earlier name for Deshifrator, not a separate application. Their system and runtime boundaries remain distinct wherever the available evidence supports that distinction.
+- PPO Territory, ПО and UMMS are documented as related areas of one project. Their system and runtime boundaries remain distinct wherever the available evidence supports that distinction.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
@@ -29,7 +29,7 @@
 flowchart TB
   PROJECT["Related project areas"]
   TERR["PPO Territory<br/>three-tier information system"]
-  DESH["Deshifrator<br/>historically ARM «Дискриптор»"]
+  DESH["ПО"]
   UMMS["UMMS<br/>client and SOAP service"]
   SUP["Supplementary source collections<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
   PROJECT --> TERR
@@ -42,7 +42,6 @@ flowchart TB
 
 **Boundary note.** The diagram is a portfolio-level derived view. It groups the three documented project areas without implying direct runtime integration between them. Supplementary source collections are indexed separately and are not treated as additional applications in this architecture.
 
-**Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. A separate physical specification contains 381 numbered entries. These figures come from different source documents and have not been reconciled; neither should be silently substituted for the other. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
 ## 2. PPO Territory — functional module map
 
@@ -67,9 +66,11 @@ flowchart TB
     DICT --> REG
     DICT --> MIG
     OTHER --> OTHERDOM
-    MODCOUNT -. "inventory gap" .- OTHER
+    MODCOUNT -. "inventory gap" .-> OTHER
   end
 ```
+
+**Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. A separate physical specification contains 381 numbered entries. These figures come from different source documents and have not been reconciled; neither should be silently substituted for the other. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
 ## 3. PPO Territory — Oracle database and logical data architecture
 
@@ -182,48 +183,42 @@ flowchart LR
 
 The diagram shows seven documented **external exchange areas**. Direction is explicit in the reviewed source only for three: export to ПРИУР ГАС «Выборы», and incoming information from ГИАЦ ГУ МВД and ЗАГС. The remaining four links are neutral because their direction is not established. These are not claims of verified live integrations. Protocols, endpoints, authentication, message schemas, ownership of each adapter, and current operational status are not established.
 
-## 6. Deshifrator — workstation and hardware/software boundary
+## 6. ПО — workstation and hardware/software boundary
 
 ```mermaid
 flowchart TB
   OP["Operator"]
-  subgraph DESH["Deshifrator — documented workstation scope"]
-    subgraph ST["Stationary station"]
-      STUI["Stationary workstation software"]
-      STDATA["Stationary-side data / processing"]
-    end
-    subgraph MOB["Mobile station"]
-      MOBUI["Mobile workstation software"]
-      MOBDATA["Mobile-side data / processing"]
-    end
-    EXCHANGE["Data exchange between stations<br/>details follow source specification"]
-    HW["Peripheral equipment<br/>keyboard, pointing device, scanner,<br/>printer, laminator and other listed devices"]
-    OP --> STUI
-    OP --> MOBUI
-    STUI --> STDATA
-    MOBUI --> MOBDATA
-    STDATA <--> EXCHANGE
-    EXCHANGE <--> MOBDATA
-    HW --- STUI
-    HW --- MOBUI
-  end
+  STUI["Stationary station — workstation software"]
+  STDATA["Stationary station — data / processing"]
+  MOBUI["Mobile station — workstation software"]
+  MOBDATA["Mobile station — data / processing"]
+  EXCHANGE["Data exchange between stations<br/>details follow source specification"]
+  HW["Peripheral equipment<br/>keyboard, pointing device, scanner,<br/>printer, laminator and other listed devices"]
   UNK["Exact component ownership, interfaces,<br/>message formats and deployment constraints<br/>must be verified against the complete specification"]
+  OP --> STUI
+  OP --> MOBUI
+  STUI --> STDATA
+  MOBUI --> MOBDATA
+  STDATA <--> EXCHANGE
+  EXCHANGE <--> MOBDATA
+  HW --- STUI
+  HW --- MOBUI
   EXCHANGE -.-> UNK
 ```
 
 This is a system decomposition from the ARM description: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
 
-## 7. Deshifrator — application suite and component architecture
+## 7. ПО — application suite and component architecture
 
 ```mermaid
 flowchart TB
-  subgraph SUITE["Deshifrator application suite"]
-    DESCRIPTOR["Descriptor.exe"]
+  subgraph SUITE["ПО application suite"]
+    OCRAPP["OCR component"]
     MOBILE["ModuleMobile.exe"]
     STATIONARY["ModuleStationary.exe"]
     PRINT["Printer / PassportPaint"]
   end
-  subgraph DESCRIPTORPARTS["Descriptor.exe — documented OCR component"]
+  subgraph OCRPARTS["OCR component — documented implementation"]
     OCR["Tesseract OCR 3.02"]
   end
   subgraph MOBILEPARTS["ModuleMobile — documented components"]
@@ -244,7 +239,7 @@ flowchart TB
     MRZ["MRZ and print formatting"]
     OUTPUT["Print-view / output generation"]
   end
-  DESCRIPTOR --> OCR
+  OCRAPP --> OCR
   MOBILE --> MUI
   MOBILE --> MOBDB
   MOBILE --> SOAP
@@ -259,9 +254,9 @@ flowchart TB
   LAYOUT --> MRZ --> OUTPUT
 ```
 
-**Boundary warning.** The diagram distinguishes `Descriptor.exe`, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR is assigned to `Descriptor.exe`; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
+**Boundary warning.** The diagram distinguishes the OCR component, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR 3.02 is assigned to the OCR component; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
 
-## 8. ARM “Deshifrator” — SQLite data-access components
+## 8. ПО — SQLite data-access components
 
 ```mermaid
 flowchart LR
@@ -288,23 +283,22 @@ The component names and responsibilities are based on reviewed C# excerpts. Conn
 
 ```mermaid
 flowchart LR
-  subgraph CLIENT["UMMS client"]
-    UI["Client UI / workflow"]
-    SEARCH["Person and dossier search"]
-    CASE["Case and dossier handling"]
-    DOC["Document issue / rollback workflow"]
-    LOCAL["Local case and dossier storage"]
-    SOAPCLIENT["SOAP client"]
-    UI --> SEARCH
-    UI --> CASE
-    UI --> DOC
-    CASE <--> LOCAL
-    SEARCH --> SOAPCLIENT
-    DOC --> SOAPCLIENT
-  end
-  SERVICE["UMMS SOAP service"]
-  SOAPCLIENT <-->|"SOAP / XML contract"| SERVICE
-  SERVICE --> OPS["Operations:<br/>searchPersonFile<br/>getPersonDocuments<br/>getPersonAddresses<br/>getPersonCasesInfo<br/>getDocumentDetail<br/>getAddressDetail<br/>getCountryDictionary<br/>issueNewDocument<br/>rollbackIssueNewDocument"]
+  CLIENT_UI["UMMS client — UI / workflow"]
+  PERSON_SEARCH["Person and dossier search"]
+  CASE_HANDLING["Case and dossier handling"]
+  DOC_WORKFLOW["Document issue / rollback workflow"]
+  LOCAL_STORAGE["Local case and dossier storage"]
+  SOAP_CLIENT["UMMS SOAP client"]
+  UMMS_SERVICE["UMMS SOAP service"]
+  SERVICE_OPERATIONS["Operations:<br/>searchPersonFile<br/>getPersonDocuments<br/>getPersonAddresses<br/>getPersonCasesInfo<br/>getDocumentDetail<br/>getAddressDetail<br/>getCountryDictionary<br/>issueNewDocument<br/>rollbackIssueNewDocument"]
+  CLIENT_UI --> PERSON_SEARCH
+  CLIENT_UI --> CASE_HANDLING
+  CLIENT_UI --> DOC_WORKFLOW
+  CASE_HANDLING <--> LOCAL_STORAGE
+  PERSON_SEARCH --> SOAP_CLIENT
+  DOC_WORKFLOW --> SOAP_CLIENT
+  SOAP_CLIENT <-->|SOAP XML contract| UMMS_SERVICE
+  UMMS_SERVICE --> SERVICE_OPERATIONS
 ```
 
 The operation names are taken from the public API description and source-review notes. Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, error contracts, and endpoint details must be verified against the WSDL and approved integration documentation.
@@ -316,8 +310,8 @@ The operation names are taken from the public API description and source-review 
 | System / area | Architecture views included | Remaining evidence needed |
 |---|---|---|
 | PPO Territory | Functional domains, conceptual data model, centralized/distributed deployment variants, separate/combined server placement, seven external exchange areas (three with documented direction) | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
-| Deshifrator — workstation specification | Stationary/mobile workstation decomposition, peripherals, exchange boundary | Full component inventory, hardware mapping, interface/control descriptions, verified data-flow details |
-| Deshifrator | Descriptor.exe (OCR), ModuleMobile.exe, ModuleStationary.exe, Printer/PassportPaint (MRZ and printing), separate SQLite databases | Complete source tree, project references, executable ownership per feature, full schema and runtime configuration |
+| ПО — workstation specification | Stationary/mobile workstation decomposition, peripherals, exchange boundary | Full component inventory, hardware mapping, interface/control descriptions, verified data-flow details |
+| ПО | OCR component (Tesseract OCR 3.02), ModuleMobile.exe, ModuleStationary.exe, Printer/PassportPaint (MRZ and printing), separate SQLite databases | Complete source tree, project references, executable ownership per feature, full schema and runtime configuration |
 | UMMS | Client/service boundary, SOAP operations, search sequence | WSDL/XSD, exact service contract, full client source, deployment and security configuration |
 | Supplementary systems | Separate source notes for ARM PPZ/PVK, AS Passport RF and MSKTs | Original covers, version/revision, ownership and any actual integration evidence |
 
