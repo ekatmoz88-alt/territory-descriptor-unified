@@ -115,20 +115,20 @@ erDiagram
   DICT_REFERENCE ||--o{ CORE_DOCUMENT : classifies
 ```
 
-**Model interpretation.** This ER view is a conceptual summary of table roles mentioned in the available materials, not a validated physical Oracle ERD. Exact table names, constraints, foreign keys, cardinalities, optionality, owners, and dictionary relationships must be checked against Oracle metadata or a DDL-only export. `DICT_REFERENCE` is a logical placeholder for dictionary data, not a confirmed literal table name.
+**Model scope.** This is a conceptual ER model: it expresses logical entity relationships and is not the physical Oracle data model. The labels in the diagram identify conceptual data objects; they do not by themselves establish physical table names or database constraints. `DICT_REFERENCE` is a logical placeholder for dictionary data, not a confirmed Oracle table name.
 
-### 3.3 What is needed to produce the physical Oracle schema map
+### 3.3 Physical Oracle schema and dependency metadata
 
-A reliable physical schema and dependency model requires metadata or a DDL-only export (no production data and no credentials), subject to the database account's permissions:
+The physical Oracle model is a separate artefact. It describes actual database objects, columns, keys, constraints, ownership and object dependencies. To derive or verify it, use permitted Oracle metadata or a DDL-only export, subject to the database account's permissions:
 
-- schema owners and object inventory: `ALL_USERS`, `ALL_OBJECTS`;
-- tables and columns: `ALL_TABLES`, `ALL_TAB_COLUMNS`;
-- primary/foreign/unique/check constraints: `ALL_CONSTRAINTS`, `ALL_CONS_COLUMNS`;
-- views, packages, procedures, functions and triggers: `ALL_VIEWS`, `ALL_SOURCE`, `ALL_TRIGGERS`;
+- schema users and object inventory: `ALL_USERS`, `ALL_OBJECTS`;
+- physical tables and columns: `ALL_TABLES`, `ALL_TAB_COLUMNS`;
+- primary, foreign, unique and check constraints: `ALL_CONSTRAINTS`, `ALL_CONS_COLUMNS`;
+- views, source code and triggers: `ALL_VIEWS`, `ALL_SOURCE`, `ALL_TRIGGERS`;
 - object dependencies: `ALL_DEPENDENCIES`;
-- grants and roles, where permitted: `ALL_TAB_PRIVS`, `ALL_ROLE_PRIVS`.
+- grants and role privileges, where permitted: `ALL_TAB_PRIVS`, `ALL_ROLE_PRIVS`.
 
-These views are a collection checklist, not a claim that their contents have already been extracted. A least-privilege metadata export is sufficient; do not provide table rows, personal data, passwords, connection strings, keys, or production secrets.
+These Oracle views are metadata sources for the physical model; they are not part of the conceptual ER model. Use a permitted metadata-only or DDL-only export. Do not provide production table rows, personal data, passwords, connection strings, keys, or other production secrets.
 
 ## 4. PPO Territory — deployment architecture: evidence status
 
