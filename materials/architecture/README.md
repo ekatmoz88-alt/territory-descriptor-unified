@@ -16,7 +16,7 @@
 
 - **Documented** — directly stated in the available project documentation or visible in inspected source excerpts.
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
-- **Unverified** — exact protocols, endpoints, ownership, runtime topology, or internal module responsibilities are not established by the available evidence.
+- **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
 - The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
 - PPO Territory, Deshifrator and UMMS are documented as related areas of one project. ARM «Дискриптор» is an earlier name for Deshifrator, not a separate application. Their system and runtime boundaries remain distinct wherever the available evidence supports that distinction.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
