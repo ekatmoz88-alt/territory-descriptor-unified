@@ -4,13 +4,13 @@
 >
 > **Reusable Mermaid fragments:** [Open the Mermaid Patterns Library](./mermaid-patterns.md). It provides copy-and-adapt starting points for system context, deployment, component, data-flow, sequence, ER and state diagrams. These are reusable source snippets, not native Mermaid macros.
 >
-> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory / ПО boundary, three-tier architecture, deployment modes and evidence limitations.
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory and Deshifrator application boundaries, three-tier architecture, deployment modes and evidence limitations.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
 
-> **Evidence-based portfolio documentation.** This catalogue documents real project work across three related system and application areas: PPO Territory, ПО and UMMS. The related areas retain their distinct executable, deployment and runtime boundaries. Supplementary source collections are catalogued separately.
+> **Evidence-based portfolio documentation.** This catalogue documents the PPO Territory project. It includes the PPO Territory information system and the Deshifrator workstation application as distinct application/system boundaries with separate executable and runtime scopes. UMMS is documented as a related but separate system boundary. Supplementary source collections are catalogued separately.
 
 ## How to read these diagrams
 
@@ -18,7 +18,7 @@
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
 - The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- PPO Territory, ПО and UMMS are documented as related areas of one project. Their system and runtime boundaries remain distinct wherever the available evidence supports that distinction.
+- ППО «Территория» is the umbrella project. PPO Territory and Deshifrator are distinct application/system boundaries within it; the historical label ARM «Дискриптор» refers to the same Deshifrator project, not a separate product. UMMS retains a separate system/service boundary and is included only as related technical context.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
@@ -72,11 +72,11 @@ flowchart TB
 
 **Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. A separate physical specification contains 381 numbered entries. These figures come from different source documents and have not been reconciled; neither should be silently substituted for the other. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
-## 3. PPO Territory — Oracle database and logical data architecture
+## 3. PPO Territory — database technology and logical data architecture
 
 ### 3.1 What is established
 
-The available database overview identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. A separate physical specification lists 381 numbered entries. The two counts belong to different documents and have not been reconciled. This is evidence of database technology and source-specific inventories; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
+The PPO Territory database overview identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. This is the Oracle database technology documented for PPO Territory; it is not the separate Oracle DMRS / GLOBAL11 project. A separate physical specification lists 381 numbered entries. The two counts belong to different documents and have not been reconciled. This is evidence of database technology and source-specific inventories; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
 
 ```mermaid
 flowchart TB
@@ -184,7 +184,7 @@ flowchart LR
 
 The diagram shows seven documented **external exchange areas**. Direction is explicit in the reviewed source only for three: export to ПРИУР ГАС «Выборы», and incoming information from ГИАЦ ГУ МВД and ЗАГС. The remaining four links are neutral because their direction is not established. These are not claims of verified live integrations. Protocols, endpoints, authentication, message schemas, ownership of each adapter, and current operational status are not established.
 
-## 6. ПО — workstation and hardware/software boundary
+## 6. Deshifrator — workstation and hardware/software boundary
 
 ```mermaid
 flowchart TB
@@ -209,13 +209,13 @@ flowchart TB
   EXCHANGE -.-> UNK
 ```
 
-This is a system decomposition from the ARM description: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
+This is a system decomposition of the Deshifrator workstation application from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
 
-## 7. ПО — application suite and component architecture
+## 7. Deshifrator — application suite and component architecture
 
 ```mermaid
 flowchart TB
-  subgraph SUITE["ПО application suite"]
+  subgraph SUITE["Deshifrator application suite"]
     OCRAPP["OCR component"]
     MOBILE["ModuleMobile.exe"]
     STATIONARY["ModuleStationary.exe"]
@@ -259,7 +259,7 @@ flowchart TB
 
 **Boundary warning.** The diagram distinguishes the OCR component, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR 3.02 is assigned to the OCR component; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
 
-## 8. ПО — SQLite data-access components
+## 8. Deshifrator — SQLite data-access components
 
 ```mermaid
 flowchart LR
