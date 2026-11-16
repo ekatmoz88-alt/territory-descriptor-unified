@@ -27,20 +27,21 @@
 
 ```mermaid
 flowchart TB
-  PROJECT["Related project areas"]
-  TERR["PPO Territory<br/>three-tier information system"]
-  DESH["ПО"]
-  UMMS["UMMS<br/>client and SOAP service"]
-  SUP["Supplementary source collections<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
+  PROJECT["ППО «Территория» — umbrella project"]
+  TERR["PPO Territory<br/>information system"]
+  DESH["Deshifrator<br/>workstation application"]
+  UMMS["UMMS<br/>related client and SOAP service boundary"]
+  SUP["Separate supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
+  ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
   PROJECT --> TERR
   PROJECT --> DESH
-  PROJECT --> UMMS
-  SUP -.->|catalogued separately| PROJECT
-  TERR ---|"distinct system boundary"| DESH
-  DESH ---|"distinct system boundary"| UMMS
+  PROJECT -.->|"related context; no runtime integration inferred"| UMMS
+  SUP -.->|"catalogued separately"| PROJECT
+  ORACLE -.->|"outside this project"| SUP
+  TERR ---|"distinct application/runtime boundary"| DESH
 ```
 
-**Boundary note.** The diagram is a portfolio-level derived view. It groups the three documented project areas without implying direct runtime integration between them. Supplementary source collections are indexed separately and are not treated as additional applications in this architecture.
+**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. PPO Territory and Deshifrator belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project and the supplementary source collections are outside this project.
 
 
 ## 2. PPO Territory — functional module map
