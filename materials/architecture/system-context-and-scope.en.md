@@ -231,6 +231,6 @@ Moving from a logical model to a technical architecture requires:
 
 The historical documentation presents PPO Territory as a modular web system with a three-tier architecture and two operating modes: centralised and distributed.
 
-Deshifrator is described separately as a specialised document-processing workstation system with mobile and stationary stations. The browser-based statement in its annotation is ambiguous and must not replace verification of the actual project architecture.
+Deshifrator is documented as a separate workstation application within the PPO Territory project, with mobile and stationary stations and its own application/runtime boundaries. The browser-based statement in its annotation is ambiguous and must not replace verification of the actual application architecture.
 
 Reliable technical documentation must preserve system boundaries and distinguish documented requirements, source-code findings, analytical reconstructions and unknown implementation details.
