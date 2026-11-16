@@ -22,3 +22,11 @@
 
 ## Repository
 - [GitHub source](https://github.com/ekatmoz88-alt/territory-descriptor-unified)
+
+## Related published material
+- [Enterprise documentation capability map](https://ekatmoz88-alt.github.io/technical-writing-portfolio/enterprise-documentation/)
+- [Interactive C4 / UML diagram module](https://ekatmoz88-alt.github.io/technical-writing-portfolio/enterprise-documentation/diagrams/)
+- [PPO Territory technical archive](https://ekatmoz88-alt.github.io/ppo-territory-archive/)
+- [Deshifrator desktop application documentation](https://ekatmoz88-alt.github.io/deshifrator-docs/)
+- [UMMS SOAP documentation](https://ekatmoz88-alt.github.io/umms-docs/)
+- [C# / SQLite data-access review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html)
