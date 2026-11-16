@@ -1,6 +1,6 @@
 # Component maps — detailed architecture views
 
-> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The Deshifrator SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of real systems using the published project documentation. The systems were deployed in server environments; the diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation.
+> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The Deshifrator SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of the PPO Territory project and related system boundaries using the published project documentation. PPO Territory and Deshifrator remain distinct application/system boundaries within the same project; UMMS is shown separately where relevant. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation.
 
 ## 1. Deshifrator — workstation architecture and trust boundaries (historical source label: ARM «Дискриптор»)
 
@@ -114,9 +114,9 @@ flowchart TB
   COREDB --> SUBJECT
 ```
 
-The project names and model areas come from the published source-code overview. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the UMMS SOAP service/client. These materials belong to the same broader project context, but the exact code-level relationship requires solution-file and deployment evidence.
+The project names and model areas come from the published PPO Territory source-code overview. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented UMMS SOAP service/client. The Oracle DBMS and table inventory shown here belong to the PPO Territory source context; the independent Oracle DMRS / GLOBAL11 project is separate and is not represented by this diagram.
 
-### PPO Territory — Oracle database inventory (not a deployment diagram)
+### PPO Territory — database inventory (Oracle DBMS; not a deployment diagram)
 
 ```mermaid
 flowchart TB
@@ -133,7 +133,7 @@ flowchart TB
   INV -.-> NOTE
 ```
 
-The 401-table count comes from the available database overview. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
+The PPO Territory database overview identifies Oracle as its DBMS and reports 401 tables. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the independent Oracle DMRS / GLOBAL11 project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
 ## 3. Deshifrator — application suite and shared libraries
 
@@ -211,4 +211,6 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - The Deshifrator workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Deshifrator diagrams are limited to the application suite and source excerpts that have been reviewed.
 - UMMS API operation names are documented; complete wire-level contracts and deployment details are not included.
-- Preserve the shared project context while keeping application, component and runtime boundaries distinct. Draw a runtime integration only when primary evidence establishes it.
+- Treat PPO Territory as the umbrella project containing the PPO Territory information system and the Deshifrator workstation application; retain their distinct application and runtime boundaries. The historical label ARM «Дискриптор» refers to Deshifrator, not to another project.
+- Keep the independent Oracle DMRS / GLOBAL11 project outside the PPO Territory documentation. Do not confuse it with the Oracle DBMS identified in PPO Territory database materials.
+- Draw a runtime integration only when primary evidence establishes it.
