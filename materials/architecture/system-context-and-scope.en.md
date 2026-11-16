@@ -6,12 +6,12 @@
 
 ## 1. Purpose and scope
 
-This document establishes the context of two distinct subjects described in the same set of historical materials:
+This document describes two distinct application/system boundaries within the umbrella PPO Territory project:
 
-- **PPO Territory** — a modular departmental information system described as a web application with a client web interface, an application server and a database server.
-- **Deshifrator** — a specialised document-processing workstation system whose historical annotation uses the earlier label ARM Descriptor / «Дискриптор» and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
+- **PPO Territory information system** — a modular departmental information system described as a web application with a client web interface, an application server and a database server.
+- **Deshifrator** — a specialised document-processing workstation application whose historical annotation uses the earlier label ARM Descriptor / «Дискриптор» and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
 
-Their shared business domain and appearance in the same documentation set do **not** prove that they are one executable product, share a runtime, or that all ARM components are part of PPO Territory.
+The two applications belong to one project, but this does **not** make them one executable product or establish a shared runtime. Deshifrator retains its own application and runtime boundaries. The project relationship also does not prove that every ARM component is part of the PPO Territory information system.
 
 ## 2. System context and boundaries
 
