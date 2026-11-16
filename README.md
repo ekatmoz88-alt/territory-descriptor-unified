@@ -1,6 +1,6 @@
 # ППО ID — Technical Documentation
 
-Evidence-based documentation for real systems and project workstreams, each deployed in its own server or office environment. This repository consolidates their documentation while preserving the separate product, application and runtime boundaries; it does not present them as one executable product.
+Evidence-based documentation for the PPO Territory project and its related system boundaries. The project includes the PPO Territory information system and the Deshifrator workstation application as distinct applications with separate runtime boundaries; UMMS is documented as a related system boundary. This repository is a documentation hub, not a single executable product.
 
 ## Architecture diagrams
 
@@ -25,7 +25,7 @@ Evidence-based documentation for real systems and project workstreams, each depl
 
 The materials are grouped for navigation only. This does not mean that every component is part of one executable product or that every architectural relationship has been established.
 
-PPO Territory, Deshifrator (historically labelled ARM «Дискриптор» in some source materials), and UMMS are documented as related but distinct system boundaries. ARM PPZ/PVK, AS Passport RF and MSKTs are separate supplementary source tracks. Similar domain terms, shared historical organizations or adjacent source files do not prove a common runtime architecture.
+ППО «Территория» is the umbrella project. The PPO Territory information system and the Deshifrator workstation application (historically labelled ARM «Дискриптор» in some source materials) are distinct application/system boundaries within that project; the legacy label does not identify a second project. UMMS is documented as a related but separate system boundary. ARM PPZ/PVK, AS Passport RF and MSKTs remain separate supplementary source tracks. The independent Oracle DMRS / GLOBAL11 project is outside this repository. Oracle DBMS references in PPO Territory materials describe the database technology identified for that system and must not be conflated with the separate Oracle project.
 
 In particular, the correspondence between ПОМС / ПОСС and ModuleMobile / ModuleStationary requires further verification against primary materials and source code.
 
@@ -40,7 +40,7 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 ## Structure
 
 - `materials/territory/` — PPO Territory.
-- `materials/territory-database/` — database, API and models.
+- `materials/territory-database/` — PPO Territory database, API and models; Oracle here refers to the DBMS identified in the PPO Territory source materials, not the independent Oracle DMRS / GLOBAL11 project.
 - `materials/descriptor/` — Deshifrator workstation specification (legacy source label: ARM «Дискриптор»).
 - `materials/deshifrator/` — complementary software-component documentation and available source excerpts for the same Deshifrator project.
 - `materials/umms/` — UMMS SOAP and client documentation.
