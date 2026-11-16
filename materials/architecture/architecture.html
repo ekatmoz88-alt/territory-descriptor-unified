@@ -80,17 +80,18 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
 </section>
 <section><h2 data-en="1. System landscape and boundaries" data-ru="1. Ландшафт систем и границы">1. System landscape and boundaries</h2>
 <div class="diagram"><pre class="mermaid">flowchart TB
-  PROJECT["Related project areas"]
-  TERR["PPO Territory&lt;br/&gt;three-tier information system"]
-  DESH["ПО"]
-  UMMS["UMMS&lt;br/&gt;client and SOAP service"]
-  SUP["Supplementary source collections&lt;br/&gt;ARM PPZ/PVK · AS Passport RF · MSKTs"]
+  PROJECT["ППО «Территория» — umbrella project"]
+  TERR["PPO Territory&lt;br/&gt;information system"]
+  DESH["Deshifrator&lt;br/&gt;workstation application"]
+  UMMS["UMMS&lt;br/&gt;related client and SOAP service boundary"]
+  SUP["Separate supplementary source tracks:&lt;br/&gt;ARM PPZ/PVK · AS Passport RF · MSKTs"]
+  ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
   PROJECT --&gt; TERR
   PROJECT --&gt; DESH
-  PROJECT --&gt; UMMS
-  SUP -.-&gt;|catalogued separately| PROJECT
-  TERR ---|"distinct system boundary"| DESH
-  DESH ---|"distinct system boundary"| UMMS</pre></div>
+  PROJECT -.-&gt;|"related context; no runtime integration inferred"| UMMS
+  SUP -.-&gt;|"catalogued separately"| PROJECT
+  ORACLE -.-&gt;|"outside this project"| SUP
+  TERR ---|"distinct application/runtime boundary"| DESH</pre></div>
 <p data-en="Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately. They are not merged into the diagrams and no integration is inferred." data-ru="Дополнительные материалы по АРМ ППЗ/ПВК, АС «Паспорт РФ» и МСКЦ каталогизированы отдельно. Они не объединяются на схемах; интеграция не предполагается без подтверждения.">Supplementary source tracks are separate.</p></section>
 <section><h2 data-en="2. PPO Territory — functional module map" data-ru="2. ППО «Территория» — карта функциональных областей">2. PPO Territory — functional module map</h2>
 <div class="diagram"><pre class="mermaid">flowchart TB
