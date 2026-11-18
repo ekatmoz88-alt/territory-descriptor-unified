@@ -20,7 +20,7 @@ The repository includes selected C# files for the SQLite data-access layer in [s
 
 ## Architecture boundary
 
-This repository documents the **АРМ «Дешифратор»** application suite (ModuleMobile, ModuleStationary, and Printer / PassportPaint). Some historical source materials use the label **АРМ «Дискриптор»** for this same project; it is not a separate product or research track. The Deshifrator application is part of the broader ППО «Территория» project, while retaining its own workstation, executable and runtime boundaries.
+This repository documents the **АРМ «Дешифратор»** application suite (ModuleMobile, ModuleStationary, and Printer / PassportPaint). Some historical source materials use the label **АРМ «Дискриптор»** for this same project; it is not a separate product or research track. The Deshifrator application belongs to the unified ППО «Территория» project contour, while retaining its own workstation, executable and runtime boundaries. Historical references to АРМ «Дискриптор» identify this same application, not a second project.
 
 ПОСС and ПОМС are the stationary/mobile software areas described in the Deshifrator specification; their exact correspondence to `ModuleStationary` and `ModuleMobile` remains subject to verification against primary materials and source code. ПОШ ВБД is documented as a separate gateway boundary. The Oracle GLOBAL11 / DMRS materials belong to an independent Oracle project and are not components of Deshifrator or PPO Territory.
 
@@ -37,5 +37,6 @@ This project was documented as part of the author's work at Scientific Instrumen
 
 ## Architecture
 
+- [Source-based reconstruction of the Deshifrator-14 / PPO Territory Visio diagrams](../architecture/deshifrator-14-source-reconstruction.ru.md)
 - [Architecture catalogue](../architecture/README.md)
 - [Detailed module and component maps](../architecture/component-maps.md)
