@@ -6,6 +6,8 @@
 >
 > **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory and Deshifrator application boundaries, three-tier architecture, deployment modes and evidence limitations.
 >
+> **Source-based reconstruction of supplied Visio diagrams:** [ППО «Территория» и АРМ «Дешифратор»](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, trust-level views, and information-exchange lifecycle.
+>
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
