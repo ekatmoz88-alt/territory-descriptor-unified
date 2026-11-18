@@ -23,5 +23,6 @@ Requirements, interface observations, file evidence, source-code findings and te
 
 ## Architecture
 
+- [Unified PPO Territory / Deshifrator project-contour reconstruction](../architecture/deshifrator-14-source-reconstruction.ru.md)
 - [Architecture catalogue](../architecture/README.md)
 - [Detailed module and component maps](../architecture/component-maps.md)
