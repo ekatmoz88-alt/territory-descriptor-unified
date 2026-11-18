@@ -1,6 +1,6 @@
 # Deshifrator — Workstation Specification
 
-Technical documentation for the real Deshifrator document-processing workstation. Some historical source materials use the earlier label ARM Descriptor / «Дискриптор»; this is the same project, not a separate product.
+Technical documentation for the real Deshifrator document-processing workstation. Some historical source materials use the earlier label ARM Descriptor / «Дискриптор»; this is the same Deshifrator workstation application, not a separate product or project.
 
 ## Published site
 
@@ -25,6 +25,7 @@ Requirements, interface observations, file evidence, source-code findings and te
 
 ## Architecture
 
+- [Source-based reconstruction of the Deshifrator-14 / PPO Territory Visio diagrams](../architecture/deshifrator-14-source-reconstruction.ru.md)
 - [Architecture catalogue](../architecture/README.md)
 - [Detailed module and component maps](../architecture/component-maps.md)
 
