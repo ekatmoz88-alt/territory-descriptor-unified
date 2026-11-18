@@ -6,7 +6,7 @@ Evidence-based documentation for the PPO Territory project and its related syste
 
 - [Interactive architecture catalogue](materials/architecture/architecture.html) — bilingual HTML page with 10 Mermaid diagrams and an evidence-coverage matrix.
 - [Architecture source (Markdown)](materials/architecture/README.md) — canonical diagram and evidence text; keep the HTML diagrams synchronized with this file.
-- [Source-based reconstruction of the Deshifrator-14 / PPO Territory diagrams](materials/architecture/deshifrator-14-source-reconstruction.ru.md) — Visio reconstructions of component interaction, functional and program modules, trust levels, and dossier lifecycle.
+- [Source-based reconstruction of the Deshifrator-14 / PPO Territory diagrams](materials/architecture/deshifrator-14-source-reconstruction.ru.md) — source diagrams and analysis: component interaction, federal SАПД/SЗД/FХД architecture, application layers, sequence diagrams, conflict workflow, trust levels and dossier lifecycle.
 - [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO Territory architecture and deployment modes.
 - [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md) — export/import workflow, file-based logs and identity-link records.
 - [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md) — permission catalogue, including the documented “Allow data export” right.
