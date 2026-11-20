@@ -1,4 +1,4 @@
-# System Context and Architecture Boundaries: PPO Territory and Deshifrator
+# System Context and Architecture Boundaries: PPO PAK and PPO PAK
 
 > **Status:** historical documentation and analytical synthesis of real deployed systems. The systems were deployed and operated in server environments, including office infrastructure. This document is a logical architecture view, not a reconstruction of the physical topology of a specific installation.
 >
@@ -6,24 +6,24 @@
 
 ## 1. Purpose and scope
 
-This document describes two distinct application/system boundaries within the umbrella PPO Territory project:
+This document describes two distinct application/system boundaries within the umbrella PPO PAK project:
 
-- **PPO Territory information system** — a modular departmental information system described as a web application with a client web interface, an application server and a database server.
-- **Deshifrator** — a specialised document-processing workstation application whose historical annotation uses the earlier label ARM Descriptor / «Дискриптор» and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
+- **PPO PAK information system** — a modular departmental information system described as a web application with a client web interface, an application server and a database server.
+- **PPO PAK** — a specialised document-processing workstation application whose historical annotation uses the earlier label ARM Descriptor / «ППО ПАК» and identifies two software stations: a stationary station (ПО СС) and a mobile station (ПО МС).
 
-The two applications belong to one project, but this does **not** make them one executable product or establish a shared runtime. Deshifrator retains its own application and runtime boundaries. The project relationship also does not prove that every ARM component is part of the PPO Territory information system.
+The two applications belong to one project, but this does **not** make them one executable product or establish a shared runtime. PPO PAK retains its own application and runtime boundaries. The project relationship also does not prove that every ARM component is part of the PPO PAK information system.
 
 ## 2. System context and boundaries
 
-### 2.1. PPO Territory
+### 2.1. PPO PAK
 
-The documentation describes PPO Territory as a modular solution for automating the work of territorial units of the Russian Federal Migration Service (FMS). Its functional scope includes document processing and accounting, person and organisation records, address data, case management, migration and registration accounting, citizenship workflows, administrative proceedings, reporting and external information exchange.
+The documentation describes PPO PAK as a modular solution for automating the work of territorial units of the Russian Federal Migration Service (FMS). Its functional scope includes document processing and accounting, person and organisation records, address data, case management, migration and registration accounting, citizenship workflows, administrative proceedings, reporting and external information exchange.
 
-PPO Territory is described as a web application. That statement belongs to the PPO Territory section of the source document; it must not automatically be applied to Deshifrator's stationary and mobile software stations.
+PPO PAK is described as a web application. That statement belongs to the PPO PAK section of the source document; it must not automatically be applied to PPO PAK's stationary and mobile software stations.
 
-### 2.2. Deshifrator
+### 2.2. PPO PAK
 
-The annotation describes Deshifrator as a C# program and identifies two stations:
+The annotation describes PPO PAK as a C# program and identifies two stations:
 
 | Component | Abbreviation | Description in the annotation |
 |---|---|---|
@@ -43,11 +43,11 @@ These are capabilities stated in the historical annotation. They do not prove th
 
 ### 2.3. Ambiguity in the web-application statement
 
-The Deshifrator annotation also says that the system operates “as a web application through a browser”. The same context describes the workstation as a C# program consisting of two stations. Without the complete software-implementation section and the original projects, it is not possible to determine whether the browser statement refers to Deshifrator itself, PPO Territory, or the wider operating environment.
+The PPO PAK annotation also says that the system operates “as a web application through a browser”. The same context describes the workstation as a C# program consisting of two stations. Without the complete software-implementation section and the original projects, it is not possible to determine whether the browser statement refers to PPO PAK itself, PPO PAK, or the wider operating environment.
 
-**Documentation rule:** do not label ПО СС and ПО МС as browser clients or place them inside PPO Territory's three-tier web diagram until primary documentation or source code confirms that interpretation.
+**Documentation rule:** do not label ПО СС and ПО МС as browser clients or place them inside PPO PAK's three-tier web diagram until primary documentation or source code confirms that interpretation.
 
-## 3. PPO Territory functional architecture
+## 3. PPO PAK functional architecture
 
 ### 3.1. Functional modules and subject areas
 
@@ -100,7 +100,7 @@ The system layer includes:
 
 These mechanisms should be treated as shared system services. The exact allocation of responsibilities among server-side modules requires implementation evidence.
 
-## 4. PPO Territory logical architecture
+## 4. PPO PAK logical architecture
 
 The software documentation explicitly specifies a three-tier architecture:
 
@@ -114,7 +114,7 @@ The software documentation explicitly specifies a three-tier architecture:
 flowchart TB
   USER[User]
   WEB[Client web interface]
-  APP[PPO Territory application server]
+  APP[PPO PAK application server]
   DB[(Database server)]
   USER --> WEB --> APP --> DB
 ~~~
@@ -174,7 +174,7 @@ These integrations and API routes belonged to the real deployed system. The publ
 
 Separately inspected client-side source materials contain a UMMS SOAP client with operations for searching and retrieving information and submitting data in selected workflows.
 
-This confirms a specific SOAP interface in the inspected client component. It does **not** prove that PPO Territory as a whole is SOAP-based or that this service is the internal API of the three-tier web application.
+This confirms a specific SOAP interface in the inspected client component. It does **not** prove that PPO PAK as a whole is SOAP-based or that this service is the internal API of the three-tier web application.
 
 ## 7. Data, security and audit requirements
 
@@ -204,15 +204,15 @@ The reference to Visual Studio 2013 does not establish the exact .NET Framework 
 
 | Statement | Basis | Status |
 |---|---|---|
-| PPO Territory is a modular system | Software documentation | Documented |
-| PPO Territory has three tiers | Architecture description | Documented |
+| PPO PAK is a modular system | Software documentation | Documented |
+| PPO PAK has three tiers | Architecture description | Documented |
 | Centralised and distributed modes are supported | Operational description | Documented; distributed-mode details are incomplete |
-| Deshifrator includes ПО СС and ПО МС | Deshifrator annotation | Documented |
-| Deshifrator was developed in C# | Deshifrator annotation | Documented |
-| Deshifrator is entirely a web application | Ambiguous annotation wording | Requires verification |
+| PPO PAK includes ПО СС and ПО МС | PPO PAK annotation | Documented |
+| PPO PAK was developed in C# | PPO PAK annotation | Documented |
+| PPO PAK is entirely a web application | Ambiguous annotation wording | Requires verification |
 | All listed functions are implemented in the available source code | Full traceability has not been completed | Not established |
 | A specific client component uses UMMS SOAP | Inspected source code | Confirmed for that component |
-| SOAP is the common API of PPO Territory | No direct evidence | Not established |
+| SOAP is the common API of PPO PAK | No direct evidence | Not established |
 | The physical topology of a specific region is known | Not present in the supplied excerpt | Unknown |
 
 ## 10. Evidence needed for a technical architecture
@@ -229,8 +229,8 @@ Moving from a logical model to a technical architecture requires:
 
 ## 11. Conclusion
 
-The historical documentation presents PPO Territory as a modular web system with a three-tier architecture and two operating modes: centralised and distributed.
+The historical documentation presents PPO PAK as a modular web system with a three-tier architecture and two operating modes: centralised and distributed.
 
-Deshifrator is documented as a separate workstation application within the PPO Territory project, with mobile and stationary stations and its own application/runtime boundaries. The browser-based statement in its annotation is ambiguous and must not replace verification of the actual application architecture.
+PPO PAK is documented as a separate workstation application within the PPO PAK project, with mobile and stationary stations and its own application/runtime boundaries. The browser-based statement in its annotation is ambiguous and must not replace verification of the actual application architecture.
 
 Reliable technical documentation must preserve system boundaries and distinguish documented requirements, source-code findings, analytical reconstructions and unknown implementation details.
