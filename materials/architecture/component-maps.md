@@ -1,8 +1,8 @@
 # Component maps — detailed architecture views
 
-> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The PPO PAK SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of the PPO PAK project and related system boundaries using the published project documentation. PPO PAK and PPO PAK remain distinct application/system boundaries within the same project; UMMS is shown separately where relevant. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [ППО ПАК и АРМ «ППО ПАК» — реконструкция по первичным схемам](./PPO PAK-14-source-reconstruction.ru.md).
+> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The PPO PAK SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of the PPO PAK information system and the Dossier Processing Workstation as distinct application boundaries within the same project; UMMS is shown separately where relevant. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [ППО ПАК и АРМ обработки досье — реконструкция по первичным схемам](./PPO PAK-14-source-reconstruction.ru.md).
 
-## 1. PPO PAK — workstation architecture and trust boundaries (historical source label: ARM «ППО ПАК»)
+## 1. Dossier Processing Workstation — architecture and trust boundaries (historical source label: ARM «ППО ПАК»)
 
 ```mermaid
 flowchart LR
@@ -46,7 +46,7 @@ flowchart LR
 
 The source specification describes three logical zones: external VBD/gateway, mobile module, and stationary module. It also describes removable-media transfer, `.ummstr` files, gateway authentication, dossier search, editing, preview, printing, font tools, comparison, and consistency checks. Exact trust-zone enforcement and cryptographic allocation must be verified against the original technical-project revision and implementation evidence.
 
-### PPO PAK — workstation functional areas
+### Dossier Processing Workstation — functional areas
 
 ```mermaid
 flowchart TB
@@ -135,7 +135,7 @@ flowchart TB
 
 The PPO PAK database overview identifies Oracle as its DBMS and reports 401 tables. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the independent Oracle DMRS / GLOBAL11 project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
-## 3. PPO PAK — application suite and shared libraries
+## 3. Dossier Processing Workstation — application suite and shared libraries
 
 ```mermaid
 flowchart TB
@@ -167,7 +167,7 @@ flowchart TB
 
 Component names and relationships are based on the published application-suite review and selected source excerpts. A direct runtime call from ModuleMobile or ModuleStationary to Printer/PassportPaint is not established by the reviewed fragments; this is a project-level grouping, not a verified process-call graph.
 
-### PPO PAK — SQLite data-access path
+### Dossier Processing Workstation — SQLite data-access path
 
 ```mermaid
 flowchart LR
@@ -208,10 +208,10 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 ## 5. Evidence limitations
 
 - The complete authoritative list of the 17 PPO PAK functional modules is not available in the current source set.
-- The PPO PAK workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
-- PPO PAK diagrams are limited to the application suite and source excerpts that have been reviewed.
+- The Dossier Processing Workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
+- Dossier Processing Workstation diagrams are limited to the application suite and source excerpts that have been reviewed.
 - UMMS API operation names are documented; complete wire-level contracts and deployment details are not included.
-- Treat PPO PAK as the umbrella project containing the PPO PAK information system and the PPO PAK workstation application; retain their distinct application and runtime boundaries. The historical label ARM «ППО ПАК» refers to PPO PAK, not to another project.
+- Treat PPO PAK as the umbrella project containing the PPO PAK information system and the Dossier Processing Workstation; retain their distinct application and runtime boundaries. The historical label ARM «ППО ПАК» refers to the Dossier Processing Workstation, not to another project.
 - Keep the independent Oracle DMRS / GLOBAL11 project outside the PPO PAK documentation. Do not confuse it with the Oracle DBMS identified in PPO PAK database materials.
 - Draw a runtime integration only when primary evidence establishes it.
 
