@@ -1,20 +1,21 @@
 # PPO Territory
 
-Technical archive for the FMS Territory enterprise information system.
+Technical documentation for the PPO Territory information system within the unified PPO Territory / Deshifrator project contour.
 
 ## Published site
 
-https://ekatmoz88-alt.github.io/ppo-territory-archive/
+https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/territory/
 
 ## Documentation
 
-- [docs/01-system-overview.md](docs/01-system-overview.md)
-- [docs/02-functional-modules.md](docs/02-functional-modules.md)
-- [docs/03-deployment-architecture.md](docs/03-deployment-architecture.md)
-- [docs/04-external-integrations.md](docs/04-external-integrations.md)
-- [docs/05-platform-requirements.md](docs/05-platform-requirements.md)
-- [docs/06-lifecycle-testing.md](docs/06-lifecycle-testing.md)
-- [evidence/verification-matrix.md](evidence/verification-matrix.md)
+- [System overview](docs/01-system-overview.md)
+- [Functional modules](docs/02-functional-modules.md)
+- [Deployment architecture](docs/03-deployment-architecture.md)
+- [External integrations](docs/04-external-integrations.md)
+- [Historical platform requirements](docs/05-platform-requirements.md)
+- [Lifecycle, updates and testing](docs/06-lifecycle-testing.md)
+- [Evidence verification matrix](evidence/verification-matrix.md)
+- [Additional editable diagrams](diagrams/architecture-diagrams.html), [Oracle table groups](diagrams/oracle-table-groups.drawio), [system architecture components](diagrams/system-architecture-components.drawio)
 
 ## Documentation approach
 
