@@ -4,7 +4,7 @@ Technical documentation for the real Deshifrator document-processing workstation
 
 ## Published site
 
-https://ekatmoz88-alt.github.io/descriptor-arm-spec/
+https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/descriptor/
 
 ## Documentation
 
