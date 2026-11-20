@@ -1,6 +1,6 @@
-# PPO Territory
+# ППО ПАК / PPO PAK
 
-Technical documentation for the PPO Territory information system within the unified PPO Territory / Deshifrator project contour.
+Technical documentation for the PPO PAK information system within the unified ППО ПАК / PPO PAK project.
 
 ## Published site
 
