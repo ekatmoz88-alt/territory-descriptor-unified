@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deshifrator · C# / SQLite Data Access Layer Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{font-family:'DM Sans',sans-serif;color:#202b3c;background:#f5f7fa;font-synthesis:none;text-rendering:optimizeLegibility;--ink:#202b3c;--heading:#17283d;--muted:#66758a;--line:#e1e6ed;--blue:#1769aa;--blue-soft:#eaf3fb;--surface:#fff}
+*{box-sizing:border-box}body{margin:0;min-width:320px;background:#f5f7fa;color:var(--ink);font:15px/1.65 'DM Sans',sans-serif}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.topbar{min-height:68px;padding:12px max(5vw,calc((100vw - 1240px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);background:#fff}
+.brand{display:flex;align-items:center;gap:10px;font:700 16px 'Space Grotesk',sans-serif;color:var(--heading)}.brand-mark{display:grid;place-items:center;width:31px;height:31px;border-radius:7px;background:var(--blue-soft);color:var(--blue);font-size:18px}
+.top-links{display:flex;gap:14px;flex-wrap:wrap;font-size:12px}
+main{max-width:1240px;margin:0 auto;padding:42px 28px 56px}
+.eyebrow{margin:0 0 8px;color:#397da9;font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;color:var(--heading)}h1{font-size:clamp(29px,4vw,41px);line-height:1.15;letter-spacing:-1.2px;margin:0 0 10px}h2{font-size:19px;line-height:1.35;margin:0 0 13px}h3{font-size:16px;margin:0 0 12px}
+.hero{margin-bottom:20px}.lead{max-width:850px;color:var(--muted);font-size:14px;margin:0 0 15px}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 22px}.pill{padding:5px 8px;border:1px solid #d8e5f0;border-radius:5px;background:#fff;color:#52677d;font-size:10px}
+.panel{margin:14px 0;padding:21px;background:var(--surface);border:1px solid var(--line);border-radius:9px;box-shadow:0 2px 8px #23354a08}
+.notice{border-left:3px solid var(--blue);background:var(--blue-soft);color:#42536a}
+.diagram-wrap{overflow-x:auto;padding:12px;border:1px solid var(--line);border-radius:7px;background:#fff}.diagram-wrap svg{display:block;width:100%;min-width:720px;height:auto}
+.diagram-note,.muted{color:var(--muted);font-size:12px;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.55}th,td{text-align:left;vertical-align:top;padding:10px 9px;border-bottom:1px solid #e7edf3}thead th{background:#f5f8fb;color:#52677d;font-size:10px;text-transform:uppercase;letter-spacing:.5px}tbody th{color:#285477;white-space:nowrap}td{color:#5d6d81}
+code{color:#285477;background:#eaf3fb;padding:2px 5px;border-radius:4px;font-size:.9em}ol{padding-left:22px}li{padding:4px 0}
+.footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:#8793a3;font-size:11px}
+@media(max-width:700px){main{padding:28px 16px 42px}.panel{padding:15px}.topbar{align-items:flex-start;flex-direction:column}.diagram-wrap svg{min-width:700px}table{display:block;overflow-x:auto}}
+</style></head>
+<body>
+<div class="topbar"><div class="brand"><span class="brand-mark">⌘</span><span>Technical Documentation Portfolio</span></div>
+<nav class="top-links"><a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">Portfolio dashboard</a><a href="https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/architecture/architecture.html">Enterprise architecture catalogue</a><a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/architecture/component-maps.md">Canonical component maps</a></nav></div>
+<main>
+<header class="hero"><p class="eyebrow">DESHIFRATOR · TECHNICAL DOCUMENTATION · SOURCE-BASED REVIEW</p>
+<h1>C# / SQLite Data Access Layer Review</h1>
+<p class="lead">An implementation-focused review of the DbStationary data-access components documented in the Deshifrator application-suite track. The page describes component responsibilities and source-review findings; it is not a deployment topology.</p>
+<div class="meta"><span class="pill">C#</span><span class="pill">SQLite</span><span class="pill">DbStationary</span><span class="pill">Static source review</span><span class="pill">Portfolio case study</span></div></header>
+<div class="panel notice"><strong>Scope and evidence.</strong> This review is based on inspected source excerpts from the connection factory, command wrapper, parameter helpers, reader extensions, mapping layer and provider classes. The original application source is not published here. No claim is made that the application was built, executed, load-tested or covered by a complete automated test suite. The canonical component relationship view is also maintained in the unified architecture repository. The <a href="data-access-review.md">Markdown review record</a> is the editable source for the findings summarized here.</div>
+<section class="panel"><p class="eyebrow">01 · CANONICAL COMPONENT VIEW</p><h2>SQLite Data Access Architecture</h2>
+<div class="diagram-wrap"><svg viewBox="0 0 1000 390" role="img" aria-label="Application code uses SQLiteCommandEx and parameter helpers. The command obtains a connection through ConnectionFactory and uses SQLiteDataReaderEx, SQLiteMaps and application models for result mapping.">
+<defs><marker id="sqlite-canonical-arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6" fill="none" stroke="#397da9" stroke-width="1.5"/></marker></defs>
+<g font-family="DM Sans, sans-serif" text-anchor="middle">
+<rect x="20" y="140" width="150" height="70" rx="8" fill="#eaf3fb" stroke="#8db7d7"/><text x="95" y="170" font-size="15" font-weight="700" fill="#203b55">Application</text><text x="95" y="190" font-size="11" fill="#52677d">Code</text>
+<rect x="230" y="55" width="190" height="70" rx="8" fill="#f2f6fa" stroke="#9aabba"/><text x="325" y="84" font-size="14" font-weight="700" fill="#203b55">SQLiteCommandEx&lt;T&gt;</text><text x="325" y="105" font-size="11" fill="#52677d">Command execution</text>
+<rect x="230" y="225" width="190" height="70" rx="8" fill="#f2f6fa" stroke="#9aabba"/><text x="325" y="254" font-size="13" font-weight="700" fill="#203b55">SQLiteCommandEx_Params</text><text x="325" y="275" font-size="11" fill="#52677d">Typed parameter helpers</text>
+<rect x="480" y="55" width="180" height="70" rx="8" fill="#f2f6fa" stroke="#9aabba"/><text x="570" y="84" font-size="14" font-weight="700" fill="#203b55">ConnectionFactory</text><text x="570" y="105" font-size="11" fill="#52677d">Shared connection</text>
+<rect x="770" y="55" width="190" height="70" rx="8" fill="#edf6f1" stroke="#91bda6"/><ellipse cx="865" cy="72" rx="45" ry="10" fill="#d8eee2" stroke="#72a98b"/><path d="M820 72 V107 C820 120 910 120 910 107 V72" fill="#edf6f1" stroke="#72a98b"/><ellipse cx="865" cy="107" rx="45" ry="10" fill="#d8eee2" stroke="#72a98b"/><text x="865" y="94" font-size="14" font-weight="700" fill="#285b42">MainDB.db3</text>
+<rect x="480" y="205" width="180" height="70" rx="8" fill="#f2f6fa" stroke="#9aabba"/><text x="570" y="234" font-size="14" font-weight="700" fill="#203b55">SQLiteDataReaderEx</text><text x="570" y="255" font-size="11" fill="#52677d">Typed reader access</text>
+<rect x="710" y="205" width="130" height="70" rx="8" fill="#f2f6fa" stroke="#9aabba"/><text x="775" y="234" font-size="14" font-weight="700" fill="#203b55">SQLiteMaps</text><text x="775" y="255" font-size="11" fill="#52677d">Row mapping</text>
+<rect x="860" y="290" width="120" height="65" rx="8" fill="#eaf3fb" stroke="#8db7d7"/><text x="920" y="316" font-size="12" font-weight="700" fill="#203b55">Application</text><text x="920" y="336" font-size="12" font-weight="700" fill="#203b55">Models</text>
+</g>
+<g fill="none" stroke="#397da9" stroke-width="2" marker-end="url(#sqlite-canonical-arrow)"><path d="M170 155 L225 100"/><path d="M170 195 L225 260"/><path d="M420 90 H475"/><path d="M660 90 H765"/><path d="M325 125 V170 H570 V200"/><path d="M660 240 H705"/><path d="M840 240 L855 310"/></g>
+</svg></div>
+<p class="diagram-note">Logical dependency view mirrored from <a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/architecture/component-maps.md">the canonical component map</a>. It is not a complete runtime call graph; connection lifetime and reader disposal are assessed separately below.</p></section>
+<section class="panel"><p class="eyebrow">02 · COMPONENT RESPONSIBILITIES</p><h2>Component Responsibilities</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Component</th><th>Observed responsibility</th></tr></thead><tbody>
+<tr><th><code>ConnectionFactory</code></th><td>Provides the shared SQLite connection.</td></tr>
+<tr><th><code>SQLiteCommandEx&lt;T&gt;</code></th><td>Executes commands and coordinates result handling.</td></tr>
+<tr><th><code>SQLiteCommandEx_Params</code></th><td>Creates and binds typed SQLite parameters, including GUID helpers.</td></tr>
+<tr><th><code>SQLiteDataReaderEx</code></th><td>Provides typed access to values returned by a reader.</td></tr>
+<tr><th><code>SQLiteMaps</code></th><td>Maps database values to application models.</td></tr>
+<tr><th>Providers</th><td>Execute application-level data operations.</td></tr>
+</tbody></table></div><p class="muted"><strong>Model boundary.</strong> Application Models are shown as consumers of mapped data. They are not listed as data-access-layer components.</p></section>
+<section class="panel"><p class="eyebrow">03 · SOURCE REVIEW</p><h2>Architecture Verification Findings</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Area</th><th>Source evidence</th><th>Review status</th></tr></thead><tbody>
+<tr><th>Thread safety</th><td><code>ConnectionFactory.cs:11, 27–33</code> uses a static singleton and returns the same connection without visible locking. <code>CaseProvider.cs:43–45</code> begins transactions on that shared connection.</td><td>Risk identified</td></tr>
+<tr><th>Connection lifecycle</th><td><code>ConnectionFactory.cs:18–24</code> creates and opens the connection in the factory constructor. <code>GetConnection()</code> reuses it; no close/dispose path is implemented in this class.</td><td>Partially verified</td></tr>
+<tr><th>Resource disposal</th><td><code>SQLiteCommandEx.cs:99–110, 130–141, 162–173, 235–239, 261–265</code> contains execution paths using <code>using</code>. Parameter-array overloads at <code>197–215, 248–252, 275–279</code> do not dispose the command. The factory retains its connection.</td><td>Inconsistent disposal</td></tr>
+<tr><th>DataReader lifecycle</th><td><code>SQLiteCommandEx.cs:220–227</code>: <code>AsDataReader()</code> returns a reader from inside a <code>using</code> scope, so it is disposed before the caller can consume it.</td><td>Defect confirmed</td></tr>
+<tr><th>Parameter handling</th><td><code>SQLiteCommandEx_Params.cs:10–22, 25–36</code> creates and adds named parameters. <code>SQLiteCommandEx.cs:299–302</code> maps null to <code>DBNull.Value</code>. <code>ResetParams</code> relies on <code>Debug.Assert</code> for count matching (286–293). Provider call sites use parameterized commands.</td><td>Partially verified</td></tr>
+<tr><th>Type conversion</th><td><code>SQLiteDataReaderEx.cs:28–30, 33–102, 104–121</code> contains a direct generic cast, typed getters and DBNull checks. <code>SQLiteMaps.cs:24–91</code> uses these methods in model mapping. Conversion behavior was not comprehensively tested.</td><td>Partially verified</td></tr>
+<tr><th>GUID processing</th><td><code>CaseProvider.cs:54</code> stores <code>CaseGUID</code> as a string; <code>SQLiteMaps.cs:36–38</code> reads it using <code>Guid.Parse</code>. <code>SQLiteCommandEx_Params.cs:140–155</code> defines GUID parameter helpers. No round-trip test evidence was supplied.</td><td>Partially verified</td></tr>
+<tr><th>Error handling</th><td><code>CaseProvider.cs:308–312</code> catches, logs and rethrows exceptions in <code>LoadCases()</code>. The inspected command execution methods generally propagate exceptions; a consistent logging policy is not visible across providers.</td><td>Partially verified</td></tr>
+</tbody></table></div></section>
+<section class="panel"><p class="eyebrow">04 · FOLLOW-UP</p><h2>Recommended Verification Steps</h2><ol>
+<li>Trace connection ownership from creation through disposal.</li><li>Inspect concurrent execution paths and define thread-safety guarantees.</li><li>Verify reader, command and connection disposal on success and failure paths.</li><li>Test parameter binding, argument-count mismatches, nulls and unexpected values.</li><li>Add type-conversion and GUID round-trip tests.</li><li>Review exception handling and ensure diagnostic logs do not expose sensitive data.</li>
+</ol></section>
+<section class="panel"><p class="eyebrow">05 · REVIEW LIMITATIONS</p><h2>Evidence and Limitations</h2>
+<p class="muted">Statuses describe only the supplied source excerpts. The concurrency risk is not a demonstrated runtime failure. Disposal and conversion findings should be validated with focused tests. The reader-lifecycle defect follows from the <code>using</code> scope in the inspected <code>AsDataReader()</code> implementation.</p>
+<p class="muted">This review covers the SQLite data-access layer in the Deshifrator documentation track. It is separate from PPO Territory's Oracle database and from the Global11 demo data platform.</p></section>
+<div class="footer"><a href="data-access-review.md">Open Markdown review record</a> · <a href="https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/architecture/architecture.html">Back to enterprise architecture catalogue</a> · <a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">Portfolio dashboard repository</a></div>
+</main></body></html>
