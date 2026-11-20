@@ -225,7 +225,7 @@
 
 ## Additional details retained from the physical-structure source
 
-# Физическая структура базы данных ППО ID Docs
+**Source document:** Физическая структура базы данных ППО ID Docs.
 
 - Документ посвящён физической структуре Oracle-информационной базы ППО ID Docs.
 - В нём предусмотрено описание таблиц, полей и индексов.
