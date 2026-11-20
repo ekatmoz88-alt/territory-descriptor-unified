@@ -10,7 +10,7 @@ Public technical documentation for the historical Deshifrator desktop applicatio
 - [Supplementary architecture source review](docs/architecture-source-review.md)
 - [Program description](docs/program-description.md)
 - [Application suite review: ModuleMobile, ModuleStationary, Printer / PassportPaint](docs/application-suite-review.md)
-- [SQLite data-access layer review](docs/data-access-review.md)
+- [SQLite data-access layer review](docs/data-access-review.md) · [published HTML review](data-access-review.html)
 - [Repository contents and evidence boundaries](docs/repository-completeness.md)
 - [File exchange and MRZ](docs/data-exchange-and-mrz.md)
 - [Technical risks and engineering decisions](docs/risks-and-decisions.md)
