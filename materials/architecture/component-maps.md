@@ -2,7 +2,7 @@
 
 > Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The PPO PAK SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of the PPO PAK information system and the Dossier Processing Workstation as distinct application boundaries within the same project; UMMS is shown separately where relevant. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [ППО ПАК и АРМ обработки досье — реконструкция по первичным схемам](./deshifrator-14-source-reconstruction.ru.md).
 
-## 1. Dossier Processing Workstation — architecture and trust boundaries (historical source label: ARM «ППО ПАК»)
+## 1. Dossier Processing Workstation — architecture and trust boundaries (historical source notation: «ППО ПАК»)
 
 ```mermaid
 flowchart LR
@@ -211,7 +211,7 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - The Dossier Processing Workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Dossier Processing Workstation diagrams are limited to the application suite and source excerpts that have been reviewed.
 - UMMS API operation names are documented; complete wire-level contracts and deployment details are not included.
-- Treat PPO PAK as the umbrella project containing the PPO PAK information system and the Dossier Processing Workstation; retain their distinct application and runtime boundaries. The historical label ARM «ППО ПАК» refers to the Dossier Processing Workstation, not to another project.
+- Treat PPO PAK as the umbrella project containing the PPO PAK information system and the Dossier Processing Workstation; retain their distinct application and runtime boundaries. Some source materials use «ППО ПАК» for the workstation as well as for the project/system; this historical notation does not define a separate project.
 - Keep the independent Oracle DMRS / GLOBAL11 project outside the PPO PAK documentation. Do not confuse it with the Oracle DBMS identified in PPO PAK database materials.
 - Draw a runtime integration only when primary evidence establishes it.
 
