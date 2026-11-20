@@ -45,7 +45,7 @@ flowchart TB
   TERR ---|"distinct application/runtime boundary"| DESH
 ```
 
-**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. The PPO PAK information system and Dossier Processing Workstation belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project and the supplementary source collections are outside this project.
+**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. The PPO PAK information system and Dossier Processing Workstation belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project, ADP201P4 and the supplementary source collections are outside this project; no integration with ADP201P4 is established by the reviewed materials.
 
 
 ## 2. PPO PAK — functional module map
