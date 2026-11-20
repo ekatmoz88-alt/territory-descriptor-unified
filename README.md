@@ -10,7 +10,7 @@ Evidence-based documentation for the PPO Territory project and its related syste
 - [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO Territory architecture and deployment modes.
 - [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md) — export/import workflow, file-based logs and identity-link records.
 - [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md) — permission catalogue, including the documented “Allow data export” right.
-- [Detailed component maps](materials/architecture/component-maps.md) — 7 additional Mermaid diagrams for ППО ID, PPO Territory projects, Deshifrator libraries and UMMS workflows.
+- [Detailed component maps](materials/architecture/component-maps.md) — 10 additional Mermaid diagrams for ППО ID, PPO Territory projects, Deshifrator libraries and UMMS workflows.
 
 ## Documentation sections
 
@@ -36,7 +36,7 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 - Do not invent modules, interfaces, database relations, protocols or deployment topology.
 - Do not publish production credentials, personal data, private keys, protected network details or live exchange files.
 - Historical product addresses and support contacts are source references, not verified current services.
-- Keep original source projects available until links, published pages and material completeness have been checked.
+- Preserve the original source archive and the canonical evidence records; duplicate documentation repositories are reduced to redirect pointers after their unique content is merged.
 
 ## Structure
 
