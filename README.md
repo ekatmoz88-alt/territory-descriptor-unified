@@ -1,6 +1,6 @@
 # ППО ID — Technical Documentation
 
-Evidence-based documentation for the PPO PAK project and its related system boundaries. The project includes the PPO PAK information system and the PPO PAK workstation application as distinct applications with separate runtime boundaries; UMMS is documented as a related system boundary. This repository is a documentation hub, not a single executable product.
+Evidence-based documentation for the PPO PAK project and its related system boundaries. The project includes the PPO PAK information system and the Dossier Processing Workstation as distinct applications with separate runtime boundaries; UMMS is documented as a related system boundary. This repository is a documentation hub, not a single executable product.
 
 ## Architecture diagrams
 
@@ -18,7 +18,7 @@ Evidence-based documentation for the PPO PAK project and its related system boun
 |---|---|
 | [PPO PAK](materials/territory/README.md) | Information-system documentation within the unified PPO PAK project contour |
 | [Database and API](materials/territory-database/README.md) | Oracle, logical/physical structure, API and source-code models |
-| [PPO PAK workstation specification](materials/descriptor/README.md) · [software components](materials/deshifrator/README.md) | The same PPO PAK application: workstation specification, ModuleMobile, ModuleStationary, Printer / PassportPaint, data exchange, local storage, dependencies and C# excerpts. Historical «ППО ПАК» is an alternate source label, not a separate project. |
+| [Dossier Processing Workstation specification](materials/descriptor/README.md) · [software components](materials/deshifrator/README.md) | The Dossier Processing Workstation application: workstation specification, ModuleMobile, ModuleStationary, Printer / PassportPaint, data exchange, local storage, dependencies and C# excerpts. Some historical sources use «ППО ПАК» as a label for this workstation; it is not a separate project. |
 | [UMMS / SOAP](materials/umms/README.md) | SOAP API, client, local dossier storage and integration |
 | [Supplementary source systems](materials/reference-systems/README.md) | Separately classified ARM PPZ/PVK, AS Passport RF and MSKTs materials; no integration is inferred |
 
@@ -26,7 +26,7 @@ Evidence-based documentation for the PPO PAK project and its related system boun
 
 The materials are grouped for navigation only. This does not mean that every component is part of one executable product or that every architectural relationship has been established.
 
-ППО ПАК is the umbrella project. The PPO PAK information system and the PPO PAK workstation application (historically labelled ARM «ППО ПАК» in some source materials) are distinct application/system boundaries within that project; the legacy label does not identify a second project. UMMS is documented as a related but separate system boundary. ARM PPZ/PVK, AS Passport RF and MSKTs remain separate supplementary source tracks. The independent Oracle DMRS / GLOBAL11 project is outside this repository. Oracle DBMS references in PPO PAK materials describe the database technology identified for that system and must not be conflated with the separate Oracle project.
+ППО ПАК is the umbrella project. The PPO PAK information system and the Dossier Processing Workstation are distinct application boundaries within that project. Some historical source materials use «ППО ПАК» for the workstation as well as for the project/system; current documentation uses the functional workstation name to keep the entities distinct. UMMS is documented as a related but separate system boundary. ARM PPZ/PVK, AS Passport RF and MSKTs remain separate supplementary source tracks. The independent Oracle DMRS / GLOBAL11 project is outside this repository. Oracle DBMS references in PPO PAK materials describe the database technology identified for that system and must not be conflated with the separate Oracle project.
 
 In particular, the correspondence between ПОМС / ПОСС and ModuleMobile / ModuleStationary requires further verification against primary materials and source code.
 
@@ -42,8 +42,8 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 
 - `materials/territory/` — PPO PAK.
 - `materials/territory-database/` — PPO PAK database, API and models; Oracle here refers to the DBMS identified in the PPO PAK source materials, not the independent Oracle DMRS / GLOBAL11 project.
-- `materials/descriptor/` — PPO PAK workstation specification (legacy source label: ARM «ППО ПАК»).
-- `materials/deshifrator/` — complementary software-component documentation and available source excerpts for the same PPO PAK project.
+- `materials/descriptor/` — Dossier Processing Workstation specification (historical source notation: «ППО ПАК»).
+- `materials/deshifrator/` — software-component documentation and available source excerpts for the Dossier Processing Workstation.
 - `materials/umms/` — UMMS SOAP and client documentation.
 - `materials/reference-systems/` — other separately classified source materials.
 
