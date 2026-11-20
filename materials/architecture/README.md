@@ -6,7 +6,7 @@
 >
 > **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO PAK and PPO PAK application boundaries, three-tier architecture, deployment modes and evidence limitations.
 >
-> **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ «ППО ПАК»](./PPO PAK-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
+> **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ «ППО ПАК»](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
