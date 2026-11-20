@@ -35,11 +35,13 @@ flowchart TB
   UMMS["UMMS<br/>related client and SOAP service boundary"]
   SUP["Separate supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
   ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
+  ADP["ADP201P4<br/>separate project"]
   PROJECT --> TERR
   PROJECT --> DESH
-  PROJECT -.->|"related context; no runtime integration inferred"| UMMS
+  PROJECT -.->|"related context; integration not established"| UMMS
+  PROJECT -.->|"independent project; no integration established"| ORACLE
+  PROJECT -.->|"separate project; no integration established"| ADP
   SUP -.->|"catalogued separately"| PROJECT
-  ORACLE -.->|"outside this project"| SUP
   TERR ---|"distinct application/runtime boundary"| DESH
 ```
 
