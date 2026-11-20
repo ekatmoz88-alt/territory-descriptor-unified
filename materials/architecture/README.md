@@ -4,7 +4,7 @@
 >
 > **Reusable Mermaid fragments:** [Open the Mermaid Patterns Library](./mermaid-patterns.md). It provides copy-and-adapt starting points for system context, deployment, component, data-flow, sequence, ER and state diagrams. These are reusable source snippets, not native Mermaid macros.
 >
-> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO PAK and PPO PAK application boundaries, three-tier architecture, deployment modes and evidence limitations.
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO PAK information system and Dossier Processing Workstation application boundaries, three-tier architecture, deployment modes and evidence limitations.
 >
 > **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ обработки досье](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
 >
@@ -20,7 +20,7 @@
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
 - The 17-module count for PPO PAK is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- ППО ПАК is the umbrella project. the PPO PAK information system and the Dossier Processing Workstation are distinct application boundaries within it; the historical label ARM «ППО ПАК» refers to the workstation, not to a separate project. UMMS retains a separate system/service boundary and is included only as related technical context.
+- ППО ПАК is the umbrella project. The PPO PAK information system and the Dossier Processing Workstation are distinct application boundaries within it; the historical label ARM «ППО ПАК» refers to the workstation, not to a separate project. UMMS retains a separate system/service boundary and is included only as related technical context.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
@@ -43,7 +43,7 @@ flowchart TB
   TERR ---|"distinct application/runtime boundary"| DESH
 ```
 
-**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. PPO PAK and PPO PAK belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project and the supplementary source collections are outside this project.
+**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. The PPO PAK information system and Dossier Processing Workstation belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project and the supplementary source collections are outside this project.
 
 
 ## 2. PPO PAK — functional module map
