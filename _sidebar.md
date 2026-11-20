@@ -13,10 +13,10 @@
 - [Access control — EN](/materials/architecture/access-control.en.md)
 
 ## Systems
-- [PPO Territory](/materials/territory/README.md)
+- [PPO PAK](/materials/territory/README.md)
 - [Territory database and API](/materials/territory-database/README.md)
 - [ППО ID](/materials/descriptor/README.md)
-- [Deshifrator](/materials/deshifrator/README.md)
+- [PPO PAK](/materials/PPO PAK/README.md)
 - [UMMS / SOAP](/materials/umms/README.md)
 - [Supplementary source systems](/materials/reference-systems/README.md)
 
@@ -26,7 +26,7 @@
 ## Related published material
 - [Enterprise documentation capability map](https://ekatmoz88-alt.github.io/technical-writing-portfolio/enterprise-documentation/)
 - [Interactive C4 / UML diagram module](https://ekatmoz88-alt.github.io/technical-writing-portfolio/enterprise-documentation/diagrams/)
-- [PPO Territory technical archive](https://ekatmoz88-alt.github.io/ppo-territory-archive/)
-- [Deshifrator desktop application documentation](https://ekatmoz88-alt.github.io/deshifrator-docs/)
+- [PPO PAK technical archive](https://ekatmoz88-alt.github.io/ppo-territory-archive/)
+- [PPO PAK desktop application documentation](https://ekatmoz88-alt.github.io/PPO PAK-docs/)
 - [UMMS SOAP documentation](https://ekatmoz88-alt.github.io/umms-docs/)
 - [C# / SQLite data-access review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html)
