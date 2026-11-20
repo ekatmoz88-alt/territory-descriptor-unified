@@ -214,3 +214,59 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - Treat PPO Territory as the umbrella project containing the PPO Territory information system and the Deshifrator workstation application; retain their distinct application and runtime boundaries. The historical label ARM «Дискриптор» refers to Deshifrator, not to another project.
 - Keep the independent Oracle DMRS / GLOBAL11 project outside the PPO Territory documentation. Do not confuse it with the Oracle DBMS identified in PPO Territory database materials.
 - Draw a runtime integration only when primary evidence establishes it.
+
+## 6. PPO ID Docs — documented exchange context and traceability
+
+The following source diagrams preserve the documented exchange and code-to-database relationships from the earlier PPO ID documentation set. They describe documentary evidence, not a verified runtime topology.
+
+### 6.1 Exchange context
+
+```mermaid
+flowchart LR
+  MS["ПО МС / АРМ МС"]
+  DB[("Oracle information database")]
+  SERVICE_A["Service participant A"]
+  SERVICE_B["Service participant B"]
+  USB["Umms.UsbExchange — documented module role"]
+  DICT["Dictionary synchronization — documented scenario"]
+  MS -->|"Direct SQL calls — documented"| DB
+  SERVICE_A ---|"JSON format documented; participants and direction unspecified"| SERVICE_B
+  MS --> USB
+  USB --> DICT
+```
+
+Direct SQL calls from the mobile workstation and JSON-formatted service exchange are stated in the source documentation. The exact service participants, message direction, deployment topology and synchronization implementation are not established by this diagram.
+
+### 6.2 Documented software component inventory
+
+```mermaid
+flowchart TB
+  subgraph COMPONENTS["Documented software components"]
+    DATA["Common.Data — models, providers, data access interfaces"]
+    CORE["Umms.Core — business logic"]
+    SERVICE["Umms.Service — service layer and scenarios"]
+    USB["Umms.UsbExchange — USB exchange for ARM MS"]
+  end
+  NOTE["Exact dependency graph, process boundaries and deployment are not established"]
+  DATA --- CORE
+  CORE --- SERVICE
+  DATA --- USB
+  NOTE -.-> COMPONENTS
+```
+
+The component names and roles are documented. The connectors above are only a grouping view; they do not assert a complete dependency graph or direct runtime calls.
+
+### 6.3 API-to-database traceability
+
+```mermaid
+flowchart LR
+  OP["Documented operation / JSON fields"]
+  MODEL["Application model"]
+  PROVIDER["Common.Data provider"]
+  TABLE["Oracle table mapping"]
+  OP -->|"JSON field-to-table mapping described"| TABLE
+  MODEL -->|"Model-to-table mapping described"| TABLE
+  PROVIDER -->|"Provider table usage described"| TABLE
+```
+
+The source materials describe field-to-table, model-to-table and provider-to-table traceability. They do not establish that every operation follows one universal call chain. For table-group classification, see the [editable Draw.io source](../territory-database/database/diagrams/oracle-table-groups.drawio) and [published Oracle table-groups diagram](../territory-database/database/oracle-table-groups.html).
