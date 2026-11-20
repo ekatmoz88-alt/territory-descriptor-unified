@@ -16,3 +16,17 @@
 - Exact platform configurations by deployment model.
 - Original lifecycle schedule, acceptance acts and test reports.
 - Definitions of abbreviations where the source is not unambiguous.
+
+
+## Evidence-level interpretation
+
+| Evidence level | What it supports | Limitation |
+|---|---|---|
+| Technical-project document | Intended scope, architecture and requirements | Does not prove deployment |
+| Interface specification | A specified contract and exchange format | Does not prove a working integration |
+| Screenshot | Visible interface and workflow | Does not prove backend logic |
+| Source code | Implemented behavior in the examined revision | Does not prove production operation |
+| Test report or log | Behavior under recorded test conditions | Does not prove all operational conditions |
+| Acceptance document | Formal acceptance event and stated scope | Must be checked against the original signed record |
+
+These levels distinguish design intent, visible behavior, inspected implementation, test evidence and formal acceptance. They must not be treated as interchangeable.
