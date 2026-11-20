@@ -1,6 +1,6 @@
 # PPO PAK — Desktop Application Documentation
 
-**Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/PPO PAK/
+**Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/deshifrator/
 
 Public technical documentation for the historical PPO PAK desktop application. The materials are based on available project descriptions and selected source-code excerpts; they are not a complete specification or a full source-code audit.
 
@@ -42,6 +42,6 @@ This project was documented as part of the author's work at Scientific Instrumen
 
 ## Architecture
 
-- [Source-based reconstruction of the PPO PAK-14 / PPO PAK Visio diagrams](../architecture/PPO PAK-14-source-reconstruction.ru.md)
+- [Source-based reconstruction of the PPO PAK-14 / PPO PAK Visio diagrams](../architecture/deshifrator-14-source-reconstruction.ru.md)
 - [Architecture catalogue](../architecture/README.md)
 - [Detailed module and component maps](../architecture/component-maps.md)
