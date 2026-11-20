@@ -1,18 +1,20 @@
-# Состав репозитория и границы полноты
+# АРМ «Дешифратор»: документация и границы полноты
 
-## Документация, перенесённая в Deshifrator
+## Документация по проекту «Дешифратор»
 
-В текущем репозитории `deshifrator-docs` находятся следующие самостоятельные документы:
+Проектное описание логической архитектуры ПОСС/ПОМС/ПОШ ВБД размещено в разделе [проектной спецификации АРМ](../../descriptor/README.md). «Дискриптор» — историческое название того же проекта, а не отдельный продукт. В разделе Deshifrator собран анализ выбранных исходников C# и подтверждённых реализационных фрагментов. Проектные требования и исходниковые доказательства не следует смешивать.
+
+В каноническом репозитории `territory-descriptor-unified` материалы проекта размещены в `materials/descriptor/` (проектная спецификация) и `materials/deshifrator/` (анализ программных компонентов).
 
 | Материал | Путь | Содержание |
 |---|---|---|
-| Архитектура | `docs/architecture.md` | Границы приложения, UI, модели, SOAP, ФИАС и внешние зависимости |
-| Обзор программного комплекса | `docs/application-suite-review.md` | ModuleMobile, ModuleStationary, Printer / PassportPaint, обмен, SQLite, UMMS SOAP, поиск документов и адресов |
-| Слой доступа к данным | `docs/data-access-review.md` | Разбор выбранных C#-компонентов SQLite |
-| Файловый обмен и MRZ | `docs/data-exchange-and-mrz.md` | XML-обмен, шифрование, статусы и MRZ |
-| Зависимости и конфигурация | `docs/dependencies-and-runtime.md` | Состав поставки, .NET Framework, SQLite, OCR, Elasticsearch и конфигурационные границы |
-| Риски и инженерные решения | `docs/risks-and-decisions.md` | Наблюдения по коду, риски совместимости и направления модернизации |
-| Состав репозитория | `docs/repository-completeness.md` | Состав опубликованных материалов и ограничения полноты |
+| Архитектура | `materials/deshifrator/docs/architecture.md` | Границы приложения, UI, модели, SOAP, ФИАС и внешние зависимости |
+| Обзор программного комплекса | `materials/deshifrator/docs/application-suite-review.md` | ModuleMobile, ModuleStationary, Printer / PassportPaint, обмен, SQLite, UMMS SOAP, поиск документов и адресов |
+| Слой доступа к данным | `materials/deshifrator/docs/data-access-review.md` | Разбор выбранных C#-компонентов SQLite |
+| Файловый обмен и MRZ | `materials/deshifrator/docs/data-exchange-and-mrz.md` | XML-обмен, шифрование, статусы и MRZ |
+| Зависимости и конфигурация | `materials/deshifrator/docs/dependencies-and-runtime.md` | Состав поставки, .NET Framework, SQLite, OCR, Elasticsearch и конфигурационные границы |
+| Риски и инженерные решения | `materials/deshifrator/docs/risks-and-decisions.md` | Наблюдения по коду, риски совместимости и направления модернизации |
+| Состав репозитория | `materials/deshifrator/docs/repository-completeness.md` | Состав опубликованных материалов и ограничения полноты |
 
 Документы по архитектуре, обмену, зависимостям и рискам также представлены в виде отдельных HTML-страниц на GitHub Pages. Обзор программного комплекса, SQLite review и этот отчёт доступны как Markdown-файлы в репозитории.
 
@@ -30,11 +32,11 @@
 
 В репозитории находятся пять выбранных C#-файлов слоя SQLite:
 
-- `sources/DbStationary.Data/ConnectionFactory.cs`
-- `sources/DbStationary.Data/SQLiteCommandEx.cs`
-- `sources/DbStationary.Data/SQLiteCommandEx_Params.cs`
-- `sources/DbStationary.Data/SQLiteDataReaderEx.cs`
-- `sources/DbStationary.Data/SQLiteMaps.cs`
+- `materials/deshifrator/sources/DbStationary.Data/ConnectionFactory.cs`
+- `materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx.cs`
+- `materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx_Params.cs`
+- `materials/deshifrator/sources/DbStationary.Data/SQLiteDataReaderEx.cs`
+- `materials/deshifrator/sources/DbStationary.Data/SQLiteMaps.cs`
 
 Они перенесены как материалы для source-based review, а не как полный исходный проект.
 
@@ -61,6 +63,6 @@
 
 ## Итог
 
-**Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint находятся в отдельном репозитории Deshifrator.** В GLOBAL11 эти материалы больше не должны учитываться: там оставлен самостоятельный Oracle GLOBAL11 demo data platform.
+**Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `materials/deshifrator/` внутри канонического хаба проекта ППО «Территория».** Oracle GLOBAL11 остаётся отдельным проектом и не входит в этот контур.
 
 При этом в Deshifrator перенесены документация и пять выбранных файлов SQLite data-access, а не полный исходный код всего WPF-комплекса.
