@@ -2,13 +2,13 @@
 
 Public technical documentation and source-based analysis for the historical UMMS document-processing system and its SOAP integration.
 
-**Published documentation:** https://ekatmoz88-alt.github.io/umms-docs/
+**Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/umms/
 
 ## Scope
 
 This repository contains selected public materials describing the UMMS API, client-side workflows, local case and dossier storage, and the relationship between workstation roles and the observed SOAP integration.
 
-It is a historical documentation and analysis project. It does not claim that the original system was implemented on .NET 8, and it is separate from the Deshifrator application suite, ARM Descriptor, FMS Territory, and the Passport Account System.
+It is a historical documentation and analysis track within the unified PPO Territory / Deshifrator project contour. UMMS remains a related, distinct system boundary; grouping the documentation here does not imply that UMMS is the same application, shares a runtime, or is deployed as one product with PPO Territory or Deshifrator. The materials do not claim that the original system was implemented on .NET 8.
 
 ## Public documents
 
@@ -19,6 +19,8 @@ It is a historical documentation and analysis project. It does not claim that th
 | [05_Локальное_хранение_досье_ПУБЛИЧНАЯ.md](05_Локальное_хранение_досье_ПУБЛИЧНАЯ.md) | Source-based review of local case and dossier storage |
 | [06_АРМ_и_SOAP_интеграция_ПУБЛИЧНАЯ.md](06_АРМ_и_SOAP_интеграция_ПУБЛИЧНАЯ.md) | Workstation overview and SOAP integration analysis, with provisional paths identified explicitly |
 | [index.html](index.html) | Published HTML overview |
+| [Codebase overview](docs/architecture/codebase-overview.md) | Source-based architecture and codebase map |
+| [Printing documents](docs/user-guide/printing-documents.md) | User workflow for document printing |
 
 ## Evidence boundaries
 
@@ -28,10 +30,9 @@ The public repository does not include the complete application source tree or i
 
 ## Related projects
 
-- [Deshifrator documentation](https://github.com/ekatmoz88-alt/deshifrator-docs) — separate historical desktop application suite.
-- [ARM Descriptor documentation](https://github.com/ekatmoz88-alt/descriptor-arm-spec) — separate document-processing workstation.
-- [FMS Territory archive](https://github.com/ekatmoz88-alt/ppo-territory-archive) — separate enterprise information system.
-- [Passport Account System documentation](https://github.com/ekatmoz88-alt/territory-docs) — separate passport-accounting system.
+- [PPO Territory / Deshifrator / UMMS unified documentation hub](../../README.md) — shared project navigation with distinct system and application boundaries.
+- [PPO Territory architecture](../territory/README.md) — related enterprise information-system materials.
+- [Deshifrator software documentation](../deshifrator/README.md) — related desktop application documentation.
 
 ## Documentation approach
 
