@@ -6,7 +6,7 @@ Evidence-based documentation for the PPO PAK project and its related system boun
 
 - [Interactive architecture catalogue](materials/architecture/architecture.html) — bilingual HTML page with 10 Mermaid diagrams and an evidence-coverage matrix.
 - [Architecture source (Markdown)](materials/architecture/README.md) — canonical diagram and evidence text; keep the HTML diagrams synchronized with this file.
-- [Source-based reconstruction of the PPO PAK-14 / PPO PAK diagrams](materials/architecture/PPO PAK-14-source-reconstruction.ru.md) — source diagrams and analysis: component interaction, federal SАПД/SЗД/FХД architecture, application layers, sequence diagrams, conflict workflow, trust levels and dossier lifecycle.
+- [Source-based reconstruction of the PPO PAK-14 / PPO PAK diagrams](materials/architecture/deshifrator-14-source-reconstruction.ru.md) — source diagrams and analysis: component interaction, federal SАПД/SЗД/FХД architecture, application layers, sequence diagrams, conflict workflow, trust levels and dossier lifecycle.
 - [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO PAK architecture and deployment modes.
 - [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md) — export/import workflow, file-based logs and identity-link records.
 - [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md) — permission catalogue, including the documented “Allow data export” right.
@@ -18,7 +18,7 @@ Evidence-based documentation for the PPO PAK project and its related system boun
 |---|---|
 | [PPO PAK](materials/territory/README.md) | Information-system documentation within the unified PPO PAK project contour |
 | [Database and API](materials/territory-database/README.md) | Oracle, logical/physical structure, API and source-code models |
-| [PPO PAK workstation specification](materials/descriptor/README.md) · [software components](materials/PPO PAK/README.md) | The same PPO PAK application: workstation specification, ModuleMobile, ModuleStationary, Printer / PassportPaint, data exchange, local storage, dependencies and C# excerpts. Historical «ППО ПАК» is an alternate source label, not a separate project. |
+| [PPO PAK workstation specification](materials/descriptor/README.md) · [software components](materials/deshifrator/README.md) | The same PPO PAK application: workstation specification, ModuleMobile, ModuleStationary, Printer / PassportPaint, data exchange, local storage, dependencies and C# excerpts. Historical «ППО ПАК» is an alternate source label, not a separate project. |
 | [UMMS / SOAP](materials/umms/README.md) | SOAP API, client, local dossier storage and integration |
 | [Supplementary source systems](materials/reference-systems/README.md) | Separately classified ARM PPZ/PVK, AS Passport RF and MSKTs materials; no integration is inferred |
 
@@ -43,7 +43,7 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 - `materials/territory/` — PPO PAK.
 - `materials/territory-database/` — PPO PAK database, API and models; Oracle here refers to the DBMS identified in the PPO PAK source materials, not the independent Oracle DMRS / GLOBAL11 project.
 - `materials/descriptor/` — PPO PAK workstation specification (legacy source label: ARM «ППО ПАК»).
-- `materials/PPO PAK/` — complementary software-component documentation and available source excerpts for the same PPO PAK project.
+- `materials/deshifrator/` — complementary software-component documentation and available source excerpts for the same PPO PAK project.
 - `materials/umms/` — UMMS SOAP and client documentation.
 - `materials/reference-systems/` — other separately classified source materials.
 
