@@ -25,7 +25,7 @@ The repository includes selected C# files for the SQLite data-access layer in [s
 
 ## Architecture boundary
 
-This repository documents the **АРМ «ППО ПАК»** application suite (ModuleMobile, ModuleStationary, and Printer / PassportPaint). Some historical source materials use the label **АРМ «ППО ПАК»** for this same project; it is not a separate product or research track. The PPO PAK application belongs to the unified ППО ПАК project contour, while retaining its own workstation, executable and runtime boundaries. Historical references to АРМ «ППО ПАК» identify this same application, not a second project.
+This documentation describes the **АРМ обработки досье / Dossier Processing Workstation** application suite (ModuleMobile, ModuleStationary, and Printer / PassportPaint). The workstation belongs to the unified ППО ПАК project contour, while retaining its own application, executable and runtime boundaries. Some historical source materials use «ППО ПАК» as a label for this workstation; the current functional name distinguishes it from the PPO PAK information system.
 
 ПОСС and ПОМС are the stationary/mobile software areas described in the PPO PAK specification; their exact correspondence to `ModuleStationary` and `ModuleMobile` remains subject to verification against primary materials and source code. ПОШ ВБД is documented as a separate gateway boundary. The Oracle GLOBAL11 / DMRS materials belong to an independent Oracle project and are not components of PPO PAK or PPO PAK.
 
