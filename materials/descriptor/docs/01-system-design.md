@@ -105,3 +105,12 @@ The supplied technical description enumerates ПОСС functions for information
 The mobile subsystem (ПОМС) performs structured search, dossier selection, export and interaction with ПОШ ВБД. The gateway mediates mobile access to the departmental database.
 
 The workstation equipment list includes a stationary workstation, form printer, scanner, UPS, laminator, duplex monochrome laser printer, inkjet printer, MRZ-recognition module, contactless-card/document module, contact-card module, mobile station and mobile floor-standing air conditioner. Exact models, interfaces, driver versions and per-station ownership are not specified. See [Software Components and Workstation Equipment](09-components-and-workstation-equipment.md).
+
+
+## Transport, cryptography and external-boundary clarification
+
+The project materials mention HTTP/HTTPS and AES/GOST mechanisms. These are separate technical concerns: the use of HTTP(S) does not establish that SQL queries are transmitted directly over HTTP, and the available description does not establish which cryptographic mechanism protects each transfer stage.
+
+The logical exchange described in the source is: ПОМС authenticates through ПОШ ВБД and searches the external data source; selected dossier data is exported to a transfer container; the container is moved to ПОСС using removable media; ПОСС processes the dossier and prepares a return package; the package is returned to ПОМС and submitted through the gateway.
+
+For this project contour, PPO Territory, the departmental database (ВБД) and ПОШ ВБД must retain their documented system/component distinctions. Their exact deployment and interface relationships must be verified against the relevant technical-project revision. This page records logical design evidence, not proof that every specified mechanism was implemented in a particular build.
