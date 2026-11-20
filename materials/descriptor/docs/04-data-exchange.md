@@ -101,9 +101,9 @@ The described `DescriptorFont` structure includes:
 
 Examples mention Cyrillic characters Ц, Щ and Д.
 
-## Important distinction from PPO Territory's own exchange mechanism
+## Important distinction from PPO PAK's own exchange mechanism
 
-PPO Territory documentation separately describes encoded and compressed internal export files and a file-marker mechanism for preventing concurrent duplicate imports. Those details must not automatically be attributed to the ARM Descriptor `.ummstr` workflow. The two mechanisms have not been proven to be the same implementation.
+PPO PAK documentation separately describes encoded and compressed internal export files and a file-marker mechanism for preventing concurrent duplicate imports. Those details must not automatically be attributed to the ARM Descriptor `.ummstr` workflow. The two mechanisms have not been proven to be the same implementation.
 
 ## Open verification items
 
