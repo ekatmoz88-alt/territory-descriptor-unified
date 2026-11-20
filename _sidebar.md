@@ -1,4 +1,4 @@
-# ППО ID — Documentation
+# ППО ПАК / PPO PAK — Documentation
 
 - [Overview](/README.md)
 
@@ -14,9 +14,9 @@
 
 ## Systems
 - [PPO PAK](/materials/territory/README.md)
-- [Territory database and API](/materials/territory-database/README.md)
-- [ППО ID](/materials/descriptor/README.md)
-- [Deshifrator desktop application](/materials/deshifrator/README.md)
+- [PPO PAK database and API](/materials/territory-database/README.md)
+- [Dossier Processing Workstation](/materials/descriptor/README.md)
+- [Application components and source review](/materials/deshifrator/README.md)
 - [UMMS / SOAP](/materials/umms/README.md)
 - [Supplementary source systems](/materials/reference-systems/README.md)
 
