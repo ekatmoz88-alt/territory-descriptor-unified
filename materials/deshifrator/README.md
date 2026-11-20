@@ -7,11 +7,15 @@ Public technical documentation for the historical Deshifrator desktop applicatio
 ## Documentation
 
 - [Architecture and components](docs/architecture.md)
+- [Supplementary architecture source review](docs/architecture-source-review.md)
+- [Program description](docs/program-description.md)
 - [Application suite review: ModuleMobile, ModuleStationary, Printer / PassportPaint](docs/application-suite-review.md)
 - [SQLite data-access layer review](docs/data-access-review.md)
 - [Repository contents and evidence boundaries](docs/repository-completeness.md)
 - [File exchange and MRZ](docs/data-exchange-and-mrz.md)
 - [Technical risks and engineering decisions](docs/risks-and-decisions.md)
+- [Source-specific technical debt review](docs/risks-and-tech-debt.md)
+- [Migration to .NET 8 assessment](docs/migration-to-net8.md)
 - [Printing documents](docs/printing-documents.md)
 - [Dependencies, configuration, and runtime boundaries](docs/dependencies-and-runtime.md)
 
