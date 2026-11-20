@@ -20,6 +20,6 @@ Three areas: gateway authentication; dossier-container import/export between VBD
 
 ## VBD gateway software (ПОШ ВБД)
 
-Two areas: interaction with VBD, including translation of lower-level SQL requests for the PPO Territory database; and consistency validation before reverse import. The technical description refers to optimistic concurrency control and blocking import when conflicts are detected.
+Two areas: interaction with VBD, including translation of lower-level SQL requests for the PPO PAK database; and consistency validation before reverse import. The technical description refers to optimistic concurrency control and blocking import when conflicts are detected.
 
 The specification describes intended functions; it does not prove implementation. The described total is 9 + 3 + 2 = 14 functional areas.
