@@ -16,7 +16,7 @@
 - [PPO PAK](/materials/territory/README.md)
 - [Territory database and API](/materials/territory-database/README.md)
 - [ППО ID](/materials/descriptor/README.md)
-- [PPO PAK](/materials/PPO PAK/README.md)
+- [Deshifrator desktop application](/materials/deshifrator/README.md)
 - [UMMS / SOAP](/materials/umms/README.md)
 - [Supplementary source systems](/materials/reference-systems/README.md)
 
@@ -27,6 +27,6 @@
 - [Enterprise documentation capability map](https://ekatmoz88-alt.github.io/technical-writing-portfolio/enterprise-documentation/)
 - [Interactive C4 / UML diagram module](https://ekatmoz88-alt.github.io/technical-writing-portfolio/enterprise-documentation/diagrams/)
 - [PPO PAK technical archive](https://ekatmoz88-alt.github.io/ppo-territory-archive/)
-- [PPO PAK desktop application documentation](https://ekatmoz88-alt.github.io/PPO PAK-docs/)
+- [PPO PAK desktop application documentation](https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/deshifrator/)
 - [UMMS SOAP documentation](https://ekatmoz88-alt.github.io/umms-docs/)
 - [C# / SQLite data-access review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html)
