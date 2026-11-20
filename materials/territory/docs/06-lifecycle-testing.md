@@ -86,3 +86,8 @@ The source requires responsible regional employees to regularly monitor correct 
 ### Rollout activities
 
 The implementation tables list infrastructure survey, server-software installation/configuration, PPO Territory installation, creation of user and organizational-unit accounts, client-workstation setup, application-level access, full startup, administrator/user consultation and on-site work. These are documented activities, not evidence that every site completed them.
+
+
+## Additional lifecycle terminology from the source archive
+
+The source materials use abbreviations for development and acceptance stages, including ТП, РКД, ПИ and ГИ, as well as acceptance and letter-grade notation such as О1. The abbreviation ПЭО also appears, but its expansion is not supplied here because the primary definition has not been verified.
