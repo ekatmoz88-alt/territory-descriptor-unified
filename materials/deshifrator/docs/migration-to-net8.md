@@ -1,4 +1,4 @@
-# План миграции АРМ «Дешифратор» на .NET 8
+# План миграции АРМ «ППО ПАК» на .NET 8
 
 ## Цель
 
@@ -18,11 +18,11 @@
 
 Рекомендуемая целевая структура:
 
-- `Deshifrator.Domain` — модели и бизнес-правила;
-- `Deshifrator.Application` — use cases, интерфейсы сервисов;
-- `Deshifrator.Infrastructure` — SQLite, SOAP, Elasticsearch/FIAS, файловый обмен;
-- `Deshifrator.Desktop` — WPF/WinForms UI;
-- `Deshifrator.Tests` — unit/integration tests.
+- `PPO PAK.Domain` — модели и бизнес-правила;
+- `PPO PAK.Application` — use cases, интерфейсы сервисов;
+- `PPO PAK.Infrastructure` — SQLite, SOAP, Elasticsearch/FIAS, файловый обмен;
+- `PPO PAK.Desktop` — WPF/WinForms UI;
+- `PPO PAK.Tests` — unit/integration tests.
 
 Не требуется одномоментно переписывать UI. Сначала вынести сетевые и файловые операции за интерфейсы.
 
