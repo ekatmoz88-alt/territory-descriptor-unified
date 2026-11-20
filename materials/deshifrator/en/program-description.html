@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Program description and publication limitations for the Deshifrator document-processing workstation.">
+<title>Deshifrator Workstation — Program Description</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="wrap top">
+<a class="brand" href="./">Deshifrator Workstation · Technical Documentation</a>
+<p class="eyebrow">Technical documentation · Portfolio case study</p>
+<div class="language-switch"><a href="../program-description.html" lang="ru" hreflang="ru">RU</a><span aria-current="true">EN</span></div>
+<nav aria-label="Main navigation">
+<a href="./">Overview</a><a href="./program-description.html" aria-current="page">Program Description</a><a href="./architecture.html">Architecture</a><a href="./data-exchange-and-mrz.html">File Exchange &amp; MRZ</a><a href="./risks-and-decisions.html">Risks &amp; Decisions</a><a href="./dependencies-and-runtime.html">Dependencies</a>
+</nav>
+</header>
+<main class="wrap" id="main">
+<section class="hero">
+<h1>Deshifrator Document-Processing Workstation</h1>
+<p class="lead">Program description and verified scope of the available technical documentation.</p><div class="note"><strong>Project name.</strong> Deshifrator is the official name. “Descriptor” / «Дискриптор» is an earlier name for this same project. The companion <a href="https://github.com/ekatmoz88-alt/descriptor-arm-spec">project specification repository</a> documents ПОСС/ПОМС/ПОШ ВБД; this repository contains source-based analysis.</div>
+<div class="note"><strong>Publication scope.</strong> This page is based on available project descriptions and selected source-code excerpts. It is not a complete program specification or a full source-code audit.</div>
+</section>
+<article class="content">
+<h2>Program purpose</h2>
+<p>Deshifrator is a standalone desktop application intended for searching and processing person and case records, preparing data, and generating print-ready documents.</p>
+<p>The available project materials describe the following functional areas:</p>
+<ul>
+<li>WPF/WinForms user interface;</li>
+<li>person and dossier search;</li>
+<li>case, document, address, and comment data;</li>
+<li>file-based exchange with a mobile module, including import, export, and synchronization;</li>
+<li>SOAP integration described in the project materials;</li>
+<li>address search using FIAS data and Elasticsearch;</li>
+<li>local data storage using SQLite;</li>
+<li>print-view preparation and MRZ processing;</li>
+<li>configuration and logging.</li>
+</ul>
+<p>This list summarizes the available materials. It does not claim that every workflow or interface has been fully verified.</p>
+<h2>Documentation and dependency limitations</h2>
+<div class="note"><strong>Restricted source documentation.</strong> A complete review and visualization of program dependencies is no longer possible because the original technical documentation containing the full component relationships is classified and unavailable for examination.</div>
+<p>Only information and relationships that could be confirmed from the available descriptions and selected source-code excerpts are published. Missing dependencies are not inferred or reconstructed speculatively.</p>
+<p><strong>Important:</strong> The published diagrams are a partial representation of the architecture. The absence of a component or relationship in a diagram does not mean that the corresponding dependency is absent from the production application.</p>
+<h2>Publication boundaries</h2>
+<p>These materials describe a historical application suite and are based on available project descriptions and selected source files. This publication is not a complete technical specification, a complete source-code archive, or a full application audit.</p>
+<p>Restricted component details, production service addresses, credentials, and other non-public configuration parameters are excluded.</p>
+</article>
+</main>
+<footer class="wrap footer">Public portfolio documentation. Based on available project descriptions and selected code fragments.</footer>
+</body></html>
