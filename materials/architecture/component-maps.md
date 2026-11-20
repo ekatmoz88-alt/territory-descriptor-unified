@@ -135,7 +135,7 @@ flowchart TB
 
 The PPO PAK database overview identifies Oracle as its DBMS and reports 401 tables. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the independent Oracle DMRS / GLOBAL11 project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
-## 3. PPO PAK — application suite and shared libraries
+## 3. Dossier Processing Workstation — application suite and shared libraries
 
 ```mermaid
 flowchart TB
