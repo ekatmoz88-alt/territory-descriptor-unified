@@ -16,3 +16,8 @@ The source archive describes PPO Territory as a departmental information system 
 The available materials describe support for migration-registration processes and public services. They also document centralized and distributed deployment models, application and database servers, thin-client workstations in centralized operation, and exchange with external systems.
 
 The source materials refer to 17 functional modules. The complete authoritative module list has not yet been reconstructed from primary technical documentation.
+
+
+## Purpose and document-processing workflow
+
+The archive describes PPO Territory as an automated workstation for searching and retrieving information from information resources by specified criteria. The software suite is also described as supporting preparation of documents with machine-readable zones and entering document data into the relevant information resources. A source example states that PPO can prepare documents identical to the supplied sample; the exact supported document types and template catalogue require verification against the original product documentation.
