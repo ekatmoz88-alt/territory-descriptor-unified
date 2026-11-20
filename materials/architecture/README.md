@@ -4,23 +4,23 @@
 >
 > **Reusable Mermaid fragments:** [Open the Mermaid Patterns Library](./mermaid-patterns.md). It provides copy-and-adapt starting points for system context, deployment, component, data-flow, sequence, ER and state diagrams. These are reusable source snippets, not native Mermaid macros.
 >
-> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO Territory and Deshifrator application boundaries, three-tier architecture, deployment modes and evidence limitations.
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO PAK and PPO PAK application boundaries, three-tier architecture, deployment modes and evidence limitations.
 >
-> **Source-based reconstruction of supplied Visio diagrams:** [ППО «Территория» и АРМ «Дешифратор»](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
+> **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ «ППО ПАК»](./PPO PAK-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
 
-> **Evidence-based portfolio documentation.** This catalogue documents the PPO Territory project. It includes the PPO Territory information system and the Deshifrator workstation application as distinct application/system boundaries with separate executable and runtime scopes. UMMS is documented as a related but separate system boundary. Supplementary source collections are catalogued separately.
+> **Evidence-based portfolio documentation.** This catalogue documents the PPO PAK project. It includes the PPO PAK information system and the PPO PAK workstation application as distinct application/system boundaries with separate executable and runtime scopes. UMMS is documented as a related but separate system boundary. Supplementary source collections are catalogued separately.
 
 ## How to read these diagrams
 
 - **Documented** — directly stated in the available project documentation or visible in inspected source excerpts.
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
-- The 17-module count for PPO Territory is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- ППО «Территория» is the umbrella project. PPO Territory and Deshifrator are distinct application/system boundaries within it; the historical label ARM «Дискриптор» refers to the same Deshifrator project, not a separate product. UMMS retains a separate system/service boundary and is included only as related technical context.
+- The 17-module count for PPO PAK is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
+- ППО ПАК is the umbrella project. PPO PAK and PPO PAK are distinct application/system boundaries within it; the historical label ARM «ППО ПАК» refers to the same PPO PAK project, not a separate product. UMMS retains a separate system/service boundary and is included only as related technical context.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
@@ -29,9 +29,9 @@
 
 ```mermaid
 flowchart TB
-  PROJECT["ППО «Территория» — umbrella project"]
-  TERR["PPO Territory<br/>information system"]
-  DESH["Deshifrator<br/>workstation application"]
+  PROJECT["ППО ПАК — umbrella project"]
+  TERR["PPO PAK<br/>information system"]
+  DESH["PPO PAK<br/>workstation application"]
   UMMS["UMMS<br/>related client and SOAP service boundary"]
   SUP["Separate supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
   ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
@@ -43,14 +43,14 @@ flowchart TB
   TERR ---|"distinct application/runtime boundary"| DESH
 ```
 
-**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. PPO Territory and Deshifrator belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project and the supplementary source collections are outside this project.
+**Boundary note.** The diagram shows the project hierarchy, not a shared executable or runtime. PPO PAK and PPO PAK belong to the same umbrella project but retain distinct application boundaries. UMMS is related technical context with a separate client/service boundary. The independent Oracle DMRS / GLOBAL11 project and the supplementary source collections are outside this project.
 
 
-## 2. PPO Territory — functional module map
+## 2. PPO PAK — functional module map
 
 ```mermaid
 flowchart TB
-  subgraph TERR["PPO Territory"]
+  subgraph TERR["PPO PAK"]
     CORE["CORE domain<br/>persons, identity data, documents,<br/>cases, addresses, payments"]
     DICT["DICT domain<br/>reference data"]
     RP["RP<br/>Russian passport"]
@@ -75,11 +75,11 @@ flowchart TB
 
 **Inventory notes.** The database overview reports 401 tables: 44 `CORE_*`, 104 `DICT_*`, 11 `RP_*`, 10 `FP_*`, 17 `REG_*`, 8 `MIG_*`, and 207 in other subject areas. A separate physical specification contains 381 numbered entries. These figures come from different source documents and have not been reconciled; neither should be silently substituted for the other. The named subject areas above are not a verified one-to-one list of the 17 functional modules. Table counts are database inventory data, not module counts.
 
-## 3. PPO Territory — database technology and logical data architecture
+## 3. PPO PAK — database technology and logical data architecture
 
 ### 3.1 What is established
 
-The PPO Territory database overview identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. This is the Oracle database technology documented for PPO Territory; it is not the separate Oracle DMRS / GLOBAL11 project. A separate physical specification lists 381 numbered entries. The two counts belong to different documents and have not been reconciled. This is evidence of database technology and source-specific inventories; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
+The PPO PAK database overview identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. This is the Oracle database technology documented for PPO PAK; it is not the separate Oracle DMRS / GLOBAL11 project. A separate physical specification lists 381 numbered entries. The two counts belong to different documents and have not been reconciled. This is evidence of database technology and source-specific inventories; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
 
 ```mermaid
 flowchart TB
@@ -135,16 +135,16 @@ The physical Oracle model is a separate artefact. It describes actual database o
 
 These Oracle views are metadata sources for the physical model; they are not part of the conceptual ER model. Use a permitted metadata-only or DDL-only export. Do not provide production table rows, personal data, passwords, connection strings, keys, or other production secrets.
 
-## 4. PPO Territory — deployment architecture: evidence status
+## 4. PPO PAK — deployment architecture: evidence status
 
-The available operational documentation now confirms that PPO Territory supports two operating modes: centralized and distributed. It also describes separate or combined application/database server placement. These are documented supported variants; the actual configuration of a particular region is still unknown.
+The available operational documentation now confirms that PPO PAK supports two operating modes: centralized and distributed. It also describes separate or combined application/database server placement. These are documented supported variants; the actual configuration of a particular region is still unknown.
 
 ```mermaid
 flowchart TB
   subgraph CENTRAL["Centralized operating mode"]
     C_OFFICES["Territorial offices"]
     C_THIN["Thin clients"]
-    C_APP["Single regional PPO Territory application instance"]
+    C_APP["Single regional PPO PAK application instance"]
     C_DB[("Regional database")]
     C_OFFICES --> C_THIN --> C_APP --> C_DB
   end
@@ -169,11 +169,11 @@ The documentation also specifies two server-placement alternatives: separate app
 
 The source does not establish actual regional topology, number of installed instances, replication protocol, conflict-resolution policy, failover nodes, or disaster-recovery arrangements. This is a documented-variants diagram, not a site-specific as-built deployment.
 
-## 5. PPO Territory — external integration landscape
+## 5. PPO PAK — external integration landscape
 
 ```mermaid
 flowchart LR
-  APP["PPO Territory<br/>application boundary"]
+  APP["PPO PAK<br/>application boundary"]
   IF["External exchange interfaces<br/>technical contracts not verified"]
   APP --- IF
   IF --- UIG["ЦБД УИГ<br/>visa / expulsion / deportation data<br/>direction not specified"]
@@ -187,7 +187,7 @@ flowchart LR
 
 The diagram shows seven documented **external exchange areas**. Direction is explicit in the reviewed source only for three: export to ПРИУР ГАС «Выборы», and incoming information from ГИАЦ ГУ МВД and ЗАГС. The remaining four links are neutral because their direction is not established. These are not claims of verified live integrations. Protocols, endpoints, authentication, message schemas, ownership of each adapter, and current operational status are not established.
 
-## 6. Deshifrator — workstation and hardware/software boundary
+## 6. PPO PAK — workstation and hardware/software boundary
 
 ```mermaid
 flowchart TB
@@ -212,13 +212,13 @@ flowchart TB
   EXCHANGE -.-> UNK
 ```
 
-This is a system decomposition of the Deshifrator workstation application from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
+This is a system decomposition of the PPO PAK workstation application from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
 
-## 7. Deshifrator — application suite and component architecture
+## 7. PPO PAK — application suite and component architecture
 
 ```mermaid
 flowchart TB
-  subgraph SUITE["Deshifrator application suite"]
+  subgraph SUITE["PPO PAK application suite"]
     OCRAPP["OCR component"]
     MOBILE["ModuleMobile.exe"]
     STATIONARY["ModuleStationary.exe"]
@@ -262,7 +262,7 @@ flowchart TB
 
 **Boundary warning.** The diagram distinguishes the OCR component, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR 3.02 is assigned to the OCR component; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
 
-## 8. Deshifrator — SQLite data-access components
+## 8. PPO PAK — SQLite data-access components
 
 ```mermaid
 flowchart LR
@@ -317,7 +317,7 @@ The operation names are taken from the public API description and source-review 
 
 | System / area | Architecture views included | Remaining evidence needed |
 |---|---|---|
-| PPO Territory | Functional domains, conceptual data model, centralized/distributed deployment variants, separate/combined server placement, seven external exchange areas (three with documented direction) | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
+| PPO PAK | Functional domains, conceptual data model, centralized/distributed deployment variants, separate/combined server placement, seven external exchange areas (three with documented direction) | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
 | ПО — workstation specification | Stationary/mobile workstation decomposition, peripherals, exchange boundary | Full component inventory, hardware mapping, interface/control descriptions, verified data-flow details |
 | ПО | OCR component (Tesseract OCR 3.02), ModuleMobile.exe, ModuleStationary.exe, Printer/PassportPaint (MRZ and printing), separate SQLite databases | Complete source tree, project references, executable ownership per feature, full schema and runtime configuration |
 | UMMS | Client/service boundary, SOAP operations, search sequence | WSDL/XSD, exact service contract, full client source, deployment and security configuration |
