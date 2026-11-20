@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UMMS Documentation — API and Client System</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:24px 16px;background:#f4f6f9;color:#222;font:16px/1.7 "Segoe UI",Arial,sans-serif}.wrap{max-width:960px;margin:auto;padding:40px 48px;background:#fff;border-radius:10px;box-shadow:0 2px 16px #00000014}h1{font-size:28px;color:#1a3d6d;border-bottom:3px solid #1a3d6d;padding-bottom:12px}h2{font-size:22px;color:#1a3d6d;margin-top:36px;border-left:5px solid #1a3d6d;padding:10px 12px;background:#f0f4fa}h3{font-size:18px;margin-top:24px}table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}th{background:#1a3d6d;color:#fff;text-align:left;padding:10px 12px}td{padding:9px 12px;border-bottom:1px solid #e0e4ea}tr:nth-child(even){background:#f7f9fc}ul,ol{padding-left:24px}li{margin-bottom:8px}.subtitle{color:#666;margin-bottom:24px}.notice{background:#eef4ff;border-left:4px solid #1a3d6d;padding:14px 18px;margin:20px 0;border-radius:4px;font-size:14px}.toc{background:#f8f9fc;border:1px solid #e0e4ea;border-radius:6px;padding:16px 20px;margin:24px 0 32px}.toc ul{list-style:none;margin:8px 0 0;padding:0}.toc li{margin:4px 0}.toc a,.lang a{color:#1a3d6d;text-decoration:none}.toc a:hover,.lang a:hover{text-decoration:underline}code{background:#f0f2f5;padding:2px 6px;border-radius:3px;font-family:Consolas,monospace;color:#c0392b}.footer{margin-top:40px;padding-top:16px;border-top:1px solid #ddd;font-size:13px;color:#888;text-align:center}.lang{text-align:right;font-size:14px}@media(max-width:640px){.wrap{padding:24px 18px}table{display:block;overflow-x:auto;white-space:nowrap}}
+</style>
+</head>
+<body><main class="wrap">
+<p class="lang"><a href="../index.html">Русский</a> | <strong>English</strong></p>
+<h1>UMMS Documentation</h1>
+<p class="subtitle">Public documentation · API and client application overview</p>
+<div class="notice"><strong>Note:</strong> This is a public overview. Detailed technical materials (WSDL files, request examples, and test data) are available upon request under an NDA.</div>
+<nav class="toc"><strong>Contents</strong><ul>
+<li><a href="#api">1. API — Interface Overview</a></li><li><a href="#methods">1.1. Operations</a></li><li><a href="#types">1.2. Data Types</a></li><li><a href="#client">2. Client Application — System Overview</a></li><li><a href="#modules">2.1. Components</a></li><li><a href="#features">2.2. Key Features</a></li><li><a href="#tech">2.3. Technologies</a></li>
+</ul></nav>
+<h2 id="api">1. API — Interface Overview</h2>
+<p>The system exposes a programmatic interface for searching people and retrieving their documents, addresses, and case records, as well as issuing and rolling back documents.</p>
+<h3 id="methods">Operations</h3>
+<table><thead><tr><th>No.</th><th>Operation</th><th>Purpose</th><th>Input</th><th>Output</th></tr></thead><tbody>
+<tr><td>1</td><td><code>searchPersonFile</code></td><td>Search for people by criteria</td><td>Date range, gender, name</td><td>List of people</td></tr>
+<tr><td>2</td><td><code>getPersonDocuments</code></td><td>Retrieve a person's documents</td><td>Person identifier</td><td>List of documents</td></tr>
+<tr><td>3</td><td><code>getPersonAddresses</code></td><td>Retrieve a person's addresses</td><td>Person identifier</td><td>List of addresses</td></tr>
+<tr><td>4</td><td><code>getPersonCasesInfo</code></td><td>Retrieve a person's case information</td><td>Person identifier</td><td>List of cases</td></tr>
+<tr><td>5</td><td><code>getDocumentDetail</code></td><td>Retrieve document details</td><td>Document identifier</td><td>Detailed information</td></tr>
+<tr><td>6</td><td><code>getAddressDetail</code></td><td>Retrieve address details</td><td>Address identifier</td><td>Detailed information</td></tr>
+<tr><td>7</td><td><code>getCountryDictionary</code></td><td>Retrieve the country dictionary</td><td>—</td><td>List of countries</td></tr>
+<tr><td>8</td><td><code>issueNewDocument</code></td><td>Issue a document</td><td>Issuance data</td><td>Operation result</td></tr>
+<tr><td>9</td><td><code>rollbackIssueNewDocument</code></td><td>Roll back document issuance</td><td>Document identifier</td><td>Operation result</td></tr>
+</tbody></table>
+<h3 id="types">Data Types (Summary)</h3>
+<ul><li><strong>Person:</strong> full name, date of birth, gender, identifier</li><li><strong>Document:</strong> series, number, dates, issuing authority, type</li><li><strong>Address:</strong> FIAS code, text representation, type</li><li><strong>Dictionary entry:</strong> code, value</li></ul>
+<h3>Abstract Request Example</h3>
+<pre><code>Operation: searchPersonFile
+Parameters: date from, date to, gender, surname
+Format: SOAP 1.1 / 1.2
+Details: available under NDA</code></pre>
+<h3>Notes</h3>
+<ul><li>Communication protocol: <strong>SOAP</strong></li><li>Service endpoint and credentials are provided separately</li><li>Search results support pagination</li></ul>
+<h2 id="client">2. Client Application — System Overview</h2>
+<p>A software system designed to automate work with individual case files and document issuance.</p>
+<h3 id="modules">Components</h3>
+<table><thead><tr><th>Component</th><th>Abbreviation</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Stationary workstation</td><td>SW</td><td>Operation over a local network with continuous access to the service</td></tr>
+<tr><td>Mobile workstation</td><td>MW</td><td>Offline operation with subsequent synchronisation</td></tr>
+</tbody></table>
+<h3 id="features">Key Features</h3>
+<ul><li>Search and view individual case files</li><li>Manage documents and addresses</li><li>Issue documents through defined workflows</li><li>Exchange data between stationary and mobile workstations in offline mode</li><li>Work with reference dictionaries (countries and FIAS addresses)</li></ul>
+<h3 id="tech">Technologies</h3>
+<ul><li>Platform: Windows, .NET</li><li>UI: WPF</li><li>Data exchange: encrypted files and digital signatures</li></ul>
+<div class="footer">UMMS Documentation · Public Overview</div>
+</main></body></html>
