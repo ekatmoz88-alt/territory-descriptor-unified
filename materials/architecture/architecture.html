@@ -86,11 +86,13 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
   UMMS["UMMS&lt;br/&gt;related client and SOAP service boundary"]
   SUP["Separate supplementary source tracks:&lt;br/&gt;ARM PPZ/PVK · AS Passport RF · MSKTs"]
   ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
+  ADP["ADP201P4&lt;br/&gt;separate project"]
   PROJECT --&gt; TERR
   PROJECT --&gt; DESH
-  PROJECT -.-&gt;|"related context; no runtime integration inferred"| UMMS
+  PROJECT -.-&gt;|"related context; integration not established"| UMMS
+  PROJECT -.-&gt;|"independent project; no integration established"| ORACLE
+  PROJECT -.-&gt;|"separate project; no integration established"| ADP
   SUP -.-&gt;|"catalogued separately"| PROJECT
-  ORACLE -.-&gt;|"outside this project"| SUP
   TERR ---|"distinct application/runtime boundary"| DESH</pre></div>
 <p data-en="Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately. They are not merged into the diagrams and no integration is inferred." data-ru="Дополнительные материалы по АРМ ППЗ/ПВК, АС «Паспорт РФ» и МСКЦ каталогизированы отдельно. Они не объединяются на схемах; интеграция не предполагается без подтверждения.">Supplementary source tracks are separate.</p></section>
 <section><h2 data-en="2. PPO PAK — functional module map" data-ru="2. ППО ПАК — карта функциональных областей">2. PPO PAK — functional module map</h2>
