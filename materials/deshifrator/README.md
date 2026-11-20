@@ -1,8 +1,8 @@
-# PPO PAK — Desktop Application Documentation
+# АРМ обработки досье / Dossier Processing Workstation — Documentation
 
 **Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/deshifrator/
 
-Public technical documentation for the historical PPO PAK desktop application. The materials are based on available project descriptions and selected source-code excerpts; they are not a complete specification or a full source-code audit.
+Public technical documentation for the Dossier Processing Workstation (АРМ обработки досье) application. The materials are based on available project descriptions and selected source-code excerpts; they are not a complete specification or a full source-code audit.
 
 ## Documentation
 
@@ -27,7 +27,7 @@ The repository includes selected C# files for the SQLite data-access layer in [s
 
 This documentation describes the **АРМ обработки досье / Dossier Processing Workstation** application suite (ModuleMobile, ModuleStationary, and Printer / PassportPaint). The workstation belongs to the unified ППО ПАК project contour, while retaining its own application, executable and runtime boundaries. Some historical source materials use «ППО ПАК» as a label for this workstation; the current functional name distinguishes it from the PPO PAK information system.
 
-ПОСС and ПОМС are the stationary/mobile software areas described in the PPO PAK specification; their exact correspondence to `ModuleStationary` and `ModuleMobile` remains subject to verification against primary materials and source code. ПОШ ВБД is documented as a separate gateway boundary. The Oracle GLOBAL11 / DMRS materials belong to an independent Oracle project and are not components of PPO PAK or PPO PAK.
+ПОСС and ПОМС are the stationary/mobile software areas described in the PPO PAK specification; their exact correspondence to `ModuleStationary` and `ModuleMobile` remains subject to verification against primary materials and source code. ПОШ ВБД is documented as a separate gateway boundary. The Oracle GLOBAL11 / DMRS materials belong to an independent Oracle project and are not components of the PPO PAK information system or the Dossier Processing Workstation.
 
 ## Technology context
 
