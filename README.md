@@ -1,4 +1,4 @@
-# ППО ID — Technical Documentation
+# ППО ПАК / PPO PAK — Technical Documentation
 
 Evidence-based documentation for the PPO PAK project and its related system boundaries. The project includes the PPO PAK information system and the Dossier Processing Workstation as distinct applications with separate runtime boundaries; UMMS is documented as a related system boundary. This repository is a documentation hub, not a single executable product.
 
@@ -10,7 +10,7 @@ Evidence-based documentation for the PPO PAK project and its related system boun
 - [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO PAK architecture and deployment modes.
 - [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md) — export/import workflow, file-based logs and identity-link records.
 - [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md) — permission catalogue, including the documented “Allow data export” right.
-- [Detailed component maps](materials/architecture/component-maps.md) — 10 additional Mermaid diagrams for ППО ID, PPO PAK projects, PPO PAK libraries and UMMS workflows.
+- [Detailed component maps](materials/architecture/component-maps.md) — 10 additional Mermaid diagrams for PPO PAK, its application components, libraries and UMMS workflows.
 
 ## Documentation sections
 
@@ -53,4 +53,4 @@ Project site: https://ekatmoz88-alt.github.io/territory-descriptor-unified/
 
 ## Tags
 
-`architecture-catalogue` · `mermaid` · `enterprise-systems` · `ppo-id` · `ppo-territory` · `PPO PAK` · `umms` · `en-ru`
+`architecture-catalogue` · `mermaid` · `enterprise-systems` · `ppo-pak` · `umms` · `en-ru`
