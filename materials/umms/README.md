@@ -43,3 +43,9 @@ This repository uses Markdown and a static HTML publication. Technical claims ar
 
 - [Architecture catalogue](../architecture/README.md)
 - [Detailed module and component maps](../architecture/component-maps.md)
+
+
+## Languages
+
+- [Русский — обзор UMMS](index.html)
+- [English — UMMS overview](en/index.html)
