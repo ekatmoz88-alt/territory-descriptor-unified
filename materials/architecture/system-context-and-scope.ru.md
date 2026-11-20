@@ -234,3 +234,21 @@ flowchart TB
 АРМ «Дешифратор» документируется как отдельное приложение в составе проекта ППО «Территория», с мобильной и стационарной станциями и собственными границами приложения и исполнения. Формулировка о браузерном режиме в аннотации неоднозначна и не должна подменять проверку архитектуры приложения.
 
 Для достоверной технической документации необходимо сохранять границы систем, отдельно отмечать документированные требования, обнаруженные в коде факты, аналитические реконструкции и неизвестные детали.
+
+
+## Documentation map and evidence model
+
+This architecture overview connects the canonical project materials without replacing their detailed records:
+
+- [Oracle database inventory and logical/physical models](../territory-database/database/).
+- [Source-code models and providers](../territory-database/source-code/).
+- [API operations and database traceability](../territory-database/api/).
+- [Interactive architecture catalogue](./architecture.html).
+
+Use three evidence statuses when interpreting the architecture:
+
+| Status | Meaning | Rule |
+|---|---|---|
+| Confirmed by source material | Directly stated in a supplied document or inspected technical material | Identify the specific source |
+| Logical reconstruction | Connects confirmed elements to explain architecture | Do not treat as a proven dependency, physical connection or runtime sequence |
+| Requires verification | Available evidence is insufficient | Do not present as an established fact |
