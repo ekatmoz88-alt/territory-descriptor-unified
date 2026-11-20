@@ -49,3 +49,8 @@ This repository uses Markdown and a static HTML publication. Technical claims ar
 
 - [Русский — обзор UMMS](index.html)
 - [English — UMMS overview](en/index.html)
+
+
+## Client-integration case-study scope
+
+The historical case study describes interaction between stationary WPF workstations and mobile clients through the SOAP API. Its documentation scope includes the method catalogue, data structures, client workflows, person-search behavior and search-logic optimization. This describes the documented integration case; it does not imply that UMMS and the related applications share one runtime or deployment.
