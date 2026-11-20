@@ -1,6 +1,6 @@
-# PPO PAK — Workstation Specification
+# АРМ обработки досье / Dossier Processing Workstation — Specification
 
-Technical documentation for the real PPO PAK document-processing workstation. Some historical source materials use the earlier label ARM Descriptor / «ППО ПАК»; this is the same PPO PAK workstation application, not a separate product or project.
+Technical documentation for the Dossier Processing Workstation (АРМ обработки досье). Some historical source materials use the earlier label ARM Descriptor / «ППО ПАК»; this is the same PPO PAK workstation application, not a separate product or project.
 
 ## Published site
 
