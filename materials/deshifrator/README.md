@@ -1,6 +1,6 @@
 # Deshifrator — Desktop Application Documentation
 
-**Published documentation:** https://ekatmoz88-alt.github.io/deshifrator-docs/
+**Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/deshifrator/
 
 Public technical documentation for the historical Deshifrator desktop application. The materials are based on available project descriptions and selected source-code excerpts; they are not a complete specification or a full source-code audit.
 
@@ -12,6 +12,7 @@ Public technical documentation for the historical Deshifrator desktop applicatio
 - [Repository contents and evidence boundaries](docs/repository-completeness.md)
 - [File exchange and MRZ](docs/data-exchange-and-mrz.md)
 - [Technical risks and engineering decisions](docs/risks-and-decisions.md)
+- [Printing documents](docs/printing-documents.md)
 - [Dependencies, configuration, and runtime boundaries](docs/dependencies-and-runtime.md)
 
 ## Source excerpts
