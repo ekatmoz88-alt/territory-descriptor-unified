@@ -6,13 +6,13 @@
 >
 > **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the PPO PAK and PPO PAK application boundaries, three-tier architecture, deployment modes and evidence limitations.
 >
-> **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ «ППО ПАК»](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
+> **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ обработки досье](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
 
-> **Evidence-based portfolio documentation.** This catalogue documents the PPO PAK project. It includes the PPO PAK information system and the PPO PAK workstation application as distinct application/system boundaries with separate executable and runtime scopes. UMMS is documented as a related but separate system boundary. Supplementary source collections are catalogued separately.
+> **Evidence-based portfolio documentation.** This catalogue documents the PPO PAK project. It includes the PPO PAK information system and the Dossier Processing Workstation as a distinct application boundary with separate executable and runtime scopes. UMMS is documented as a related but separate system boundary. Supplementary source collections are catalogued separately.
 
 ## How to read these diagrams
 
@@ -20,7 +20,7 @@
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
 - The 17-module count for PPO PAK is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- ППО ПАК is the umbrella project. PPO PAK and PPO PAK are distinct application/system boundaries within it; the historical label ARM «ППО ПАК» refers to the same PPO PAK project, not a separate product. UMMS retains a separate system/service boundary and is included only as related technical context.
+- ППО ПАК is the umbrella project. the PPO PAK information system and the Dossier Processing Workstation are distinct application boundaries within it; the historical label ARM «ППО ПАК» refers to the workstation, not to a separate project. UMMS retains a separate system/service boundary and is included only as related technical context.
 - Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
@@ -31,7 +31,7 @@
 flowchart TB
   PROJECT["ППО ПАК — umbrella project"]
   TERR["PPO PAK<br/>information system"]
-  DESH["PPO PAK<br/>workstation application"]
+  DESH["Dossier Processing<br/>Workstation"]
   UMMS["UMMS<br/>related client and SOAP service boundary"]
   SUP["Separate supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
   ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
@@ -187,7 +187,7 @@ flowchart LR
 
 The diagram shows seven documented **external exchange areas**. Direction is explicit in the reviewed source only for three: export to ПРИУР ГАС «Выборы», and incoming information from ГИАЦ ГУ МВД and ЗАГС. The remaining four links are neutral because their direction is not established. These are not claims of verified live integrations. Protocols, endpoints, authentication, message schemas, ownership of each adapter, and current operational status are not established.
 
-## 6. PPO PAK — workstation and hardware/software boundary
+## 6. Dossier Processing Workstation — hardware/software boundary
 
 ```mermaid
 flowchart TB
@@ -212,13 +212,13 @@ flowchart TB
   EXCHANGE -.-> UNK
 ```
 
-This is a system decomposition of the PPO PAK workstation application from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
+This is a system decomposition of the Dossier Processing Workstation from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
 
-## 7. PPO PAK — application suite and component architecture
+## 7. Dossier Processing Workstation — application suite and component architecture
 
 ```mermaid
 flowchart TB
-  subgraph SUITE["PPO PAK application suite"]
+  subgraph SUITE["Dossier Processing Workstation — application suite"]
     OCRAPP["OCR component"]
     MOBILE["ModuleMobile.exe"]
     STATIONARY["ModuleStationary.exe"]
@@ -262,7 +262,7 @@ flowchart TB
 
 **Boundary warning.** The diagram distinguishes the OCR component, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR 3.02 is assigned to the OCR component; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
 
-## 8. PPO PAK — SQLite data-access components
+## 8. Dossier Processing Workstation — SQLite data-access components
 
 ```mermaid
 flowchart LR
