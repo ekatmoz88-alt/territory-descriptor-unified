@@ -2,7 +2,7 @@
 
 ## Context
 
-ARM Descriptor is an automated document-processing workstation comprising a stationary station and a mobile station. Its documented external context includes the departmental database (ВБД), PPO Territory as the named departmental information environment in the supplied materials, and gateway software (ПОШ ВБД).
+ARM Descriptor is an automated document-processing workstation comprising a stationary station and a mobile station. Its documented external context includes the departmental database (ВБД), PPO PAK as the named departmental information environment in the supplied materials, and gateway software (ПОШ ВБД).
 
 The workstation complex and the external information system are kept as separate architecture boundaries. This document does not assert that every named external system is one deployed product or that every described interface was implemented in a specific build.
 
@@ -113,4 +113,4 @@ The project materials mention HTTP/HTTPS and AES/GOST mechanisms. These are sepa
 
 The logical exchange described in the source is: ПОМС authenticates through ПОШ ВБД and searches the external data source; selected dossier data is exported to a transfer container; the container is moved to ПОСС using removable media; ПОСС processes the dossier and prepares a return package; the package is returned to ПОМС and submitted through the gateway.
 
-For this project contour, PPO Territory, the departmental database (ВБД) and ПОШ ВБД must retain their documented system/component distinctions. Their exact deployment and interface relationships must be verified against the relevant technical-project revision. This page records logical design evidence, not proof that every specified mechanism was implemented in a particular build.
+For this project contour, PPO PAK, the departmental database (ВБД) and ПОШ ВБД must retain their documented system/component distinctions. Their exact deployment and interface relationships must be verified against the relevant technical-project revision. This page records logical design evidence, not proof that every specified mechanism was implemented in a particular build.
