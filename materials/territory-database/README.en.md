@@ -31,3 +31,10 @@ The database inventory reports 401 tables. A separate physical-structure documen
 ## Tags
 
 `ppo-id-docs` · `oracle` · `database-documentation` · `system-architecture` · `api-documentation` · `docs-as-code`
+
+
+## Deployment and evidence context
+
+PPO ID Docs is documented as a real information system that was deployed and operated in an office-server environment. The public materials are based on project documents, system descriptions and source code. The fact that the office server is not accessible from the author's personal laptop does not mean that real API routes or working operations did not exist. The current server and database state was not revalidated during publication.
+
+The database inventory reports 401 tables. A separate physical-structure document contains 381 numbered entries; these figures come from different documentary sources and must not be treated as interchangeable.
