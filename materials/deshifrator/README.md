@@ -12,6 +12,7 @@ Public technical documentation for the Dossier Processing Workstation (АРМ о
 - [Application suite review: ModuleMobile, ModuleStationary, Printer / PassportPaint](docs/application-suite-review.md)
 - [SQLite data-access layer review](docs/data-access-review.md) · [published HTML review](data-access-review.html)
 - [Repository contents and evidence boundaries](docs/repository-completeness.md)
+- [DbStationary source and evidence register](evidence/dbstationary-source-register.md)
 - [File exchange and MRZ](docs/data-exchange-and-mrz.md)
 - [Technical risks and engineering decisions](docs/risks-and-decisions.md)
 - [Source-specific technical debt review](docs/risks-and-tech-debt.md)

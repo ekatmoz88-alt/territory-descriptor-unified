@@ -66,3 +66,12 @@
 **Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `materials/deshifrator/` внутри канонического хаба проекта ППО «Территория».** Oracle GLOBAL11 остаётся отдельным проектом и не входит в этот контур.
 
 При этом в Deshifrator перенесены документация и пять выбранных файлов SQLite data-access, а не полный исходный код всего WPF-комплекса.
+
+
+## DbStationary source-review boundary
+
+The current public tree contains the five selected files listed above and no `CaseProvider.cs` or other provider implementation. Consequently, provider-specific statements about transaction call sites, query execution, GUID persistence or exception logging cannot be independently verified from this repository snapshot. Such statements must remain outside the source-based findings until the corresponding source file or an explicitly identified alternative evidence artifact is added.
+
+The exact source snapshot and claim-to-file mapping are maintained in the [DbStationary source register](../evidence/dbstationary-source-register.md). The [SQLite data-access review](data-access-review.md) uses only the evidence available in that register.
+
+The five files also do not include `MainDB.db3`, its DDL, model class definitions, Visual Studio project files or test results. Therefore the review does not establish schema compatibility, successful build, runtime behavior or test coverage.

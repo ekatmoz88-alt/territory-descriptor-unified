@@ -43,6 +43,7 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 - **Evidence status:** Source-based / Anonymized.
 - **CI:** Configured (GitHub Pages rsync deployment).
 - **PII Review:** Pending — binary source files (.pdf, .odg, .wmf, including uppercase extensions) are excluded from the public build; this does not certify the remaining content as PII-free.
+- **Repository visibility warning:** excluding files from the GitHub Pages build does not make them private; the binary source files remain accessible in this public GitHub repository. Their contents and metadata still require review before the repository can be described as PII-cleared.
 - **Evidence policy:** [Evidence & documentation quality policy](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/#evidence-policy).
 
 ## Structure
