@@ -34,6 +34,12 @@ jobs:
             --exclude='.github/' \
             --exclude='_site/' \
             --exclude='node_modules/' \
+            --exclude='*.pdf' \
+            --exclude='*.odg' \
+            --exclude='*.wmf' \
+            --exclude='*.PDF' \
+            --exclude='*.ODG' \
+            --exclude='*.WMF' \
             ./ _site/
 
       - name: Upload Pages artifact

@@ -38,6 +38,13 @@ In particular, the correspondence between ПОМС / ПОСС and ModuleMobile /
 - Historical product addresses and support contacts are source references, not verified current services.
 - Preserve the original source archive and the canonical evidence records; duplicate documentation repositories are reduced to redirect pointers after their unique content is merged.
 
+## Evidence & Quality Governance
+
+- **Evidence status:** Source-based / Anonymized.
+- **CI:** Configured (GitHub Pages rsync deployment).
+- **PII Review:** Pending — binary source files (.pdf, .odg, .wmf, including uppercase extensions) are excluded from the public build; this does not certify the remaining content as PII-free.
+- **Evidence policy:** [Evidence & documentation quality policy](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/#evidence-policy).
+
 ## Structure
 
 - `materials/territory/` — PPO PAK.
