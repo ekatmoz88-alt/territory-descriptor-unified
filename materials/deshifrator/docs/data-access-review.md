@@ -1,89 +1,69 @@
 # C# / SQLite Data Access Layer Review
 
-## Scope and method
+## Scope and evidence boundary
 
-This document records a source-based review of the `DbStationary` C# data access layer. The review covers the supplied implementation excerpts from the connection factory, command wrapper, parameter helpers, data reader extensions, mapping layer and provider classes.
+This review is limited to the five C# source files published under `materials/deshifrator/sources/DbStationary.Data/` in repository revision [`9106e0c`](https://github.com/ekatmoz88-alt/territory-descriptor-unified/tree/9106e0ceccaea4f2175d7d7e74893c6178069372).
 
-The original application source is not published in this portfolio repository. The findings below are documented evidence from the inspected source excerpts; this page is a review artifact, not a mirror of the application source code.
+The published source set contains the connection factory, command wrapper, parameter helpers, reader extensions and mapping functions. It does **not** contain provider classes such as `CaseProvider.cs`, the complete application source tree, project files, the SQLite database or automated tests. Provider-level statements from earlier drafts are therefore excluded from the findings below until the relevant source is added to the evidence set.
 
-The review is static. It does not claim that the application was built, executed, load-tested or covered by a complete automated test suite.
+This is a static, source-based review. It does not claim that the application was built, executed, load-tested or verified against a live database.
+
+The [DbStationary source register](../evidence/dbstationary-source-register.md) records the exact source snapshot, file identities, supported claims and evidence gaps.
 
 ## Component responsibilities
 
-| Component | Observed responsibility |
+| Component | Responsibility directly visible in the published source |
 | --- | --- |
-| `ConnectionFactory` | Creates, opens and returns the SQLite connection. |
-| `SQLiteCommandEx<T>` | Wraps command execution and result handling. |
-| `SQLiteCommandEx_Params` | Creates and binds SQLite parameters, including GUID helpers. |
-| `SQLiteDataReaderEx` | Provides typed access to values returned by a reader. |
-| `SQLiteMaps` | Maps database values to application models. |
-| Providers | Execute application-level data operations. |
+| [`ConnectionFactory`](../sources/DbStationary.Data/ConnectionFactory.cs) | Builds a connection string, opens a SQLite connection and returns the connection held by the factory instance. |
+| [`SQLiteCommandEx<T>`](../sources/DbStationary.Data/SQLiteCommandEx.cs) | Creates SQLite commands, assigns a connection, executes queries and maps returned rows. |
+| [`SQLiteCommandEx_Params`](../sources/DbStationary.Data/SQLiteCommandEx_Params.cs) | Adds typed and named SQLite parameters, including GUID helpers. |
+| [`SQLiteDataReaderEx`](../sources/DbStationary.Data/SQLiteDataReaderEx.cs) | Exposes typed column access and caches column ordinals. |
+| [`SQLiteMaps`](../sources/DbStationary.Data/SQLiteMaps.cs) | Maps selected reader columns to application model objects. |
+| Application providers | **Outside the published source scope.** Their call sites and transaction behavior are not assessed here. |
 
-> **Model boundary:** Application Models are shown as consumers of mapped data in the diagrams. They are not listed as data-access-layer components.
+> **Model boundary:** Application models are consumers of mapped data. Their class definitions are not included in the published source set.
 
 ## Findings
 
-| Area | Source evidence | Review status |
+| Area | Source evidence | Assessment |
 | --- | --- | --- |
-| Thread safety | `ConnectionFactory.cs:11, 27–33` uses a static singleton and returns the same connection without visible locking. `CaseProvider.cs:43–45` begins transactions on that shared connection. | Risk identified |
-| Connection lifecycle | `ConnectionFactory.cs:18–24` creates and opens the connection in the factory constructor. `GetConnection()` reuses it; no close/dispose path is implemented in this class. | Partially verified |
-| Resource disposal | `SQLiteCommandEx.cs:99–110, 130–141, 162–173, 235–239, 261–265` contains execution paths using `using`. Parameter-array overloads at `197–215, 248–252, 275–279` do not dispose the command. The factory retains its connection. | Inconsistent disposal |
-| DataReader lifecycle | `SQLiteCommandEx.cs:220–227`: `AsDataReader()` returns a reader from inside a `using` scope, so it is disposed before the caller can consume it. | Defect confirmed |
-| Parameter handling | `SQLiteCommandEx_Params.cs:10–22, 25–36` creates and adds named parameters. `SQLiteCommandEx.cs:299–302` maps null to `DBNull.Value`. `ResetParams` relies on `Debug.Assert` for count matching (`286–293`). Provider call sites use parameterized commands. | Partially verified |
-| Type conversion | `SQLiteDataReaderEx.cs:28–30, 33–102, 104–121` contains a direct generic cast, typed getters and DBNull checks. `SQLiteMaps.cs:24–91` uses these methods in model mapping. Conversion behavior was not comprehensively tested. | Partially verified |
-| GUID processing | `CaseProvider.cs:54` stores `CaseGUID` as a string; `SQLiteMaps.cs:36–38` reads it using `Guid.Parse`. `SQLiteCommandEx_Params.cs:140–155` defines GUID parameter helpers. No round-trip test evidence was supplied. | Partially verified |
-| Error handling | `CaseProvider.cs:308–312` catches, logs and rethrows exceptions in `LoadCases()`. The inspected command execution methods generally propagate exceptions; a consistent logging policy is not visible across providers. | Partially verified |
+| Connection instance and synchronization | [`ConnectionFactory.cs`](../sources/DbStationary.Data/ConnectionFactory.cs#L11-L33) declares a static factory instance and returns the connection held by that instance. No synchronization is visible in this class. | **Source-based.** Concurrent access and runtime thread-safety are not established by this file alone. |
+| Connection lifecycle | [`ConnectionFactory.cs`](../sources/DbStationary.Data/ConnectionFactory.cs#L18-L33) opens the connection in the private constructor and returns it from `GetConnection()`. This class exposes no close/dispose method. | **Source-based, incomplete.** Ownership and cleanup outside this class are unknown. |
+| Command disposal | [`SQLiteCommandEx.cs`](../sources/DbStationary.Data/SQLiteCommandEx.cs#L92-L181) uses `using (_command)` in the parameterless execution methods. The parameter-array overloads [`AsSingle`](../sources/DbStationary.Data/SQLiteCommandEx.cs#L197-L216), [`AsScalar`](../sources/DbStationary.Data/SQLiteCommandEx.cs#L248-L254) and [`AsNonQuery`](../sources/DbStationary.Data/SQLiteCommandEx.cs#L275-L280) do not dispose the command in the method body. | **Source-based.** Command lifetime differs by overload. The `AsSingle(ResultMapDelegate)` overload delegates to the disposing parameterless overload, despite the adjacent XML comment describing a reusable command. |
+| DataReader lifecycle | [`AsDataReader()`](../sources/DbStationary.Data/SQLiteCommandEx.cs#L220-L228) returns the reader from inside a `using` block. The reader is disposed when the method exits. | **Defect confirmed by source structure.** Runtime behavior has not been separately tested. |
+| Parameter count and reassignment | [`ResetParams`](../sources/DbStationary.Data/SQLiteCommandEx.cs#L286-L293) checks the count with `Debug.Assert` and then assigns values by index. | **Source-based.** A shorter list can leave existing parameter values unchanged; a longer list can reach an invalid parameter index. Release-build behavior and caller impact require tests. |
+| Typed reads and NULL handling | [`SQLiteDataReaderEx.cs`](../sources/DbStationary.Data/SQLiteDataReaderEx.cs#L28-L64) uses a direct generic cast and typed getters. `GetStringNullable()` returns `string.Empty` when the database value is NULL. | **Source-based.** This is a mapping convention, not proof that empty and NULL values are interchangeable in the application domain. |
+| GUID mapping | [`SQLiteMaps.CaseModelMap`](../sources/DbStationary.Data/SQLiteMaps.cs#L24-L41) reads `CaseGUID` as a string and passes it to `Guid.Parse`. [GUID parameter helpers](../sources/DbStationary.Data/SQLiteCommandEx_Params.cs#L140-L155) are also present. | **Source-based.** The complete write/read path, stored representation and round-trip behavior are not established. |
+| Sensitive field names | [`SQLiteMaps.UserModelMap`](../sources/DbStationary.Data/SQLiteMaps.cs#L15-L22) maps fields named `Login`, `Password` and `RoleCode`. | **Security review required.** This proves only that these fields are mapped; it does not establish that real credentials or personal data are present in the repository or database. |
+| Exception handling | The published [`SQLiteCommandEx<T>`](../sources/DbStationary.Data/SQLiteCommandEx.cs) methods do not show provider-level catch/logging logic around command execution. | **Limited observation.** Provider and caller behavior cannot be assessed because those source files are not published. |
 
-## Recommended follow-up verification
-
-1. Trace connection ownership from creation through disposal.
-2. Inspect concurrent execution paths and define thread-safety guarantees.
-3. Verify reader, command and connection disposal on success and failure paths.
-4. Test parameter binding, argument-count mismatches, nulls and unexpected values.
-5. Add type-conversion and GUID round-trip tests.
-6. Review exception handling and ensure diagnostic logs do not expose sensitive data.
-
-## Limitations
-
-The statuses describe only the supplied source excerpts. In particular, the concurrency risk is not a demonstrated runtime failure, and the disposal and conversion findings should be validated with focused tests. The confirmed reader defect follows directly from the `using` scope in the inspected `AsDataReader()` implementation.
-
-This is an independent C# / SQLite review case. It is not part of the Oracle Global11 project.
-
-
-## Additional architecture reconstruction and verification inputs
-
-- `ConnectionFactory` — singleton-подобная фабрика, создающая один `SQLiteConnection`, открывающая его в конструкторе и возвращающая через `GetConnection()`.
-- `SQLiteCommandEx<T>` — fluent-обёртка над `DbCommand`; поддерживает маппинг результатов, scalar/non-query/list/enumerable.
-- `SQLiteCommandEx_Params` — расширение для создания типизированных параметров.
-- `SQLiteDataReaderEx` — вспомогательное чтение столбцов по имени с кешированием ordinal.
-- `SQLiteMaps` — mapping-функции из строк результата SQL в модели приложения.
-
-## Поток данных (наблюдаемый по предоставленным файлам)
+## Data flow represented by the available files
 
 ```mermaid
 flowchart LR
   App[Application code] --> Cmd[SQLiteCommandEx<T>]
-  Cmd --> Conn[ConnectionFactory]
-  Conn --> DB[(MainDB.db3)]
+  Cmd --> Factory[ConnectionFactory]
+  Factory --> Conn[SQLite connection]
+  Conn --> DB[(Configured MainDB.db3 path)]
   Cmd --> Reader[SQLiteDataReaderEx]
   Reader --> Maps[SQLiteMaps]
   Maps --> Models[Application models]
 ```
 
-## Риски и вопросы для проверки
+The diagram shows relationships visible in the selected source files. It is not a complete runtime call graph. The configured database file itself is not included in the repository.
 
-1. **Singleton и потокобезопасность.** `_instance` и общее `_connection` не синхронизированы. Один открытый connection может использоваться конкурентно из разных потоков.
-2. **Время жизни соединения.** `ConnectionFactory` открывает соединение один раз и не предоставляет явного механизма закрытия/освобождения.
-3. **Освобождение команды.** `AsList`, `AsEnumerable`, `AsSingle`, `AsScalar` и `AsNonQuery` в отдельных перегрузках используют `using (_command)`, то есть уничтожают команду. Другие перегрузки повторно используют команду. Это поведение легко перепутать.
-4. **`AsDataReader`.** Метод возвращает reader из блока `using`; при выходе из блока reader уже будет закрыт/освобождён. Это функциональный дефект.
-5. **Параметры.** `ResetParams` проверяет число параметров только через `Debug.Assert`; в Release эта проверка может отсутствовать. Параметры задаются позиционно, что хрупко.
-6. **Преобразование типов.** `GetValue<T>` делает прямое приведение; `GetStringNullable` возвращает пустую строку вместо `null`. Это может скрывать разницу между NULL и пустым значением.
-7. **GUID.** `SQLiteMaps.CaseModelMap` читает `CaseGUID` как строку и вызывает `Guid.Parse`; неверный/пустой формат приведёт к исключению.
-8. **Имена и типы.** В `SQLiteMaps` часть дат читается как `DateTime`, а часть как `string`. Реальный формат SQLite и SQL-запросы не приложены — проверить корректность нельзя.
+## Follow-up verification
 
-## Что нужно для верификации
+1. Obtain and review the relevant provider source, including `CaseProvider.cs`, before making claims about transactions, query call sites or provider-level exception handling.
+2. Trace connection ownership and disposal across the complete application.
+3. Test concurrent access and define the actual thread-safety requirements.
+4. Test command and reader disposal on success, failure and early-exit paths.
+5. Test parameter-count mismatches, repeated execution, NULL values and parameter reuse.
+6. Add type-conversion and GUID round-trip tests against a controlled schema.
+7. Review the handling and storage of the `Login` and `Password` fields without publishing real credentials or personal data.
 
-- файл `MainDB.db3` или `sqlite_schema`;
-- SQL-запросы, передаваемые в `SQLiteCommandEx`;
-- определения моделей из `Common.Data.Models`, `Common.Data.Models.Umms`, `DbStationary.Models`;
-- целевая версия .NET и NuGet-зависимости.
+## Limitations
+
+The findings apply only to the five published C# files and the exact source revision recorded in the [source register](../evidence/dbstationary-source-register.md). They do not establish the behavior of unavailable providers, the full application, the actual database schema or a deployed environment.
+
+This is a C# / SQLite review within the Dossier Processing Workstation documentation track. It is not part of the separate Oracle GLOBAL11 project.
