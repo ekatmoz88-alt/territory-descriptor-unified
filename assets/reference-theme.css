@@ -1,0 +1,191 @@
+:root {
+  --blue: #455a64;
+  --blue-dark: #37474f;
+  --blue-soft: #e0f2f1;
+  --ink: #263238;
+  --text: #37474f;
+  --muted: #607d8b;
+  --line: #e0e0e0;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --code: #f1f5fb;
+  --shadow: 0 1px 3px rgba(0, 0, 0, .06);
+  --radius: 2px;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 64px; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--surface);
+  font: 14px/1.6 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+.app-nav {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 48px;
+  margin: 0;
+  padding: 0 28px 0 260px;
+  background: var(--blue-dark);
+  box-shadow: var(--shadow);
+}
+.app-nav::before {
+  position: absolute;
+  left: 20px;
+  color: #fff;
+  content: "ППО «Территория» · Техническая документация";
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.app-nav a {
+  margin-left: 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+.app-nav a:hover { color: #e0f2f1; }
+.github-corner { display: none; }
+
+.sidebar {
+  top: 48px;
+  bottom: 0;
+  width: 240px;
+  padding: 0;
+  overflow-y: auto;
+  background: #f5f7f8;
+  border-right: 1px solid var(--line);
+}
+.sidebar > h1,
+.sidebar .app-name {
+  display: none;
+}
+.sidebar-nav {
+  padding: 22px 16px 32px 20px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.sidebar-nav > ul > li > a,
+.sidebar-nav li a {
+  color: var(--blue);
+  font-size: 12px;
+}
+.sidebar-nav li a:hover,
+.sidebar-nav li.active > a {
+  color: var(--ink);
+  font-weight: 600;
+}
+.sidebar-nav ul li a {
+  padding: 4px 0;
+}
+.sidebar-nav ul li ul {
+  padding-left: 14px;
+}
+.sidebar-nav ul li ul li a {
+  font-size: 11px;
+}
+.sidebar-toggle {
+  position: fixed;
+  z-index: 40;
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 32px;
+}
+.content {
+  top: 48px;
+  left: 240px;
+  right: 0;
+  max-width: none;
+  padding: 0;
+}
+.markdown-section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 40px 64px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.markdown-section h1 {
+  margin: 0 0 24px;
+  color: var(--ink);
+  font-size: clamp(25px, 2.4vw, 30px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+.markdown-section h2 {
+  margin: 36px 0 16px;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+.markdown-section h3 {
+  margin: 26px 0 12px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.markdown-section a { color: var(--blue); }
+.markdown-section a:hover { color: var(--ink); }
+.markdown-section table {
+  display: table;
+  width: 100%;
+  font-size: 13px;
+}
+.markdown-section th {
+  background: #f5f7f8;
+  color: var(--ink);
+  font-weight: 600;
+}
+.markdown-section th,
+.markdown-section td {
+  border-color: var(--line);
+}
+.markdown-section blockquote {
+  border-left-color: var(--blue);
+  color: var(--muted);
+}
+.markdown-section pre,
+.markdown-section code {
+  background: var(--code);
+}
+.markdown-section pre > code { background: transparent; }
+.markdown-section img { max-width: 100%; }
+.markdown-section hr { border-color: var(--line); }
+.pagination-item a {
+  color: var(--blue);
+}
+@media (max-width: 768px) {
+  .app-nav { padding-right: 16px; padding-left: 48px; }
+  .app-nav::before {
+    left: 48px;
+    max-width: 48%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+  .app-nav a { margin-left: 10px; font-size: 11px; }
+  .sidebar { top: 48px; }
+  .content {
+    top: 48px;
+    left: 0;
+    width: 100%;
+  }
+  .markdown-section { padding: 26px 22px 48px; }
+}
+@media (max-width: 420px) {
+  .app-nav::before { content: "ППО «Территория»"; }
+  .app-nav a { font-size: 10px; }
+  .markdown-section { padding: 22px 18px 40px; }
+}
