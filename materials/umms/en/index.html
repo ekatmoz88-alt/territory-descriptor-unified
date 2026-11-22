@@ -6,9 +6,28 @@
 <title>UMMS Documentation — API and Client System</title>
 <style>
 *{box-sizing:border-box}body{margin:0;padding:24px 16px;background:#f4f6f9;color:#222;font:16px/1.7 "Segoe UI",Arial,sans-serif}.wrap{max-width:960px;margin:auto;padding:40px 48px;background:#fff;border-radius:10px;box-shadow:0 2px 16px #00000014}h1{font-size:28px;color:#1a3d6d;border-bottom:3px solid #1a3d6d;padding-bottom:12px}h2{font-size:22px;color:#1a3d6d;margin-top:36px;border-left:5px solid #1a3d6d;padding:10px 12px;background:#f0f4fa}h3{font-size:18px;margin-top:24px}table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}th{background:#1a3d6d;color:#fff;text-align:left;padding:10px 12px}td{padding:9px 12px;border-bottom:1px solid #e0e4ea}tr:nth-child(even){background:#f7f9fc}ul,ol{padding-left:24px}li{margin-bottom:8px}.subtitle{color:#666;margin-bottom:24px}.notice{background:#eef4ff;border-left:4px solid #1a3d6d;padding:14px 18px;margin:20px 0;border-radius:4px;font-size:14px}.toc{background:#f8f9fc;border:1px solid #e0e4ea;border-radius:6px;padding:16px 20px;margin:24px 0 32px}.toc ul{list-style:none;margin:8px 0 0;padding:0}.toc li{margin:4px 0}.toc a,.lang a{color:#1a3d6d;text-decoration:none}.toc a:hover,.lang a:hover{text-decoration:underline}code{background:#f0f2f5;padding:2px 6px;border-radius:3px;font-family:Consolas,monospace;color:#c0392b}.footer{margin-top:40px;padding-top:16px;border-top:1px solid #ddd;font-size:13px;color:#888;text-align:center}.lang{text-align:right;font-size:14px}@media(max-width:640px){.wrap{padding:24px 18px}table{display:block;overflow-x:auto;white-space:nowrap}}
+
+/* Shared portfolio shell */
+.umms-topbar{position:sticky;top:0;z-index:30;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#37474f;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.umms-topbar strong{color:#fff;font-size:13px;font-weight:650}.umms-topbar a{color:#fff;font-size:12px}
+.umms-layout{display:grid;grid-template-columns:240px minmax(0,1fr);max-width:1440px;margin:0 auto}
+.umms-sidebar{position:sticky;top:48px;align-self:start;height:calc(100vh - 48px);overflow:auto;padding:24px 16px 32px 20px;background:#f5f7f8;border-right:1px solid #e0e0e0}
+.umms-sidebar p{margin:0 0 10px;color:#607d8b;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.umms-sidebar nav{display:grid;gap:3px}.umms-sidebar nav a{display:block;padding:6px 9px;border-radius:2px;color:#455a64;font-size:12px;text-decoration:none}
+.umms-sidebar nav a:hover{background:#e8eef0;color:#263238}
+.umms-content{min-width:0;padding:32px 40px 64px}
+.umms-content .wrap{max-width:1080px;width:100%;margin:0 auto;padding:0;background:#fff;border-radius:2px;box-shadow:none}
+.umms-content h1{font-size:clamp(25px,2.4vw,30px);font-weight:400;color:#263238;border-bottom:1px solid #e0e0e0}
+.umms-content h2{font-size:20px;font-weight:400;color:#263238;border-left:0;border-radius:0;background:transparent}
+.umms-content h3{font-size:15px;font-weight:600;color:#37474f}
+.umms-content th{background:#f5f7f8;color:#263238}.umms-content td{border-color:#e0e0e0}
+.umms-content .notice,.umms-content .toc{border-radius:2px}
+@media(max-width:760px){.umms-layout{grid-template-columns:1fr}.umms-sidebar{position:static;height:auto;overflow:visible;padding:10px 18px;border-right:0;border-bottom:1px solid #e0e0e0}.umms-sidebar nav{display:flex;flex-wrap:wrap;gap:3px 8px}.umms-sidebar nav a{padding:4px 6px}.umms-content{padding:24px 18px 42px}.umms-content .wrap{padding:0}}
+
 </style>
 </head>
-<body><main class="wrap">
+<body><header class="umms-topbar"><strong>UMMS · API and Client</strong><a href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">GitHub repository ↗</a></header><div class="umms-layout"><aside class="umms-sidebar"><p>Documentation</p><nav><a href="#top">Overview</a><a href="#api">API</a><a href="#methods">Operations</a><a href="#types">Data types</a><a href="#client">Client application</a><a href="#modules">Components</a><a href="#features">Features</a><a href="#tech">Technologies</a></nav></aside><div class="umms-content">
+<main class="wrap">
 <p class="lang"><a href="../index.html">Русский</a> | <strong>English</strong></p>
 <h1>UMMS Documentation</h1>
 <p class="subtitle">Public documentation · API and client application overview</p>
@@ -51,4 +70,4 @@ Details: available under NDA</code></pre>
 <h3 id="tech">Technologies</h3>
 <ul><li>Platform: Windows, .NET</li><li>UI: WPF</li><li>Data exchange: encrypted files and digital signatures</li></ul>
 <div class="footer">UMMS Documentation · Public Overview</div>
-</main></body></html>
+</main></div></div></body></html>
