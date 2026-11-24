@@ -21,7 +21,7 @@ Public technical documentation for the Dossier Processing Workstation (АРМ о
 
 ## Source excerpts
 
-The repository includes selected C# files for the SQLite data-access layer in [sources/DbStationary.Data](sources/DbStationary.Data/). These are review excerpts, not a complete application source tree.
+The repository includes selected C# source excerpts: the SQLite data-access layer in [sources/DbStationary.Data](sources/DbStationary.Data/) and the UMMS person-search result ViewModel in [sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs](sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs). These are review excerpts, not a complete application source tree.
 
 ## Architecture boundary
 
