@@ -30,15 +30,16 @@
 
 ## Выборочные исходные файлы
 
-В репозитории находятся пять выбранных C#-файлов слоя SQLite:
+В репозитории находятся пять выбранных C#-файлов слоя SQLite и отдельный исходный фрагмент ViewModel поиска персон UMMS:
 
 - `materials/deshifrator/sources/DbStationary.Data/ConnectionFactory.cs`
 - `materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx.cs`
 - `materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx_Params.cs`
 - `materials/deshifrator/sources/DbStationary.Data/SQLiteDataReaderEx.cs`
 - `materials/deshifrator/sources/DbStationary.Data/SQLiteMaps.cs`
+- `materials/deshifrator/sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs` — ViewModel результата поиска персоны UMMS; предоставляет поля модели для WPF-привязки и состояние открытия результата во вкладке.
 
-Они перенесены как материалы для source-based review, а не как полный исходный проект.
+Файлы перенесены как материалы для source-based review, а не как полный исходный проект.
 
 ## Что не следует считать перенесённым
 
@@ -65,4 +66,4 @@
 
 **Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `materials/deshifrator/` внутри канонического хаба проекта ППО «Территория».** Oracle GLOBAL11 остаётся отдельным проектом и не входит в этот контур.
 
-При этом в Deshifrator перенесены документация и пять выбранных файлов SQLite data-access, а не полный исходный код всего WPF-комплекса.
+При этом в Deshifrator перенесены документация, пять выбранных файлов SQLite data-access и отдельный фрагмент UMMS ViewModel, а не полный исходный код всего WPF-комплекса.
