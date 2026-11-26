@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Evidence-based technical documentation for the PPO PAK project, the PPO PAK information system and the Dossier Processing Workstation.">
+  <meta name="description" content="Evidence-based technical documentation for the PPO PAK project, the PPO PAK information system and the Dossier Processing Workstation">
   <title>ППО ПАК / PPO PAK — Technical Documentation</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
   <link rel="stylesheet" href="assets/reference-theme.css">
 </head>
 <body>
-  <div id="app">Загрузка документации…</div>
+  <div id="app"></div>
   <script>
+    // docsify configuration
     window.$docsify = {
       name: 'ППО ПАК / PPO PAK — Technical Documentation',
       homepage: 'README.md',
@@ -29,6 +30,16 @@
         previousText: 'Предыдущая страница',
         nextText: 'Следующая страница',
         crossChapter: true
+      },
+      // Enable pre-rendering to avoid blank/loading state
+      when: {
+        ready: function() {
+          // Trigger when docsify is ready - removes loading state
+          var app = document.getElementById('app');
+          if (app) {
+            app.style.display = 'none';
+          }
+        }
       }
     };
   </script>
