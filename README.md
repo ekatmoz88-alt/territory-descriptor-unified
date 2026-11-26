@@ -1,49 +1,80 @@
 # ППО ПАК / PPO PAK — Technical Documentation
 
+[![CI](https://github.com/ekatmoz88-alt/territory-descriptor-unified/workflows/CI/badge.svg)](https://github.com/ekatmoz88-alt/territory-descriptor-unified/actions)
+
+---
+
+## Overview
+
 Evidence-based documentation for the PPO PAK project and its related system boundaries. The project includes the PPO PAK information system and the Dossier Processing Workstation as distinct applications with separate runtime boundaries; UMMS is documented as a related system boundary. This repository is a documentation hub, not a single executable product.
 
-## Architecture diagrams
+## Solved Problems
 
-- [Interactive architecture catalogue](materials/architecture/architecture.html) — bilingual HTML page with 10 Mermaid diagrams and an evidence-coverage matrix.
-- [Architecture source (Markdown)](materials/architecture/README.md) — canonical diagram and evidence text; keep the HTML diagrams synchronized with this file.
-- [Source-based reconstruction of the PPO PAK-14 / PPO PAK diagrams](materials/architecture/deshifrator-14-source-reconstruction.ru.md) — source diagrams and analysis: component interaction, federal SАПД/SЗД/FХД architecture, application layers, sequence diagrams, conflict workflow, trust levels and dossier lifecycle.
-- [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md) — bilingual system boundaries, PPO PAK architecture and deployment modes.
-- [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md) — export/import workflow, file-based logs and identity-link records.
-- [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md) — permission catalogue, including the documented “Allow data export” right.
-- [Detailed component maps](materials/architecture/component-maps.md) — 10 additional Mermaid diagrams for PPO PAK, its application components, libraries and UMMS workflows.
+- Documenting system boundaries between PPO PAK information system and ARM «Дешифратор»
+- Integrating UMMS/SOAP while preserving system boundaries
+- Maintaining evidence-based architectural reconstruction
+- Separating historical notation from current functional distinctions
 
-## Documentation sections
+## System Boundaries & Module Composition
 
-| Section | Contents |
-|---|---|
-| [PPO PAK](materials/territory/README.md) | Information-system documentation within the unified PPO PAK project contour |
-| [Database and API](materials/territory-database/README.md) | Oracle, logical/physical structure, API and source-code models |
-| [Dossier Processing Workstation specification](materials/descriptor/README.md) · [software components](materials/deshifrator/README.md) | The Dossier Processing Workstation application: workstation specification, ModuleMobile, ModuleStationary, Printer / PassportPaint, data exchange, local storage, dependencies and C# excerpts. Some historical sources use «ППО ПАК» as a label for this workstation; it is not a separate project. |
-| [UMMS / SOAP](materials/umms/README.md) | SOAP API, client, local dossier storage and integration |
-| [Supplementary source systems](materials/reference-systems/README.md) | Separately classified ARM PPZ/PVK, AS Passport RF and MSKTs materials; no integration is inferred |
+| Module | Description | Boundary Status |
+|---|---|---|
+| ППО «Территория» | PPO PAK information system — modular web application with client web interface, application server, and database server | Separate application boundary |
+| АРМ «Дешифратор» | Specialized document formatting application with stationary and mobile software stations | Preserves own application and execution boundaries |
+| Интеграция UMMS/SOAP | SOAP API, client, local dossier storage and integration with boundary preservation | Related but separate system boundary |
 
-## System-boundary policy
+## C1 System Context Diagram
 
-The materials are grouped for navigation only. This does not mean that every component is part of one executable product or that every architectural relationship has been established.
+```mermaid
+flowchart LR
+  "\"PPO PAK Information System\"\" --> "\"ARM «Дешифратор»\""
+  "\"PPO PAK Information System\"\" --> "\"UMMS/SOAP\""
+  "\"External Actors\"\" --> "\"PPO PAK Information System\""
+```
 
-ППО ПАК is the umbrella project. The PPO PAK information system and the Dossier Processing Workstation are distinct application boundaries within that project. Some historical source materials use «ППО ПАК» for the workstation as well as for the project/system; current documentation uses the functional workstation name to keep the entities distinct. UMMS is documented as a related but separate system boundary. ARM PPZ/PVK, AS Passport RF and MSKTs remain separate supplementary source tracks. The independent Oracle DMRS / GLOBAL11 project is outside this repository. Oracle DBMS references in PPO PAK materials describe the database technology identified for that system and must not be conflated with the separate Oracle project.
+## Technology Stack
 
-In particular, the correspondence between ПОМС / ПОСС and ModuleMobile / ModuleStationary requires further verification against primary materials and source code.
+- **Documentation framework**: Docsify
+- **Diagram engine**: Mermaid
+- **Markdown processing**: Python-based validator
+- **Deployment**: GitHub Pages rsync
+
+## Documentation Navigation
+
+- [Architecture catalogue](materials/architecture/README.md)
+- [System context and scope — RU](materials/architecture/system-context-and-scope.ru.md) · [EN](materials/architecture/system-context-and-scope.en.md)
+- [Data exchange and administration — RU](materials/architecture/data-exchange-and-administration.ru.md) · [EN](materials/architecture/data-exchange-and-administration.en.md)
+- [Access control — RU](materials/architecture/access-control.ru.md) · [EN](materials/architecture/access-control.en.md)
+- [PPO PAK](materials/territory/README.md)
+- [Database and API](materials/territory-database/README.md)
+- [Dossier Processing Workstation](materials/descriptor/README.md)
+- [UMMS / SOAP](materials/umms/README.md)
+- [Supplementary source systems](materials/reference-systems/README.md)
+
+## Evidence & Sanitization Notice
+
+- **Evidence status**: Source-based / Anonymized
+- **CI**: Configured (GitHub Actions)
+- **PII Review**: Binary source files (.pdf, .odg, .wmf) excluded from public build
+- **Evidence policy**: Preserve original source archive and canonical evidence records
+- **Sanitization**: Local paths (/media/, /home/) and PII excluded from public build
+
+---
 
 ## Evidence and publication policy
 
-- Distinguish documented requirements, inspected source-code findings, logical reconstruction and unverified hypotheses.
-- Do not invent modules, interfaces, database relations, protocols or deployment topology.
-- Do not publish production credentials, personal data, private keys, protected network details or live exchange files.
-- Historical product addresses and support contacts are source references, not verified current services.
-- Preserve the original source archive and the canonical evidence records; duplicate documentation repositories are reduced to redirect pointers after their unique content is merged.
+- Distinguish documented requirements, inspected source-code findings, logical reconstruction and unverified hypotheses
+- Do not invent modules, interfaces, database relations, protocols or deployment topology
+- Do not publish production credentials, personal data, private keys, protected network details or live exchange files
+- Historical product addresses and support contacts are source references, not verified current services
+- Preserve the original source archive and the canonical evidence records; duplicate documentation repositories are reduced to redirect pointers after their unique content is merged
 
 ## Evidence & Quality Governance
 
-- **Evidence status:** Source-based / Anonymized.
-- **CI:** Configured (GitHub Pages rsync deployment).
-- **PII Review:** Pending — binary source files (.pdf, .odg, .wmf, including uppercase extensions) are excluded from the public build; this does not certify the remaining content as PII-free.
-- **Evidence policy:** [Evidence & documentation quality policy](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/#evidence-policy).
+- **Evidence status**: Source-based / Anonymized
+- **CI**: Configured (GitHub Pages rsync deployment)
+- **PII Review**: Pending — binary source files (.pdf, .odg, .wmf, including uppercase extensions) are excluded from the public build; this does not certify the remaining content as PII-free
+- **Evidence policy**: [Evidence & documentation quality policy](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/#evidence-policy)
 
 ## Structure
 
