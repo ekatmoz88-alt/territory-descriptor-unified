@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
       - name: Validate Markdown fences and disallowed content
         run: |
           python - <<'PYEOF'
@@ -49,5 +51,35 @@ jobs:
               sys.exit(1)
           else:
               print('All Markdown files passed the security checks.')
+              sys.exit(0)
+          PYEOF
+
+      - name: Check for relative links and PII
+        run: |
+          python - <<'PYEOF'
+          import re, pathlib, sys
+
+          base = pathlib.Path('.')
+          md_files = list(base.rglob('*.md'))
+
+          errors = []
+
+          for p in md_files:
+              txt = p.read_text(encoding='utf-8', errors='replace')
+              # Check for local paths
+              if '/media/' in txt or '/home/' in txt:
+                  errors.append(f'{p}: contains local path /media/ or /home/')
+              # Check for PII patterns (simple credit card, phone, email patterns)
+              if re.search(r'\b\d{3}-\d{3}-\d{4}\b', txt):  # phone-like
+                  errors.append(f'{p}: contains potential PII pattern (phone format)')
+              if re.search(r'\b[\w.-]+@[\w.-]+\.\w{2,4}\b', txt):  # email
+                  errors.append(f'{p}: contains potential PII (email address)')
+
+          if errors:
+              for e in errors:
+                  print(e, file=sys.stderr)
+              sys.exit(1)
+          else:
+              print('No PII or local path issues found.')
               sys.exit(0)
           PYEOF
