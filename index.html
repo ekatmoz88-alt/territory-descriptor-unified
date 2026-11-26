@@ -30,16 +30,6 @@
         previousText: 'Предыдущая страница',
         nextText: 'Следующая страница',
         crossChapter: true
-      },
-      // Enable pre-rendering to avoid blank/loading state
-      when: {
-        ready: function() {
-          // Trigger when docsify is ready - removes loading state
-          var app = document.getElementById('app');
-          if (app) {
-            app.style.display = 'none';
-          }
-        }
       }
     };
   </script>
