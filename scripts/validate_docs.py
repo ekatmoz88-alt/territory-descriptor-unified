@@ -84,7 +84,10 @@ for path in MD_FILES:
         if not resolve_link(path, raw):
             error(path, f"broken relative link: {raw}")
 
-    for block in re.findall(r"(?:\x60{3}|~~~)mermaid\s*\n([\s\S]*?)(?:\x60{3}|~~~)", text):
+    mermaid_blocks = []
+    mermaid_blocks.extend(re.findall(r"(?ms)^ {0,3}\x60{3,}mermaid[^\n]*\n(.*?)^ {0,3}\x60{3,}\s*$", text))
+    mermaid_blocks.extend(re.findall(r"(?ms)^ {0,3}~{3,}mermaid[^\n]*\n(.*?)^ {0,3}~{3,}\s*$", text))
+    for block in mermaid_blocks:
         for line in block.splitlines():
             if re.search(r"^\s*(?:subgraph\s+)?[A-Za-z_][\w]*\s*\[\s*(?!\")[^\]\n]*[А-Яа-яЁё]", line):
                 error(path, f"unquoted Cyrillic Mermaid node label: {line.strip()}")
