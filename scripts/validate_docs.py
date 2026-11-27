@@ -12,7 +12,7 @@ ERRORS: list[str] = []
 CANONICAL = {"specs", "architecture", "as-built", "verification", "data-model"}
 MD_FILES = sorted(
     p for p in ROOT.rglob("*.md")
-    if p.relative_to(ROOT).parts[0] in CANONICAL or p.name in {"README.md", "_sidebar.md"}
+    if p.relative_to(ROOT).parts[0] in CANONICAL or (p.parent == ROOT and p.name in {"README.md", "_sidebar.md"})
 )
 
 def error(path: Path, message: str) -> None:
@@ -77,6 +77,16 @@ for path in MD_FILES:
         error(path, "contains an email address")
     if r"\n" in text:
         error(path, "contains a literal backslash-n sequence")
+    if re.search(r"\b\d{4}\s\d{6}\b", text.replace("9999 123456", "")):
+        error(path, "contains a non-synthetic passport series/number")
+    if re.search(r"\b(?!0{12}\b)\d{12}\b", text):
+        error(path, "contains a non-synthetic 12-digit identifier")
+    if re.search(r"\b(?!000-000-000\s00)\d{3}-\d{3}-\d{3}\s\d{2}\b", text):
+        error(path, "contains a non-synthetic SNILS")
+    if re.search(r"\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})\b", text):
+        error(path, "contains a private network IP address")
+    if any(value in text for value in ("Усенко", "Шумилов", "Матюхин", "Прокофьев", "Северова", "Носкова")):
+        error(path, "contains a known source identity")
 
     prose = re.sub(r"^ {0,3}```[\s\S]*?^ {0,3}```", "", text, flags=re.M)
     for match in re.finditer(r"!?\[[^\]]*\]\(([^)]+)\)", prose):
