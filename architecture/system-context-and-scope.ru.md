@@ -240,10 +240,10 @@ flowchart TB
 
 This architecture overview connects the canonical project materials without replacing their detailed records:
 
-- [Oracle database inventory and logical/physical models](../territory-database/database/).
-- [Source-code models and providers](../territory-database/source-code/).
-- [API operations and database traceability](../territory-database/api/).
-- [Interactive architecture catalogue](./architecture.html).
+- [Oracle database inventory and logical/physical models](../materials/territory-database/database/).
+- [Source-code models and providers](../materials/territory-database/source-code/).
+- [API operations and database traceability](../materials/territory-database/api/).
+- [Interactive architecture catalogue](../materials/architecture/architecture.html).
 
 Use three evidence statuses when interpreting the architecture:
 

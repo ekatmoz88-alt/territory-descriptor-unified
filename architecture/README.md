@@ -18,7 +18,7 @@
 - [Обмен данными и администрирование — EN](data-exchange-and-administration.en.md)
 - [Управление доступом — RU](access-control.ru.md)
 - [Управление доступом — EN](access-control.en.md)
-- [Обмен файлами и MRZ](../materials/deshifrator/docs/data-exchange-and-mrz.md)
+- [Обмен файлами и MRZ](data-exchange-and-mrz.md)
 
 ## Границы и governance
 
