@@ -5,6 +5,7 @@
 - [Обзор фактической реализации и границ компонентов](code-inventory.md)
 - [UMMS: модели персоны, SOAP-клиент и пробелы доказательств](umms-client.md)
 - [SQLite Data Access Layer](sqlite-data-layer.md)
+- [OCR и распознавание шрифтов — реконструкция по исходным листингам](docs/ocr-font-recognition-review.md)
 - [Обмен файлами и MRZ](../architecture/data-exchange-and-mrz.md)
 - [Матрица трассировки As-Specified ↔ Architecture ↔ As-Built](traceability.md)
 
