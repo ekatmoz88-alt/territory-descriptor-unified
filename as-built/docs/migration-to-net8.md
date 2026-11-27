@@ -1,8 +1,8 @@
-# План миграции АРМ «внешняя система» на .NET 8
+# План модернизации АРМ обработки досье на .NET 8
 
 ## Цель
 
-Перенести приложение с .NET Framework 4.5 на поддерживаемую современную платформу с сохранением бизнес-поведения и совместимости с external SOAP service и мобильным модулем.
+Перенести приложение с .NET Framework 4.5 на поддерживаемую современную платформу с сохранением бизнес-поведения и совместимости с внешним SOAP-сервисом и мобильным модулем.
 
 ## Этап 0. Инвентаризация и фиксация baseline
 
@@ -18,11 +18,11 @@
 
 Рекомендуемая целевая структура:
 
-- `external enterprise system.Domain` — модели и бизнес-правила;
-- `external enterprise system.Application` — use cases, интерфейсы сервисов;
-- `external enterprise system.Infrastructure` — SQLite, SOAP, Elasticsearch/external address directory, файловый обмен;
-- `external enterprise system.Desktop` — WPF/WinForms UI;
-- `external enterprise system.Tests` — unit/integration tests.
+- `CaseProcessing.Domain` — модели и бизнес-правила;
+- `CaseProcessing.Application` — use cases, интерфейсы сервисов;
+- `CaseProcessing.Infrastructure` — SQLite, SOAP, Elasticsearch/внешним адресным справочником, файловый обмен;
+- `CaseProcessing.Desktop` — WPF/WinForms UI;
+- `CaseProcessing.Tests` — unit/integration tests.
 
 Не требуется одномоментно переписывать UI. Сначала вынести сетевые и файловые операции за интерфейсы.
 

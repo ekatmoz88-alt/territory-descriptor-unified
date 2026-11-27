@@ -1,6 +1,6 @@
 # Component maps — detailed architecture views
 
-> Companion to the [canonical architecture catalogue](./diagrams.md) and its [interactive bilingual HTML view](../materials/architecture/architecture.html). This file contains 7 core Mermaid diagrams for the unified ARM (sections 1–4). Section 6 is a separate appendix with 3 source-context diagrams for separate source system; these are not part of the 17 core ARM diagrams and must not be merged into the ARM architecture. The SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand component views of one ARM. The workstation names in historical source material are treated as aliases for the same complex; POSS, POMS and POSH VBD are internal contours, while external SOAP service and VBD are external boundaries. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [внешняя система и АРМ обработки досье — реконструкция по первичным схемам](./deshifrator-14-source-reconstruction.ru.md).
+> Companion to the [canonical architecture catalogue](./diagrams.md) and its [interactive bilingual HTML view](../materials/architecture/architecture.html). This file contains 7 core Mermaid diagrams for the unified ARM (sections 1–4). Section 6 is a separate appendix with 3 source-context diagrams for separate source context; these are not part of the 17 core ARM diagrams and must not be merged into the ARM architecture. The SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand component views of one workstation. Historical product labels are withheld; POSS, POMS and POSH VBD are internal contours, while the external SOAP service and VBD are external boundaries. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [внешняя система и АРМ обработки досье — реконструкция по первичным схемам](./deshifrator-14-source-reconstruction.ru.md).
 
 ## 1. Case Processing Workstation — architecture and trust boundaries (historical source notation: «внешняя система»)
 
@@ -117,7 +117,7 @@ flowchart TB
   COREDB --> SUBJECT
 ```
 
-The project names and model areas come from a source-code overview using the historical external enterprise system label. Their exact mapping to the internal ARM contours requires verification. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented external SOAP service SOAP service/client. The Oracle DBMS and table inventory shown here belong to the external enterprise system source context; the independent separate database project project is separate and is not represented by this diagram.
+The project names and model areas come from a source-code overview using the historical project label. Their exact mapping to the internal ARM contours requires verification. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented external SOAP client. The Oracle DBMS and table inventory shown here belong to the historical source context; the separate database demonstration project is separate and is not represented by this diagram.
 
 ### Historical Oracle database inventory (physical mapping to ARM not established)
 
@@ -136,7 +136,7 @@ flowchart TB
   INV -.-> NOTE
 ```
 
-The historical database overview labelled external enterprise system identifies Oracle as its DBMS and reports 401 tables. The mapping of this inventory to the physical data layer of the unified ARM is not established. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the independent separate database project project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
+The historical database overview identifies Oracle as its DBMS and reports 401 tables. The mapping of this inventory to the physical data layer of the unified ARM is not established. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the separate database demonstration project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
 ## 3. Case Processing Workstation — application suite and shared libraries
 
@@ -183,7 +183,7 @@ flowchart LR
   MAP --> MODEL["Application models"]
 ```
 
-## 4. external SOAP service — client workflow and service operations
+## 4. External SOAP service — client workflow and service operations
 
 ```mermaid
 flowchart LR
@@ -213,14 +213,14 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - The complete authoritative list of the 17 external enterprise system functional modules is not available in the current source set.
 - The Case Processing Workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Case Processing Workstation diagrams are limited to the application suite and source excerpts that have been reviewed.
-- external SOAP service API operation names are documented; complete wire-level contracts and deployment details are not included.
-- Treat ARM PPO «Territory», ARM «Case Processing», R&D «Diskriptor-14» and Case Processing Workstation as names for one ARM. Do not model them as distinct application boundaries.
-- Keep the independent separate database project project outside the external enterprise system documentation. Do not confuse it with the Oracle DBMS identified in external enterprise system database materials.
+- external SOAP API operation names are documented; complete wire-level contracts and deployment details are not included.
+- Treat the case-processing workstation as one application boundary; do not model historical labels as distinct products.
+- Keep the separate database demonstration project project outside the external enterprise system documentation. Do not confuse it with the Oracle DBMS identified in historical database materials.
 - Draw a runtime integration only when primary evidence establishes it.
 
 ## 6. separate source system — documented exchange context and traceability
 
-The following source diagrams preserve the documented exchange and code-to-database relationships from the earlier PPO ID documentation set. They describe documentary evidence, not a verified runtime topology.
+The following source diagrams preserve the documented exchange and code-to-database relationships from the earlier source documentation set. They describe documentary evidence, not a verified runtime topology.
 
 ### 6.1 Exchange context
 

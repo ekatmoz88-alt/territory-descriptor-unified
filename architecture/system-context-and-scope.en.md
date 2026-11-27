@@ -1,6 +1,6 @@
 # System Context and Architecture Boundaries of the Unified Workstation
 
-> **Governance:** Case Processing Workstation, Case Processing Workstation, project identifier withheld, and Case Processing Workstation are names for one software workstation. POSS, POMS, and POSH VBD are internal contours of that workstation. “Citizens” is an internal functional area for individual dossiers. external SOAP service (`external-service`) is an external integration system/service.
+> **System boundary:** The case-processing workstation is a single software system. POSS, POMS, and POSH VBD are its internal contours. “Citizens” is an internal functional area for individual dossiers. The external SOAP service is a separate integration boundary.
 
 > **Evidence status:** this document presents a logical model and historical architecture evidence. It is not a reconstruction of a specific installation's physical topology.
 
@@ -10,13 +10,13 @@
 |---|---|
 | Case Processing Workstation | Name of the software workstation / complex |
 | Case Processing Workstation | Alternative name for the same workstation |
-| project identifier withheld | R&D project name for the same workstation |
+| Project designation | Not published |
 | Case Processing Workstation | English designation for the same workstation |
 | POSS | Internal stationary contour |
 | POMS | Internal mobile contour |
 | POSH VBD | Internal gateway contour for access to VBD |
 | “Citizens” | Internal functional area for individual dossiers |
-| external SOAP service / `external-service` | External integration system/service |
+| External SOAP service | External integration boundary |
 
 Do not automatically equate POSS, POMS, or POSH VBD with `ModuleStationary`, `ModuleMobile`, or specific assemblies. These are different classification levels; mappings require traceability to specifications and source code.
 
@@ -36,7 +36,7 @@ flowchart LR
     POMS --- CIT
   end
   VBD["External departmental database"]
-  EXTERNAL_SERVICE["External EXTERNAL_SERVICE integration service (external-service)"]
+  EXTERNAL_SERVICE["External SOAP service"]
   POSHVBD <-->|"VBD access; protocol to verify"| VBD
   ARM -.->|"Integration contract; runtime flow to verify"| EXTERNAL_SERVICE
 ```
@@ -51,7 +51,7 @@ Historical sources also describe centralized and distributed deployment modes. T
 
 ## 4. Integrations
 
-- external SOAP service (`external-service`) is an external system/service; SOAP contract details and runtime routing are documented separately.
+- The external SOAP service is a separate integration boundary; contract details and runtime routing are documented separately.
 - VBD is an external departmental database accessed through the workstation's internal POSH VBD contour.
 - File exchange between internal contours and MRZ are documented in [integration architecture](./integration-and-file-exchange.md) and [format specifications](./data-exchange-and-mrz.md).
 

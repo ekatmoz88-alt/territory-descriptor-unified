@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Bilingual technical documentation portfolio and evidence-based architecture catalogue for the real project areas external enterprise system, external enterprise system and external SOAP service.">
+<meta name="description" content="Bilingual technical documentation and evidence-based architecture catalogue for a case-processing workstation and its external integrations.">
 <title>Technical Documentation Portfolio | Architecture Catalogue</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,12 +64,12 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
 <header class="hero">
   <div><p class="eyebrow" data-en="ENTERPRISE SYSTEMS · ARCHITECTURE DOCUMENTATION" data-ru="КОРПОРАТИВНЫЕ СИСТЕМЫ · АРХИТЕКТУРНАЯ ДОКУМЕНТАЦИЯ">ENTERPRISE SYSTEMS · ARCHITECTURE DOCUMENTATION</p>
   <h1 data-en="Architecture catalogue" data-ru="Каталог архитектуры">Architecture catalogue</h1>
-  <p data-en="Evidence-based architecture views for the external enterprise system, the Case Processing Workstation and related external SOAP service context. The workstation belongs to the external enterprise project but retains a distinct application/runtime boundary. The 10 primary Mermaid diagrams distinguish documented facts, logical reconstructions and items requiring verification while preserving application and runtime boundaries. The linked component maps contain seven additional detailed diagrams." data-ru="Архитектурные представления информационной системы внешняя система, АРМ обработки досье и связанного контекста external SOAP service. АРМ входит в проект внешняя система, но сохраняет отдельные границы приложения и исполнения. Схемы разделяют подтверждённые сведения, логические реконструкции и данные, требующие проверки, сохраняя границы приложений и исполнения.">Evidence-based architecture views for related real project areas.</p></div>
+  <p data-en="Evidence-based architecture views for a case-processing workstation and related external-service context. The workstation belongs to a wider enterprise environment but retains a distinct application/runtime boundary. The 10 primary Mermaid diagrams distinguish documented facts, logical reconstructions and items requiring verification while preserving application and runtime boundaries. The linked component maps contain seven additional detailed diagrams." data-ru="Архитектурные представления АРМ обработки досье и связанных внешних интеграций. АРМ входит в более широкий информационный контур, но сохраняет отдельные границы приложения и исполнения. Схемы разделяют подтверждённые сведения, логические реконструкции и данные, требующие проверки, сохраняя границы приложений и исполнения.">Evidence-based architecture views for related real project areas.</p></div>
   <a class="repo-button" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified">Open repository ↗</a>
 </header>
 <div class="toolbar">
   <div class="language"><strong data-en="Language" data-ru="Язык">Language</strong><button id="en" aria-pressed="true" type="button">EN</button><button id="ru" aria-pressed="false" type="button">RU</button></div>
-  <div class="toolbar-links"><a href="./README.md">Canonical Markdown</a><a href="./component-maps.md">Detailed component maps · 7 diagrams</a><a href="./mermaid-patterns.md">Mermaid patterns library</a><a href="https://github.com/ekatmoz88-alt/ppo-territory-archive">external enterprise system source archive</a></div>
+  <div class="toolbar-links"><a href="./README.md">Canonical Markdown</a><a href="./component-maps.md">Detailed component maps · 7 diagrams</a><a href="./mermaid-patterns.md">Mermaid patterns library</a><a href="#source-archive">related source archive (link withheld)</a></div>
 </div>
 <section><h2 data-en="How to read these diagrams" data-ru="Как читать эти схемы">How to read these diagrams</h2>
 <ul>
@@ -268,7 +268,7 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
   ADDRESS_DIRECTORY --&gt; ELASTIC
   PRINT --&gt; LAYOUT
   LAYOUT --&gt; MRZ --&gt; OUTPUT</pre></div>
-<p data-en="The diagram assigns Tesseract OCR to Descriptor.exe and MRZ/print formatting to Printer / PassportPaint. It shows separate ModuleMobile.db3 and ModuleStationary.db3 databases and places the external SOAP service SOAP client configuration under ModuleMobile. external address directory endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from ModuleStationary to Printer / PassportPaint is not established by the reviewed excerpts and is not drawn." data-ru="Названия компонентов и связи отражают реальную архитектуру комплекса приложений, восстановленную по проектной документации и исходному коду. Группировка на уровне проектов описывает логическую структуру системы, а не низкоуровневый граф вызовов или границы отдельных исполняемых файлов.">Component names and relationships reflect the actual architecture of the application suite, reconstructed from project documentation and source code. Project-level grouping describes the logical structure of the system, rather than a low-level call graph or the boundaries of individual executable files.</p></section>
+<p data-en="The diagram assigns Tesseract OCR to Descriptor.exe and MRZ/print formatting to Printer / PassportPaint. It shows separate ModuleMobile.db3 and ModuleStationary.db3 databases and places the external SOAP client configuration under ModuleMobile. external address-directory endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from ModuleStationary to Printer / PassportPaint is not established by the reviewed excerpts and is not drawn." data-ru="Названия компонентов и связи отражают реальную архитектуру комплекса приложений, восстановленную по проектной документации и исходному коду. Группировка на уровне проектов описывает логическую структуру системы, а не низкоуровневый граф вызовов или границы отдельных исполняемых файлов.">Component names and relationships reflect the actual architecture of the application suite, reconstructed from project documentation and source code. Project-level grouping describes the logical structure of the system, rather than a low-level call graph or the boundaries of individual executable files.</p></section>
 <section><h2 data-en="8. Case Processing Workstation — SQLite data-access components" data-ru="8. АРМ обработки досье — компоненты доступа к данным SQLite">8. Case Processing Workstation — SQLite data-access components</h2>
 <div class="diagram"><pre class="mermaid">flowchart LR
   APP["Application code"]
@@ -287,7 +287,7 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
   READER --&gt; MAP
   MAP --&gt; MODEL</pre></div>
 <p data-en="Component names and responsibilities are based on reviewed C# excerpts. Connection lifetime, concurrency, disposal, null handling and reader behavior are review findings; this diagram does not imply that identified risks have been resolved." data-ru="Названия компонентов и обязанности основаны на рассмотренных фрагментах C#. Время жизни соединения, параллельный доступ, освобождение ресурсов, обработка null и поведение reader относятся к результатам анализа; схема не означает, что выявленные риски устранены.">SQLite review note.</p></section>
-<section><h2 data-en="9. external SOAP service — client and SOAP service boundary" data-ru="9. external SOAP service — граница клиента и SOAP-сервиса">9. external SOAP service — client and SOAP service boundary</h2>
+<section><h2 data-en="9. external SOAP service — client and service boundary" data-ru="9. external SOAP service — граница клиента и SOAP-сервиса">9. external SOAP service — client and SOAP service boundary</h2>
 <div class="diagram"><pre class="mermaid">flowchart LR
   CLIENT_UI["EXTERNAL_SERVICE client — UI / workflow"]
   PERSON_SEARCH["Person and dossier search"]
@@ -307,7 +307,7 @@ footer{margin-top:24px;padding:18px 0;border-top:1px solid var(--line);color:#87
   SOAP_CLIENT --&gt;|SOAP XML contract| EXTERNAL_SOAP_SERVICE
   EXTERNAL_SOAP_SERVICE --&gt;|SOAP XML response| SOAP_CLIENT
   EXTERNAL_SOAP_SERVICE --&gt; SERVICE_OPERATIONS</pre></div>
-<p data-en="Operation names are taken from the available API description and source-review notes. Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, error contracts and endpoint details must be verified against the WSDL and approved integration documentation." data-ru="Названия операций взяты из доступного описания API и заметок по анализу исходного кода. Точные SOAP-конверты, пространства имён, SOAPAction, схемы, аутентификация, контракты ошибок и конечные точки необходимо сверить с WSDL и утверждённой документацией интеграции.">external SOAP service contract note.</p></section>
+<p data-en="Operation names are taken from the available API description and source-review notes. Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, error contracts and endpoint details must be verified against the WSDL and approved integration documentation." data-ru="Названия операций взяты из доступного описания API и заметок по анализу исходного кода. Точные SOAP-конверты, пространства имён, SOAPAction, схемы, аутентификация, контракты ошибок и конечные точки необходимо сверить с WSDL и утверждённой документацией интеграции.">External service contract note.</p></section>
 <section><h2 data-en="10. Coverage and remaining verification" data-ru="10. Покрытие архитектуры и недостающие подтверждения">10. Coverage and remaining verification</h2>
 <table>
 <thead><tr><th data-en="System / area" data-ru="Система / область">System / area</th><th data-en="Architecture views included" data-ru="Включённые архитектурные представления">Architecture views included</th><th data-en="Remaining evidence needed" data-ru="Что ещё требуется подтвердить">Remaining evidence needed</th></tr></thead>
