@@ -1,10 +1,10 @@
-# АРМ ППО «Территория» / АРМ обработки досье
+# АРМ ППО «Объект» / АРМ обработки досье
 
 - [Overview](/)
 
 ## 1. As-Specified
 - [Требования и спецификации](/specs/README.md)
-- [ОКР «Дискриптор-14»](/specs/okr-diskriptor-14.md)
+- [ОКР «Проект-14»](/specs/okr-diskriptor-14.md)
 - [Технические требования](/specs/technical-requirements.md)
 - [Спецификации внутренних контуров](/specs/subsystems.md)
 - [ПМИ / Методика испытаний](/specs/test-methodology.md)
