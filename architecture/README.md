@@ -7,10 +7,10 @@
 Существующие Mermaid-источники сохранены по прежним путям и подключены ссылками, чтобы не создавать вторые копии диаграмм:
 
 - [Каталог основных архитектурных схем — 10 диаграмм](diagrams.md)
-- [Компонентные карты](component-maps.md). В исходном файле 10 Mermaid-блоков: 7 относятся к архитектуре АРМ/его интеграций (рабочее место, функциональные области, application suite, SQLite DAL, UMMS workflow, component inventory, API-to-database traceability); ещё 3 описывают смежные представления PPO PAK / PPO ID Docs и сохранены в исходном каталоге отдельно.
+- [Компонентные карты](component-maps.md). В исходном файле 10 Mermaid-блоков: 7 относятся к архитектуре АРМ/его интеграций (рабочее место, функциональные области, application suite, SQLite DAL, UMMS workflow, component inventory, API-to-database traceability); ещё 3 описывают смежные представления Объект PAK / Объект ID Docs и сохранены в исходном каталоге отдельно.
 - [Системный контекст и границы — RU](system-context-and-scope.ru.md)
 - [Системный контекст и границы — EN](system-context-and-scope.en.md)
-- [Архитектура и исходная реконструкция ОКР](deshifrator-14-source-reconstruction.ru.md)
+- [Архитектура и исходная реконструкция Проекта](deshifrator-14-source-reconstruction.ru.md)
 
 ## Обмен и интеграции
 
