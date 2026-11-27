@@ -34,7 +34,7 @@
 | `UmmsCaseModel` | `CORE_CASE`, `CORE_PERSON_CASE` | Дело + связь лица с делом |
 | `UmmsAddressModel` | `CORE_ADDRESS`, `CORE_PERSON_ADDRESS` | Адрес + привязка адреса к лицу |
 | `CountryModel` | `DICT_COUNTRY` | Справочник стран |
-| `UmmsOrgModel` | `CORE_ORGANIZATION` | Организации / исполнительные подразделения (в исходных материалах также обозначены как УФМС) |
+| `UmmsOrgModel` | `CORE_ORGANIZATION` | Организации / исполнительные подразделения (в исходных материалах также обозначены как ведомственное подразделение) |
 | `UmmsPaymentModel` | `CORE_PAYMENT` | Платежи |
 
 ### Common.Data.Providers → Запросы к БД
@@ -56,5 +56,5 @@
 
 ## Architecture maps
 
-- [PPO Territory component architecture](../architecture/component-maps.md#2-ppo-territory--software-component-architecture)
-- [PPO Territory data and module architecture](../architecture/README.md#2-ppo-territory--functional-module-map)
+- [external enterprise system component architecture](../architecture/component-maps.md#2-ppo-territory--software-component-architecture)
+- [external enterprise system data and module architecture](../architecture/README.md#2-ppo-territory--functional-module-map)
