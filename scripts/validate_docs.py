@@ -84,11 +84,11 @@ for path in MD_FILES:
         if not resolve_link(path, raw):
             error(path, f"broken relative link: {raw}")
 
-    for block in re.findall(r"(?:\`\`\`|~~~)mermaid\s*\n([\s\S]*?)(?:\`\`\`|~~~)", text):
+    for block in re.findall(r"(?:\x60{3}|~~~)mermaid\s*\n([\s\S]*?)(?:\x60{3}|~~~)", text):
         for line in block.splitlines():
-            if re.search(r"^\s*(?:subgraph\s+)?[A-Za-z_][\w]*\s*\[(?!\")[^\]\n]*[А-Яа-яЁё]", line):
+            if re.search(r"^\s*(?:subgraph\s+)?[A-Za-z_][\w]*\s*\[\s*(?!\")[^\]\n]*[А-Яа-яЁё]", line):
                 error(path, f"unquoted Cyrillic Mermaid node label: {line.strip()}")
-            edge = re.search(r"\|([^"]+)\|", line)
+            edge = re.search(r'\|([^"]+)\|', line)
             if edge and re.search(r"[А-Яа-яЁё]", edge.group(1)):
                 error(path, f"unquoted Cyrillic Mermaid edge label: {line.strip()}")
             if "erDiagram" in block and re.search(r":\s*(?!\")[^\n]*[А-Яа-яЁё]", line):
