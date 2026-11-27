@@ -6,7 +6,7 @@ The available materials refer to development and acceptance stages using abbrevi
 
 ## Chronology
 
-Some materials refer to work during 2014. A reliable stage-by-stage calendar, including exact dates, acceptance acts, responsible persons and approvals, requires the original schedule and acceptance documents.
+Some materials refer to historical project work. A reliable stage-by-stage calendar, acceptance acts, responsible persons and approvals requires the original schedule and acceptance documents.
 
 ## Update publication and installation
 
