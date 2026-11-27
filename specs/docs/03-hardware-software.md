@@ -1,4 +1,4 @@
-# ARM Descriptor — Hardware and Software Requirements
+# ARM Project — Hardware and Software Requirements
 
 The technical-project materials describe the following baseline. These are requirements, not confirmation of equipment delivered or installed.
 
