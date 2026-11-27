@@ -65,8 +65,11 @@ def resolve_link(source: Path, raw: str) -> bool:
 for path in MD_FILES:
     text = path.read_text(encoding="utf-8", errors="replace")
     fences = len(re.findall(r"^ {0,3}```", text, flags=re.M))
+    tilde_fences = len(re.findall(r"^ {0,3}~~~", text, flags=re.M))
     if fences % 2:
-        error(path, f"unbalanced code fences ({fences})")
+        error(path, f"unbalanced backtick code fences ({fences})")
+    if tilde_fences % 2:
+        error(path, f"unbalanced tilde code fences ({tilde_fences})")
     if "/media/" in text or "/home/" in text:
         error(path, "contains a local filesystem path")
     if "contextDiagram" in text or "containerDiagram" in text:
@@ -88,7 +91,8 @@ for path in MD_FILES:
     if any(value in text for value in ("Усенко", "Шумилов", "Матюхин", "Прокофьев", "Северова", "Носкова")):
         error(path, "contains a known source identity")
 
-    prose = re.sub(r"^ {0,3}```[\s\S]*?^ {0,3}```", "", text, flags=re.M)
+    prose = re.sub(r"^ {0,3}```[\s\S]*?^ {0,3}```\s*$", "", text, flags=re.M)
+    prose = re.sub(r"^ {0,3}~{3,}[\s\S]*?^ {0,3}~{3,}\s*$", "", prose, flags=re.M)
     for match in re.finditer(r"!?\[[^\]]*\]\(([^)]+)\)", prose):
         raw = match.group(1).strip().split()[0].strip("<>")
         if not resolve_link(path, raw):
