@@ -4,24 +4,24 @@
 >
 > **Reusable Mermaid fragments:** [Open the Mermaid Patterns Library](./mermaid-patterns.md). It provides copy-and-adapt starting points for system context, deployment, component, data-flow, sequence, ER and state diagrams. These are reusable source snippets, not native Mermaid macros.
 >
-> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the unified ARM boundary, its internal contours, external UMMS/VBD boundaries, and the limitations of historical three-tier/deployment descriptions.
+> **System context and scope:** [Русская версия](./system-context-and-scope.ru.md) · [English version](./system-context-and-scope.en.md). These companion documents explain the unified ARM boundary, its internal contours, external external SOAP service/VBD boundaries, and the limitations of historical three-tier/deployment descriptions.
 >
-> **Source-based reconstruction of supplied Visio diagrams:** [ППО ПАК и АРМ обработки досье](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
+> **Source-based reconstruction of supplied Visio diagrams:** [внешняя система и АРМ обработки досье](./deshifrator-14-source-reconstruction.ru.md) — component topology, functional and software-module inventories, federal SАПД/SЗД/FХД architecture, sequence and conflict workflows, trust-level views, and information-exchange lifecycle.
 >
 > **Data exchange and administration:** [Русская версия](./data-exchange-and-administration.ru.md) · [English version](./data-exchange-and-administration.en.md). Covers historical export/import workflows, file-based locking, user permissions, LOG records and technical identity links.
 >
 > **Access control:** [Русская версия](./access-control.ru.md) · [English version](./access-control.en.md). Includes the documented “Разрешить выгрузку / Allow data export” permission, its scope, limits and verification tests.
 
-> **Evidence-based documentation.** This catalogue describes one workstation: ARM PPO “Territory” / ARM “Deshifrator” / R&D “Diskriptor-14” / Dossier Processing Workstation. POSS, POMS and POSH VBD are internal contours; UMMS and VBD are external system boundaries. Historical diagrams that use the label PPO PAK are retained as source-context views and do not establish another application identity.
+> **Evidence-based documentation.** This catalogue describes one workstation: Case Processing Workstation / Case Processing Workstation / project identifier withheld / Case Processing Workstation. POSS, POMS and POSH VBD are internal contours; external SOAP service and VBD are external system boundaries. Historical diagrams that use the label external enterprise system are retained as source-context views and do not establish another application identity.
 
 ## How to read these diagrams
 
 - **Documented** — directly stated in the available project documentation or visible in inspected source excerpts.
 - **Derived view** — a logical grouping of documented elements for readability; it is not a recovered deployment configuration.
 - **Not reproduced in the public catalogue** — restricted endpoint paths, internal ownership details and installation-specific topology may be omitted. The underlying systems and their API operations are real; an omitted route or configuration detail is not evidence that the interface did not exist.
-- The 17-module count for PPO PAK is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
-- ARM PPO “Territory”, ARM “Deshifrator”, R&D “Diskriptor-14” and Dossier Processing Workstation are the same software workstation. Do not model them as separate application boundaries.
-- Supplementary ARM PPZ/PVK, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../materials/reference-systems/README.md). They are not merged into the diagrams below.
+- The 17-module count for external enterprise system is mentioned in source materials, but a complete authoritative list of all 17 modules has not been reconstructed. Unknown modules are intentionally not invented.
+- Case Processing Workstation, Case Processing Workstation, project identifier withheld and Case Processing Workstation are the same software workstation. Do not model them as separate application boundaries.
+- Supplementary separate workstation environment, AS Passport RF and MSKTs materials are indexed separately in [Supplementary source systems](../materials/reference-systems/README.md). They are not merged into the diagrams below.
 
 ---
 
@@ -39,26 +39,26 @@ flowchart TB
     POSS --- CIT
     POMS --- CIT
   end
-  UMMS["UMMS<br/>внешняя интеграционная система / сервис"]
+  external SOAP service["external SOAP service<br/>внешняя интеграционная система / сервис"]
   VBD["Внешняя ведомственная БД"]
-  SUP["Separate supplementary source tracks:<br/>ARM PPZ/PVK · AS Passport RF · MSKTs"]
-  ORACLE["Independent Oracle DMRS / GLOBAL11 project"]
-  ADP["ADP201P4<br/>separate project"]
+  SUP["Separate supplementary source tracks:<br/>separate workstation environment · AS Passport RF · MSKTs"]
+  ORACLE["Independent separate database project project"]
+  ADP["separate integration project<br/>separate project"]
   POSHVBD <-->|"доступ к ВБД; протокол требует проверки"| VBD
-  ARM -.->|"внешний интеграционный контракт; маршрут требует проверки"| UMMS
+  ARM -.->|"внешний интеграционный контракт; маршрут требует проверки"| external SOAP service
   SUP -.->|"дополнительные источники; не включены в модель АРМ"| ARM
   ORACLE -.->|"отдельный проект; не часть модели АРМ"| ARM
   ADP -.->|"отдельный проект; интеграция не установлена"| ARM
 ```
 
-**Boundary note.** All four names identify one ARM. The three contours shown inside it are internal. UMMS and VBD are external boundaries. Oracle DMRS / GLOBAL11, ADP201P4 and supplementary source collections remain separate reference projects; no integration with them is established.
+**Boundary note.** All four names identify one ARM. The three contours shown inside it are internal. external SOAP service and VBD are external boundaries. separate database project, separate integration project and supplementary source collections remain separate reference projects; no integration with them is established.
 
 
-## 2. Functional-area inventory in historical PPO PAK source materials
+## 2. Functional-area inventory in historical external enterprise system source materials
 
 ```mermaid
 flowchart TB
-  subgraph TERR["АРМ — функциональные области (историческая метка источника: ППО ПАК)"]
+  subgraph TERR["АРМ — функциональные области (историческая метка источника: внешняя система)"]
     CORE["CORE domain<br/>persons, identity data, documents,<br/>cases, addresses, payments"]
     DICT["DICT domain<br/>reference data"]
     RP["RP<br/>Russian passport"]
@@ -87,7 +87,7 @@ flowchart TB
 
 ### 3.1 What is established
 
-The historical database overview labelled PPO PAK identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. The physical mapping of this database inventory to the internal contours of the ARM is not established by the reviewed evidence. This is not the separate Oracle DMRS / GLOBAL11 project. A separate physical specification lists 381 numbered entries. The two counts belong to different documents and have not been reconciled. This is evidence of database technology and source-specific inventories; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
+The historical database overview labelled external enterprise system identifies Oracle as the DBMS and reports an inventory of 401 tables grouped by naming prefixes. The physical mapping of this database inventory to the internal contours of the ARM is not established by the reviewed evidence. This is not the separate separate database project project. A separate physical specification lists 381 numbered entries. The two counts belong to different documents and have not been reconciled. This is evidence of database technology and source-specific inventories; it is **not** evidence of Oracle instance topology, physical storage layout, schema ownership, or application deployment.
 
 ```mermaid
 flowchart TB
@@ -152,7 +152,7 @@ flowchart TB
   subgraph CENTRAL["Centralized operating mode"]
     C_OFFICES["Territorial offices"]
     C_THIN["Thin clients"]
-    C_APP["Single regional ARM deployment instance (historical source label: PPO PAK)"]
+    C_APP["Single regional ARM deployment instance (historical source label: external enterprise system)"]
     C_DB[("Regional database")]
     C_OFFICES --> C_THIN --> C_APP --> C_DB
   end
@@ -190,12 +190,12 @@ flowchart LR
   IF --- ROS["Росстат<br/>forms 12-П and 12-В<br/>direction not specified"]
   ZAGS["ЗАГС<br/>birth / death records"] --> IF
   IF --- RP["АС «Российский паспорт»<br/>export path normalization<br/>direction not specified"]
-  IF --- SK["СПО «Сервисный концентратор»<br/>СМЭВ / ЕПГУ / ФНС / ДКС МИД<br/>direction not specified"]
+  IF --- SK["внешний интеграционный шлюз<br/>СМЭВ / портал государственных услуг / ФНС / ДКС МИД<br/>direction not specified"]
 ```
 
 The diagram shows seven documented **external exchange areas**. Direction is explicit in the reviewed source only for three: export to ПРИУР ГАС «Выборы», and incoming information from ГИАЦ ГУ МВД and ЗАГС. The remaining four links are neutral because their direction is not established. These are not claims of verified live integrations. Protocols, endpoints, authentication, message schemas, ownership of each adapter, and current operational status are not established.
 
-## 6. Dossier Processing Workstation — hardware/software boundary
+## 6. Case Processing Workstation — hardware/software boundary
 
 ```mermaid
 flowchart TB
@@ -220,13 +220,13 @@ flowchart TB
   EXCHANGE -.-> UNK
 ```
 
-This is a system decomposition of the Dossier Processing Workstation from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
+This is a system decomposition of the Case Processing Workstation from its specification: stationary and mobile stations, user interaction, peripherals, and an exchange boundary. It does not assert a specific network protocol or a particular physical connection for every peripheral.
 
-## 7. Dossier Processing Workstation — application suite and component architecture
+## 7. Case Processing Workstation — application suite and component architecture
 
 ```mermaid
 flowchart TB
-  subgraph SUITE["Dossier Processing Workstation — application suite"]
+  subgraph SUITE["Case Processing Workstation — application suite"]
     OCRAPP["OCR component"]
     MOBILE["ModuleMobile.exe"]
     STATIONARY["ModuleStationary.exe"]
@@ -238,14 +238,14 @@ flowchart TB
   subgraph MOBILEPARTS["ModuleMobile — documented components"]
     MUI["WPF user interface"]
     MOBDB[("ModuleMobile.db3")]
-    SOAP["UMMS SOAP client configuration"]
+    SOAP["external SOAP client configuration"]
     FILEOUT["File exchange / removable media"]
   end
   subgraph STPARTS["ModuleStationary — documented components"]
     SUI["WPF user interface"]
     STDB[("ModuleStationary.db3")]
     SQLITE["SQLite data access"]
-    FIAS["FIAS endpoint configuration"]
+    external address directory["external address directory endpoint configuration"]
     ELASTIC["Elasticsearch search service"]
   end
   subgraph PRINTPARTS["Printer / PassportPaint — document output"]
@@ -261,16 +261,16 @@ flowchart TB
   STATIONARY --> SUI
   STATIONARY --> STDB
   STATIONARY --> SQLITE
-  MOBILE -.->|FIAS endpoint configured| FIAS
-  STATIONARY -.->|FIAS endpoint configured| FIAS
-  FIAS --> ELASTIC
+  MOBILE -.->|external address directory endpoint configured| external address directory
+  STATIONARY -.->|external address directory endpoint configured| external address directory
+  external address directory --> ELASTIC
   PRINT --> LAYOUT
   LAYOUT --> MRZ --> OUTPUT
 ```
 
-**Boundary warning.** The diagram distinguishes the OCR component, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR 3.02 is assigned to the OCR component; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and UMMS SOAP client configuration are shown under their documented applications. FIAS endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
+**Boundary warning.** The diagram distinguishes the OCR component, `ModuleMobile.exe`, `ModuleStationary.exe` and `Printer / PassportPaint`. Tesseract OCR 3.02 is assigned to the OCR component; MRZ and print formatting are grouped under `Printer / PassportPaint`. The two SQLite databases and external SOAP client configuration are shown under their documented applications. external address directory endpoint configuration is associated with both mobile and stationary applications. A direct runtime call from `ModuleStationary` to `Printer / PassportPaint` is not established by the reviewed excerpts and is therefore not drawn.
 
-## 8. Dossier Processing Workstation — SQLite data-access components
+## 8. Case Processing Workstation — SQLite data-access components
 
 ```mermaid
 flowchart LR
@@ -293,17 +293,17 @@ flowchart LR
 
 The component names and responsibilities are based on reviewed C# excerpts. Connection lifetime, concurrency, disposal, null handling, and reader behavior are recorded as review findings in the data-access review; this diagram does not imply those risks have been resolved.
 
-## 9. UMMS — client and SOAP service boundary
+## 9. external SOAP service — client and SOAP service boundary
 
 ```mermaid
 flowchart LR
-  CLIENT_UI["UMMS client — UI / workflow"]
+  CLIENT_UI["external SOAP service client — UI / workflow"]
   PERSON_SEARCH["Person and dossier search"]
   CASE_HANDLING["Case and dossier handling"]
   DOC_WORKFLOW["Document issue / rollback workflow"]
   LOCAL_STORAGE["Local case and dossier storage"]
-  SOAP_CLIENT["UMMS SOAP client"]
-  UMMS_SERVICE["UMMS SOAP service"]
+  SOAP_CLIENT["external SOAP client"]
+  external SOAP service_SERVICE["external SOAP service"]
   SERVICE_OPERATIONS["Operations:<br/>searchPersonFile<br/>getPersonDocuments<br/>getPersonAddresses<br/>getPersonCasesInfo<br/>getDocumentDetail<br/>getAddressDetail<br/>getCountryDictionary<br/>issueNewDocument<br/>rollbackIssueNewDocument"]
   CLIENT_UI --> PERSON_SEARCH
   CLIENT_UI --> CASE_HANDLING
@@ -312,9 +312,9 @@ flowchart LR
   LOCAL_STORAGE --> CASE_HANDLING
   PERSON_SEARCH --> SOAP_CLIENT
   DOC_WORKFLOW --> SOAP_CLIENT
-  SOAP_CLIENT -->|SOAP XML contract| UMMS_SERVICE
-  UMMS_SERVICE -->|SOAP XML response| SOAP_CLIENT
-  UMMS_SERVICE --> SERVICE_OPERATIONS
+  SOAP_CLIENT -->|SOAP XML contract| external SOAP service_SERVICE
+  external SOAP service_SERVICE -->|SOAP XML response| SOAP_CLIENT
+  external SOAP service_SERVICE --> SERVICE_OPERATIONS
 ```
 
 The operation names are taken from the public API description and source-review notes. Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, error contracts, and endpoint details must be verified against the WSDL and approved integration documentation.
@@ -325,11 +325,11 @@ The operation names are taken from the public API description and source-review 
 
 | System / area | Architecture views included | Remaining evidence needed |
 |---|---|---|
-| Historical source notation “PPO PAK” | Functional domains, conceptual data model, deployment variants, server placement and seven external exchange areas; mapping to the ARM contours requires verification | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
+| Historical source notation “external enterprise system” | Functional domains, conceptual data model, deployment variants, server placement and seven external exchange areas; mapping to the ARM contours requires verification | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
 | ПО — workstation specification | Stationary/mobile workstation decomposition, peripherals, exchange boundary | Full component inventory, hardware mapping, interface/control descriptions, verified data-flow details |
 | ПО | OCR component (Tesseract OCR 3.02), ModuleMobile.exe, ModuleStationary.exe, Printer/PassportPaint (MRZ and printing), separate SQLite databases | Complete source tree, project references, executable ownership per feature, full schema and runtime configuration |
-| UMMS | Client/service boundary, SOAP operations, search sequence | WSDL/XSD, exact service contract, full client source, deployment and security configuration |
-| Supplementary systems | Separate source notes for ARM PPZ/PVK, AS Passport RF and MSKTs | Original covers, version/revision, ownership and any actual integration evidence |
+| external SOAP service | Client/service boundary, SOAP operations, search sequence | WSDL/XSD, exact service contract, full client source, deployment and security configuration |
+| Supplementary systems | Separate source notes for separate workstation environment, AS Passport RF and MSKTs | Original covers, version/revision, ownership and any actual integration evidence |
 
 ## 11. Evidence and change policy
 

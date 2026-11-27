@@ -181,6 +181,6 @@ flowchart LR
 
 ## 11. Project-specific usage
 
-For this repository, keep PPO Territory, ARM «Дискриптор», Deshifrator, UMMS, and supplementary source systems as separate boundaries unless evidence explicitly demonstrates an integration. Reuse the patterns above to create consistent views; do not copy example entities or relationships as facts about the documented systems.
+For this repository, keep external enterprise system, ARM предыдущее обозначение проекта, Case Processing, external SOAP service, and supplementary source systems as separate boundaries unless evidence explicitly demonstrates an integration. Reuse the patterns above to create consistent views; do not copy example entities or relationships as facts about the documented systems.
 
 **Related:** [Architecture catalogue](./README.md) · [Interactive EN/RU diagrams](../materials/architecture/architecture.html) · [Component maps](./component-maps.md)

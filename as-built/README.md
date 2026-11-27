@@ -3,7 +3,7 @@
 Раздел фиксирует только то, что подтверждается доступными исходниками, конфигурацией, трассировками и отчётами. Отсутствующие исходники и недоказанные связи явно отмечаются.
 
 - [Обзор фактической реализации и границ компонентов](code-inventory.md)
-- [UMMS: модели персоны, SOAP-клиент и пробелы доказательств](umms-client.md)
+- [external SOAP service: модели персоны, SOAP-клиент и пробелы доказательств](umms-client.md)
 - [SQLite Data Access Layer](sqlite-data-layer.md)
 - [Обмен файлами и MRZ](../architecture/data-exchange-and-mrz.md)
 - [Матрица трассировки As-Specified ↔ Architecture ↔ As-Built](traceability.md)

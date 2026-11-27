@@ -1,6 +1,6 @@
 # System Context and Architecture Boundaries of the Unified Workstation
 
-> **Governance:** ARM PPO “Territory”, ARM “Deshifrator”, R&D project “Diskriptor-14”, and Dossier Processing Workstation are names for one software workstation. POSS, POMS, and POSH VBD are internal contours of that workstation. “Citizens” is an internal functional area for individual dossiers. UMMS (`umms-web`) is an external integration system/service.
+> **Governance:** Case Processing Workstation, Case Processing Workstation, R&D project “Diskriptor-14”, and Case Processing Workstation are names for one software workstation. POSS, POMS, and POSH VBD are internal contours of that workstation. “Citizens” is an internal functional area for individual dossiers. внешний SOAP-сервис is an external integration system/service.
 
 > **Evidence status:** this document presents a logical model and historical architecture evidence. It is not a reconstruction of a specific installation's physical topology.
 
@@ -8,15 +8,15 @@
 
 | Term | Meaning |
 |---|---|
-| ARM PPO “Territory” | Name of the software workstation / complex |
-| ARM “Deshifrator” | Alternative name for the same workstation |
-| R&D “Diskriptor-14” | R&D project name for the same workstation |
-| Dossier Processing Workstation | English designation for the same workstation |
+| Case Processing Workstation | Name of the software workstation / complex |
+| Case Processing Workstation | Alternative name for the same workstation |
+| project identifier withheld | R&D project name for the same workstation |
+| Case Processing Workstation | English designation for the same workstation |
 | POSS | Internal stationary contour |
 | POMS | Internal mobile contour |
 | POSH VBD | Internal gateway contour for access to VBD |
 | “Citizens” | Internal functional area for individual dossiers |
-| UMMS / `umms-web` | External integration system/service |
+| external SOAP service / `external-service` | External integration system/service |
 
 Do not automatically equate POSS, POMS, or POSH VBD with `ModuleStationary`, `ModuleMobile`, or specific assemblies. These are different classification levels; mappings require traceability to specifications and source code.
 
@@ -24,7 +24,7 @@ Do not automatically equate POSS, POMS, or POSH VBD with `ModuleStationary`, `Mo
 
 ```mermaid
 flowchart LR
-  subgraph ARM["Unified Dossier Processing Workstation"]
+  subgraph ARM["Unified Case Processing Workstation"]
     direction TB
     POSS["POSS — stationary contour"]
     POMS["POMS — mobile contour"]
@@ -36,9 +36,9 @@ flowchart LR
     POMS --- CIT
   end
   VBD["External departmental database"]
-  UMMS["External UMMS integration service (umms-web)"]
+  external SOAP service["External external SOAP service integration service (external-service)"]
   POSHVBD <-->|"VBD access; protocol to verify"| VBD
-  ARM -.->|"Integration contract; runtime flow to verify"| UMMS
+  ARM -.->|"Integration contract; runtime flow to verify"| external SOAP service
 ```
 
 This is a boundary view, not a claim about a specific protocol or physical network topology. Internal routes must be checked against the original specification and source code.
@@ -51,7 +51,7 @@ Historical sources also describe centralized and distributed deployment modes. T
 
 ## 4. Integrations
 
-- UMMS (`umms-web`) is an external system/service; SOAP contract details and runtime routing are documented separately.
+- внешний SOAP-сервис is an external system/service; SOAP contract details and runtime routing are documented separately.
 - VBD is an external departmental database accessed through the workstation's internal POSH VBD contour.
 - File exchange between internal contours and MRZ are documented in [integration architecture](./integration-and-file-exchange.md) and [format specifications](./data-exchange-and-mrz.md).
 

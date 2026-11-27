@@ -1,8 +1,8 @@
-# UMMS client boundary and person models
+# external SOAP service client boundary and person models
 
 ## Архитектурная граница
 
-UMMS (`umms-web`) рассматривается как внешняя интеграционная система/сервис. «Граждане» — функциональная область внутри АРМ для работы с досье физических лиц; это не синоним UMMS.
+внешний SOAP-сервис рассматривается как внешняя интеграционная система/сервис. «Граждане» — функциональная область внутри АРМ для работы с досье физических лиц; это не синоним external SOAP service.
 
 ## Сопоставление моделей персоны
 
@@ -33,7 +33,7 @@ UMMS (`umms-web`) рассматривается как внешняя инте�
 - [`UmmsPersonViewModel.cs`](sources/Common.Wpf.ViewModels/UmmsPersonViewModel.cs) — библиотечный исходник от 24.11.2026.
 - [`UmmsSearchPersonResultViewModel.cs`](sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs) — исходник из репозитория.
 
-## UMMS proxy и расхождение источников
+## external SOAP service proxy и расхождение источников
 
 - Полный `UmmsNp.cs` в публичном дереве не найден.
 - В диагностической трассировке упоминается `Umms.NpWSService.processS2(...)` и позиция в `UmmsNp.cs`. Это подтверждает след вызова, но не реализацию метода.
