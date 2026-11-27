@@ -84,12 +84,18 @@ for path in MD_FILES:
         if not resolve_link(path, raw):
             error(path, f"broken relative link: {raw}")
 
-    for block in re.findall(r"```mermaid\s*\n([\s\S]*?)```", text):
+    for block in re.findall(r"(?:\`\`\`|~~~)mermaid\s*\n([\s\S]*?)(?:\`\`\`|~~~)", text):
         for line in block.splitlines():
-            if re.search(r"\|[^\"]*[А-Яа-яЁё][^\"]*\|", line):
+            if re.search(r"^\s*(?:subgraph\s+)?[A-Za-z_][\w]*\s*\[(?!\")[^\]\n]*[А-Яа-яЁё]", line):
+                error(path, f"unquoted Cyrillic Mermaid node label: {line.strip()}")
+            edge = re.search(r"\|([^"]+)\|", line)
+            if edge and re.search(r"[А-Яа-яЁё]", edge.group(1)):
                 error(path, f"unquoted Cyrillic Mermaid edge label: {line.strip()}")
             if "erDiagram" in block and re.search(r":\s*(?!\")[^\n]*[А-Яа-яЁё]", line):
                 error(path, f"unquoted Cyrillic Mermaid ER relationship: {line.strip()}")
+        if "flowchart" in block or re.search(r"^\s*graph\s", block, flags=re.M):
+            if len(re.findall(r"^\s*subgraph\b", block, flags=re.M)) != len(re.findall(r"^\s*end\s*$", block, flags=re.M)):
+                error(path, "unbalanced Mermaid subgraph/end blocks")
 
 # The reconstructed PostgreSQL ERD contains 24 application entities only.
 erd_path = ROOT / "data-model/reconstructed-erd.md"
@@ -130,11 +136,41 @@ if sql_path.exists():
     inn_values = re.findall(r"'(\d{12})'", sql_text)
     if any(value != "000000000000" for value in inn_values):
         error(sql_path, "contains a non-synthetic 12-digit INN")
-    if re.search(r"\b(?:10|172|192)\.\d{1,3}\.\d{1,3}\.\d{1,3}\b", sql_text):
+    snils_values = re.findall(r"(\d{3}-\d{3}-\d{3}\s\d{2})", sql_text)
+    if any(value != "000-000-000 00" for value in snils_values):
+        error(sql_path, "contains a non-synthetic SNILS")
+    uuid_values = re.findall(r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b", sql_text)
+    allowed_uuids = {"00000000-0000-0000-0000-000000000001"}
+    if any(value.lower() not in allowed_uuids for value in uuid_values):
+        error(sql_path, "contains a non-synthetic UUID/FIAS identifier")
+    known_addresses = ("Костромская", "Волгореченск", "Славянск", "Фролово", "Зеленова", "Кириллово")
+    if any(value in sql_text for value in known_addresses):
+        error(sql_path, "contains a known source address")
+    if re.search(r"\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})\b", sql_text):
         error(sql_path, "contains a private network IP address")
     all_markdown = "\n".join(p.read_text(encoding="utf-8", errors="replace") for p in MD_FILES)
     if re.search(r"\]\([^)]*pg_test_run_20261125_012743\.log", all_markdown):
         error(sql_path, "missing historical log must not be linked as a file")
+
+# Legacy URLs must resolve through Docsify aliases or canonical HTML refresh pages.
+index_path = ROOT / "index.html"
+if index_path.exists():
+    index_text = index_path.read_text(encoding="utf-8")
+    for marker in ("'/materials/descriptor/(.*)': '/specs/$1'", "'/materials/deshifrator/(.*)': '/as-built/$1'", "'/materials/architecture/(.*)': '/architecture/$1'"):
+        if marker not in index_text:
+            error(index_path, f"missing Docsify compatibility alias: {marker}")
+    if "docsify-mermaid" not in index_text or "docsify@4.13.1" not in index_text:
+        error(index_path, "Docsify 4.13.1 Mermaid rendering plugin is not configured")
+for legacy, destination in (
+    ("materials/descriptor/index.html", "#/specs/"),
+    ("materials/deshifrator/en/index.html", "#/as-built/"),
+    ("materials/deshifrator/index.html", "#/as-built/"),
+):
+    legacy_path = ROOT / legacy
+    if not legacy_path.exists() or 'http-equiv="refresh"' not in legacy_path.read_text(encoding="utf-8"):
+        error(legacy_path, "legacy HTML entrypoint has no meta refresh")
+    elif destination not in legacy_path.read_text(encoding="utf-8"):
+        error(legacy_path, f"legacy HTML entrypoint does not redirect to {destination}")
 
 if ERRORS:
     print("\n".join(ERRORS), file=sys.stderr)
