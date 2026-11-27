@@ -26,7 +26,7 @@ The source lists these historical support channels:
 - website: `https://sd.reksoft.ru`;
 - forum: `http://ufms.reksoft.ru/forum`;
 - telephone: `8 (800) 333 0340`;
-- email: `sd@reksoft.ru`.
+- email: `[redacted]`.
 
 These are preserved as historical source references, not verified current contact details.
 
@@ -77,7 +77,7 @@ Do not infer exact dates, acceptance acts, update versions or successful backup 
 
 The supplied operational regulation states that update packages and installation instructions were published on `sd.reksoft.ru`; each update was accompanied by a change/defect summary; responsible regional employees were notified by email; and contractor representatives were to install updates within one working day of publication.
 
-The regulation also assigns regular operational support to designated regional employees, with escalation to contractor support when necessary. Historical channels listed in the source are `https://sd.reksoft.ru`, `http://ufms.reksoft.ru/forum`, telephone `8 (800) 333 0340` and `sd@reksoft.ru`. These are source references, not verified current contact details.
+The regulation also assigns regular operational support to designated regional employees, with escalation to contractor support when necessary. Historical channels listed in the source are `https://sd.reksoft.ru`, `http://ufms.reksoft.ru/forum`, telephone `8 (800) 333 0340` and `[redacted]`. These are source references, not verified current contact details.
 
 ### Backup monitoring
 
