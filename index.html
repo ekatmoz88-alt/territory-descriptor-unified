@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Evidence-based technical documentation for the PPO PAK project, the PPO PAK information system and the Dossier Processing Workstation">
-  <title>ППО ПАК / PPO PAK — Technical Documentation</title>
+  <meta name="description" content="Evidence-based documentation for one Dossier Processing Workstation: specifications, architecture, as-built review, verification and data model">
+  <title>АРМ ППО «Территория» / АРМ «Дешифратор» — Documentation</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/vue.css">
   <link rel="stylesheet" href="assets/reference-theme.css">
 </head>
 <body>
   <div id="app"></div>
   <script>
-    // docsify configuration
     window.$docsify = {
-      name: 'ППО ПАК / PPO PAK — Technical Documentation',
+      name: 'АРМ ППО «Территория» / АРМ «Дешифратор»',
       homepage: 'README.md',
       loadSidebar: true,
       loadNavbar: true,
       subMaxLevel: 2,
       auto2top: true,
       relativePath: true,
+      alias: {
+        '/materials/descriptor/(.*)': '/specs/$1',
+        '/materials/deshifrator/(.*)': '/as-built/$1',
+        '/materials/architecture/(.*)': '/architecture/$1'
+      },
       search: {
         paths: 'auto',
         placeholder: { '/': 'Поиск по документации', '/en/': 'Search documentation' },

@@ -1,0 +1,7 @@
+# Интеграции, файловый обмен и MRZ
+
+- [Обмен данными и администрирование — RU](../materials/architecture/data-exchange-and-administration.ru.md)
+- [Обмен данными и администрирование — EN](../materials/architecture/data-exchange-and-administration.en.md)
+- [Файловый обмен и MRZ — исходный обзор](../materials/deshifrator/docs/data-exchange-and-mrz.md)
+
+UMMS (`umms-web`) документируется как внешняя интеграционная система. Домен «Граждане» остаётся функциональной областью АРМ. Наличие локального SQLite DAL не доказывает, что SQLite является хранилищем UMMS или ПОШ ВБД.
