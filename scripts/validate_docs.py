@@ -79,7 +79,7 @@ for path in MD_FILES:
         error(path, "contains a literal backslash-n sequence")
 
     prose = re.sub(r"^ {0,3}```[\s\S]*?^ {0,3}```", "", text, flags=re.M)
-    for match in re.finditer(r"!?[[^]]*]\(([^)]+)\)", prose):
+    for match in re.finditer(r"!?\[[^\]]*\]\(([^)]+)\)", prose):
         raw = match.group(1).strip().split()[0].strip("<>")
         if not resolve_link(path, raw):
             error(path, f"broken relative link: {raw}")
