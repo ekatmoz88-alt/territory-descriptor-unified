@@ -1,4 +1,4 @@
-# ARM Descriptor — Data Exchange, Transfer Workflow and Formats
+# ARM Project — Data Exchange, Transfer Workflow and Formats
 
 ## Scope and evidence status
 
@@ -32,10 +32,10 @@ This page consolidates the supplied technical-description workflow for ПОМС,
 
 ```mermaid
 flowchart TB
-  VBD[("ВБД")]
+  VBD(("ВБД"))
   GW["ПОШ ВБД"]
   MOB["ПОМС — search and export"]
-  MEDIA[("Registered removable medium")]
+  MEDIA(("Registered removable medium"))
   STA["ПОСС — import, transform and edit"]
   LOG["Dossier change log"]
   CHECK{"Does current VBD data match exported baseline?"}
@@ -52,47 +52,12 @@ flowchart TB
   CHECK -->|"No — abort import"| CONFLICT["Conflict; resolution procedure not specified"]
 ```
 
-The diagram is a logical reconstruction of the textual workflow. It does not define transaction boundaries or internal file formats.
-
-## Search criteria supported by the mobile-station filter
-
-- Date of birth: from/to.
-- Date of death: from/to, optional.
-- Sex: male/female.
-- Place of birth: optional.
-- Full name: optional.
-- Document data: document type, issuing authority, series and number, issue-date range, document indicator and optional reason for documentation. Multiple document filters may be specified.
-- Address data: address type, optional effective date, locality, street and optional premises. Multiple address filters may be specified.
-
-The source does not define exact matching semantics, normalization rules, pagination, query limits or performance characteristics.
-
-## Per-dossier processing metadata
-
-The source states that each dossier is associated with:
-- date and time of export from ПОМС;
-- date and time of export from ПОСС to ПОМС;
-- date and time of loading from ПОМС to ПОСС;
-- date and time of loading from ПОМС;
-- dossier change log;
-- information about users who performed actions on the dossier.
-
-The exact event semantics and timestamp authority/time zone are not specified. The original wording is retained as separate event labels; they should not be collapsed into a single generic timestamp.
-
-## Optimistic consistency check
-
-The pre-import comparison is a form of optimistic concurrency control: the source record is compared with the baseline exported for editing. If the source has changed, the import is rejected rather than overwriting newer source data.
-
-The source does not identify the comparison key or mechanism (row version, timestamp, hash, field-by-field comparison, or another method), nor does it specify merge, retry, conflict review or audit behavior after rejection.
-
-## Transfer container and format evidence
-
-The interface materials show the `.ummstr` extension and the description “UMMSTR (Umms transfer file)”. This confirms a user-facing export option, not the internal container schema or cryptographic implementation.
-
-The source describes conversion between the mobile transfer representation and the stationary dossier representation. Exact serialization format, schema versioning, character encoding, compression, encryption, integrity protection and compatibility rules require source-code or file-level inspection.
+The diagram is a logical reconstruction of the textual workflow. It does not define transaction boundaries between the transfer file and the stationary dossier representation. Exact serialization format, schema versioning, character encoding, compression, encryption, integrity protection and compatibility rules require source-code or file-level inspection.
 
 ## Font configuration XML
 
 The described `DescriptorFont` structure includes:
+
 - `Name`;
 - `Dpi` (120 shown as a baseline);
 - `CharSpacing`;
@@ -101,9 +66,9 @@ The described `DescriptorFont` structure includes:
 
 Examples mention Cyrillic characters Ц, Щ and Д.
 
-## Important distinction from PPO PAK's own exchange mechanism
+## Important distinction from Объект PAK's own exchange mechanism
 
-PPO PAK documentation separately describes encoded and compressed internal export files and a file-marker mechanism for preventing concurrent duplicate imports. Those details must not automatically be attributed to the ARM Descriptor `.ummstr` workflow. The two mechanisms have not been proven to be the same implementation.
+Объект PAK documentation separately describes encoded and compressed internal export files and a file-marker mechanism for preventing concurrent duplicate imports. Those details must not automatically be attributed to the ARM Project `.ummstr` workflow. The two mechanisms have not been proven to be the same implementation.
 
 ## Open verification items
 
@@ -126,13 +91,12 @@ PPO PAK documentation separately describes encoded and compressed internal expor
 - [Dossier Processing Workflow and Metadata](08-data-processing-workflow.md)
 - [Software Components and Workstation Equipment](09-components-and-workstation-equipment.md)
 
-
 ## Additional dossier transfer workflow and metadata
 
 The supplied specification describes the following sequence: ПОМС connects to ПОШ ВБД; searches using filters; selects dossiers; exports and transforms them for ПОСС; moves the file through registered removable media; ПОСС imports and converts the dossier for viewing/editing; the stationary user edits it and produces a change log; ПОСС returns the original dossier and change log through the registered medium; ПОМС checks whether the VBD source data has changed since export; if it has changed, import is aborted, otherwise the changes are submitted.
 
-The mobile filter includes birth-date range, optional death-date range, sex, optional place of birth and name, multiple document filters (type, issuing authority, series/number, issue-date range, indicator and optional reason), and multiple address filters (type, optional effective date, locality, street and optional premises).
+The mobile filter includes birth-date range, optional death-date range, sex, optional place of birth and name, multiple document filters (type, issuing authority, series and number, issue-date range, indicator and optional reason for documentation), and multiple address filters (type, optional effective date, locality, street and optional premises).
 
-Each dossier is stated to carry four separate date/time events: export from ПОМС; export from ПОСС to ПОМС; loading from ПОМС to ПОСС; and loading from ПОМС. It also carries the dossier change log and information about users who performed actions.
+Each dossier is stated to carry four separate date/time events: export from ПОМС; export from ПОСС to ПОМС; loading from ПОМС to ПОСС; and loading from ПОМС. It also carries the dossier change log and information about users who performed actions with the dossier.
 
 The pre-import comparison is logically an optimistic concurrency check. The source does not identify whether it compares versions, timestamps, hashes or field values, and does not define conflict resolution or retry behavior. See [Dossier Processing Workflow and Metadata](08-data-processing-workflow.md) for the full sequence and verification questions.
