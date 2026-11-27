@@ -17,7 +17,7 @@
 ## 3. As-Built
 - [Reverse Engineering](/as-built/README.md)
 - [Инвентаризация кода](/as-built/code-inventory.md)
-- [UMMS client и модели персоны](/as-built/umms-client.md)
+- [external SOAP service client и модели персоны](/as-built/umms-client.md)
 - [SQLite Data Access Layer](/as-built/sqlite-data-layer.md)
 - [Матрица трассировки](/as-built/traceability.md)
 
