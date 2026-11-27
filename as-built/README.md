@@ -5,7 +5,7 @@
 - [Обзор фактической реализации и границ компонентов](code-inventory.md)
 - [UMMS: модели персоны, SOAP-клиент и пробелы доказательств](umms-client.md)
 - [SQLite Data Access Layer](sqlite-data-layer.md)
-- [Обмен файлами и MRZ](../materials/deshifrator/docs/data-exchange-and-mrz.md)
+- [Обмен файлами и MRZ](../architecture/data-exchange-and-mrz.md)
 - [Матрица трассировки As-Specified ↔ Architecture ↔ As-Built](traceability.md)
 
 ## Ключевые оговорки

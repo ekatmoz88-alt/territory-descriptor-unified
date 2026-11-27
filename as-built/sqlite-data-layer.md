@@ -6,10 +6,10 @@
 
 ## Связанные исходники
 
-- [ConnectionFactory.cs](../materials/deshifrator/sources/DbStationary.Data/ConnectionFactory.cs)
-- [SQLiteCommandEx.cs](../materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx.cs)
-- [SQLiteDataReaderEx.cs](../materials/deshifrator/sources/DbStationary.Data/SQLiteDataReaderEx.cs)
-- [SQLiteMaps.cs](../materials/deshifrator/sources/DbStationary.Data/SQLiteMaps.cs)
+- [ConnectionFactory.cs](sources/DbStationary.Data/ConnectionFactory.cs)
+- [SQLiteCommandEx.cs](sources/DbStationary.Data/SQLiteCommandEx.cs)
+- [SQLiteDataReaderEx.cs](sources/DbStationary.Data/SQLiteDataReaderEx.cs)
+- [SQLiteMaps.cs](sources/DbStationary.Data/SQLiteMaps.cs)
 
 ## Подтверждённая граница
 

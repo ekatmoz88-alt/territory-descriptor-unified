@@ -8,10 +8,10 @@
 
 ## Схемы и исходные материалы
 
-- [Основные контекстные и архитектурные диаграммы](../materials/architecture/README.md)
-- [Компонентные карты](../materials/architecture/component-maps.md)
-- [Системный контекст — RU](../materials/architecture/system-context-and-scope.ru.md)
-- [Системный контекст — EN](../materials/architecture/system-context-and-scope.en.md)
+- [Основные контекстные и архитектурные диаграммы](diagrams.md)
+- [Компонентные карты](component-maps.md)
+- [Системный контекст — RU](system-context-and-scope.ru.md)
+- [Системный контекст — EN](system-context-and-scope.en.md)
 
 ## Неподтверждённые соответствия
 

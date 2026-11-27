@@ -4,16 +4,16 @@
 
 ## Источники требований
 
-- [Системное проектирование и назначение АРМ](../materials/descriptor/docs/01-system-design.md)
-- [Функциональные подсистемы](../materials/descriptor/docs/02-functional-subsystems.md)
-- [Аппаратное и программное обеспечение](../materials/descriptor/docs/03-hardware-software.md)
-- [Обмен данными](../materials/descriptor/docs/04-data-exchange.md)
-- [Интерфейс мобильной станции](../materials/descriptor/docs/05-mobile-station-ui.md)
-- [Шрифты и печать](../materials/descriptor/docs/06-fonts-and-print.md)
-- [Модель доверия и безопасность](../materials/descriptor/docs/07-trust-levels-security-architecture.md)
-- [Процесс обработки данных](../materials/descriptor/docs/08-data-processing-workflow.md)
-- [Компоненты и оснащение АРМ](../materials/descriptor/docs/09-components-and-workstation-equipment.md)
-- [Спецификация АРМ — архивная точка входа](../materials/descriptor/README.md)
+- [Системное проектирование и назначение АРМ](docs/01-system-design.md)
+- [Функциональные подсистемы](docs/02-functional-subsystems.md)
+- [Аппаратное и программное обеспечение](docs/03-hardware-software.md)
+- [Обмен данными](docs/04-data-exchange.md)
+- [Интерфейс мобильной станции](docs/05-mobile-station-ui.md)
+- [Шрифты и печать](docs/06-fonts-and-print.md)
+- [Модель доверия и безопасность](docs/07-trust-levels-security-architecture.md)
+- [Процесс обработки данных](docs/08-data-processing-workflow.md)
+- [Компоненты и оснащение АРМ](docs/09-components-and-workstation-equipment.md)
+- [Спецификация АРМ — архивная точка входа](README.md)
 
 ## Идентификация
 

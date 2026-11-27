@@ -6,18 +6,18 @@
 
 Существующие Mermaid-источники сохранены по прежним путям и подключены ссылками, чтобы не создавать вторые копии диаграмм:
 
-- [Каталог основных архитектурных схем — 10 диаграмм](../materials/architecture/README.md)
-- [Компонентные карты](../materials/architecture/component-maps.md). В исходном файле 10 Mermaid-блоков: 7 относятся к архитектуре АРМ/его интеграций (рабочее место, функциональные области, application suite, SQLite DAL, UMMS workflow, component inventory, API-to-database traceability); ещё 3 описывают смежные представления PPO PAK / PPO ID Docs и сохранены в исходном каталоге отдельно.
-- [Системный контекст и границы — RU](../materials/architecture/system-context-and-scope.ru.md)
-- [Системный контекст и границы — EN](../materials/architecture/system-context-and-scope.en.md)
-- [Архитектура и исходная реконструкция ОКР](../materials/architecture/deshifrator-14-source-reconstruction.ru.md)
+- [Каталог основных архитектурных схем — 10 диаграмм](diagrams.md)
+- [Компонентные карты](component-maps.md). В исходном файле 10 Mermaid-блоков: 7 относятся к архитектуре АРМ/его интеграций (рабочее место, функциональные области, application suite, SQLite DAL, UMMS workflow, component inventory, API-to-database traceability); ещё 3 описывают смежные представления PPO PAK / PPO ID Docs и сохранены в исходном каталоге отдельно.
+- [Системный контекст и границы — RU](system-context-and-scope.ru.md)
+- [Системный контекст и границы — EN](system-context-and-scope.en.md)
+- [Архитектура и исходная реконструкция ОКР](deshifrator-14-source-reconstruction.ru.md)
 
 ## Обмен и интеграции
 
-- [Обмен данными и администрирование — RU](../materials/architecture/data-exchange-and-administration.ru.md)
-- [Обмен данными и администрирование — EN](../materials/architecture/data-exchange-and-administration.en.md)
-- [Управление доступом — RU](../materials/architecture/access-control.ru.md)
-- [Управление доступом — EN](../materials/architecture/access-control.en.md)
+- [Обмен данными и администрирование — RU](data-exchange-and-administration.ru.md)
+- [Обмен данными и администрирование — EN](data-exchange-and-administration.en.md)
+- [Управление доступом — RU](access-control.ru.md)
+- [Управление доступом — EN](access-control.en.md)
 - [Обмен файлами и MRZ](../materials/deshifrator/docs/data-exchange-and-mrz.md)
 
 ## Границы и governance
