@@ -1,8 +1,8 @@
-# ARM PPZ/PVK — ViPNet Coordinator and browser troubleshooting
+# separate workstation environment — ViPNet Coordinator and browser troubleshooting
 
 ## Scope and provenance
 
-This page records the supplied user-guide fragment for an ARM PPZ/PVK environment. It is not part of the ARM Descriptor architecture unless an independent primary source establishes that relationship.
+This page records the supplied user-guide fragment for an separate workstation environment environment. It is not part of the Case Processing Workstation architecture unless an independent primary source establishes that relationship.
 
 The guide refers to a ViPNet Monitor coordinator, a portal, browser behavior, printer/card-reader/web-camera drivers and browser plugins.
 
