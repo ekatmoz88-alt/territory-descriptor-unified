@@ -1,10 +1,10 @@
-# external SOAP service — архитектурный обзор кодовой базы
+# внешний SOAP-сервис — архитектурный обзор кодовой базы
 
 > **Статус: Draft / Черновик.** Source-based analysis. Этот документ фиксирует предварительную карту компонентов по имеющемуся описанию исходников. Он не является спецификацией поведения и не подтверждает архитектурные связи, пока они не проверены по полным исходникам и, где требуется, в работающем приложении.
 
 | Параметр | Значение |
 |---|---|
-| Система | external SOAP service — WPF-приложение «Стационарная станция» |
+| Система | внешний SOAP-сервис — WPF-приложение «Стационарная станция» |
 | Раздел | Архитектура / обзор кодовой базы |
 | Основной файл | `docs/architecture/codebase-overview.md` |
 | Тип анализа | Source-based analysis |
@@ -22,7 +22,7 @@
 - пользовательская последовательность печати документов;
 - полная спецификация форматов макетов и XML;
 - полная спецификация МЧЗ;
-- описание внутреннего устройства драйвера printer manufacturer, пока его исходники не изучены.
+- описание внутреннего устройства драйвера печатающего оборудования, пока его исходники не изучены.
 
 Пользовательский сценарий печати описывается отдельно в [«Печать документов»](../user-guide/printing-documents.md).
 
@@ -37,7 +37,7 @@ flowchart TB
     MPC -. "layout creation calls — verify" .-> LH["LayoutHelper<br/>initial layout generation"]
     MPC -. "MRZ generation calls — verify" .-> MB["MchzBuilder<br/>MRZ algorithm"]
     MPC -. "printer abstraction usage — verify" .-> IF["IPrinterDriver<br/>printer contract"]
-    IF -. "implementation relationship — verify" .-> OL["Managedprinter manufacturerPrinterDriver<br/>printer manufacturer adapter"]
+    IF -. "implementation relationship — verify" .-> OL["ManagedOlivettiPrinterDriver<br/>printer manufacturer adapter"]
     DBG["MainWindowDebug.cs<br/>diagnostic hooks"] -. "#if DEBUG boundary — verify" .-> MW
 
     classDef provisional fill:#fff,stroke:#777,stroke-dasharray: 5 5,color:#222;
@@ -93,16 +93,16 @@ flowchart TB
 
 Соответствие ICAO Doc 9303 должно подтверждаться тестовыми векторами и сверкой с применимыми требованиями стандарта, а не только наличием весов 7–3–1 в коде.
 
-### 3.5. IPrinterDriver / printer manufacturer — граница взаимодействия
+### 3.5. IPrinterDriver / производитель печатающего оборудования — граница взаимодействия
 
-Предполагается, что `IPrinterDriver` задаёт контракт взаимодействия с печатающим устройством, а `Managedprinter manufacturerPrinterDriver` реализует этот контракт для оборудования printer manufacturer.
+Предполагается, что `IPrinterDriver` задаёт контракт взаимодействия с печатающим устройством, а `ManagedOlivettiPrinterDriver` реализует этот контракт для оборудования производителя печатающего оборудования.
 
 Эта связь не подтверждена. Для её проверки нужны:
 - полный исходник `IPrinterDriver.cs`;
 - определения перечислений `Quality`, `Cpi` и `Doctype`;
-- полный исходник `Managedprinter manufacturerPrinterDriver`;
+- полный исходник `ManagedOlivettiPrinterDriver`;
 - места создания и передачи экземпляра драйвера;
-- описание или доступная реализация нижележащей обёртки над драйвером printer manufacturer.
+- описание или доступная реализация нижележащей обёртки над драйвером Olivetti.
 
 До этого момента нельзя утверждать, что бизнес-логика полностью изолирована от конкретного драйвера.
 
@@ -121,7 +121,7 @@ flowchart TB
 | `MainWindowCommands` привязаны к обработчикам `MainPaintControl` | `MainWindowCommands.cs`, XAML командных привязок | Ревью `CommandBindings`, `InputBindings` и методов-обработчиков | ☐ |
 | `MainPaintControl` вызывает `LayoutHelper` при формировании макета | `MainPaintControl.xaml.cs`, `LayoutHelper.cs` | Поиск прямых/косвенных вызовов; тест сценария создания макета | ☐ |
 | `MainPaintControl` вызывает `MchzBuilder` при генерации МЧЗ | `MainPaintControl.xaml.cs`, `MchzBuilder.cs` | Поиск вызовов; модульные тесты алгоритма и тест интеграции | ☐ |
-| `Managedprinter manufacturerPrinterDriver` реализует `IPrinterDriver` | `PassportPaintDriver/IPrinterDriver.cs`, исходник реализации | Ревью объявления интерфейса, класса и мест внедрения/создания | ☐ |
+| `ManagedOlivettiPrinterDriver` реализует `IPrinterDriver` | `PassportPaintDriver/IPrinterDriver.cs`, исходник реализации | Ревью объявления интерфейса, класса и мест внедрения/создания | ☐ |
 | `MainWindowDebug` ограничен `#if DEBUG` и диагностические команды недоступны в Release | `MainWindowDebug.cs`, проектные файлы сборки | Проверка условной компиляции и сборка Release; проверка отсутствия команд в доступном UI | ☐ |
 | Реализация МЧЗ соответствует применимым требованиям ICAO Doc 9303 | `MchzBuilder.cs`, тестовые векторы | Проверка формата, транслитерации, позиций и контрольных сумм на эталонных примерах | ☐ |
 | DPI-пересчёт и преобразование координат корректны | `MainPaintControl` (предположительно `PrintOnExecuted`), связанные типы | Ревью преобразований; тестирование на разных DPI и на реальном принтере | ☐ |
@@ -142,7 +142,7 @@ flowchart TB
 
 - `IPrinterDriver.cs`;
 - перечисления `Quality`, `Cpi`, `Doctype`;
-- полная реализация `Managedprinter manufacturerPrinterDriver`.
+- полная реализация `ManagedOlivettiPrinterDriver`.
 
 ### 5.2. XAML-файлы
 
@@ -171,6 +171,6 @@ flowchart TB
 
 ## 6. Редакционное примечание
 
-Раздел относится только к системе external SOAP service — WPF-приложению «Стационарная станция». Он ведётся отдельно от документации Global11 / Oracle Data Modeler и не должен включать материалы о GEO_ROLLUP, Oracle Data Modeler или других системах.
+Раздел относится только к системе внешний SOAP-сервис — WPF-приложению «Стационарная станция». Он ведётся отдельно от документации Global11 / Oracle Data Modeler и не должен включать материалы о GEO_ROLLUP, Oracle Data Modeler или других системах.
 
-Статус Draft отражает незавершённость ревью исходников и интерфейса external SOAP service. Это отдельное основание для проверки и не связано со статусом материалов Global11.
+Статус Draft отражает незавершённость ревью исходников и интерфейса внешний SOAP-сервис. Это отдельное основание для проверки и не связано со статусом материалов Global11.
