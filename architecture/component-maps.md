@@ -42,9 +42,9 @@ flowchart LR
     AUTH --> GATE
   end
   VBD[("Внешняя ведомственная БД")]
-  external SOAP service["Внешний интеграционный сервис external SOAP service (external-service)"]
+  EXTERNAL_SERVICE["Внешний интеграционный сервис EXTERNAL_SERVICE (external-service)"]
   GATE <-->|"VBD access; protocol to verify"| VBD
-  ARM -.->|"External integration contract; runtime flow to verify"| external SOAP service
+  ARM -.->|"External integration contract; runtime flow to verify"| EXTERNAL_SERVICE
 ```
 
 The source specification describes trust zones for the internal mobile, stationary and gateway contours and an external VBD boundary. It also describes removable-media transfer, `.ummstr` files, gateway authentication, dossier search, editing, preview, printing, font tools, comparison, and consistency checks. Exact trust-zone enforcement and cryptographic allocation must be verified against the original technical-project revision and implementation evidence.
@@ -117,7 +117,7 @@ flowchart TB
   COREDB --> SUBJECT
 ```
 
-The project names and model areas come from a source-code overview using the historical external enterprise system label. Their exact mapping to the internal ARM contours requires verification. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented external SOAP service/client. The Oracle DBMS and table inventory shown here belong to the external enterprise system source context; the independent separate database project project is separate and is not represented by this diagram.
+The project names and model areas come from a source-code overview using the historical external enterprise system label. Their exact mapping to the internal ARM contours requires verification. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented external SOAP service SOAP service/client. The Oracle DBMS and table inventory shown here belong to the external enterprise system source context; the independent separate database project project is separate and is not represented by this diagram.
 
 ### Historical Oracle database inventory (physical mapping to ARM not established)
 
@@ -187,7 +187,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  subgraph CLIENT["external SOAP service client"]
+  subgraph CLIENT["EXTERNAL_SERVICE client"]
     UI["Client UI / workflow"]
     SEARCH["Person and dossier search"]
     CASE["Case and dossier handling"]
@@ -201,7 +201,7 @@ flowchart LR
     SEARCH --> SOAP
     ISSUE --> SOAP
   end
-  SERVICE["external SOAP service"]
+  SERVICE["EXTERNAL_SERVICE SOAP service"]
   SOAP <-->|"SOAP / XML contract"| SERVICE
   SERVICE --> OPS["searchPersonFile · getPersonDocuments<br/>getPersonAddresses · getPersonCasesInfo<br/>getDocumentDetail · getAddressDetail<br/>getCountryDictionary<br/>issueNewDocument · rollbackIssueNewDocument"]
 ```
@@ -213,7 +213,7 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - The complete authoritative list of the 17 external enterprise system functional modules is not available in the current source set.
 - The Case Processing Workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Case Processing Workstation diagrams are limited to the application suite and source excerpts that have been reviewed.
-- external SOAP API operation names are documented; complete wire-level contracts and deployment details are not included.
+- external SOAP service API operation names are documented; complete wire-level contracts and deployment details are not included.
 - Treat ARM PPO «Territory», ARM «Case Processing», R&D «Diskriptor-14» and Case Processing Workstation as names for one ARM. Do not model them as distinct application boundaries.
 - Keep the independent separate database project project outside the external enterprise system documentation. Do not confuse it with the Oracle DBMS identified in external enterprise system database materials.
 - Draw a runtime integration only when primary evidence establishes it.
