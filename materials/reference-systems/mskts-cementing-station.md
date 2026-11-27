@@ -2,7 +2,7 @@
 
 ## Scope and system boundary
 
-The supplied operating-manual fragment describes a mobile cementing-control station (промышленная система управления) used to monitor and document well-cementing operations in field conditions. It is an industrial measurement and control system, not a component of external enterprise system or Case Processing Workstation.
+The supplied operating-manual fragment describes a mobile cementing-control station (МСКЦ) used to monitor and document well-cementing operations in field conditions. It is an industrial measurement and control system, not a component of PPO Territory or ARM Descriptor.
 
 ## Purpose and measured parameters
 

@@ -1,4 +1,4 @@
-# external enterprise system — Functional Modules
+# PPO Territory — Functional Modules
 
 ## Business domains identified in available materials
 

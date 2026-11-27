@@ -1,4 +1,4 @@
-# external enterprise system — Lifecycle, Updates and Operational Support
+# PPO Territory — Lifecycle, Updates and Operational Support
 
 ## Lifecycle terminology
 
@@ -12,15 +12,15 @@ Some materials refer to historical project work. A reliable stage-by-stage calen
 
 The supplied operational regulation states that:
 - the contractor publishes update files and installation instructions on `[redacted]`;
-- each update is accompanied by information about changes in external enterprise system and corrected defects;
-- responsible employees of the regional public-sector authority authority are notified by email;
+- each update is accompanied by information about changes in PPO Territory and corrected defects;
+- responsible employees of the regional FMS authority are notified by email;
 - contractor representatives perform update installation in the regional authority within one working day after publication.
 
 This is a documented historical support procedure. It does not establish that the website or support arrangement is currently operational, nor does it identify a particular update package or installed build.
 
 ## Operational support
 
-The regulation assigns regular support activities to designated employees of the regional public-sector authority authority, following the supplied external enterprise system documentation. When needed, the responsible employee contacts the contractor's technical support.
+The regulation assigns regular support activities to designated employees of the regional FMS authority, following the supplied PPO Territory documentation. When needed, the responsible employee contacts the contractor's technical support.
 
 The source lists these historical support channels:
 - website: `[redacted]`;
@@ -32,7 +32,7 @@ These are preserved as historical source references, not verified current contac
 
 ## Backup operations
 
-The regulation states that responsible regional employees regularly monitor correct operation of the external enterprise system backup facilities, following the supplied documentation. It does not identify:
+The regulation states that responsible regional employees regularly monitor correct operation of the PPO Territory backup facilities, following the supplied documentation. It does not identify:
 - backup software or storage topology;
 - backup frequency or retention;
 - full/incremental strategy;
@@ -48,7 +48,7 @@ Do not infer that a backup system is effective merely because backup monitoring 
 The supplied tables describe implementation and rollout activities including:
 - survey of technical infrastructure;
 - installation and configuration of server software;
-- installation and configuration of external enterprise system;
+- installation and configuration of PPO Territory;
 - creation of user and organizational-unit accounts;
 - administrator and key-user training/consultation;
 - work at listed sites;
@@ -81,11 +81,11 @@ The regulation also assigns regular operational support to designated regional e
 
 ### Backup monitoring
 
-The source requires responsible regional employees to regularly monitor correct operation of external enterprise system backup facilities. It does not identify backup software, storage, schedule, retention, off-site copies, RPO/RTO or successful restore tests. A backup-monitoring requirement is not proof of recoverability.
+The source requires responsible regional employees to regularly monitor correct operation of PPO Territory backup facilities. It does not identify backup software, storage, schedule, retention, off-site copies, RPO/RTO or successful restore tests. A backup-monitoring requirement is not proof of recoverability.
 
 ### Rollout activities
 
-The implementation tables list infrastructure survey, server-software installation/configuration, external enterprise system installation, creation of user and organizational-unit accounts, client-workstation setup, application-level access, full startup, administrator/user consultation and on-site work. These are documented activities, not evidence that every site completed them.
+The implementation tables list infrastructure survey, server-software installation/configuration, PPO Territory installation, creation of user and organizational-unit accounts, client-workstation setup, application-level access, full startup, administrator/user consultation and on-site work. These are documented activities, not evidence that every site completed them.
 
 
 ## Additional lifecycle terminology from the source archive

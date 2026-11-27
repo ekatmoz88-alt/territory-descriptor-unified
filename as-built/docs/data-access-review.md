@@ -47,7 +47,7 @@ The review is static. It does not claim that the application was built, executed
 
 The statuses describe only the supplied source excerpts. In particular, the concurrency risk is not a demonstrated runtime failure, and the disposal and conversion findings should be validated with focused tests. The confirmed reader defect follows directly from the `using` scope in the inspected `AsDataReader()` implementation.
 
-This is an independent C# / SQLite review case. It is not part of the separate Oracle project project.
+This is an independent C# / SQLite review case. It is not part of the Oracle Global11 project.
 
 
 ## Additional architecture reconstruction and verification inputs

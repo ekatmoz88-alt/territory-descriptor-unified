@@ -1,4 +1,4 @@
-# ARM Project — Software Components and Workstation Equipment
+# ARM Descriptor — Software Components and Workstation Equipment
 
 ## Scope and evidence status
 
@@ -6,13 +6,11 @@ This page consolidates the component and equipment inventory from the supplied t
 
 ## Main subsystems
 
-The ARM Project complex consists of:
-
+The ARM Descriptor complex consists of:
 - stationary station with dedicated software;
 - mobile station with dedicated software.
 
 The broader functional grouping identifies:
-
 - data pre-processing and event generation;
 - data collection;
 - interaction with external information systems.
@@ -38,7 +36,6 @@ The source also describes editing, preview, printing, MRZ layout, repeat printin
 ## ПОМС — mobile-station software
 
 The source describes:
-
 - connection to ПОШ ВБД;
 - structured search of VBD data;
 - selection of dossiers or dossier groups;
@@ -73,7 +70,7 @@ The source does not identify exact models, interfaces, driver versions, port ass
 
 ```mermaid
 flowchart TB
-  subgraph COMPLEX["ARM Project"]
+  subgraph COMPLEX["ARM Descriptor"]
     subgraph ST["Stationary station — ПОСС"]
       EDIT["Dossier editing"]
       PREVIEW["Document preview"]
@@ -90,8 +87,8 @@ flowchart TB
       SUBMIT["Return change log and submit updates"]
     end
     GW["ПОШ ВБД"]
-    VBD(("ВБД"))
-    MEDIA(("Registered removable medium"))
+    VBD[("ВБД")]
+    MEDIA[("Registered removable medium")]
     SEARCH <--> GW <--> VBD
     SELECT --> TRANSFORM --> MEDIA
     MEDIA --> EXCHANGE

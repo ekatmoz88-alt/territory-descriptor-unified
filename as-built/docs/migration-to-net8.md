@@ -1,8 +1,8 @@
-# План модернизации АРМ обработки досье на .NET 8
+# План миграции АРМ «ППО ПАК» на .NET 8
 
 ## Цель
 
-Перенести приложение с .NET Framework 4.5 на поддерживаемую современную платформу с сохранением бизнес-поведения и совместимости с внешним SOAP-сервисом и мобильным модулем.
+Перенести приложение с .NET Framework 4.5 на поддерживаемую современную платформу с сохранением бизнес-поведения и совместимости с UMMS и мобильным модулем.
 
 ## Этап 0. Инвентаризация и фиксация baseline
 
@@ -18,11 +18,11 @@
 
 Рекомендуемая целевая структура:
 
-- `CaseProcessing.Domain` — модели и бизнес-правила;
-- `CaseProcessing.Application` — use cases, интерфейсы сервисов;
-- `CaseProcessing.Infrastructure` — SQLite, SOAP, Elasticsearch/внешним адресным справочником, файловый обмен;
-- `CaseProcessing.Desktop` — WPF/WinForms UI;
-- `CaseProcessing.Tests` — unit/integration tests.
+- `PPO PAK.Domain` — модели и бизнес-правила;
+- `PPO PAK.Application` — use cases, интерфейсы сервисов;
+- `PPO PAK.Infrastructure` — SQLite, SOAP, Elasticsearch/FIAS, файловый обмен;
+- `PPO PAK.Desktop` — WPF/WinForms UI;
+- `PPO PAK.Tests` — unit/integration tests.
 
 Не требуется одномоментно переписывать UI. Сначала вынести сетевые и файловые операции за интерфейсы.
 
@@ -36,7 +36,7 @@
 
 Важно: .NET 8 WPF/WinForms — Windows desktop stack. Если требуется запуск самого UI на Linux, это отдельное архитектурное решение, а не простая смена TargetFramework.
 
-## Этап 3. external SOAP
+## Этап 3. UMMS SOAP
 
 - Получить актуальный WSDL и подтвердить production endpoint.
 - Сохранить SOAP 1.1 и точные XML namespaces/wrapper elements.
@@ -49,7 +49,7 @@
 
 Критерий выхода: contract tests на обезличенных SOAP request/response fixtures.
 
-## Этап 4. external address directory / Elasticsearch
+## Этап 4. FIAS / Elasticsearch
 
 - Зафиксировать версию сервера и mapping индекса.
 - Сохранить совместимость с текущим индексом до отдельного решения об обновлении.

@@ -1,4 +1,4 @@
-# external enterprise system — External Integrations
+# PPO Territory — External Integrations
 
 The available materials identify seven integration directions:
 
@@ -10,6 +10,6 @@ The available materials identify seven integration directions:
 | Росстат | Forms 12-П and 12-В |
 | ЗАГС | Loading birth and death records |
 | АС «Российский паспорт» | Export path normalization, including replacement of `/` with `\\` |
-| внешний интеграционный шлюз | Integration direction involving внешняя межведомственная система, портал государственных услуг, внешний государственный сервис and внешнее ведомственное подразделение |
+| СПО «Сервисный концентратор» | Integration direction involving СМЭВ, ЕПГУ, ФНС and ДКС МИД |
 
 This table records integration directions in available materials. It does not establish current endpoint availability, protocol versions, authentication, message schemas or present-day operational status.

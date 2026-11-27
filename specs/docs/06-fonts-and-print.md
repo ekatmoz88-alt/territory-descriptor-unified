@@ -1,4 +1,4 @@
-# ARM Project — Font Simulation and Print Workflow
+# ARM Descriptor — Font Simulation and Print Workflow
 
 ## Font configuration
 

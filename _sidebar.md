@@ -1,10 +1,10 @@
-# АРМ ППО «Объект» / АРМ обработки досье
+# АРМ ППО «Территория» / АРМ обработки досье
 
 - [Overview](/)
 
 ## 1. As-Specified
 - [Требования и спецификации](/specs/README.md)
-- [ОКР «Проект-14»](/specs/okr-diskriptor-14.md)
+- [ОКР «Дискриптор-14»](/specs/okr-diskriptor-14.md)
 - [Технические требования](/specs/technical-requirements.md)
 - [Спецификации внутренних контуров](/specs/subsystems.md)
 - [ПМИ / Методика испытаний](/specs/test-methodology.md)
@@ -17,7 +17,7 @@
 ## 3. As-Built
 - [Reverse Engineering](/as-built/README.md)
 - [Инвентаризация кода](/as-built/code-inventory.md)
-- [external SOAP service client и модели персоны](/as-built/umms-client.md)
+- [UMMS client и модели персоны](/as-built/umms-client.md)
 - [SQLite Data Access Layer](/as-built/sqlite-data-layer.md)
 - [Матрица трассировки](/as-built/traceability.md)
 

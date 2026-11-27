@@ -1,4 +1,4 @@
-# ARM Project — Mobile Station UI and Search Workflow
+# ARM Descriptor — Mobile Station UI and Search Workflow
 
 The described interface contains three tabs: **Search parameters**, **Search results (count)** and **Export dossiers (count)**.
 

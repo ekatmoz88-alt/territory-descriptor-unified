@@ -2,14 +2,14 @@
 
 ## Документация по проекту обработки досье
 
-Проектное описание логической архитектуры ПОСС/ПОМС/ПОШ ВБД размещено в разделе [проектной спецификации АРМ](../../specs/README.md). предыдущее обозначение проекта — историческое название того же проекта, а не отдельный продукт. В разделе Case Processing собран анализ выбранных исходников C# и подтверждённых реализационных фрагментов. Проектные требования и исходниковые доказательства не следует смешивать.
+Проектное описание логической архитектуры ПОСС/ПОМС/ПОШ ВБД размещено в разделе [проектной спецификации АРМ](../../specs/README.md). «Дискриптор» — историческое название того же проекта, а не отдельный продукт. В разделе Deshifrator собран анализ выбранных исходников C# и подтверждённых реализационных фрагментов. Проектные требования и исходниковые доказательства не следует смешивать.
 
 В каноническом репозитории `territory-descriptor-unified` материалы распределены по пяти разделам: `specs/`, `architecture/`, `as-built/`, `verification/` и `data-model/`.
 
 | Материал | Путь | Содержание |
 |---|---|---|
-| Архитектура | `as-built/docs/architecture.md` | Границы приложения, UI, модели, SOAP, внешний адресный справочник и внешние зависимости |
-| Обзор программного комплекса | `as-built/docs/application-suite-review.md` | ModuleMobile, ModuleStationary, Printer / PassportPaint, обмен, SQLite, external SOAP, поиск документов и адресов |
+| Архитектура | `as-built/docs/architecture.md` | Границы приложения, UI, модели, SOAP, ФИАС и внешние зависимости |
+| Обзор программного комплекса | `as-built/docs/application-suite-review.md` | ModuleMobile, ModuleStationary, Printer / PassportPaint, обмен, SQLite, UMMS SOAP, поиск документов и адресов |
 | Слой доступа к данным | `as-built/docs/data-access-review.md` | Разбор выбранных C#-компонентов SQLite |
 | Файловый обмен и MRZ | `as-built/docs/data-exchange-and-mrz.md` | XML-обмен, шифрование, статусы и MRZ |
 | Зависимости и конфигурация | `as-built/docs/dependencies-and-runtime.md` | Состав поставки, .NET Framework, SQLite, OCR, Elasticsearch и конфигурационные границы |
@@ -22,22 +22,22 @@
 
 Обзор программного комплекса содержит отдельные разделы по трём основным направлениям:
 
-- `ModuleMobile` — поиск персон в external SOAP service, просмотр досье, SOAP-вызовы, сценарии и подготовка экспорта;
+- `ModuleMobile` — поиск персон в UMMS, просмотр досье, SOAP-вызовы, сценарии и подготовка экспорта;
 - `ModuleStationary` — импорт переданных дел и результатов синхронизации, локальное хранение и работа с SQLite;
 - `Printer` / `PassportPaint` — редактирование паспортных макетов, XML-макеты, формирование МЧЗ и печать.
 
-Дополнительно рассмотрены общие библиотеки и модели, файловый обмен через съёмный носитель, шифрование, внешний адресный справочник/Elasticsearch, OCR, зависимости и технические ограничения. Это означает, что перечисленные направления отражены в документации; это не означает, что полный исходный код каждого компонента опубликован.
+Дополнительно рассмотрены общие библиотеки и модели, файловый обмен через съёмный носитель, шифрование, ФИАС/Elasticsearch, OCR, зависимости и технические ограничения. Это означает, что перечисленные направления отражены в документации; это не означает, что полный исходный код каждого компонента опубликован.
 
 ## Выборочные исходные файлы
 
-В репозитории находятся пять выбранных C#-файлов слоя SQLite и отдельный исходный фрагмент ViewModel поиска персон external SOAP service:
+В репозитории находятся пять выбранных C#-файлов слоя SQLite и отдельный исходный фрагмент ViewModel поиска персон UMMS:
 
 - `as-built/sources/DbStationary.Data/ConnectionFactory.cs`
 - `as-built/sources/DbStationary.Data/SQLiteCommandEx.cs`
 - `as-built/sources/DbStationary.Data/SQLiteCommandEx_Params.cs`
 - `as-built/sources/DbStationary.Data/SQLiteDataReaderEx.cs`
 - `as-built/sources/DbStationary.Data/SQLiteMaps.cs`
-- `as-built/sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs` — ViewModel результата поиска персоны external SOAP service; предоставляет поля модели для WPF-привязки и состояние открытия результата во вкладке.
+- `as-built/sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs` — ViewModel результата поиска персоны UMMS; предоставляет поля модели для WPF-привязки и состояние открытия результата во вкладке.
 
 Файлы перенесены как материалы для source-based review, а не как полный исходный проект.
 
@@ -64,6 +64,6 @@
 
 ## Итог
 
-**Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `as-built/` внутри единого хаба АРМ.** Oracle separate database project остаётся отдельным проектом и не входит в этот контур.
+**Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `as-built/` внутри единого хаба АРМ.** Oracle GLOBAL11 остаётся отдельным проектом и не входит в этот контур.
 
-При этом в Case Processing перенесены документация, пять выбранных файлов SQLite data-access и отдельный фрагмент external SOAP service ViewModel, а не полный исходный код всего WPF-комплекса.
+При этом в Deshifrator перенесены документация, пять выбранных файлов SQLite data-access и отдельный фрагмент UMMS ViewModel, а не полный исходный код всего WPF-комплекса.

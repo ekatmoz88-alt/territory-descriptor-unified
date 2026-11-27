@@ -1,8 +1,8 @@
-# external enterprise system — Deployment Architecture
+# PPO Territory — Deployment Architecture
 
 ## Evidence status
 
-This document consolidates the deployment and infrastructure requirements stated in the supplied external enterprise system operational material. It describes supported/documented deployment variants, not the verified configuration of a particular region or installation.
+This document consolidates the deployment and infrastructure requirements stated in the supplied PPO Territory operational material. It describes supported/documented deployment variants, not the verified configuration of a particular region or installation.
 
 ## Two independent architecture dimensions
 
@@ -16,7 +16,7 @@ These dimensions must not be conflated. A combined server is a placement choice;
 ## Centralized operating mode
 
 - Territorial offices in a region have permanent, high-performance communication links to the regional application server.
-- One external enterprise system instance is installed for the region.
+- One PPO Territory instance is installed for the region.
 - Offices use the regional application remotely through a thin client.
 
 ## Distributed operating mode
@@ -92,7 +92,7 @@ These versions are obsolete and must not be presented as modern deployment recom
 ## Operational boundaries
 
 The supplied materials also describe:
-- setup and configuration of server software and external enterprise system;
+- setup and configuration of server software and PPO Territory;
 - creation of user and organizational-unit accounts;
 - configuration of client workstations and application-level access;
 - ensuring full application startup;
@@ -128,7 +128,7 @@ The supplied operational document explicitly describes two independent architect
 
 ### Centralized mode
 
-Territorial offices in a region connect to one regional external enterprise system application instance through permanent, high-performance communication links and use it through thin clients.
+Territorial offices in a region connect to one regional PPO Territory application instance through permanent, high-performance communication links and use it through thin clients.
 
 ### Distributed mode
 

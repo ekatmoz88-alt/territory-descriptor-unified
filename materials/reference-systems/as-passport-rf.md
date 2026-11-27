@@ -1,8 +1,8 @@
-# passport information system — functional and security architecture notes
+# AS «Passport RF» — functional and security architecture notes
 
 ## Scope and evidence status
 
-This page structures the supplied description of passport information system. The source text describes passport accounting, federal database search, information security and replication in an public-sector authority environment. It is not treated as external enterprise system or Case Processing Workstation without independent evidence of a shared product boundary.
+This page structures the supplied description of AS «Passport RF». The source text describes passport accounting, federal database search, information security and replication in an FMS environment. It is not treated as PPO Territory or ARM Descriptor without independent evidence of a shared product boundary.
 
 ## Functional subsystems described
 
@@ -68,17 +68,17 @@ The supplied source describes an environment with district databases and a centr
 - once per day, at night, a central data snapshot is replicated back to district servers within the scope permitted for each workstation;
 - an administrator of a district server may initiate the reverse replication manually.
 
-This is a separate replication description from the external enterprise system centralized/distributed deployment model. Do not reuse its five-minute or daily schedule for external enterprise system.
+This is a separate replication description from the PPO Territory centralized/distributed deployment model. Do not reuse its five-minute or daily schedule for PPO Territory.
 
 The source does not specify transport protocol, conflict resolution, transaction boundaries, replication watermark, failure recovery or data-consistency guarantees.
 
 ## Other functional scope mentioned
 
 The source also refers to:
-- passport blank logistics and accounting from the Goznak enterprise to territorial public-sector authority units;
+- passport blank logistics and accounting from the Goznak enterprise to territorial FMS units;
 - distribution, use and destruction of blank forms;
 - accounting documents for blank forms;
-- export of information to territorial public-sector authority software complexes;
+- export of information to territorial FMS software complexes;
 - a broader public-facing system for address-registration documents and protected electronic interaction.
 
 These functions should be decomposed into separate subsystem documents only after the source document title, system boundary and revision are confirmed.
@@ -97,4 +97,4 @@ These functions should be decomposed into separate subsystem documents only afte
 
 ## Boundary warning
 
-Do not merge this architecture with external enterprise system or Case Processing Workstation merely because all materials mention public-sector authority, passports, personal data, Oracle-like databases or exchange. Confirm provenance and actual integration from the original document cover, project name, version, interface contracts and implementation artifacts.
+Do not merge this architecture with PPO Territory or ARM Descriptor merely because all materials mention FMS, passports, personal data, Oracle-like databases or exchange. Confirm provenance and actual integration from the original document cover, project name, version, interface contracts and implementation artifacts.
