@@ -1,6 +1,6 @@
-# ППО ПАК / PPO PAK
+# внешняя система / external enterprise system
 
-Technical documentation for the PPO PAK information system within the unified ППО ПАК / PPO PAK project.
+Technical documentation for the external enterprise system within the unified внешняя система / external enterprise project.
 
 ## Published site
 
@@ -24,6 +24,6 @@ Requirements, interface observations, file evidence, source-code findings and te
 
 ## Architecture
 
-- [Unified PPO PAK project-contour reconstruction](../architecture/deshifrator-14-source-reconstruction.ru.md) — includes federal-level SАПД/SЗД/FХД diagrams and conflict-processing scenarios.
+- [Unified external enterprise project-contour reconstruction](../architecture/deshifrator-14-source-reconstruction.ru.md) — includes federal-level SАПД/SЗД/FХД diagrams and conflict-processing scenarios.
 - [Architecture catalogue](../architecture/README.md)
 - [Detailed module and component maps](../architecture/component-maps.md)
