@@ -7,46 +7,44 @@
 ```mermaid
 flowchart LR
   subgraph ARM["Единый программный комплекс АРМ"]
-    subgraph INTERNAL["Внутренние контуры"]
-      GATE["ПОШ ВБД<br/>internal gateway and consistency checks"]
-      MOBILE["ПОМС"]
-      STATIONARY["ПОСС"]
+    subgraph MOBILE["ПОМС — мобильный контур"]
+      AUTH["Gateway authentication"]
+      SEARCH["Structured search"]
+      EXPORT["Dossier import / export"]
+      AUTH --> SEARCH --> EXPORT
     end
-    MOBILE <-->|"internal exchange"| STATIONARY
-    MOBILE <-->|"internal gateway path; details to verify"| GATE
+    subgraph TRANSIT["Внутренний файловый обмен"]
+      MEDIA[("Removable media")]
+      CONTAINER[".ummstr transfer container<br/>internal schema / cryptography to verify"]
+      MEDIA --- CONTAINER
+    end
+    subgraph STATIONARY["ПОСС — стационарный контур"]
+      IMPORT["Dossier import"]
+      EDIT["Dossier editing"]
+      PREVIEW["Document preview"]
+      PRINT["Printing / MRZ layout"]
+      FONT["Font tools"]
+      COMPARE["Document comparison"]
+      CRYPTO["Transformation / encryption<br/>algorithms and revisions to verify"]
+      IMPORT --> EDIT
+      EDIT --> PREVIEW --> PRINT
+      EDIT --> FONT
+      EDIT --> COMPARE
+      EDIT --> CRYPTO
+    end
+    subgraph GATEWAY["ПОШ ВБД — внутренний шлюзовой контур"]
+      GATE["Gateway and consistency checks"]
+    end
+    EXPORT --> CONTAINER
+    CONTAINER --> IMPORT
+    CRYPTO --> CONTAINER
+    CONTAINER --> EXPORT
+    AUTH --> GATE
   end
-  DB[("Внешняя ведомственная БД")]
-  GATE <-->|"VBD access; protocol to verify"| DB
-  subgraph MOBILE["Mobile module — ПОМС"]
-    AUTH["Gateway authentication"]
-    SEARCH["Structured search"]
-    EXPORT["Dossier import / export"]
-    AUTH --> SEARCH --> EXPORT
-  end
-  subgraph TRANSIT["Transfer boundary"]
-    MEDIA[("Removable media")]
-    CONTAINER[".ummstr transfer container<br/>internal schema / cryptography to verify"]
-    MEDIA --- CONTAINER
-  end
-  subgraph STATIONARY["Stationary module — ПОСС"]
-    IMPORT["Dossier import"]
-    EDIT["Dossier editing"]
-    PREVIEW["Document preview"]
-    PRINT["Printing / MRZ layout"]
-    FONT["Font tools"]
-    COMPARE["Document comparison"]
-    CRYPTO["Transformation / encryption<br/>algorithms and revisions to verify"]
-    IMPORT --> EDIT
-    EDIT --> PREVIEW --> PRINT
-    EDIT --> FONT
-    EDIT --> COMPARE
-    EDIT --> CRYPTO
-  end
-  EXPORT --> CONTAINER
-  CONTAINER --> IMPORT
-  CRYPTO --> CONTAINER
-  CONTAINER --> EXPORT
-  EXPORT --> GATE
+  VBD[("Внешняя ведомственная БД")]
+  UMMS["Внешний интеграционный сервис UMMS (umms-web)"]
+  GATE <-->|"VBD access; protocol to verify"| VBD
+  ARM -.->|"External integration contract; runtime flow to verify"| UMMS
 ```
 
 The source specification describes trust zones for the internal mobile, stationary and gateway contours and an external VBD boundary. It also describes removable-media transfer, `.ummstr` files, gateway authentication, dossier search, editing, preview, printing, font tools, comparison, and consistency checks. Exact trust-zone enforcement and cryptographic allocation must be verified against the original technical-project revision and implementation evidence.
