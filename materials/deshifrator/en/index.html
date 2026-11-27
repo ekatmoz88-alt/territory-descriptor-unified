@@ -2,69 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Public technical documentation for the Deshifrator workstation: architecture, integrations, file exchange, MRZ and selected C# source review.">
-  <meta name="theme-color" content="#f5f8fa">
-  <title>Deshifrator Workstation — Technical Documentation</title>
-  <link rel="stylesheet" href="../styles.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=https://ekatmoz88-alt.github.io/territory-descriptor-unified/#/as-built/">
+  <link rel="canonical" href="https://ekatmoz88-alt.github.io/territory-descriptor-unified/#/as-built/">
+  <title>Dossier Processing Workstation — As-Built</title>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="wrap top">
-  <a class="brand" href="./">Deshifrator Workstation<br>Technical Documentation</a>
-  <p class="eyebrow">Technical documentation · Portfolio case study</p>
-  <div class="language-switch"><a href="../index.html" lang="ru" hreflang="ru">RU</a><span aria-current="true">EN</span></div>
-  <nav aria-label="Main navigation">
-    <a href="./" aria-current="page">Overview</a>
-    <a href="./program-description.html">Program Description</a>
-    <a href="./architecture.html">Architecture</a>
-    <a href="./data-exchange-and-mrz.html">File Exchange &amp; MRZ</a>
-    <a href="./risks-and-decisions.html">Risks &amp; Decisions</a>
-    <a href="./dependencies-and-runtime.html">Dependencies</a>
-    <a href="../data-access-review.html">SQLite Review</a>
-  </nav>
-</header>
-<main class="wrap" id="main">
-  <section class="hero">
-    <p class="section-label">System analysis · Architecture · Integration</p>
-    <h1>Deshifrator Workstation</h1>
-    <p class="lead">Public technical documentation for a desktop application suite, covering application boundaries, component architecture, integrations, file-based exchange with a mobile module, MRZ processing and selected source-code review findings.</p>
-    <div class="pills" aria-label="Key areas">
-      <span class="pill">WPF / WinForms</span><span class="pill">SOAP / XML</span><span class="pill">SQLite</span>
-      <span class="pill">FIAS / Elasticsearch</span><span class="pill">File exchange</span><span class="pill">MRZ</span><span class="pill">C# source review</span>
-    </div>
-    <div class="note"><strong>Scope and evidence.</strong> Deshifrator is the official project name; “Descriptor” / «Дискриптор» is a historical name for the same project. This publication is based on available project descriptions and selected source-code excerpts. It is not a complete specification or a full source-code audit. Only verified relationships are shown; a missing diagram link does not prove that no production dependency exists.</div>
-  </section>
-
-  <p class="section-label">Documentation</p>
-  <section class="cards" aria-label="Project documentation">
-    <article class="card"><h2>Program Description</h2><p>Purpose, functional areas, application boundaries and limitations of the available materials.</p><a class="card-link" href="./program-description.html">Open description →</a></article>
-    <article class="card"><h2>Architecture &amp; Components</h2><p>User interface, domain models, SOAP client, FIAS/Elasticsearch and external dependencies.</p><a class="card-link" href="./architecture.html">Open architecture →</a></article>
-    <article class="card"><h2>File Exchange &amp; MRZ</h2><p>Mobile-module file exchange, file names, processing states, encryption and MRZ generation.</p><a class="card-link" href="./data-exchange-and-mrz.html">Open exchange overview →</a></article>
-    <article class="card"><h2>Technical Risks &amp; Decisions</h2><p>Observations from available code excerpts, compatibility constraints and modernization options.</p><a class="card-link" href="./risks-and-decisions.html">Open risk review →</a></article>
-    <article class="card"><h2>Dependencies &amp; Runtime</h2><p>Package contents, .NET Framework, SQLite, OCR, Elasticsearch and module configuration boundaries.</p><a class="card-link" href="./dependencies-and-runtime.html">Open dependencies →</a></article>
-    <article class="card"><h2>SQLite Data Access Layer Review</h2><p>Selected C# review of ConnectionFactory, commands, reader, parameters and mapping functions.</p><a class="card-link" href="../data-access-review.html">Open published review →</a></article>
-  </section>
-
-  <p class="section-label">Analysis records and project materials</p>
-  <section class="cards" aria-label="Additional materials">
-    <article class="card"><h2>Application Suite Review</h2><p>ModuleMobile, ModuleStationary and Printer / PassportPaint: data flows, exchange, SQLite, UMMS SOAP and printing.</p><a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/deshifrator/docs/application-suite-review.md" target="_blank" rel="noopener">Open Markdown source →</a></article>
-    <article class="card"><h2>Repository Contents &amp; Evidence Boundaries</h2><p>Inventory of published documentation, selected source files and completeness limitations.</p><a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/deshifrator/docs/repository-completeness.md" target="_blank" rel="noopener">Open GitHub report →</a></article>
-    <article class="card"><h2>Project Specification</h2><p>Separate project-requirements layer for the workstation. It is not treated as proof of source-code implementation.</p><a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/descriptor/README.md" target="_blank" rel="noopener">Open specification →</a></article>
-    <article class="card"><h2>Project Repository</h2><p>Canonical public documentation hub for PPO PAK and related applications.</p><a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified" target="_blank" rel="noopener">Open GitHub →</a></article>
-  </section>
-
-  <section class="content">
-    <h2>System Boundaries</h2>
-    <p>The documentation distinguishes three levels:</p>
-    <ul>
-      <li><strong>PPO PAK “Territory”</strong> — a separate information system with a web interface, application server and database server.</li>
-      <li><strong>Deshifrator Workstation</strong> — a separate desktop application with mobile and stationary software modules.</li>
-      <li><strong>UMMS</strong> — a separate external SOAP system. A SOAP client and endpoint configuration are visible in the available materials; the complete runtime flow and deployment topology require further verification.</li>
-    </ul>
-    <div class="note"><strong>Publication method.</strong> Project requirements, source-code observations, logical reconstruction and unverified hypotheses are kept separate. Unknown details are recorded as limitations or questions rather than filled with assumptions.</div>
-  </section>
-</main>
-<footer class="wrap footer">Public portfolio documentation · Historical technical context: Scientific Instruments, Inc. (2014–2016). Only materials suitable for public presentation are included.</footer>
+  <p>This page has moved. <a href="https://ekatmoz88-alt.github.io/territory-descriptor-unified/#/as-built/">Continue to the current documentation section</a>.</p>
 </body>
 </html>

@@ -1,50 +1,53 @@
 # Component maps — detailed architecture views
 
-> Companion to the [canonical architecture catalogue](./README.md) and its [interactive bilingual HTML view](./architecture.html). This file contains 7 detailed Mermaid diagrams. The PPO PAK SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand the module and component views of the PPO PAK information system and the Dossier Processing Workstation as distinct application boundaries within the same project; UMMS is shown separately where relevant. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [ППО ПАК и АРМ обработки досье — реконструкция по первичным схемам](./deshifrator-14-source-reconstruction.ru.md).
+> Companion to the [canonical architecture catalogue](./diagrams.md) and its [interactive bilingual HTML view](../materials/architecture/architecture.html). This file contains 7 core Mermaid diagrams for the unified ARM (sections 1–4). Section 6 is a separate appendix with 3 source-context diagrams for PPO ID Docs; these are not part of the 17 core ARM diagrams and must not be merged into the ARM architecture. The SQLite data-access diagram is expanded in the [standalone source review](https://ekatmoz88-alt.github.io/github-profile-dashboard-vite/docs/sqlite-data-access-review.html). These diagrams expand component views of one ARM. The workstation names in historical source material are treated as aliases for the same complex; POSS, POMS and POSH VBD are internal contours, while UMMS and VBD are external boundaries. The diagrams are logical architecture views and do not reconstruct the physical topology of every individual installation. For a separate reconstruction of the supplied Visio and presentation diagrams (including the exact 11/6/5 functional-block inventory, 9/3/4 software-module views, trust-level variants and dossier lifecycle), see [ППО ПАК и АРМ обработки досье — реконструкция по первичным схемам](./deshifrator-14-source-reconstruction.ru.md).
 
 ## 1. Dossier Processing Workstation — architecture and trust boundaries (historical source notation: «ППО ПАК»)
 
 ```mermaid
 flowchart LR
-  subgraph VBD["External information environment"]
-    DB[("Ведомственная БД / ППО ПАК")]
-    GATE["ПОШ ВБД<br/>gateway and consistency checks"]
-    DB <--> GATE
+  subgraph ARM["Единый программный комплекс АРМ"]
+    subgraph MOBILE["ПОМС — мобильный контур"]
+      AUTH["Gateway authentication"]
+      SEARCH["Structured search"]
+      EXPORT["Dossier import / export"]
+      AUTH --> SEARCH --> EXPORT
+    end
+    subgraph TRANSIT["Внутренний файловый обмен"]
+      MEDIA[("Removable media")]
+      CONTAINER[".ummstr transfer container<br/>internal schema / cryptography to verify"]
+      MEDIA --- CONTAINER
+    end
+    subgraph STATIONARY["ПОСС — стационарный контур"]
+      IMPORT["Dossier import"]
+      EDIT["Dossier editing"]
+      PREVIEW["Document preview"]
+      PRINT["Printing / MRZ layout"]
+      FONT["Font tools"]
+      COMPARE["Document comparison"]
+      CRYPTO["Transformation / encryption<br/>algorithms and revisions to verify"]
+      IMPORT --> EDIT
+      EDIT --> PREVIEW --> PRINT
+      EDIT --> FONT
+      EDIT --> COMPARE
+      EDIT --> CRYPTO
+    end
+    subgraph GATEWAY["ПОШ ВБД — внутренний шлюзовой контур"]
+      GATE["Gateway and consistency checks"]
+    end
+    EXPORT --> CONTAINER
+    CONTAINER --> IMPORT
+    CRYPTO --> CONTAINER
+    CONTAINER --> EXPORT
+    AUTH --> GATE
   end
-  subgraph MOBILE["Mobile module — ПОМС"]
-    AUTH["Gateway authentication"]
-    SEARCH["Structured search"]
-    EXPORT["Dossier import / export"]
-    AUTH --> SEARCH --> EXPORT
-  end
-  subgraph TRANSIT["Transfer boundary"]
-    MEDIA[("Removable media")]
-    CONTAINER[".ummstr transfer container<br/>internal schema / cryptography to verify"]
-    MEDIA --- CONTAINER
-  end
-  subgraph STATIONARY["Stationary module — ПОСС"]
-    IMPORT["Dossier import"]
-    EDIT["Dossier editing"]
-    PREVIEW["Document preview"]
-    PRINT["Printing / MRZ layout"]
-    FONT["Font tools"]
-    COMPARE["Document comparison"]
-    CRYPTO["Transformation / encryption<br/>algorithms and revisions to verify"]
-    IMPORT --> EDIT
-    EDIT --> PREVIEW --> PRINT
-    EDIT --> FONT
-    EDIT --> COMPARE
-    EDIT --> CRYPTO
-  end
-  GATE <--> AUTH
-  EXPORT --> CONTAINER
-  CONTAINER --> IMPORT
-  CRYPTO --> CONTAINER
-  CONTAINER --> EXPORT
-  EXPORT --> GATE
+  VBD[("Внешняя ведомственная БД")]
+  UMMS["Внешний интеграционный сервис UMMS (umms-web)"]
+  GATE <-->|"VBD access; protocol to verify"| VBD
+  ARM -.->|"External integration contract; runtime flow to verify"| UMMS
 ```
 
-The source specification describes three logical zones: external VBD/gateway, mobile module, and stationary module. It also describes removable-media transfer, `.ummstr` files, gateway authentication, dossier search, editing, preview, printing, font tools, comparison, and consistency checks. Exact trust-zone enforcement and cryptographic allocation must be verified against the original technical-project revision and implementation evidence.
+The source specification describes trust zones for the internal mobile, stationary and gateway contours and an external VBD boundary. It also describes removable-media transfer, `.ummstr` files, gateway authentication, dossier search, editing, preview, printing, font tools, comparison, and consistency checks. Exact trust-zone enforcement and cryptographic allocation must be verified against the original technical-project revision and implementation evidence.
 
 ### Dossier Processing Workstation — functional areas
 
@@ -78,11 +81,11 @@ flowchart TB
 
 These are the functional areas enumerated in the specification, not a verified executable/module breakdown. The source describes nine ПОСС areas, three ПОМС areas, and two gateway areas.
 
-## 2. PPO PAK — software component architecture
+## 2. Source-code component architecture (historical PPO PAK notation)
 
 ```mermaid
 flowchart TB
-  subgraph APP["PPO PAK application layer — documented project structure"]
+  subgraph APP["ARM source-code components — historical PPO PAK notation"]
     COMMON["Common.Data<br/>shared models / providers / interfaces"]
     CORE["Umms.Core<br/>business logic"]
     SERVICE["Umms.Service<br/>service layer / scenarios"]
@@ -114,9 +117,9 @@ flowchart TB
   COREDB --> SUBJECT
 ```
 
-The project names and model areas come from the published PPO PAK source-code overview. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented UMMS SOAP service/client. The Oracle DBMS and table inventory shown here belong to the PPO PAK source context; the independent Oracle DMRS / GLOBAL11 project is separate and is not represented by this diagram.
+The project names and model areas come from a source-code overview using the historical PPO PAK label. Their exact mapping to the internal ARM contours requires verification. This is a logical view: it does not assert that every project directly connects to Oracle or that the `Umms.*` projects implement the separately documented UMMS SOAP service/client. The Oracle DBMS and table inventory shown here belong to the PPO PAK source context; the independent Oracle DMRS / GLOBAL11 project is separate and is not represented by this diagram.
 
-### PPO PAK — database inventory (Oracle DBMS; not a deployment diagram)
+### Historical Oracle database inventory (physical mapping to ARM not established)
 
 ```mermaid
 flowchart TB
@@ -133,7 +136,7 @@ flowchart TB
   INV -.-> NOTE
 ```
 
-The PPO PAK database overview identifies Oracle as its DBMS and reports 401 tables. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the independent Oracle DMRS / GLOBAL11 project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
+The historical database overview labelled PPO PAK identifies Oracle as its DBMS and reports 401 tables. The mapping of this inventory to the physical data layer of the unified ARM is not established. A separate physical specification contains 381 numbered entries; the counts come from different source documents and have not been reconciled. This does not refer to the independent Oracle DMRS / GLOBAL11 project. Prefixes are not assumed to be Oracle schema owners. This diagram is a database inventory view, not an ERD and not a deployment view. To build the physical schema map, inspect DDL or permitted Oracle dictionary metadata for owners, objects, columns, constraints, views, PL/SQL units, triggers, and dependencies. Do not use production rows or secrets.
 
 ## 3. Dossier Processing Workstation — application suite and shared libraries
 
@@ -211,7 +214,7 @@ Exact SOAP envelopes, namespaces, SOAPAction values, schemas, authentication, er
 - The Dossier Processing Workstation diagrams reflect specified logical functions and trust boundaries; they do not independently prove implementation.
 - Dossier Processing Workstation diagrams are limited to the application suite and source excerpts that have been reviewed.
 - UMMS API operation names are documented; complete wire-level contracts and deployment details are not included.
-- Treat PPO PAK as the umbrella project containing the PPO PAK information system and the Dossier Processing Workstation; retain their distinct application and runtime boundaries. Some source materials use «ППО ПАК» for the workstation as well as for the project/system; this historical notation does not define a separate project.
+- Treat ARM PPO «Territory», ARM «Deshifrator», R&D «Diskriptor-14» and Dossier Processing Workstation as names for one ARM. Do not model them as distinct application boundaries.
 - Keep the independent Oracle DMRS / GLOBAL11 project outside the PPO PAK documentation. Do not confuse it with the Oracle DBMS identified in PPO PAK database materials.
 - Draw a runtime integration only when primary evidence establishes it.
 
@@ -269,4 +272,4 @@ flowchart LR
   PROVIDER -->|"Provider table usage described"| TABLE
 ```
 
-The source materials describe field-to-table, model-to-table and provider-to-table traceability. They do not establish that every operation follows one universal call chain. For table-group classification, see the [editable Draw.io source](../territory-database/database/diagrams/oracle-table-groups.drawio) and [published Oracle table-groups diagram](../territory-database/database/oracle-table-groups.html).
+The source materials describe field-to-table, model-to-table and provider-to-table traceability. They do not establish that every operation follows one universal call chain. For table-group classification, see the [editable Draw.io source](../materials/territory-database/database/diagrams/oracle-table-groups.drawio) and [published Oracle table-groups diagram](../materials/territory-database/database/oracle-table-groups.html).

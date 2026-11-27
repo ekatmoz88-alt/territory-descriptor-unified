@@ -1,47 +1,5 @@
-# АРМ обработки досье / Dossier Processing Workstation — Documentation
+# Legacy entry point — As-Built
 
-**Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/deshifrator/
+This historical route is retained for compatibility. The canonical documentation is now in [As-Built](#/as-built/).
 
-Public technical documentation for the Dossier Processing Workstation (АРМ обработки досье) application. The materials are based on available project descriptions and selected source-code excerpts; they are not a complete specification or a full source-code audit.
-
-## Documentation
-
-- [Architecture and components](docs/architecture.md)
-- [Supplementary architecture source review](docs/architecture-source-review.md)
-- [Program description](docs/program-description.md)
-- [Application suite review: ModuleMobile, ModuleStationary, Printer / PassportPaint](docs/application-suite-review.md)
-- [SQLite data-access layer review](docs/data-access-review.md) · [published HTML review](data-access-review.html)
-- [Repository contents and evidence boundaries](docs/repository-completeness.md)
-- [File exchange and MRZ](docs/data-exchange-and-mrz.md)
-- [Technical risks and engineering decisions](docs/risks-and-decisions.md)
-- [Source-specific technical debt review](docs/risks-and-tech-debt.md)
-- [Migration to .NET 8 assessment](docs/migration-to-net8.md)
-- [Printing documents](docs/printing-documents.md)
-- [Dependencies, configuration, and runtime boundaries](docs/dependencies-and-runtime.md)
-
-## Source excerpts
-
-The repository includes selected C# source excerpts: the SQLite data-access layer in [sources/DbStationary.Data](sources/DbStationary.Data/) and the UMMS person-search result ViewModel in [sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs](sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs). These are review excerpts, not a complete application source tree.
-
-## Architecture boundary
-
-This documentation describes the **АРМ обработки досье / Dossier Processing Workstation** application suite (ModuleMobile, ModuleStationary, and Printer / PassportPaint). The workstation belongs to the unified ППО ПАК project contour, while retaining its own application, executable and runtime boundaries. Some historical source materials use «ППО ПАК» as a label for this workstation; the current functional name distinguishes it from the PPO PAK information system.
-
-ПОСС and ПОМС are the stationary/mobile software areas described in the PPO PAK specification; their exact correspondence to `ModuleStationary` and `ModuleMobile` remains subject to verification against primary materials and source code. ПОШ ВБД is documented as a separate gateway boundary. The Oracle GLOBAL11 / DMRS materials belong to an independent Oracle project and are not components of the PPO PAK information system or the Dossier Processing Workstation.
-
-## Technology context
-
-The supplied packages target .NET Framework 4.5 and include WPF components, SQLite, Tesseract OCR, Elasticsearch 1.2.1, and separate mobile/stationary modules. The mobile configuration contains the UMMS SOAP endpoint. A possible .NET 8 migration is mentioned in project materials, but its scope and completion status are unverified.
-
-## Publication and evidence boundaries
-
-The public version must not contain credentials, cryptographic key material, personal data, production service addresses, connection strings, or actual exchange files. Environment-specific endpoints are excluded from public examples.
-
-This project was documented as part of the author's work at Scientific Instruments, Inc. (2014–2016). The content describes the historical technical context and does not imply that the listed component versions are currently in use.
-
-
-## Architecture
-
-- [Source-based reconstruction of the PPO PAK-14 / PPO PAK Visio diagrams](../architecture/deshifrator-14-source-reconstruction.ru.md)
-- [Architecture catalogue](../architecture/README.md)
-- [Detailed module and component maps](../architecture/component-maps.md)
+АРМ ППО «Территория», АРМ «Дешифратор», ОКР «Дискриптор-14» and Dossier Processing Workstation refer to one software workstation. See the [canonical project overview](../../README.md).

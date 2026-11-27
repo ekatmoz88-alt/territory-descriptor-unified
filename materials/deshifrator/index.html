@@ -2,114 +2,12 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Публичное портфолио: техническая документация АРМ «Дешифратор», архитектура, интеграции, файловый обмен, MRZ и анализ C# / SQLite.">
-  <meta name="theme-color" content="#f5f8fa">
-  <title>АРМ «Дешифратор» — техническая документация</title>
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=https://ekatmoz88-alt.github.io/territory-descriptor-unified/#/as-built/">
+  <link rel="canonical" href="https://ekatmoz88-alt.github.io/territory-descriptor-unified/#/as-built/">
+  <title>АРМ — As-Built</title>
 </head>
 <body>
-<a class="skip-link" href="#main">Перейти к содержанию</a>
-<header class="wrap top">
-  <a class="brand" href="./">АРМ «Дешифратор»<br>Техническая документация</a>
-  <p class="eyebrow">Technical documentation · Portfolio case study</p>
-  <div class="language-switch"><span aria-current="true">RU</span><a href="./en/index.html" lang="en" hreflang="en">EN</a></div>
-  <nav aria-label="Основная навигация">
-    <a href="./" aria-current="page">Обзор</a>
-    <a href="./program-description.html">Описание программы</a>
-    <a href="./architecture.html">Архитектура</a>
-    <a href="./data-exchange-and-mrz.html">Обмен и MRZ</a>
-    <a href="./risks-and-decisions.html">Риски и решения</a>
-    <a href="./dependencies-and-runtime.html">Зависимости</a>
-    <a href="./data-access-review.html">SQLite review</a>
-  </nav>
-</header>
-<main class="wrap" id="main">
-  <section class="hero">
-    <p class="section-label">System analysis · Architecture · Integration</p>
-    <h1>АРМ «Дешифратор»</h1>
-    <p class="lead">Техническое описание настольного комплекса: границы приложений, архитектура компонентов, интеграции, файловый обмен с мобильным модулем, обработка MRZ и результаты выборочного анализа исходного кода.</p>
-    <div class="pills" aria-label="Ключевые области">
-      <span class="pill">WPF / WinForms</span>
-      <span class="pill">SOAP / XML</span>
-      <span class="pill">SQLite</span>
-      <span class="pill">FIAS / Elasticsearch</span>
-      <span class="pill">File exchange</span>
-      <span class="pill">MRZ</span>
-      <span class="pill">C# source review</span>
-    </div>
-    <div class="note"><strong>Границы и достоверность.</strong> «Дешифратор» — официальное название проекта; «Дискриптор» — историческое название того же проекта. Публикация основана на доступных проектных описаниях и выбранных фрагментах исходного кода. Это не полная спецификация и не полный аудит исходников. На диаграммах показаны только подтверждённые связи; отсутствие связи не доказывает её отсутствия в промышленной системе.</div>
-  </section>
-
-  <p class="section-label">Документация</p>
-  <section class="cards" aria-label="Документы проекта">
-    <article class="card">
-      <h2>Описание программы</h2>
-      <p>Назначение АРМ, функциональные области, границы приложения и ограничения доступных материалов.</p>
-      <a class="card-link" href="./program-description.html">Открыть описание →</a>
-    </article>
-    <article class="card">
-      <h2>Архитектура и компоненты</h2>
-      <p>Пользовательский интерфейс, предметные модели, SOAP-клиент, ФИАС/Elasticsearch и внешние зависимости.</p>
-      <a class="card-link" href="./architecture.html">Открыть архитектуру →</a>
-    </article>
-    <article class="card">
-      <h2>Файловый обмен и MRZ</h2>
-      <p>Формат обмена с мобильным модулем, файлы, статусы обработки, шифрование и формирование MRZ.</p>
-      <a class="card-link" href="./data-exchange-and-mrz.html">Открыть описание обмена →</a>
-    </article>
-    <article class="card">
-      <h2>Технические риски и решения</h2>
-      <p>Наблюдения по доступным фрагментам кода, ограничения совместимости и направления модернизации.</p>
-      <a class="card-link" href="./risks-and-decisions.html">Открыть обзор рисков →</a>
-    </article>
-    <article class="card">
-      <h2>Зависимости и конфигурация</h2>
-      <p>Состав поставки, .NET Framework, SQLite, OCR, Elasticsearch и границы конфигурации модулей.</p>
-      <a class="card-link" href="./dependencies-and-runtime.html">Открыть зависимости →</a>
-    </article>
-    <article class="card">
-      <h2>SQLite Data Access Layer Review</h2>
-      <p>Выборочный разбор ConnectionFactory, команд, reader, параметров и mapping-функций на C#.</p>
-      <a class="card-link" href="./data-access-review.html">Открыть опубликованный review →</a>
-    </article>
-  </section>
-
-  <p class="section-label">Артефакты анализа и проектные материалы</p>
-  <section class="cards" aria-label="Дополнительные материалы">
-    <article class="card">
-      <h2>Обзор программного комплекса</h2>
-      <p>ModuleMobile, ModuleStationary и Printer / PassportPaint: потоки данных, обмен, SQLite, UMMS SOAP и печать.</p>
-      <a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/deshifrator/docs/application-suite-review.md" target="_blank" rel="noopener">Открыть исходный Markdown →</a>
-    </article>
-    <article class="card">
-      <h2>Состав репозитория и доказательства</h2>
-      <p>Инвентаризация опубликованных материалов, выбранных исходных файлов и ограничений полноты.</p>
-      <a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/deshifrator/docs/repository-completeness.md" target="_blank" rel="noopener">Открыть отчёт в GitHub →</a>
-    </article>
-    <article class="card">
-      <h2>Проектная спецификация АРМ</h2>
-      <p>Отдельный уровень проектных требований и описания ПОСС/ПОМС/ПОШ ВБД. Не смешивается с выводами по исходному коду.</p>
-      <a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified/blob/main/materials/descriptor/README.md" target="_blank" rel="noopener">Открыть спецификацию →</a>
-    </article>
-    <article class="card">
-      <h2>Репозиторий проекта</h2>
-      <p>Канонический публичный хаб технической документации ППО ПАК и связанных приложений.</p>
-      <a class="card-link" href="https://github.com/ekatmoz88-alt/territory-descriptor-unified" target="_blank" rel="noopener">Открыть GitHub →</a>
-    </article>
-  </section>
-
-  <section class="content">
-    <h2>Границы системы</h2>
-    <p>В документации различаются три уровня:</p>
-    <ul>
-      <li><strong>ППО ПАК «Территория»</strong> — отдельная информационная система с web-интерфейсом, сервером приложений и базой данных.</li>
-      <li><strong>АРМ «Дешифратор»</strong> — отдельное настольное приложение с мобильным и стационарным программными модулями.</li>
-      <li><strong>UMMS</strong> — отдельная внешняя SOAP-система. Наличие SOAP-клиента и параметра endpoint зафиксировано в доступных материалах; полный runtime-поток и deployment topology требуют дополнительной проверки.</li>
-    </ul>
-    <div class="note"><strong>Метод публикации.</strong> Проектные требования, наблюдения по исходному коду, логическая реконструкция и непроверенные гипотезы разделяются. Неизвестные детали фиксируются как ограничения или вопросы, а не заполняются предположениями.</div>
-  </section>
-</main>
-<footer class="wrap footer">Публичная документация портфолио · Исторический технический контекст: Scientific Instruments, Inc. (2014–2016). Публикуются только материалы, доступные для открытого представления.</footer>
+  <p>Страница перемещена. <a href="https://ekatmoz88-alt.github.io/territory-descriptor-unified/#/as-built/">Открыть актуальную документацию As-Built</a>.</p>
 </body>
 </html>
