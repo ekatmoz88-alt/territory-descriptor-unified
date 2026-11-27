@@ -131,27 +131,27 @@ if sql_path.exists():
         composite = line2[:10] + line2[13:20] + line2[21:43]
         if line2[43] != check_digit(composite):
             error(sql_path, "MRZ composite check digit mismatch")
-    if re.search(r"\\b\\d{4}\\s\\d{6}\\b", sql_text.replace("9999 123456", "")):
+    if re.search(r"\b\d{4}\s\d{6}\b", sql_text.replace("9999 123456", "")):
         error(sql_path, "contains a non-synthetic passport series/number")
-    inn_values = re.findall(r"'(\\d{12})'", sql_text)
+    inn_values = re.findall(r"'(\d{12})'", sql_text)
     if any(value != "000000000000" for value in inn_values):
         error(sql_path, "contains a non-synthetic 12-digit INN")
-    snils_values = re.findall(r"(\\d{3}-\\d{3}-\\d{3}\\s\\d{2})", sql_text)
+    snils_values = re.findall(r"(\d{3}-\d{3}-\d{3}\s\d{2})", sql_text)
     if any(value != "000-000-000 00" for value in snils_values):
         error(sql_path, "contains a non-synthetic SNILS")
-    uuid_values = re.findall(r"\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\b", sql_text)
+    uuid_values = re.findall(r"\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b", sql_text)
     allowed_uuids = {"00000000-0000-0000-0000-000000000001"}
     if any(value.lower() not in allowed_uuids for value in uuid_values):
         error(sql_path, "contains a non-synthetic UUID/FIAS identifier")
     sql_files = sorted((ROOT / "data-model/db").rglob("*.sql"))
-    sql_corpus = "\\n".join(p.read_text(encoding="utf-8", errors="replace") for p in sql_files)
+    sql_corpus = "\n".join(p.read_text(encoding="utf-8", errors="replace") for p in sql_files)
     known_source_pii = ("Усенко", "Шумилов", "Матюхин", "Прокофьев", "Северова", "Носкова")
     if any(value in sql_corpus for value in known_source_pii):
         error(sql_path, "contains a known source identity")
     known_addresses = ("Костромская", "Волгореченск", "Славянск", "Фролово", "Зеленова", "Кириллово")
     if any(value in sql_corpus for value in known_addresses):
         error(sql_path, "contains a known source address")
-    if re.search(r"\\b(?:10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|172\\.(?:1[6-9]|2\\d|3[01])\\.\\d{1,3}\\.\\d{1,3}|192\\.168\\.\\d{1,3}\\.\\d{1,3})\\b", sql_corpus):
+    if re.search(r"\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})\b", sql_corpus):
         error(sql_path, "contains a private network IP address")
     all_markdown = "\n".join(p.read_text(encoding="utf-8", errors="replace") for p in MD_FILES)
     if re.search(r"\]\([^)]*pg_test_run_20261125_012743\.log", all_markdown):
