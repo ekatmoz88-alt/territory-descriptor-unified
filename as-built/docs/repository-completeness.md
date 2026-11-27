@@ -2,19 +2,19 @@
 
 ## Документация по проекту «Дешифратор»
 
-Проектное описание логической архитектуры ПОСС/ПОМС/ПОШ ВБД размещено в разделе [проектной спецификации АРМ](../../descriptor/README.md). «Дискриптор» — историческое название того же проекта, а не отдельный продукт. В разделе Deshifrator собран анализ выбранных исходников C# и подтверждённых реализационных фрагментов. Проектные требования и исходниковые доказательства не следует смешивать.
+Проектное описание логической архитектуры ПОСС/ПОМС/ПОШ ВБД размещено в разделе [проектной спецификации АРМ](../../specs/README.md). «Дискриптор» — историческое название того же проекта, а не отдельный продукт. В разделе Deshifrator собран анализ выбранных исходников C# и подтверждённых реализационных фрагментов. Проектные требования и исходниковые доказательства не следует смешивать.
 
-В каноническом репозитории `territory-descriptor-unified` материалы проекта размещены в `materials/descriptor/` (проектная спецификация) и `materials/deshifrator/` (анализ программных компонентов).
+В каноническом репозитории `territory-descriptor-unified` материалы распределены по пяти разделам: `specs/`, `architecture/`, `as-built/`, `verification/` и `data-model/`.
 
 | Материал | Путь | Содержание |
 |---|---|---|
-| Архитектура | `materials/deshifrator/docs/architecture.md` | Границы приложения, UI, модели, SOAP, ФИАС и внешние зависимости |
-| Обзор программного комплекса | `materials/deshifrator/docs/application-suite-review.md` | ModuleMobile, ModuleStationary, Printer / PassportPaint, обмен, SQLite, UMMS SOAP, поиск документов и адресов |
-| Слой доступа к данным | `materials/deshifrator/docs/data-access-review.md` | Разбор выбранных C#-компонентов SQLite |
-| Файловый обмен и MRZ | `materials/deshifrator/docs/data-exchange-and-mrz.md` | XML-обмен, шифрование, статусы и MRZ |
-| Зависимости и конфигурация | `materials/deshifrator/docs/dependencies-and-runtime.md` | Состав поставки, .NET Framework, SQLite, OCR, Elasticsearch и конфигурационные границы |
-| Риски и инженерные решения | `materials/deshifrator/docs/risks-and-decisions.md` | Наблюдения по коду, риски совместимости и направления модернизации |
-| Состав репозитория | `materials/deshifrator/docs/repository-completeness.md` | Состав опубликованных материалов и ограничения полноты |
+| Архитектура | `as-built/docs/architecture.md` | Границы приложения, UI, модели, SOAP, ФИАС и внешние зависимости |
+| Обзор программного комплекса | `as-built/docs/application-suite-review.md` | ModuleMobile, ModuleStationary, Printer / PassportPaint, обмен, SQLite, UMMS SOAP, поиск документов и адресов |
+| Слой доступа к данным | `as-built/docs/data-access-review.md` | Разбор выбранных C#-компонентов SQLite |
+| Файловый обмен и MRZ | `as-built/docs/data-exchange-and-mrz.md` | XML-обмен, шифрование, статусы и MRZ |
+| Зависимости и конфигурация | `as-built/docs/dependencies-and-runtime.md` | Состав поставки, .NET Framework, SQLite, OCR, Elasticsearch и конфигурационные границы |
+| Риски и инженерные решения | `as-built/docs/risks-and-decisions.md` | Наблюдения по коду, риски совместимости и направления модернизации |
+| Состав репозитория | `as-built/docs/repository-completeness.md` | Состав опубликованных материалов и ограничения полноты |
 
 Документы по архитектуре, обмену, зависимостям и рискам также представлены в виде отдельных HTML-страниц на GitHub Pages. Обзор программного комплекса, SQLite review и этот отчёт доступны как Markdown-файлы в репозитории.
 
@@ -32,12 +32,12 @@
 
 В репозитории находятся пять выбранных C#-файлов слоя SQLite и отдельный исходный фрагмент ViewModel поиска персон UMMS:
 
-- `materials/deshifrator/sources/DbStationary.Data/ConnectionFactory.cs`
-- `materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx.cs`
-- `materials/deshifrator/sources/DbStationary.Data/SQLiteCommandEx_Params.cs`
-- `materials/deshifrator/sources/DbStationary.Data/SQLiteDataReaderEx.cs`
-- `materials/deshifrator/sources/DbStationary.Data/SQLiteMaps.cs`
-- `materials/deshifrator/sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs` — ViewModel результата поиска персоны UMMS; предоставляет поля модели для WPF-привязки и состояние открытия результата во вкладке.
+- `as-built/sources/DbStationary.Data/ConnectionFactory.cs`
+- `as-built/sources/DbStationary.Data/SQLiteCommandEx.cs`
+- `as-built/sources/DbStationary.Data/SQLiteCommandEx_Params.cs`
+- `as-built/sources/DbStationary.Data/SQLiteDataReaderEx.cs`
+- `as-built/sources/DbStationary.Data/SQLiteMaps.cs`
+- `as-built/sources/Common.Wpf.ViewModels/UmmsSearchPersonResultViewModel.cs` — ViewModel результата поиска персоны UMMS; предоставляет поля модели для WPF-привязки и состояние открытия результата во вкладке.
 
 Файлы перенесены как материалы для source-based review, а не как полный исходный проект.
 
@@ -64,6 +64,6 @@
 
 ## Итог
 
-**Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `materials/deshifrator/` внутри канонического хаба проекта ППО «Территория».** Oracle GLOBAL11 остаётся отдельным проектом и не входит в этот контур.
+**Документационные материалы по ModuleMobile, ModuleStationary и Printer / PassportPaint собраны в `as-built/` внутри единого хаба АРМ.** Oracle GLOBAL11 остаётся отдельным проектом и не входит в этот контур.
 
 При этом в Deshifrator перенесены документация, пять выбранных файлов SQLite data-access и отдельный фрагмент UMMS ViewModel, а не полный исходный код всего WPF-комплекса.
