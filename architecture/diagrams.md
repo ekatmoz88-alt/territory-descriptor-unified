@@ -58,7 +58,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-  subgraph TERR["PPO PAK"]
+  subgraph TERR["АРМ — функциональные области (историческая метка источника: ППО ПАК)"]
     CORE["CORE domain<br/>persons, identity data, documents,<br/>cases, addresses, payments"]
     DICT["DICT domain<br/>reference data"]
     RP["RP<br/>Russian passport"]
@@ -152,7 +152,7 @@ flowchart TB
   subgraph CENTRAL["Centralized operating mode"]
     C_OFFICES["Territorial offices"]
     C_THIN["Thin clients"]
-    C_APP["Single regional PPO PAK application instance"]
+    C_APP["Single regional ARM deployment instance (historical source label: PPO PAK)"]
     C_DB[("Regional database")]
     C_OFFICES --> C_THIN --> C_APP --> C_DB
   end
@@ -325,7 +325,7 @@ The operation names are taken from the public API description and source-review 
 
 | System / area | Architecture views included | Remaining evidence needed |
 |---|---|---|
-| PPO PAK | Functional domains, conceptual data model, centralized/distributed deployment variants, separate/combined server placement, seven external exchange areas (three with documented direction) | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
+| Historical source notation “PPO PAK” | Functional domains, conceptual data model, deployment variants, server placement and seven external exchange areas; mapping to the ARM contours requires verification | Authoritative list of all 17 modules; complete physical ERD; adapter contracts; actual regional topology; synchronization rules |
 | ПО — workstation specification | Stationary/mobile workstation decomposition, peripherals, exchange boundary | Full component inventory, hardware mapping, interface/control descriptions, verified data-flow details |
 | ПО | OCR component (Tesseract OCR 3.02), ModuleMobile.exe, ModuleStationary.exe, Printer/PassportPaint (MRZ and printing), separate SQLite databases | Complete source tree, project references, executable ownership per feature, full schema and runtime configuration |
 | UMMS | Client/service boundary, SOAP operations, search sequence | WSDL/XSD, exact service contract, full client source, deployment and security configuration |
