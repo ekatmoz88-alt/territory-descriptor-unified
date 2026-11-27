@@ -19,6 +19,7 @@
 - [Инвентаризация кода](/as-built/code-inventory.md)
 - [UMMS client и модели персоны](/as-built/umms-client.md)
 - [SQLite Data Access Layer](/as-built/sqlite-data-layer.md)
+- [OCR и распознавание шрифтов](/as-built/docs/ocr-font-recognition-review.md)
 - [Матрица трассировки](/as-built/traceability.md)
 
 ## 4. Verification
