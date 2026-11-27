@@ -18,3 +18,11 @@ jobs:
         run: python scripts/validate_docs.py
       - name: Check SQL test runner shell syntax
         run: bash -n data-model/db/scripts/run_tests_ci.sh
+      - name: Copy docs folders to _site
+        run: |
+          mkdir -p _site
+          cp -r specs/ _site/specs/
+          cp -r architecture/ _site/architecture/
+          cp -r as-built/ _site/as-built/
+          cp -r verification/ _site/verification/
+          cp -r data-model/ _site/data-model/
