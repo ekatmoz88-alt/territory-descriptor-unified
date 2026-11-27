@@ -1,20 +1,20 @@
-# UMMS — Public Technical Documentation
+# external SOAP service — Public Technical Documentation
 
-Public technical documentation and source-based analysis for the historical UMMS document-processing system and its SOAP integration.
+Public technical documentation and source-based analysis for the historical external SOAP service document-processing system and its SOAP integration.
 
 **Published documentation:** https://ekatmoz88-alt.github.io/territory-descriptor-unified/materials/umms/
 
 ## Scope
 
-This repository contains selected public materials describing the UMMS API, client-side workflows, local case and dossier storage, and the relationship between workstation roles and the observed SOAP integration.
+This repository contains selected public materials describing the external SOAP API, client-side workflows, local case and dossier storage, and the relationship between workstation roles and the observed SOAP integration.
 
-It is a historical documentation and analysis track within the unified PPO Territory / Deshifrator project contour. UMMS remains a related, distinct system boundary; grouping the documentation here does not imply that UMMS is the same application, shares a runtime, or is deployed as one product with PPO Territory or Deshifrator. The materials do not claim that the original system was implemented on .NET 8.
+It is a historical documentation and analysis track within the unified external enterprise system / Case Processing project contour. external SOAP service remains a related, distinct system boundary; grouping the documentation here does not imply that external SOAP service is the same application, shares a runtime, or is deployed as one product with external enterprise system or Case Processing. The materials do not claim that the original system was implemented on .NET 8.
 
 ## Public documents
 
 | File | Subject |
 |---|---|
-| [01_API_ПУБЛИЧНАЯ.md](01_API_ПУБЛИЧНАЯ.md) | Public overview of the UMMS API and its operations |
+| [01_API_ПУБЛИЧНАЯ.md](01_API_ПУБЛИЧНАЯ.md) | Public overview of the external SOAP API and its operations |
 | [02_Клиент_ПУБЛИЧНАЯ.md](02_Клиент_ПУБЛИЧНАЯ.md) | Public overview of the client application and workflows |
 | [05_Локальное_хранение_досье_ПУБЛИЧНАЯ.md](05_Локальное_хранение_досье_ПУБЛИЧНАЯ.md) | Source-based review of local case and dossier storage |
 | [06_АРМ_и_SOAP_интеграция_ПУБЛИЧНАЯ.md](06_АРМ_и_SOAP_интеграция_ПУБЛИЧНАЯ.md) | Workstation overview and SOAP integration analysis, with provisional paths identified explicitly |
@@ -30,9 +30,9 @@ The public repository does not include the complete application source tree or i
 
 ## Related projects
 
-- [PPO Territory / Deshifrator / UMMS unified documentation hub](../../README.md) — shared project navigation with distinct system and application boundaries.
-- [PPO Territory architecture](../territory/README.md) — related enterprise information-system materials.
-- [Deshifrator software documentation](../deshifrator/README.md) — related desktop application documentation.
+- [external enterprise system / Case Processing / external SOAP service unified documentation hub](../../README.md) — shared project navigation with distinct system and application boundaries.
+- [external enterprise system architecture](../territory/README.md) — related enterprise information-system materials.
+- [Case Processing software documentation](../deshifrator/README.md) — related desktop application documentation.
 
 ## Documentation approach
 
@@ -47,10 +47,10 @@ This repository uses Markdown and a static HTML publication. Technical claims ar
 
 ## Languages
 
-- [Русский — обзор UMMS](index.html)
-- [English — UMMS overview](en/index.html)
+- [Русский — обзор external SOAP service](index.html)
+- [English — external SOAP service overview](en/index.html)
 
 
 ## Client-integration case-study scope
 
-The historical case study describes interaction between stationary WPF workstations and mobile clients through the SOAP API. Its documentation scope includes the method catalogue, data structures, client workflows, person-search behavior and search-logic optimization. This describes the documented integration case; it does not imply that UMMS and the related applications share one runtime or deployment.
+The historical case study describes interaction between stationary WPF workstations and mobile clients through the SOAP API. Its documentation scope includes the method catalogue, data structures, client workflows, person-search behavior and search-logic optimization. This describes the documented integration case; it does not imply that external SOAP service and the related applications share one runtime or deployment.
