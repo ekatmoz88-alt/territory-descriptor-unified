@@ -16,3 +16,5 @@ jobs:
           python-version: '3.11'
       - name: Validate Markdown, links, PII, Mermaid and MRZ
         run: python scripts/validate_docs.py
+      - name: Check SQL test runner shell syntax
+        run: bash -n data-model/db/scripts/run_tests_ci.sh

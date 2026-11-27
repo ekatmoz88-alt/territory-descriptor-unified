@@ -110,6 +110,18 @@ for path in MD_FILES:
             if len(re.findall(r"^\s*subgraph\b", block, flags=re.M)) != len(re.findall(r"^\s*end\s*$", block, flags=re.M)):
                 error(path, "unbalanced Mermaid subgraph/end blocks")
 
+# Keep the requested architecture inventory explicit: 10 primary and at least 7 ARM component diagrams.
+def mermaid_count(path: Path) -> int:
+    if not path.exists():
+        return 0
+    content = path.read_text(encoding="utf-8", errors="replace")
+    return len(re.findall(r"^ {0,3}```mermaid", content, flags=re.M)) + len(re.findall(r"^ {0,3}~~~mermaid", content, flags=re.M))
+
+if mermaid_count(ROOT / "architecture/diagrams.md") != 10:
+    error(ROOT / "architecture/diagrams.md", "expected 10 primary Mermaid diagrams")
+if mermaid_count(ROOT / "architecture/component-maps.md") < 7:
+    error(ROOT / "architecture/component-maps.md", "expected at least 7 core ARM component diagrams")
+
 # The reconstructed PostgreSQL ERD contains 24 application entities only.
 erd_path = ROOT / "data-model/reconstructed-erd.md"
 if erd_path.exists():
