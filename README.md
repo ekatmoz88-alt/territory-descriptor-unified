@@ -1,4 +1,4 @@
-# АРМ ППО «Территория» / АРМ «Дешифратор» — Technical Documentation
+# АРМ ППО «Территория» / АРМ обработки досье — Technical Documentation
 
 [![CI](https://github.com/ekatmoz88-alt/territory-descriptor-unified/actions/workflows/ci.yml/badge.svg)](https://github.com/ekatmoz88-alt/territory-descriptor-unified/actions/workflows/ci.yml)
 
@@ -7,7 +7,7 @@
 | Наименование | Значение |
 |---|---|
 | АРМ ППО «Территория» | Основное/историческое обозначение программного комплекса |
-| АРМ «Дешифратор» | Наименование рабочего места в проектных материалах |
+| АРМ обработки досье | Наименование рабочего места в проектных материалах |
 | ОКР «Дискриптор-14» | Наименование опытно-конструкторской работы |
 | Dossier Processing Workstation | Англоязычное обозначение того же АРМ |
 
