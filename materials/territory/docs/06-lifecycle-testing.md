@@ -11,7 +11,7 @@ Some materials refer to work during 2014. A reliable stage-by-stage calendar, in
 ## Update publication and installation
 
 The supplied operational regulation states that:
-- the contractor publishes update files and installation instructions on `sd.reksoft.ru`;
+- the contractor publishes update files and installation instructions on `[redacted]`;
 - each update is accompanied by information about changes in PPO Territory and corrected defects;
 - responsible employees of the regional FMS authority are notified by email;
 - contractor representatives perform update installation in the regional authority within one working day after publication.
@@ -23,9 +23,9 @@ This is a documented historical support procedure. It does not establish that th
 The regulation assigns regular support activities to designated employees of the regional FMS authority, following the supplied PPO Territory documentation. When needed, the responsible employee contacts the contractor's technical support.
 
 The source lists these historical support channels:
-- website: `https://sd.reksoft.ru`;
-- forum: `http://ufms.reksoft.ru/forum`;
-- telephone: `8 (800) 333 0340`;
+- website: `[redacted]`;
+- forum: `[redacted]`;
+- telephone: `[redacted]`;
 - email: `[redacted]`.
 
 These are preserved as historical source references, not verified current contact details.
@@ -75,9 +75,9 @@ Do not infer exact dates, acceptance acts, update versions or successful backup 
 
 ## Additional operational and update procedure evidence
 
-The supplied operational regulation states that update packages and installation instructions were published on `sd.reksoft.ru`; each update was accompanied by a change/defect summary; responsible regional employees were notified by email; and contractor representatives were to install updates within one working day of publication.
+The supplied operational regulation states that update packages and installation instructions were published on `[redacted]`; each update was accompanied by a change/defect summary; responsible regional employees were notified by email; and contractor representatives were to install updates within one working day of publication.
 
-The regulation also assigns regular operational support to designated regional employees, with escalation to contractor support when necessary. Historical channels listed in the source are `https://sd.reksoft.ru`, `http://ufms.reksoft.ru/forum`, telephone `8 (800) 333 0340` and `[redacted]`. These are source references, not verified current contact details.
+The regulation also assigns regular operational support to designated regional employees, with escalation to contractor support when necessary. Historical channels listed in the source are `[redacted]`, `[redacted]`, telephone `[redacted]` and `[redacted]`. These are source references, not verified current contact details.
 
 ### Backup monitoring
 
