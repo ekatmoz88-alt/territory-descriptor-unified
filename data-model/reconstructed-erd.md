@@ -242,7 +242,6 @@ erDiagram
     export_batch_person {
         bigint batch_id PK,FK
         bigint person_id PK,FK
-        key PRIMARY
     }
     edit_scenario_log {
         bigserial id PK
