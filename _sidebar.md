@@ -10,7 +10,7 @@
 - [ПМИ / Методика испытаний](specs/test-methodology.md)
 
 ## 2. Logical Architecture
-- [Архитектура и интеграции](architecture/README.md)
+- [Архитектура и интеграции](/architecture/README.md)
 - [Контекст и границы АРМ](architecture/context-and-boundaries.md)
 - [Интеграции, файловый обмен и MRZ](architecture/integration-and-file-exchange.md)
 
