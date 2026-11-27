@@ -25,6 +25,7 @@
 - [Результаты испытаний](verification/README.md)
 - [Матрица ТЗ–МИ–реализация](verification/test-report-summary.md)
 - [Реестр дефектов BUG-01–BUG-07](verification/defect-register.md)
+- [Матрица доказательств исходного проекта](verification/verification-matrix.md)
 
 ## 5. Data Model
 - [Модель данных](data-model/README.md)
