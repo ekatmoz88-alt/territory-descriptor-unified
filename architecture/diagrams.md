@@ -190,7 +190,7 @@ flowchart LR
   IF --- ROS["Росстат<br/>forms 12-П and 12-В<br/>direction not specified"]
   ZAGS["ЗАГС<br/>birth / death records"] --> IF
   IF --- RP["АС «Российский паспорт»<br/>export path normalization<br/>direction not specified"]
-  IF --- SK["внешний интеграционный шлюз<br/>СМЭВ / портал государственных услуг / ФНС / ДКС МИД<br/>direction not specified"]
+  IF --- SK["внешний интеграционный шлюз<br/>внешние государственные системы и ведомственные реестры<br/>direction not specified"]
 ```
 
 The diagram shows seven documented **external exchange areas**. Direction is explicit in the reviewed source only for three: export to ПРИУР ГАС «Выборы», and incoming information from ГИАЦ ГУ МВД and ЗАГС. The remaining four links are neutral because their direction is not established. These are not claims of verified live integrations. Protocols, endpoints, authentication, message schemas, ownership of each adapter, and current operational status are not established.
