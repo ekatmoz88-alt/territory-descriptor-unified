@@ -1,4 +1,4 @@
-# ARM Descriptor — Dossier Processing Workflow and Metadata
+# ARM Project — Dossier Processing Workflow and Metadata
 
 ## Scope
 
@@ -34,10 +34,10 @@ This document describes the dossier processing sequence specified for ПОМС (
 
 ```mermaid
 flowchart TB
-  VBD[("ВБД")]
+  VBD(("ВБД"))
   GW["ПОШ ВБД"]
   MOB["ПОМС — search and export"]
-  MEDIA[("Registered removable medium")]
+  MEDIA(("Registered removable medium"))
   STA["ПОСС — import, transform and edit"]
   LOG["Dossier change log"]
   CHECK{"Does current VBD data match exported baseline?"}
@@ -71,6 +71,7 @@ Exact matching semantics, normalization, pagination and query limits are not spe
 ## Per-dossier metadata
 
 Each dossier is stated to carry:
+
 - date/time of export from ПОМС;
 - date/time of export from ПОСС to ПОМС;
 - date/time of loading from ПОМС to ПОСС;
